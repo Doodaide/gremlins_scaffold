@@ -1,0 +1,91 @@
+Wizard.java
+
+inside draw method: 
+// Border behaviour 
+            if (this.getX() + this.xVel < app.leftBound || this.getX() + this.xVel + WIDTH > app.rightBound){
+                this.stop();
+            }
+    
+            if (this.getY() + this.yVel < app.upperBound || this.getY() + this.yVel + HEIGHT > app.lowerBound - 20){
+                this.stop();
+            }
+
+
+// ExistingFireball updater
+ArrayList<Fireball> temp = new ArrayList<Fireball>();
+        for (Fireball e : existingFireballs) {
+            if(e != null){
+                temp.add(e);
+            }
+        }
+        
+        this.existingFireballs = temp;
+        temp = null;
+
+
+// gArray Updater 
+ArrayList<Gremlin> temp3 = new ArrayList<Gremlin>();
+        for(Gremlin g : this.gArray){
+            if(g != null){
+                temp3.add(g);
+            }
+        }
+        this.gArray = temp3;
+        temp3 = null;
+
+
+
+
+
+ @Test 
+    public void tickTest(){
+        // alive wizard check
+        assertTrue(w.getAlive());
+        double wizardCooldown = app.getWizardCooldown();
+        int manaValue = 10;
+        w.setManaCooldown(manaValue);
+        assertEquals(manaValue, w.getManaCoolDown());
+
+        // as Wizard cooldown is a float, it is difficult to test equality.
+        // It just has to be less within a reasonable range (as it is a third) 
+        assertTrue(app.getWizardCooldown() <= 20); 
+        assertTrue(w.getManaCoolDown() <= wizardCooldown);
+
+        // No collisions
+        assertNull(w.collisionEntity);
+        assertNull(w.collisionBlock);
+        
+        assertTrue(w.sideAV.get(0));
+        assertTrue(w.sideAV.get(1));
+        assertTrue(w.sideAV.get(2));
+        assertTrue(w.sideAV.get(3));
+        
+        // Test stop diagonal motion: 
+        w.up();
+        w.setDirection(3);
+        w.tick(app);
+        assertEquals(0, w.getXVel());
+        assertEquals(0, w.getYVel());
+        
+        w.up();
+        w.setDirection(1);
+        w.tick(app);
+        assertEquals(0, w.getXVel());
+        assertEquals(0, w.getYVel());
+
+        
+        w.down();
+        w.tick(app);
+        assertEquals(0, w.getXVel());
+        assertEquals(2, w.getYVel());
+
+        // Ticks once, expected results
+        assertEquals(20, w.getX());
+        assertEquals(22, w.getY());
+
+        // dead wizard check
+        w.setAlive(false);
+        assertFalse(w.getAlive());
+        assertEquals(10, w.tick(app));
+
+    }

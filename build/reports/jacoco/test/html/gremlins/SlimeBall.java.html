@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SlimeBall.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gremlins_scaffold</a> &gt; <a href="index.source.html" class="el_package">gremlins</a> &gt; <span class="el_source">SlimeBall.java</span></div><h1>SlimeBall.java</h1><pre class="source lang-java linenums">package gremlins;
+
+import processing.core.PImage;
+
+/**
+ * SlimeBall
+ */
+public class SlimeBall extends Projectile{
+    private PImage frozenS;
+    public SlimeBall(int x, int y, PImage sprite, PImage frozenS){
+<span class="fc" id="L11">        super(x, y, sprite);</span>
+<span class="fc" id="L12">        this.frozenS = frozenS;</span>
+<span class="fc" id="L13">    }</span>
+
+    @Override
+    public void up() {
+<span class="fc" id="L17">        this.yVel = -speed;</span>
+<span class="fc" id="L18">        this.xVel = 0;</span>
+<span class="fc" id="L19">        this.direction = 0;</span>
+        
+<span class="fc" id="L21">    }</span>
+
+    @Override
+    public void right() {
+<span class="fc" id="L25">        this.xVel = speed;</span>
+<span class="fc" id="L26">       this.yVel = 0;</span>
+<span class="fc" id="L27">       this.direction = 1;</span>
+        
+<span class="fc" id="L29">    }</span>
+
+    @Override
+    public void down() {
+<span class="fc" id="L33">        this.yVel = speed;</span>
+<span class="fc" id="L34">        this.xVel = 0;</span>
+<span class="fc" id="L35">        this.direction = 2;</span>
+        
+<span class="fc" id="L37">    }</span>
+
+    @Override
+    public void left() {
+<span class="fc" id="L41">        this.xVel = -speed;</span>
+<span class="fc" id="L42">        this.yVel = 0;</span>
+<span class="fc" id="L43">        this.direction = 3;</span>
+        
+<span class="fc" id="L45">    }</span>
+
+    @Override
+    public int draw(App app) {
+<span class="nc bnc" id="L49" title="All 2 branches missed.">        if(this.alive){</span>
+<span class="nc bnc" id="L50" title="All 2 branches missed.">            if(!app.getFreezeActive()){</span>
+<span class="nc" id="L51">                app.image(this.sprite, this.x, this.y);</span>
+            }
+<span class="nc bnc" id="L53" title="All 2 branches missed.">            else if(app.getFreezeActive()){</span>
+<span class="nc" id="L54">                app.image(this.frozenS, this.x, this.y);</span>
+            }
+        }
+<span class="nc" id="L57">        return 0;</span>
+    }
+
+    @Override
+    public int tick(App app) {
+<span class="nc bnc" id="L62" title="All 2 branches missed.">        if(this.alive){</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">            if(!app.getFreezeActive()){</span>
+<span class="nc bnc" id="L64" title="All 2 branches missed.">                if(this.collision(app) == 1){ // block collision </span>
+                    //System.out.println(&quot;Collision&quot;);
+<span class="nc bnc" id="L66" title="All 4 branches missed.">                    if(!this.sideAV.get(0) &amp;&amp; this.direction == 0){</span>
+                        //System.out.println(&quot;bottom of block hit&quot;);
+<span class="nc" id="L68">                        return 1; // something hit</span>
+                    }
+<span class="nc bnc" id="L70" title="All 4 branches missed.">                    if(!this.sideAV.get(2) &amp;&amp; this.direction == 2){</span>
+                        //System.out.println(&quot;top of block hit&quot;);
+<span class="nc" id="L72">                        return 1; // something hit</span>
+                    }
+<span class="nc bnc" id="L74" title="All 4 branches missed.">                    if(!this.sideAV.get(1) &amp;&amp; this.direction == 1){</span>
+                        //System.out.println(&quot;left of block hit&quot;);
+<span class="nc" id="L76">                        return 1; // something hit</span>
+                    }
+<span class="nc bnc" id="L78" title="All 4 branches missed.">                    if(!this.sideAV.get(3) &amp;&amp; this.direction == 3){</span>
+                        //System.out.println(&quot;Right of block hit&quot;);
+<span class="nc" id="L80">                        return 1; // something hit</span>
+                    }
+    
+                }
+<span class="nc" id="L84">                this.x += this.xVel; </span>
+<span class="nc" id="L85">                this.y += this.yVel;</span>
+            }
+            
+        }
+<span class="nc" id="L89">        return 0;</span>
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

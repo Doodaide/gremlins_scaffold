@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Kamehameha.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gremlins_scaffold</a> &gt; <a href="index.source.html" class="el_package">gremlins</a> &gt; <span class="el_source">Kamehameha.java</span></div><h1>Kamehameha.java</h1><pre class="source lang-java linenums">package gremlins;
+
+import java.util.ArrayList;
+
+import processing.core.PImage;
+
+/**
+ * Kamehameha
+ */
+public class Kamehameha extends Projectile{
+    
+    private boolean drawing; 
+    private ArrayList&lt;Immobile&gt; toDelete; 
+    private ArrayList&lt;Mobile&gt; toKill; 
+    private int lifeSpan;
+    private int beamLength; 
+    public Kamehameha(int x, int y, PImage sprite) {
+<span class="fc" id="L18">        super(x, y, sprite);</span>
+<span class="fc" id="L19">        this.drawing = false; </span>
+<span class="fc" id="L20">        this.toDelete = new ArrayList&lt;Immobile&gt;();</span>
+<span class="fc" id="L21">        this.toKill = new ArrayList&lt;Mobile&gt;();</span>
+<span class="fc" id="L22">        this.lifeSpan = 0;</span>
+<span class="fc" id="L23">        this.beamLength = 0;</span>
+<span class="fc" id="L24">    }</span>
+
+    public boolean getDrawing(){
+<span class="fc" id="L27">        return this.drawing; </span>
+    }
+
+    public void setDrawing(boolean b){
+<span class="fc" id="L31">        this.drawing = b;</span>
+<span class="fc" id="L32">    }</span>
+
+    @Override
+    public void up() {
+<span class="fc" id="L36">        this.direction = 0;</span>
+<span class="fc" id="L37">    }</span>
+
+    @Override
+    public void right() {
+<span class="fc" id="L41">        this.direction = 1;</span>
+        
+<span class="fc" id="L43">    }</span>
+
+    @Override
+    public void down() {
+<span class="fc" id="L47">        this.direction = 2;</span>
+        
+<span class="fc" id="L49">    }</span>
+
+    @Override
+    public void left() {
+<span class="fc" id="L53">        this.direction = 3;</span>
+<span class="fc" id="L54">    }</span>
+
+    public void setLifespan(int x){
+<span class="fc" id="L57">        this.lifeSpan = x; </span>
+<span class="fc" id="L58">    }</span>
+
+    public int getLifeSpan(){
+<span class="fc" id="L61">        return this.lifeSpan;</span>
+    }
+
+    @Override
+    public int draw(App app) {
+<span class="nc bnc" id="L66" title="All 2 branches missed.">        if(this.direction == 0){ // up or down </span>
+<span class="nc bnc" id="L67" title="All 2 branches missed.">            for(int i = 0; i &lt; this.beamLength; i += 1){</span>
+<span class="nc" id="L68">                app.image(sprite, app.getWizard().getX(), app.getWizard().getY() - 20*i - 20);</span>
+            }
+        }
+
+<span class="nc bnc" id="L72" title="All 2 branches missed.">        else if(this.direction == 1){</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">            for(int i = 0; i &lt; this.beamLength; i += 1){</span>
+<span class="nc" id="L74">                app.image(sprite, app.getWizard().getX() + 20*i + 20, app.getWizard().getY());</span>
+            }
+        }
+
+<span class="nc bnc" id="L78" title="All 2 branches missed.">        else if (this.direction == 2){</span>
+<span class="nc bnc" id="L79" title="All 2 branches missed.">            for(int i = 0; i &lt; this.beamLength; i += 1){</span>
+<span class="nc" id="L80">                app.image(sprite, app.getWizard().getX(), app.getWizard().getY() + 20*i + 20);</span>
+            }
+        }
+
+<span class="nc bnc" id="L84" title="All 2 branches missed.">        else if (this.direction == 3){ // left or right </span>
+<span class="nc bnc" id="L85" title="All 2 branches missed.">            for(int i = 0; i &lt; this.beamLength; i += 1){</span>
+<span class="nc" id="L86">                app.image(sprite, app.getWizard().getX() - 20*i - 20, app.getWizard().getY());</span>
+            }
+        }
+<span class="nc" id="L89">        return 0;</span>
+    }
+
+    @Override
+    public int tick(App app) {
+        int wX, wY, wDir; 
+<span class="nc" id="L95">        wX = app.getWizard().getX(); </span>
+<span class="nc" id="L96">        wY = app.getWizard().getY(); </span>
+<span class="nc" id="L97">        wDir = app.getWizard().getDirection();</span>
+
+        
+<span class="nc bnc" id="L100" title="All 8 branches missed.">        if(wDir == 0 &amp;&amp; wX%20==0 &amp;&amp; wY%20==0 &amp;&amp; app.getWizard().getXVel() == 0){</span>
+<span class="nc" id="L101">            this.up();</span>
+<span class="nc" id="L102">            this.beamLength = (wY - app.upperBound)/20 - 1;</span>
+<span class="nc bnc" id="L103" title="All 2 branches missed.">            for (int i = wY; i &gt; app.upperBound; i -= 20){</span>
+<span class="nc bnc" id="L104" title="All 2 branches missed.">                for(Immobile I : app.getMap()){</span>
+<span class="nc bnc" id="L105" title="All 2 branches missed.">                    if(I != null){</span>
+<span class="nc bnc" id="L106" title="All 6 branches missed.">                        if(I.getX() == wX &amp;&amp; I.getY() &lt; wY &amp;&amp; !this.toDelete.contains(I)){</span>
+                            //System.out.println(&quot;Found I &quot; + I);
+<span class="nc" id="L108">                            toDelete.add(I);</span>
+<span class="nc" id="L109">                            app.rect(I.getX(), I.getY(), 20, 20);</span>
+<span class="nc" id="L110">                            app.fill(255,255,255);</span>
+<span class="nc" id="L111">                            break;</span>
+                        }
+                    }
+<span class="nc" id="L114">                }</span>
+            }
+        }
+        
+
+<span class="nc bnc" id="L119" title="All 8 branches missed.">        else if(wDir == 1 &amp;&amp; wX%20==0 &amp;&amp; wY%20==0 &amp;&amp; app.getWizard().getYVel() == 0){</span>
+<span class="nc" id="L120">            this.right();</span>
+<span class="nc" id="L121">            this.beamLength = (app.rightBound - wX)/20 - 1;</span>
+<span class="nc bnc" id="L122" title="All 2 branches missed.">            for (int i = wX; i &lt; app.rightBound; i += 20){</span>
+<span class="nc bnc" id="L123" title="All 2 branches missed.">                for(Immobile I : app.getMap()){</span>
+<span class="nc bnc" id="L124" title="All 2 branches missed.">                    if(I != null){</span>
+                        //System.out.println(I.getX() + &quot;, &quot;+ I.getY());
+<span class="nc bnc" id="L126" title="All 6 branches missed.">                        if(I.getY() == wY &amp;&amp; I.getX() &gt; wX &amp;&amp; !this.toDelete.contains(I)){</span>
+                            //System.out.println(&quot;Found I &quot; + I);
+<span class="nc" id="L128">                            toDelete.add(I);</span>
+<span class="nc" id="L129">                            app.rect(I.getX(), I.getY(), 20, 20);</span>
+<span class="nc" id="L130">                            app.fill(255,255,255);</span>
+<span class="nc" id="L131">                            break;</span>
+                        }
+                    }
+<span class="nc" id="L134">                }</span>
+            }
+        }
+
+<span class="nc bnc" id="L138" title="All 8 branches missed.">        else if(wDir == 2 &amp;&amp; wX%20==0 &amp;&amp; wY%20==0 &amp;&amp; app.getWizard().getXVel() == 0){</span>
+<span class="nc" id="L139">            this.down();</span>
+<span class="nc" id="L140">            this.beamLength = (app.lowerBound - wY)/20 - 1;</span>
+<span class="nc bnc" id="L141" title="All 2 branches missed.">            for (int i = wY; i &lt; app.lowerBound; i += 20){</span>
+<span class="nc bnc" id="L142" title="All 2 branches missed.">                for(Immobile I : app.getMap()){</span>
+<span class="nc bnc" id="L143" title="All 2 branches missed.">                    if(I != null){</span>
+                        //System.out.println(I.getX() + &quot;, &quot;+ I.getY());
+<span class="nc bnc" id="L145" title="All 6 branches missed.">                        if(I.getX() == wX &amp;&amp; I.getY() &gt; wY &amp;&amp; !this.toDelete.contains(I)){</span>
+                            //System.out.println(&quot;Found I &quot; + I);
+<span class="nc" id="L147">                            toDelete.add(I);</span>
+<span class="nc" id="L148">                            app.rect(I.getX(), I.getY(), 20, 20);</span>
+<span class="nc" id="L149">                            app.fill(255,255,255);</span>
+<span class="nc" id="L150">                            break;</span>
+                        }
+                    }
+<span class="nc" id="L153">                }</span>
+            }
+        }
+
+<span class="nc bnc" id="L157" title="All 8 branches missed.">        else if (wDir == 3 &amp;&amp; wX%20==0 &amp;&amp; wY%20==0 &amp;&amp; app.getWizard().getYVel() == 0){</span>
+<span class="nc" id="L158">            this.left();</span>
+<span class="nc" id="L159">            this.beamLength = (app.lowerBound - wY)/20 - 1;</span>
+<span class="nc bnc" id="L160" title="All 2 branches missed.">            for (int i = wX; i &gt; app.leftBound; i -= 20){</span>
+<span class="nc bnc" id="L161" title="All 2 branches missed.">                for(Immobile I : app.getMap()){</span>
+<span class="nc bnc" id="L162" title="All 2 branches missed.">                    if(I != null){</span>
+                        //System.out.println(I.getX() + &quot;, &quot;+ I.getY());
+<span class="nc bnc" id="L164" title="All 6 branches missed.">                        if(I.getY() == wY &amp;&amp; I.getX() &lt; wX &amp;&amp; !this.toDelete.contains(I)){</span>
+                            //System.out.println(&quot;Found I &quot; + I);
+<span class="nc" id="L166">                            toDelete.add(I);</span>
+<span class="nc" id="L167">                            app.rect(I.getX(), I.getY(), 20, 20);</span>
+<span class="nc" id="L168">                            app.fill(255,255,255);</span>
+<span class="nc" id="L169">                            break;</span>
+                        }
+                    }
+<span class="nc" id="L172">                }</span>
+            }
+        }
+        
+
+<span class="nc bnc" id="L177" title="All 2 branches missed.">        if(this.alive){</span>
+            //System.out.println(&quot;Entering into 1&quot;);
+            //System.out.println(&quot;toDelete size &quot; + this.toDelete.size());
+<span class="nc bnc" id="L180" title="All 2 branches missed.">            for(Immobile i : this.toDelete){</span>
+<span class="nc bnc" id="L181" title="All 2 branches missed.">                if(i.getClass().getName().equals(&quot;gremlins.Destructable&quot;)){</span>
+<span class="nc" id="L182">                    i.destroy(); </span>
+<span class="nc" id="L183">                    app.getMap().set(app.getMap().indexOf(i), null);</span>
+                }
+<span class="nc" id="L185">            }</span>
+        }
+<span class="nc" id="L187">        return 0;</span>
+    }
+
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

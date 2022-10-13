@@ -1,0 +1,24 @@
+Wizard.java
+
+inside draw method: 
+// Border behaviour 
+            if (this.getX() + this.xVel < app.leftBound || this.getX() + this.xVel + WIDTH > app.rightBound){
+                this.stop();
+            }
+    
+            if (this.getY() + this.yVel < app.upperBound || this.getY() + this.yVel + HEIGHT > app.lowerBound - 20){
+                this.stop();
+            }
+
+
+// Fireball updater
+ArrayList<Fireball> temp = new ArrayList<Fireball>();
+        for (Fireball e : existingFireballs) {
+            if(e != null){
+                temp.add(e);
+            }
+        }
+        
+        this.existingFireballs = temp;
+        temp = null;
+
