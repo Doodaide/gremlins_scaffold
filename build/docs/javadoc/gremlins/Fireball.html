@@ -123,7 +123,7 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public class <span class="typeNameLabel">Fireball</span>
 extends <a href="../gremlins/Projectile.html" title="class in gremlins">Projectile</a></pre>
-<div class="block">Fireball</div>
+<div class="block">Fireball class: wizard's main projectile</div>
 </li>
 </ul>
 </div>
@@ -173,7 +173,9 @@ extends <a href="../gremlins/Projectile.html" title="class in gremlins">Projecti
 <tr class="altColor">
 <td class="colOne"><code><span class="memberNameLink"><a href="../gremlins/Fireball.html#Fireball-int-int-processing.core.PImage-">Fireball</a></span>(int&nbsp;x,
         int&nbsp;y,
-        processing.core.PImage&nbsp;sprite)</code>&nbsp;</td>
+        processing.core.PImage&nbsp;sprite)</code>
+<div class="block">Constructor for fireball</div>
+</td>
 </tr>
 </table>
 </li>
@@ -200,7 +202,9 @@ extends <a href="../gremlins/Projectile.html" title="class in gremlins">Projecti
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Fireball.html#getDecaying--">getDecaying</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Fireball.html#getDecaying--">getDecaying</a></span>()</code>
+<div class="block">Getter method for whether the fireball is decaying</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
@@ -212,7 +216,9 @@ extends <a href="../gremlins/Projectile.html" title="class in gremlins">Projecti
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Fireball.html#setDecaying-java.lang.Boolean-">setDecaying</a></span>(java.lang.Boolean&nbsp;d)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Fireball.html#setDecaying-java.lang.Boolean-">setDecaying</a></span>(java.lang.Boolean&nbsp;d)</code>
+<div class="block">Setter method for whether the fireball is decaying</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>int</code></td>
@@ -274,6 +280,13 @@ extends <a href="../gremlins/Projectile.html" title="class in gremlins">Projecti
 <pre>public&nbsp;Fireball(int&nbsp;x,
                 int&nbsp;y,
                 processing.core.PImage&nbsp;sprite)</pre>
+<div class="block">Constructor for fireball</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>x</code> - x coordinate of fireball</dd>
+<dd><code>y</code> - y coordinate of fireball</dd>
+<dd><code>sprite</code> - fireball sprite</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -291,6 +304,11 @@ extends <a href="../gremlins/Projectile.html" title="class in gremlins">Projecti
 <li class="blockList">
 <h4>getDecaying</h4>
 <pre>public&nbsp;boolean&nbsp;getDecaying()</pre>
+<div class="block">Getter method for whether the fireball is decaying</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>boolean (true for decaying and hit an interactable object, false for not doing so)</dd>
+</dl>
 </li>
 </ul>
 <a name="setDecaying-java.lang.Boolean-">
@@ -300,6 +318,11 @@ extends <a href="../gremlins/Projectile.html" title="class in gremlins">Projecti
 <li class="blockList">
 <h4>setDecaying</h4>
 <pre>public&nbsp;void&nbsp;setDecaying(java.lang.Boolean&nbsp;d)</pre>
+<div class="block">Setter method for whether the fireball is decaying</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>d</code> - boolean for whether the fireball is decaying or not</dd>
+</dl>
 </li>
 </ul>
 <a name="up--">
