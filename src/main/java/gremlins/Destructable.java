@@ -24,8 +24,8 @@ public class Destructable extends Immobile{
      * @param decayTextures an array of textures that will be displayed upon a wizard projectile collision. 
      */
     public Destructable(int x, int y, PImage defaultTexture, PImage[] decayTextures) {
-        super(x, y);
-        this.texture = defaultTexture;
+        super(x, y);  
+        this.texture = defaultTexture; 
         this.decayTextures = decayTextures;
         this.currentState = 0;
     }

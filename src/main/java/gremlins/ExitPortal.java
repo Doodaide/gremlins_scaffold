@@ -8,7 +8,7 @@ public class ExitPortal extends Immobile{
 
     public ExitPortal(int x, int y, PImage texture) {
         super(x, y);
-        this.texture = texture;
+        this.texture = texture;  
     }
 
     @Override
