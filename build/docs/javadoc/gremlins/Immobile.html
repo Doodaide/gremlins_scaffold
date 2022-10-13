@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6};
+var methods = {"i0":6,"i1":6,"i2":6,"i3":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -194,29 +194,23 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>abstract void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Immobile.html#destroy--">destroy</a></span>()</code>
-<div class="block">Abstract destroy method, different uses for differeing block types.</div>
-</td>
-</tr>
-<tr id="i1" class="rowColor">
-<td class="colFirst"><code>abstract void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Immobile.html#draw-gremlins.App-">draw</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>
 <div class="block">Abstract Draw method updates what the immobile object should look like on the screen</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code>abstract boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Immobile.html#getViable--">getViable</a></span>()</code>
 <div class="block">Abstract getViable method returns the interactivity of the immobile object</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>abstract void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Immobile.html#setViable-boolean-">setViable</a></span>(boolean&nbsp;b)</code>
 <div class="block">Abstract set viable method sets whether the block is interactable anymore</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>abstract int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Immobile.html#update--">update</a></span>()</code>
 <div class="block">Abstract Update method, performs various update tasks on blocks depending on their type and interactions with 
@@ -331,16 +325,6 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>integer 1 or 0. Only destructable blocks (bricks) return 1 for fireball interactions</dd>
 </dl>
-</li>
-</ul>
-<a name="destroy--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>destroy</h4>
-<pre>public abstract&nbsp;void&nbsp;destroy()</pre>
-<div class="block">Abstract destroy method, different uses for differeing block types.</div>
 </li>
 </ul>
 <a name="getViable--">

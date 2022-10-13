@@ -35,19 +35,11 @@ public class ExitPortal extends Immobile{
         return 0;
     }
 
-    /**
-     * getter method for whether the block can interact with mobile entities 
-     * @return boolean. Always can collide with the wizard and projectiles 
-     */
     @Override
     public boolean getViable() {
         return true;
     }
 
-    /**
-     * Setter method for whether the exit portal can interact wtih mobile entities 
-     * @param b defaulted to true as the exit portal cannot be destroyed. 
-     */
     @Override
     public void setViable(boolean b) {
         this.viable = true;

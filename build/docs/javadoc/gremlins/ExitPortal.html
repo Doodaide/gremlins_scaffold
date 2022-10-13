@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -118,7 +118,8 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public class <span class="typeNameLabel">ExitPortal</span>
 extends <a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</a></pre>
-<div class="block">ExitPortal</div>
+<div class="block">ExitPortal class: The immobile entity that allows the player 
+ to progress to the next stage of the game.</div>
 </li>
 </ul>
 </div>
@@ -161,7 +162,9 @@ extends <a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</
 <tr class="altColor">
 <td class="colOne"><code><span class="memberNameLink"><a href="../gremlins/ExitPortal.html#ExitPortal-int-int-processing.core.PImage-">ExitPortal</a></span>(int&nbsp;x,
           int&nbsp;y,
-          processing.core.PImage&nbsp;texture)</code>&nbsp;</td>
+          processing.core.PImage&nbsp;texture)</code>
+<div class="block">Constructor for exitportal</div>
+</td>
 </tr>
 </table>
 </li>
@@ -180,33 +183,26 @@ extends <a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/ExitPortal.html#destroy--">destroy</a></span>()</code>
-<div class="block">Abstract destroy method, different uses for differeing block types.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/ExitPortal.html#draw-gremlins.App-">draw</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>
+<div class="block">Draw method that overrides the immobile draw method.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/ExitPortal.html#draw-gremlins.App-">draw</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>
-<div class="block">Abstract Draw method updates what the immobile object should look like on the screen</div>
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/ExitPortal.html#getViable--">getViable</a></span>()</code>
+<div class="block">getter method for whether the block can interact with mobile entities</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/ExitPortal.html#getViable--">getViable</a></span>()</code>
-<div class="block">Abstract getViable method returns the interactivity of the immobile object</div>
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/ExitPortal.html#setViable-boolean-">setViable</a></span>(boolean&nbsp;b)</code>
+<div class="block">Setter method for whether the exit portal can interact wtih mobile entities</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/ExitPortal.html#setViable-boolean-">setViable</a></span>(boolean&nbsp;b)</code>
-<div class="block">Abstract set viable method sets whether the block is interactable anymore</div>
-</td>
-</tr>
-<tr id="i4" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/ExitPortal.html#update--">update</a></span>()</code>
-<div class="block">Abstract Update method, performs various update tasks on blocks depending on their type and interactions with 
- Mobile entities.</div>
+<div class="block">Required update method, returns a 0 for each call as it is not a breakable block</div>
 </td>
 </tr>
 </table>
@@ -247,6 +243,13 @@ extends <a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</
 <pre>public&nbsp;ExitPortal(int&nbsp;x,
                   int&nbsp;y,
                   processing.core.PImage&nbsp;texture)</pre>
+<div class="block">Constructor for exitportal</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>x</code> - x coordinate of portal</dd>
+<dd><code>y</code> - y coordinate of portal</dd>
+<dd><code>texture</code> - portal sprite</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -264,13 +267,12 @@ extends <a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</
 <li class="blockList">
 <h4>draw</h4>
 <pre>public&nbsp;void&nbsp;draw(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../gremlins/Immobile.html#draw-gremlins.App-">Immobile</a></code></span></div>
-<div class="block">Abstract Draw method updates what the immobile object should look like on the screen</div>
+<div class="block">Draw method that overrides the immobile draw method.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Immobile.html#draw-gremlins.App-">draw</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>app</code> - the PApplet, which it inherits methods from</dd>
+<dd><code>app</code> - the PApplet, which it inherits the image() method from</dd>
 </dl>
 </li>
 </ul>
@@ -281,29 +283,12 @@ extends <a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</
 <li class="blockList">
 <h4>update</h4>
 <pre>public&nbsp;int&nbsp;update()</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../gremlins/Immobile.html#update--">Immobile</a></code></span></div>
-<div class="block">Abstract Update method, performs various update tasks on blocks depending on their type and interactions with 
- Mobile entities.</div>
+<div class="block">Required update method, returns a 0 for each call as it is not a breakable block</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Immobile.html#update--">update</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>integer 1 or 0. Only destructable blocks (bricks) return 1 for fireball interactions</dd>
-</dl>
-</li>
-</ul>
-<a name="destroy--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>destroy</h4>
-<pre>public&nbsp;void&nbsp;destroy()</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../gremlins/Immobile.html#destroy--">Immobile</a></code></span></div>
-<div class="block">Abstract destroy method, different uses for differeing block types.</div>
-<dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../gremlins/Immobile.html#destroy--">destroy</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -314,13 +299,12 @@ extends <a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</
 <li class="blockList">
 <h4>getViable</h4>
 <pre>public&nbsp;boolean&nbsp;getViable()</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../gremlins/Immobile.html#getViable--">Immobile</a></code></span></div>
-<div class="block">Abstract getViable method returns the interactivity of the immobile object</div>
+<div class="block">getter method for whether the block can interact with mobile entities</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Immobile.html#getViable--">getViable</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>true or false, depending on whether the wizard, gremlins, projectiles can interact with it</dd>
+<dd>boolean. Always can collide with the wizard and projectiles</dd>
 </dl>
 </li>
 </ul>
@@ -331,13 +315,12 @@ extends <a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</
 <li class="blockList">
 <h4>setViable</h4>
 <pre>public&nbsp;void&nbsp;setViable(boolean&nbsp;b)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../gremlins/Immobile.html#setViable-boolean-">Immobile</a></code></span></div>
-<div class="block">Abstract set viable method sets whether the block is interactable anymore</div>
+<div class="block">Setter method for whether the exit portal can interact wtih mobile entities</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Immobile.html#setViable-boolean-">setViable</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>b</code> - true or false.</dd>
+<dd><code>b</code> - defaulted to true as the exit portal cannot be destroyed.</dd>
 </dl>
 </li>
 </ul>

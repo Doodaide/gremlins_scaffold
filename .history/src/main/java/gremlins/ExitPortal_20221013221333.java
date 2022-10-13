@@ -44,10 +44,6 @@ public class ExitPortal extends Immobile{
         return true;
     }
 
-    /**
-     * Setter method for whether the exit portal can interact wtih mobile entities 
-     * @param b defaulted to true as the exit portal cannot be destroyed. 
-     */
     @Override
     public void setViable(boolean b) {
         this.viable = true;

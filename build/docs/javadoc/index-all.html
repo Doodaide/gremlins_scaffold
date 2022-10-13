@@ -113,18 +113,6 @@
 </a>
 <h2 class="title">D</h2>
 <dl>
-<dt><span class="memberNameLink"><a href="gremlins/Destructable.html#destroy--">destroy()</a></span> - Method in class gremlins.<a href="gremlins/Destructable.html" title="class in gremlins">Destructable</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="gremlins/ExitPortal.html#destroy--">destroy()</a></span> - Method in class gremlins.<a href="gremlins/ExitPortal.html" title="class in gremlins">ExitPortal</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="gremlins/FreezePotion.html#destroy--">destroy()</a></span> - Method in class gremlins.<a href="gremlins/FreezePotion.html" title="class in gremlins">FreezePotion</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="gremlins/Immobile.html#destroy--">destroy()</a></span> - Method in class gremlins.<a href="gremlins/Immobile.html" title="class in gremlins">Immobile</a></dt>
-<dd>
-<div class="block">Abstract destroy method, different uses for differeing block types.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="gremlins/Indestructable.html#destroy--">destroy()</a></span> - Method in class gremlins.<a href="gremlins/Indestructable.html" title="class in gremlins">Indestructable</a></dt>
-<dd>&nbsp;</dd>
 <dt><a href="gremlins/Destructable.html" title="class in gremlins"><span class="typeNameLink">Destructable</span></a> - Class in <a href="gremlins/package-summary.html">gremlins</a></dt>
 <dd>
 <div class="block">Destructable class: blocks that can be destroyed and deleted by the wizard's projectiles</div>
@@ -156,7 +144,9 @@
 <dt><span class="memberNameLink"><a href="gremlins/Destructable.html#draw-gremlins.App-">draw(App)</a></span> - Method in class gremlins.<a href="gremlins/Destructable.html" title="class in gremlins">Destructable</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="gremlins/ExitPortal.html#draw-gremlins.App-">draw(App)</a></span> - Method in class gremlins.<a href="gremlins/ExitPortal.html" title="class in gremlins">ExitPortal</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Draw method that overrides the immobile draw method.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Fireball.html#draw-gremlins.App-">draw(App)</a></span> - Method in class gremlins.<a href="gremlins/Fireball.html" title="class in gremlins">Fireball</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="gremlins/FreezePotion.html#draw-gremlins.App-">draw(App)</a></span> - Method in class gremlins.<a href="gremlins/FreezePotion.html" title="class in gremlins">FreezePotion</a></dt>
@@ -193,10 +183,13 @@
 </dd>
 <dt><a href="gremlins/ExitPortal.html" title="class in gremlins"><span class="typeNameLink">ExitPortal</span></a> - Class in <a href="gremlins/package-summary.html">gremlins</a></dt>
 <dd>
-<div class="block">ExitPortal</div>
+<div class="block">ExitPortal class: The immobile entity that allows the player 
+ to progress to the next stage of the game.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/ExitPortal.html#ExitPortal-int-int-processing.core.PImage-">ExitPortal(int, int, PImage)</a></span> - Constructor for class gremlins.<a href="gremlins/ExitPortal.html" title="class in gremlins">ExitPortal</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Constructor for exitportal</div>
+</dd>
 </dl>
 <a name="I:F">
 <!--   -->
@@ -248,7 +241,9 @@
 <dt><span class="memberNameLink"><a href="gremlins/Wizard.html#getCurrentImg--">getCurrentImg()</a></span> - Method in class gremlins.<a href="gremlins/Wizard.html" title="class in gremlins">Wizard</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Destructable.html#getCurrentState--">getCurrentState()</a></span> - Method in class gremlins.<a href="gremlins/Destructable.html" title="class in gremlins">Destructable</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Getter method that gets wehther a block can be hit by a wizard projectile</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Fireball.html#getDecaying--">getDecaying()</a></span> - Method in class gremlins.<a href="gremlins/Fireball.html" title="class in gremlins">Fireball</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#getDirection--">getDirection()</a></span> - Method in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
@@ -264,8 +259,6 @@
 <dt><span class="memberNameLink"><a href="gremlins/App.html#getFreezeActive--">getFreezeActive()</a></span> - Method in class gremlins.<a href="gremlins/App.html" title="class in gremlins">App</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="gremlins/App.html#getGArray--">getGArray()</a></span> - Method in class gremlins.<a href="gremlins/App.html" title="class in gremlins">App</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="gremlins/Destructable.html#getIntact--">getIntact()</a></span> - Method in class gremlins.<a href="gremlins/Destructable.html" title="class in gremlins">Destructable</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="gremlins/App.html#getK--">getK()</a></span> - Method in class gremlins.<a href="gremlins/App.html" title="class in gremlins">App</a></dt>
 <dd>&nbsp;</dd>
@@ -292,9 +285,13 @@
 <dt><span class="memberNameLink"><a href="gremlins/Wizard.html#getTpCooldown--">getTpCooldown()</a></span> - Method in class gremlins.<a href="gremlins/Wizard.html" title="class in gremlins">Wizard</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Destructable.html#getViable--">getViable()</a></span> - Method in class gremlins.<a href="gremlins/Destructable.html" title="class in gremlins">Destructable</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Method that establishes whether a block can still be "hit" by projectiles</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/ExitPortal.html#getViable--">getViable()</a></span> - Method in class gremlins.<a href="gremlins/ExitPortal.html" title="class in gremlins">ExitPortal</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">getter method for whether the block can interact with mobile entities</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/FreezePotion.html#getViable--">getViable()</a></span> - Method in class gremlins.<a href="gremlins/FreezePotion.html" title="class in gremlins">FreezePotion</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Immobile.html#getViable--">getViable()</a></span> - Method in class gremlins.<a href="gremlins/Immobile.html" title="class in gremlins">Immobile</a></dt>
@@ -528,9 +525,13 @@
 <div class="block">Load all resources such as images.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/Destructable.html#setViable-boolean-">setViable(boolean)</a></span> - Method in class gremlins.<a href="gremlins/Destructable.html" title="class in gremlins">Destructable</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Setter Method that sets whether a block can be hit be a projectile</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/ExitPortal.html#setViable-boolean-">setViable(boolean)</a></span> - Method in class gremlins.<a href="gremlins/ExitPortal.html" title="class in gremlins">ExitPortal</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Setter method for whether the exit portal can interact wtih mobile entities</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/FreezePotion.html#setViable-boolean-">setViable(boolean)</a></span> - Method in class gremlins.<a href="gremlins/FreezePotion.html" title="class in gremlins">FreezePotion</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Immobile.html#setViable-boolean-">setViable(boolean)</a></span> - Method in class gremlins.<a href="gremlins/Immobile.html" title="class in gremlins">Immobile</a></dt>
@@ -618,9 +619,14 @@
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#upCollision-gremlins.App-">upCollision(App)</a></span> - Method in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Destructable.html#update--">update()</a></span> - Method in class gremlins.<a href="gremlins/Destructable.html" title="class in gremlins">Destructable</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Updates the current texture of the destructable block 
+ by setting the current state.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/ExitPortal.html#update--">update()</a></span> - Method in class gremlins.<a href="gremlins/ExitPortal.html" title="class in gremlins">ExitPortal</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Required update method, returns a 0 for each call as it is not a breakable block</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/FreezePotion.html#update--">update()</a></span> - Method in class gremlins.<a href="gremlins/FreezePotion.html" title="class in gremlins">FreezePotion</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Immobile.html#update--">update()</a></span> - Method in class gremlins.<a href="gremlins/Immobile.html" title="class in gremlins">Immobile</a></dt>

@@ -63,7 +63,7 @@ public class Destructable extends Immobile{
     }
 
     /** 
-     * Setter Method that sets whether a block can be hit be a projectile
+     * Method that sets whether a block can be hit be a projectile
      * @param b a boolean that sets whether a block can/cannot be "hit" by a projectile 
      */
     @Override
@@ -73,8 +73,8 @@ public class Destructable extends Immobile{
     }
 
     /**
-     * Getter method that gets wehther a block can be hit by a wizard projectile
-     * @return returns a boolean for whether a block can be hit or not. 
+     * Getter method 
+     * @return
      */
     public int getCurrentState(){
         return this.currentState;

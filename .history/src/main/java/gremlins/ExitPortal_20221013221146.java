@@ -19,35 +19,23 @@ public class ExitPortal extends Immobile{
     }
 
     /**
-     * Draw method that overrides the immobile draw method. 
-     * @param app the PApplet, which it inherits the image() method from
+     * Draw method that overrides t
      */
     @Override
     public void draw(App app) {
         app.image(this.texture, this.x, this.y);
     }
-    
-    /**
-     * Required update method, returns a 0 for each call as it is not a breakable block
-     */
+
     @Override
     public int update() {
         return 0;
     }
 
-    /**
-     * getter method for whether the block can interact with mobile entities 
-     * @return boolean. Always can collide with the wizard and projectiles 
-     */
     @Override
     public boolean getViable() {
         return true;
     }
 
-    /**
-     * Setter method for whether the exit portal can interact wtih mobile entities 
-     * @param b defaulted to true as the exit portal cannot be destroyed. 
-     */
     @Override
     public void setViable(boolean b) {
         this.viable = true;
