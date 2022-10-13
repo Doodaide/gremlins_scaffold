@@ -228,7 +228,9 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
       int&nbsp;y,
       int&nbsp;speed,
       int&nbsp;xVel,
-      int&nbsp;yVel)</code>&nbsp;</td>
+      int&nbsp;yVel)</code>
+<div class="block">Constructor for mobile</div>
+</td>
 </tr>
 </table>
 </li>
@@ -269,11 +271,15 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#getAlive--">getAlive</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#getAlive--">getAlive</a></span>()</code>
+<div class="block">getter method for whether the mobile should be displayed on screen or considered for collisions</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#getDirection--">getDirection</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#getDirection--">getDirection</a></span>()</code>
+<div class="block">getter method for the direction the mobile is facing.</div>
+</td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>int</code></td>
@@ -285,15 +291,21 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#getSpeed--">getSpeed</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#getSpeed--">getSpeed</a></span>()</code>
+<div class="block">getter method for getting each mobile entity's base speed</div>
+</td>
 </tr>
 <tr id="i10" class="altColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#getXVel--">getXVel</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#getXVel--">getXVel</a></span>()</code>
+<div class="block">getter method for the mobile's x velocity</div>
+</td>
 </tr>
 <tr id="i11" class="rowColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#getYVel--">getYVel</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#getYVel--">getYVel</a></span>()</code>
+<div class="block">getter method for the mobile's y velocity</div>
+</td>
 </tr>
 <tr id="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
@@ -323,11 +335,15 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 </tr>
 <tr id="i18" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#setAlive-boolean-">setAlive</a></span>(boolean&nbsp;b)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#setAlive-boolean-">setAlive</a></span>(boolean&nbsp;b)</code>
+<div class="block">setter method for whether the mobile should be displayed on screen or considered for collisions</div>
+</td>
 </tr>
 <tr id="i19" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#setDirection-int-">setDirection</a></span>(int&nbsp;dir)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#setDirection-int-">setDirection</a></span>(int&nbsp;dir)</code>
+<div class="block">setter method for the direction the mobile is facing</div>
+</td>
 </tr>
 <tr id="i20" class="altColor">
 <td class="colFirst"><code>void</code></td>
@@ -515,6 +531,15 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
               int&nbsp;speed,
               int&nbsp;xVel,
               int&nbsp;yVel)</pre>
+<div class="block">Constructor for mobile</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>x</code> - x coordinate</dd>
+<dd><code>y</code> - y coordinate</dd>
+<dd><code>speed</code> - size of the steps the mobile entities make per tick</dd>
+<dd><code>xVel</code> - rate of change of x position</dd>
+<dd><code>yVel</code> - rate of change of y posiiton</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -532,6 +557,11 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 <li class="blockList">
 <h4>getAlive</h4>
 <pre>public&nbsp;boolean&nbsp;getAlive()</pre>
+<div class="block">getter method for whether the mobile should be displayed on screen or considered for collisions</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>boolean whether the mobile is alive or not</dd>
+</dl>
 </li>
 </ul>
 <a name="setAlive-boolean-">
@@ -541,6 +571,11 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 <li class="blockList">
 <h4>setAlive</h4>
 <pre>public&nbsp;void&nbsp;setAlive(boolean&nbsp;b)</pre>
+<div class="block">setter method for whether the mobile should be displayed on screen or considered for collisions</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>b</code> - boolean whether the mobile is alive or not</dd>
+</dl>
 </li>
 </ul>
 <a name="getSpeed--">
@@ -550,6 +585,11 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 <li class="blockList">
 <h4>getSpeed</h4>
 <pre>public&nbsp;int&nbsp;getSpeed()</pre>
+<div class="block">getter method for getting each mobile entity's base speed</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>speed integer that corresponds to the number of pixels each entity moves per tick.</dd>
+</dl>
 </li>
 </ul>
 <a name="getDirection--">
@@ -559,6 +599,11 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 <li class="blockList">
 <h4>getDirection</h4>
 <pre>public&nbsp;int&nbsp;getDirection()</pre>
+<div class="block">getter method for the direction the mobile is facing.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>integer that corresponds with the direction the mobile is facing (0, up; 1, right; 2 down; 3, left)</dd>
+</dl>
 </li>
 </ul>
 <a name="setDirection-int-">
@@ -568,6 +613,11 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 <li class="blockList">
 <h4>setDirection</h4>
 <pre>public&nbsp;void&nbsp;setDirection(int&nbsp;dir)</pre>
+<div class="block">setter method for the direction the mobile is facing</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>dir</code> - integer that corresponds with the direction the mobile is facing (0, up; 1, right; 2 down; 3, left)</dd>
+</dl>
 </li>
 </ul>
 <a name="getXVel--">
@@ -577,6 +627,11 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 <li class="blockList">
 <h4>getXVel</h4>
 <pre>public&nbsp;int&nbsp;getXVel()</pre>
+<div class="block">getter method for the mobile's x velocity</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>integer that corresponds to +/- mobile speed</dd>
+</dl>
 </li>
 </ul>
 <a name="getYVel--">
@@ -586,6 +641,11 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 <li class="blockList">
 <h4>getYVel</h4>
 <pre>public&nbsp;int&nbsp;getYVel()</pre>
+<div class="block">getter method for the mobile's y velocity</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>integer that correspods to +/- mobile speed</dd>
+</dl>
 </li>
 </ul>
 <a name="getSideAV--">
@@ -595,6 +655,9 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 <li class="blockList">
 <h4>getSideAV</h4>
 <pre>public&nbsp;boolean[]&nbsp;getSideAV()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+</dl>
 </li>
 </ul>
 <a name="up--">

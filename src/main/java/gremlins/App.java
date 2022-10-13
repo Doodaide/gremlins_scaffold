@@ -51,6 +51,10 @@ public class App extends PApplet {
     private ArrayList<Immobile> mapToDraw; // map 
     private ArrayList<Gremlin> gArray; // array of gremlin objects 
     private ArrayList<Mobile> NPMobileEntities; // non projectile mobile entities
+
+    /**
+     * Fireballs on screen at one time. 
+     */
     private ArrayList<Fireball> existingFireballs; // fireballs on screen 
     private FreezePotion p;
     private Kamehameha k;
@@ -302,26 +306,28 @@ public class App extends PApplet {
      * Receive key pressed signal from the keyboard.
     */
     public void keyPressed(KeyEvent e){
-        int key = e.getKeyCode(); //
-        //System.out.println(key); 
+        int key = e.getKeyCode(); 
         if(key == 37){ //left arrow 
             w.left();
             //System.out.println("left" + System.currentTimeMillis());
         }
+        
         if (key == 39){ //right arrow 
             w.right();
             //System.out.println("right");
         }
+        
         if (key == 38){ //up arrow 
             w.up();
             //System.out.println(w.getX() + " " + w.getY());
         }
+        
         if (key == 40){ //down arrow
             w.down();
             //System.out.println("down");
         }
-        if (key == 32 && k == null){ //space
-            
+        
+        if (key == 32 && k == null){ //space 
             if(w.getManaCoolDown() >= this.wizardCooldown){
                 //System.out.println("Fireball added");
                 w.setManaCooldown(0);
@@ -350,9 +356,9 @@ public class App extends PApplet {
                     }
                 }
                 f = null;
-                
+                NPMobileEntities.addAll(existingFireballs);    
             }
-            NPMobileEntities.addAll(existingFireballs);
+            
             
         }
         
@@ -365,7 +371,7 @@ public class App extends PApplet {
             
         }
     
-        else if (key == 82){
+        else if (key == 82){ // r
             if(this.kCharge != 0 && w.getX() % 20 == 0 && w.getY() % 20 == 0){
                 if(w.getDirection() == 0 || w.getDirection() == 2){
                     k = new Kamehameha(w.getX(), w.getY(), this.vBeam);
@@ -404,30 +410,8 @@ public class App extends PApplet {
             w.xStop();
         }
     }
-      
-    public boolean fireballHit(Fireball f){ // block
-        for(Immobile i : mapToDraw){
-            if(i != null){
-                if(i == f.collisionBlock && i.getClass().getName().equals("gremlins.Destructable")){
-                    //i.destroy();
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    public boolean fireballHitGremlin(Fireball f){
-        for(Gremlin g : gArray){
-            if(g != null){
-                if(g == f.collisionEntity){
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
     
+    // ! Move this to the fireball class (Ask tutor about OOP paradigms)
     public void fireballMechanics(){
         for(Fireball f: existingFireballs){ // checks through every fireball
             if(f!= null){
@@ -444,7 +428,7 @@ public class App extends PApplet {
                     }
                     if(f.getFrameCounter() == 16){ // always check if it's the end of the sequence 
                         if(mapToDraw.indexOf(f.collisionBlock) != -1){ // the block actually exists
-                            if(fireballHit(f)){
+                            if(f.fireballHit(this)){
                                 f.collisionBlock.setViable(false);
                                 mapToDraw.set(mapToDraw.indexOf(f.collisionBlock), null);
                                 f.collisionBlock = null; // block will be deleted
@@ -470,7 +454,7 @@ public class App extends PApplet {
                     if(f.getCollisionEntity().getClass().getName().equals("gremlins.Gremlin")){
                         //System.out.println("Gremlin HAS BEEN HIT");
                         if(gArray.indexOf(f.collisionEntity) != -1){
-                            if(fireballHitGremlin(f)){
+                            if(f.fireballHitGremlin(this)){
                                 f.stop();
                                 f.hit();
                                 //System.out.println("Fireball hit gremlin passed");
@@ -664,8 +648,7 @@ public class App extends PApplet {
         this.mapToDraw = updater3.update(mapToDraw);
         updater3 = null;
     }
-    
-    // ! TO FINISH
+
     private void waitScreen(){
         if(restart && keyPressed && universalCounter > 3*FPS){
             won = false;
@@ -834,9 +817,6 @@ public class App extends PApplet {
             //System.out.println("tp cooldown" + w.getTpCooldown());
             this.basicGraphics();
             this.powerUpSpawn(seconds);
-    
-            //System.out.println(mapToDraw.contains(p)); // ! IMPORTANT TO FIX LATER ON
-            //System.out.println(NPMobileEntities.size());
             int retVal = this.wizardGraphics();
             this.fireballMechanics();
             this.kamehameha();

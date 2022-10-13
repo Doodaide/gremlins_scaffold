@@ -2,41 +2,57 @@
 import processing.core.PImage;
 
 /**
- * ExitPortal
+ * ExitPortal class: The immobile entity that allows the player 
+ * to progress to the next stage of the game. 
  */
 public class ExitPortal extends Immobile{
 
+    /**
+     * Constructor for exitportal 
+     * @param x x coordinate of portal 
+     * @param y y coordinate of portal 
+     * @param texture portal sprite 
+     */
     public ExitPortal(int x, int y, PImage texture) {
-<span class="fc" id="L10">        super(x, y);</span>
-<span class="fc" id="L11">        this.texture = texture;</span>
-<span class="fc" id="L12">    }</span>
+<span class="fc" id="L17">        super(x, y);</span>
+<span class="fc" id="L18">        this.texture = texture;  </span>
+<span class="fc" id="L19">    }</span>
 
+    /**
+     * Draw method that overrides the immobile draw method. 
+     * @param app the PApplet, which it inherits the image() method from
+     */
     @Override
-    public int draw(App app) {
-<span class="nc" id="L16">        app.image(this.texture, this.x, this.y);</span>
-<span class="nc" id="L17">        return 0;</span>
-    }
-
+    public void draw(App app) {
+<span class="fc" id="L27">        app.image(this.texture, this.x, this.y);</span>
+<span class="fc" id="L28">    }</span>
+    
+    /**
+     * Required update method, returns a 0 for each call as it is not a breakable block
+     */
     @Override
     public int update() {
-<span class="fc" id="L22">        return 0;</span>
+<span class="fc" id="L35">        return 0;</span>
     }
 
-    @Override
-    public void destroy() {
-<span class="fc" id="L27">        this.viable = true;</span>
-<span class="fc" id="L28">    }</span>
-
+    /**
+     * getter method for whether the block can interact with mobile entities 
+     * @return boolean. Always can collide with the wizard and projectiles 
+     */
     @Override
     public boolean getViable() {
-<span class="fc" id="L32">        return true;</span>
+<span class="fc" id="L44">        return true;</span>
     }
 
+    /**
+     * Setter method for whether the exit portal can interact wtih mobile entities 
+     * @param b defaulted to true as the exit portal cannot be destroyed. 
+     */
     @Override
     public void setViable(boolean b) {
-<span class="fc" id="L37">        this.viable = true;</span>
+<span class="fc" id="L53">        this.viable = true;</span>
         
-<span class="fc" id="L39">    }</span>
+<span class="fc" id="L55">    }</span>
 
     
 }

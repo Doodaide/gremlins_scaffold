@@ -3,89 +3,132 @@
 import processing.core.PImage;
 
 /**
- * Fireball
+ * Fireball class: wizard's main projectile 
  */
 public class Fireball extends Projectile{
+    /**
+     * A necessary boolean used to indicate whether the fireball 
+     * has collided with a viable object
+     */
     private boolean decaying;
-    public Fireball(int x, int y, PImage sprite) {
-<span class="fc" id="L11">        super(x, y, sprite);</span>
-<span class="fc" id="L12">        this.decaying = false;</span>
-<span class="fc" id="L13">    }</span>
 
+    /**
+     * Constructor for fireball 
+     * @param x x coordinate of fireball 
+     * @param y y coordinate of fireball 
+     * @param sprite fireball sprite 
+     */
+    public Fireball(int x, int y, PImage sprite) {
+<span class="fc" id="L22">        super(x, y, sprite);</span>
+<span class="fc" id="L23">        this.decaying = false;</span>
+<span class="fc" id="L24">    }</span>
+
+    /**
+     * Getter method for whether the fireball is decaying 
+     * @return boolean (true for decaying and hit an interactable object, false for not doing so)
+     */
     public boolean getDecaying(){
-<span class="fc" id="L16">        return this.decaying;</span>
+<span class="fc" id="L31">        return this.decaying;</span>
     }
 
+    /**
+     * Setter method for whether the fireball is decaying 
+     * @param d boolean for whether the fireball is decaying or not 
+     */
     public void setDecaying(Boolean d){
-<span class="fc" id="L20">        this.decaying = d;</span>
-<span class="fc" id="L21">    }</span>
+<span class="fc" id="L39">        this.decaying = d;</span>
+<span class="fc" id="L40">    }</span>
 
+    /**
+     * 
+     */
     @Override
     public void up() {
-<span class="fc" id="L25">        this.yVel = -speed;</span>
-<span class="fc" id="L26">        this.xVel = 0;</span>
-<span class="fc" id="L27">        this.direction = 0;</span>
-<span class="fc" id="L28">    }</span>
+<span class="fc" id="L47">        this.yVel = -speed;</span>
+<span class="fc" id="L48">        this.xVel = 0;</span>
+<span class="fc" id="L49">        this.direction = 0;</span>
+<span class="fc" id="L50">    }</span>
 
     @Override
     public void right() {
-<span class="fc" id="L32">       this.xVel = speed;</span>
-<span class="fc" id="L33">       this.yVel = 0;</span>
-<span class="fc" id="L34">       this.direction = 1;</span>
-<span class="fc" id="L35">    }</span>
+<span class="fc" id="L54">       this.xVel = speed;</span>
+<span class="fc" id="L55">       this.yVel = 0;</span>
+<span class="fc" id="L56">       this.direction = 1;</span>
+<span class="fc" id="L57">    }</span>
 
     @Override
     public void down() {
-<span class="fc" id="L39">        this.yVel = speed;</span>
-<span class="fc" id="L40">        this.xVel = 0;</span>
-<span class="fc" id="L41">        this.direction = 2;</span>
-<span class="fc" id="L42">    }</span>
+<span class="fc" id="L61">        this.yVel = speed;</span>
+<span class="fc" id="L62">        this.xVel = 0;</span>
+<span class="fc" id="L63">        this.direction = 2;</span>
+<span class="fc" id="L64">    }</span>
 
     @Override
     public void left() {
-<span class="fc" id="L46">        this.xVel = -speed;</span>
-<span class="fc" id="L47">        this.yVel = 0;</span>
-<span class="fc" id="L48">        this.direction = 3;</span>
-<span class="fc" id="L49">    }</span>
+<span class="fc" id="L68">        this.xVel = -speed;</span>
+<span class="fc" id="L69">        this.yVel = 0;</span>
+<span class="fc" id="L70">        this.direction = 3;</span>
+<span class="fc" id="L71">    }</span>
 
-    
+    public boolean fireballHit(App app){
+<span class="nc bnc" id="L74" title="All 2 branches missed.">        for(Immobile i : app.getMap()){</span>
+<span class="nc bnc" id="L75" title="All 2 branches missed.">            if(i != null){</span>
+<span class="nc bnc" id="L76" title="All 4 branches missed.">                if(i == this.collisionBlock &amp;&amp; i.getClass().getName().equals(&quot;gremlins.Destructable&quot;)){</span>
+<span class="nc" id="L77">                    System.out.println(&quot;getting hit and it is a destructable&quot;);</span>
+<span class="nc" id="L78">                    return true; </span>
+                }
+            }
+<span class="nc" id="L81">        }</span>
+<span class="nc" id="L82">        return false;</span>
+    }
+
+    public boolean fireballHitGremlin(App app){
+<span class="nc bnc" id="L86" title="All 2 branches missed.">        for(Gremlin g : app.getGArray()){</span>
+<span class="nc bnc" id="L87" title="All 2 branches missed.">            if(g != null){</span>
+<span class="nc bnc" id="L88" title="All 2 branches missed.">                if(g == this.collisionEntity){</span>
+<span class="nc" id="L89">                    return true; </span>
+                }
+            }
+<span class="nc" id="L92">        }</span>
+<span class="nc" id="L93">        return false;</span>
+    }
 
     public int draw(App app){
-<span class="nc bnc" id="L54" title="All 2 branches missed.">        if(this.alive){</span>
+<span class="nc bnc" id="L97" title="All 2 branches missed.">        if(this.alive){</span>
             //System.out.println(&quot;Alive&quot;);
-<span class="nc" id="L56">            app.image(this.sprite, this.x, this.y);</span>
+<span class="nc" id="L99">            app.image(this.sprite, this.x, this.y);</span>
             //System.out.println(this.getX() + &quot; &quot; + this.getY());
         }
-<span class="nc" id="L59">        return 0;</span>
+<span class="nc" id="L102">        return 0;</span>
     }
 
     @Override
     public int tick(App app) {
-<span class="nc bnc" id="L64" title="All 2 branches missed.">        if(this.alive){</span>
-<span class="nc bnc" id="L65" title="All 2 branches missed.">            if(this.collision(app) == 1){ // block collision </span>
+<span class="nc bnc" id="L107" title="All 2 branches missed.">        if(this.alive){</span>
+<span class="nc bnc" id="L108" title="All 2 branches missed.">            if(this.collision(app) == 1){ // block collision </span>
                 //System.out.println(&quot;Collision&quot;);
-<span class="nc bnc" id="L67" title="All 4 branches missed.">                if(!this.sideAV.get(0) &amp;&amp; this.direction == 0){</span>
+<span class="nc bnc" id="L110" title="All 4 branches missed.">                if(!this.sideAV.get(0) &amp;&amp; this.direction == 0){</span>
                     //System.out.println(&quot;bottom of block hit&quot;);
-<span class="nc" id="L69">                    return 1; // something hit</span>
+<span class="nc" id="L112">                    return 1; // something hit</span>
                 }
-<span class="nc bnc" id="L71" title="All 4 branches missed.">                if(!this.sideAV.get(2) &amp;&amp; this.direction == 2){</span>
+<span class="nc bnc" id="L114" title="All 4 branches missed.">                if(!this.sideAV.get(2) &amp;&amp; this.direction == 2){</span>
                     //System.out.println(&quot;top of block hit&quot;);
-<span class="nc" id="L73">                    return 1; // something hit</span>
+<span class="nc" id="L116">                    return 1; // something hit</span>
                 }
-<span class="nc bnc" id="L75" title="All 4 branches missed.">                if(!this.sideAV.get(1) &amp;&amp; this.direction == 1){</span>
+<span class="nc bnc" id="L118" title="All 4 branches missed.">                if(!this.sideAV.get(1) &amp;&amp; this.direction == 1){</span>
                     //System.out.println(&quot;left of block hit&quot;);
-<span class="nc" id="L77">                    return 1; // something hit</span>
+<span class="nc" id="L120">                    return 1; // something hit</span>
                 }
-<span class="nc bnc" id="L79" title="All 4 branches missed.">                if(!this.sideAV.get(3) &amp;&amp; this.direction == 3){</span>
+<span class="nc bnc" id="L122" title="All 4 branches missed.">                if(!this.sideAV.get(3) &amp;&amp; this.direction == 3){</span>
                     //System.out.println(&quot;Right of block hit&quot;);
-<span class="nc" id="L81">                    return 1; // something hit</span>
+<span class="nc" id="L124">                    return 1; // something hit</span>
                 }
 
             }
-<span class="nc" id="L85">            this.x += this.xVel; </span>
-<span class="nc" id="L86">            this.y += this.yVel;</span>
+<span class="nc" id="L128">            this.x += this.xVel; </span>
+<span class="nc" id="L129">            this.y += this.yVel;</span>
         }
-<span class="nc" id="L88">        return 0;</span>
+<span class="nc" id="L131">        return 0;</span>
         
     }
 }

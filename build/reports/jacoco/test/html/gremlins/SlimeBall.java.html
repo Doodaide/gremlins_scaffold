@@ -46,34 +46,34 @@ public class SlimeBall extends Projectile{
 
     @Override
     public int draw(App app) {
-<span class="nc bnc" id="L49" title="All 2 branches missed.">        if(this.alive){</span>
-<span class="nc bnc" id="L50" title="All 2 branches missed.">            if(!app.getFreezeActive()){</span>
-<span class="nc" id="L51">                app.image(this.sprite, this.x, this.y);</span>
+<span class="pc bpc" id="L49" title="1 of 2 branches missed.">        if(this.alive){</span>
+<span class="pc bpc" id="L50" title="1 of 2 branches missed.">            if(!app.getFreezeActive()){</span>
+<span class="fc" id="L51">                app.image(this.sprite, this.x, this.y);</span>
             }
 <span class="nc bnc" id="L53" title="All 2 branches missed.">            else if(app.getFreezeActive()){</span>
 <span class="nc" id="L54">                app.image(this.frozenS, this.x, this.y);</span>
             }
         }
-<span class="nc" id="L57">        return 0;</span>
+<span class="fc" id="L57">        return 0;</span>
     }
 
     @Override
     public int tick(App app) {
-<span class="nc bnc" id="L62" title="All 2 branches missed.">        if(this.alive){</span>
-<span class="nc bnc" id="L63" title="All 2 branches missed.">            if(!app.getFreezeActive()){</span>
-<span class="nc bnc" id="L64" title="All 2 branches missed.">                if(this.collision(app) == 1){ // block collision </span>
+<span class="pc bpc" id="L62" title="1 of 2 branches missed.">        if(this.alive){</span>
+<span class="pc bpc" id="L63" title="1 of 2 branches missed.">            if(!app.getFreezeActive()){</span>
+<span class="fc bfc" id="L64" title="All 2 branches covered.">                if(this.collision(app) == 1){ // block collision </span>
                     //System.out.println(&quot;Collision&quot;);
-<span class="nc bnc" id="L66" title="All 4 branches missed.">                    if(!this.sideAV.get(0) &amp;&amp; this.direction == 0){</span>
+<span class="pc bpc" id="L66" title="1 of 4 branches missed.">                    if(!this.sideAV.get(0) &amp;&amp; this.direction == 0){</span>
                         //System.out.println(&quot;bottom of block hit&quot;);
-<span class="nc" id="L68">                        return 1; // something hit</span>
+<span class="fc" id="L68">                        return 1; // something hit</span>
                     }
-<span class="nc bnc" id="L70" title="All 4 branches missed.">                    if(!this.sideAV.get(2) &amp;&amp; this.direction == 2){</span>
+<span class="pc bpc" id="L70" title="3 of 4 branches missed.">                    if(!this.sideAV.get(2) &amp;&amp; this.direction == 2){</span>
                         //System.out.println(&quot;top of block hit&quot;);
 <span class="nc" id="L72">                        return 1; // something hit</span>
                     }
-<span class="nc bnc" id="L74" title="All 4 branches missed.">                    if(!this.sideAV.get(1) &amp;&amp; this.direction == 1){</span>
+<span class="pc bpc" id="L74" title="2 of 4 branches missed.">                    if(!this.sideAV.get(1) &amp;&amp; this.direction == 1){</span>
                         //System.out.println(&quot;left of block hit&quot;);
-<span class="nc" id="L76">                        return 1; // something hit</span>
+<span class="fc" id="L76">                        return 1; // something hit</span>
                     }
 <span class="nc bnc" id="L78" title="All 4 branches missed.">                    if(!this.sideAV.get(3) &amp;&amp; this.direction == 3){</span>
                         //System.out.println(&quot;Right of block hit&quot;);
@@ -81,12 +81,12 @@ public class SlimeBall extends Projectile{
                     }
     
                 }
-<span class="nc" id="L84">                this.x += this.xVel; </span>
-<span class="nc" id="L85">                this.y += this.yVel;</span>
+<span class="fc" id="L84">                this.x += this.xVel; </span>
+<span class="fc" id="L85">                this.y += this.yVel;</span>
             }
             
         }
-<span class="nc" id="L89">        return 0;</span>
+<span class="fc" id="L89">        return 0;</span>
     }
     
 }

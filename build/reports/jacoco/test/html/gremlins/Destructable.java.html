@@ -1,59 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Destructable.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gremlins_scaffold</a> &gt; <a href="index.source.html" class="el_package">gremlins</a> &gt; <span class="el_source">Destructable.java</span></div><h1>Destructable.java</h1><pre class="source lang-java linenums">package gremlins; 
 import processing.core.PImage;
 
-public class Destructable extends Immobile{
-    private PImage[] decayTextures; 
-    private boolean intact;
-<span class="fc" id="L7">    private int currentState = 0;</span>
-    public Destructable(int x, int y, PImage defaultTexture, PImage[] decayTextures) {
-<span class="fc" id="L9">        super(x, y);</span>
-<span class="fc" id="L10">        this.texture = defaultTexture;</span>
-<span class="fc" id="L11">        this.decayTextures = decayTextures;</span>
-<span class="fc" id="L12">        this.intact = true; </span>
-<span class="fc" id="L13">        this.currentState = 0;</span>
-<span class="fc" id="L14">    }</span>
-    
-    public void destroy(){
-<span class="fc bfc" id="L17" title="All 2 branches covered.">        if (this.intact == true){</span>
-<span class="fc" id="L18">            this.intact = false; </span>
-            //System.out.println(&quot;Block has been destroyed&quot;);
-            //System.out.println(x);
-            
-        }
-<span class="fc" id="L23">    }</span>
+/**
+ * Destructable class: blocks that can be destroyed and deleted by the wizard's projectiles
+ */
 
+public class Destructable extends Immobile{
+    /**
+     * An array of the sequence of decaying images 
+     */
+    private PImage[] decayTextures; 
+
+    /**
+     * identifies which decay image to show 
+     */
+<span class="fc" id="L17">    private int currentState = 0;</span>
+
+    /**
+     * Constructor for destructable object 
+     * @param x x coordinate of destructable block 
+     * @param y y coordinate of destructable block 
+     * @param defaultTexture the sprite used by a non-destroyed block 
+     * @param decayTextures an array of textures that will be displayed upon a wizard projectile collision. 
+     */
+    public Destructable(int x, int y, PImage defaultTexture, PImage[] decayTextures) {
+<span class="fc" id="L27">        super(x, y);  </span>
+<span class="fc" id="L28">        this.texture = defaultTexture; </span>
+<span class="fc" id="L29">        this.decayTextures = decayTextures;</span>
+<span class="fc" id="L30">        this.currentState = 0;</span>
+<span class="fc" id="L31">    }</span>
+
+    /**
+     * Updates the current texture of the destructable block 
+     * by setting the current state. 
+     * @return 1 for destructable bricks to recgonise that they have been updated. 
+     */
+    @Override
     public int update(){
         //System.out.println(&quot;Entering&quot;);
-<span class="fc" id="L27">        this.texture = decayTextures[this.currentState++];</span>
-<span class="fc bfc" id="L28" title="All 2 branches covered.">        if(this.currentState == 4){</span>
-<span class="fc" id="L29">            this.currentState = 0;</span>
+<span class="fc" id="L41">        this.texture = decayTextures[this.currentState++];</span>
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        if(this.currentState == 4){</span>
+<span class="fc" id="L43">            this.currentState = 0;</span>
         }
-<span class="fc" id="L31">        return 1;</span>
+<span class="fc" id="L45">        return 1;</span>
     }
 
-    public int draw(App app) {
-<span class="nc" id="L35">        app.image(this.texture, this.x, this.y);</span>
-        
-<span class="nc" id="L37">        return 0;</span>
-    }
+    /**
+     * @param app the PApplet, which this method inherits the image method from. 
+     */
+    @Override
+    public void draw(App app) {
+<span class="fc" id="L53">        app.image(this.texture, this.x, this.y);</span>
+<span class="fc" id="L54">    }</span>
 
+    /** 
+     * Method that establishes whether a block can still be &quot;hit&quot; by projectiles 
+     * @return Returns whether the block can still engage in collisions. 
+     */
     @Override
     public boolean getViable() {
-<span class="fc" id="L42">        return this.viable;</span>
+<span class="fc" id="L62">        return this.viable;</span>
     }
 
+    /** 
+     * Setter Method that sets whether a block can be hit be a projectile
+     * @param b a boolean that sets whether a block can/cannot be &quot;hit&quot; by a projectile 
+     */
     @Override
     public void setViable(boolean b) {
-<span class="fc" id="L47">        this.viable = b;</span>
+<span class="fc" id="L71">        this.viable = b;</span>
         
-<span class="fc" id="L49">    }</span>
+<span class="fc" id="L73">    }</span>
 
-    public boolean getIntact(){
-<span class="fc" id="L52">        return this.intact;</span>
-    }
-
+    /**
+     * Getter method that gets wehther a block can be hit by a wizard projectile
+     * @return returns a boolean for whether a block can be hit or not. 
+     */
     public int getCurrentState(){
-<span class="fc" id="L56">        return this.currentState;</span>
+<span class="fc" id="L80">        return this.currentState;</span>
     }
 
 }

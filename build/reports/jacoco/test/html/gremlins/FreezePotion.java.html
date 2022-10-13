@@ -35,32 +35,27 @@ public class FreezePotion extends Immobile{
 
 
     @Override
-    public int draw(App app) {
-<span class="nc bnc" id="L39" title="All 2 branches missed.">        if(!this.consumed){</span>
-<span class="nc" id="L40">            app.image(this.sprite, this.x, this.y);</span>
+    public void draw(App app) {
+<span class="pc bpc" id="L39" title="1 of 2 branches missed.">        if(!this.consumed){</span>
+<span class="fc" id="L40">            app.image(this.sprite, this.x, this.y);</span>
         }
-<span class="nc" id="L42">        return 0;</span>
-    }
+<span class="fc" id="L42">    }</span>
 
     @Override
     public int update() {
-<span class="fc" id="L47">        return 0;</span>
+<span class="fc" id="L46">        return 0;</span>
     }
 
-    @Override
-    public void destroy() {
-<span class="fc" id="L52">        this.viable = false;</span>
-<span class="fc" id="L53">    }</span>
 
     @Override
     public boolean getViable() {
-<span class="fc" id="L57">        return false;</span>
+<span class="fc" id="L52">        return false;</span>
     }
 
     @Override
     public void setViable(boolean b) {
-<span class="fc" id="L62">        this.viable = false;</span>
-<span class="fc" id="L63">    }</span>
+<span class="fc" id="L57">        this.viable = false;</span>
+<span class="fc" id="L58">    }</span>
 
     
 }
