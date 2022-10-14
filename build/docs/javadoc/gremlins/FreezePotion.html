@@ -118,7 +118,7 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public class <span class="typeNameLabel">FreezePotion</span>
 extends <a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</a></pre>
-<div class="block">FreezePotion</div>
+<div class="block">FreezePotion class: An extension of the immobile entity that freezes all hostile entities.</div>
 </li>
 </ul>
 </div>
@@ -161,7 +161,9 @@ extends <a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</
 <tr class="altColor">
 <td class="colOne"><code><span class="memberNameLink"><a href="../gremlins/FreezePotion.html#FreezePotion-int-int-processing.core.PImage-">FreezePotion</a></span>(int&nbsp;x,
             int&nbsp;y,
-            processing.core.PImage&nbsp;sprite)</code>&nbsp;</td>
+            processing.core.PImage&nbsp;sprite)</code>
+<div class="block">Constructor for Freeze potion</div>
+</td>
 </tr>
 </table>
 </li>
@@ -181,42 +183,53 @@ extends <a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/FreezePotion.html#draw-gremlins.App-">draw</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>
-<div class="block">Abstract Draw method updates what the immobile object should look like on the screen</div>
+<div class="block">Draw method draw the image of the potion on screen.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/FreezePotion.html#getConsumed--">getConsumed</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/FreezePotion.html#getConsumed--">getConsumed</a></span>()</code>
+<div class="block">Getter method for whether the potion has been consumed by the wizard mobile entity</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/FreezePotion.html#getCooldown--">getCooldown</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/FreezePotion.html#getCooldown--">getCooldown</a></span>()</code>
+<div class="block">Getter method for the potion's cooldown (how long the freeze 
+ effect lasts, not the time taken for the potion to respawn)</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/FreezePotion.html#getViable--">getViable</a></span>()</code>
-<div class="block">Abstract getViable method returns the interactivity of the immobile object</div>
+<div class="block">Getter method for the potion's viability (to be hit)
+ The potion is never 'collidable' by projectiles, which means the wizard's fireballs can pass through.</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/FreezePotion.html#setConsumed-boolean-">setConsumed</a></span>(boolean&nbsp;b)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/FreezePotion.html#setConsumed-boolean-">setConsumed</a></span>(boolean&nbsp;b)</code>
+<div class="block">Setter method for whether the potion has been collided with a wizard mobile entity</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/FreezePotion.html#setCooldown-int-">setCooldown</a></span>(int&nbsp;i)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/FreezePotion.html#setCooldown-int-">setCooldown</a></span>(int&nbsp;i)</code>
+<div class="block">Setter method for the potion's cooldown (how long the freeze 
+ effect lasts, not the time taken for the potion to respawn)</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/FreezePotion.html#setViable-boolean-">setViable</a></span>(boolean&nbsp;b)</code>
-<div class="block">Abstract set viable method sets whether the block is interactable anymore</div>
+<div class="block">Setter method for the potion's viability 
+ The potion is never collidable, so despite the aguments supplied, the viability will always be false.</div>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/FreezePotion.html#update--">update</a></span>()</code>
-<div class="block">Abstract Update method, performs various update tasks on blocks depending on their type and interactions with 
- Mobile entities.</div>
+<div class="block">The potion has no update states</div>
 </td>
 </tr>
 </table>
@@ -257,6 +270,13 @@ extends <a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</
 <pre>public&nbsp;FreezePotion(int&nbsp;x,
                     int&nbsp;y,
                     processing.core.PImage&nbsp;sprite)</pre>
+<div class="block">Constructor for Freeze potion</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>x</code> - x coordinate of potion</dd>
+<dd><code>y</code> - y coordinate of potion</dd>
+<dd><code>sprite</code> - sprite of potion</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -274,6 +294,11 @@ extends <a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</
 <li class="blockList">
 <h4>setConsumed</h4>
 <pre>public&nbsp;void&nbsp;setConsumed(boolean&nbsp;b)</pre>
+<div class="block">Setter method for whether the potion has been collided with a wizard mobile entity</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>b</code> - a boolean for whether the potion is consumed (not display on screen) or not.</dd>
+</dl>
 </li>
 </ul>
 <a name="getConsumed--">
@@ -283,6 +308,11 @@ extends <a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</
 <li class="blockList">
 <h4>getConsumed</h4>
 <pre>public&nbsp;boolean&nbsp;getConsumed()</pre>
+<div class="block">Getter method for whether the potion has been consumed by the wizard mobile entity</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>boolean for whether the potion has been consumed or not.</dd>
+</dl>
 </li>
 </ul>
 <a name="getCooldown--">
@@ -292,6 +322,12 @@ extends <a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</
 <li class="blockList">
 <h4>getCooldown</h4>
 <pre>public&nbsp;int&nbsp;getCooldown()</pre>
+<div class="block">Getter method for the potion's cooldown (how long the freeze 
+ effect lasts, not the time taken for the potion to respawn)</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>integer for how much longer the potion lasts</dd>
+</dl>
 </li>
 </ul>
 <a name="setCooldown-int-">
@@ -301,6 +337,12 @@ extends <a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</
 <li class="blockList">
 <h4>setCooldown</h4>
 <pre>public&nbsp;void&nbsp;setCooldown(int&nbsp;i)</pre>
+<div class="block">Setter method for the potion's cooldown (how long the freeze 
+ effect lasts, not the time taken for the potion to respawn)</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>i</code> - an integer corresponding to whether the time should be incremented up.</dd>
+</dl>
 </li>
 </ul>
 <a name="draw-gremlins.App-">
@@ -310,13 +352,12 @@ extends <a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</
 <li class="blockList">
 <h4>draw</h4>
 <pre>public&nbsp;void&nbsp;draw(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../gremlins/Immobile.html#draw-gremlins.App-">Immobile</a></code></span></div>
-<div class="block">Abstract Draw method updates what the immobile object should look like on the screen</div>
+<div class="block">Draw method draw the image of the potion on screen. "Draws" the image onscreen iff the potion is not consumed</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Immobile.html#draw-gremlins.App-">draw</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>app</code> - the PApplet, which it inherits methods from</dd>
+<dd><code>app</code> - used to inherit the image() method.</dd>
 </dl>
 </li>
 </ul>
@@ -327,14 +368,12 @@ extends <a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</
 <li class="blockList">
 <h4>update</h4>
 <pre>public&nbsp;int&nbsp;update()</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../gremlins/Immobile.html#update--">Immobile</a></code></span></div>
-<div class="block">Abstract Update method, performs various update tasks on blocks depending on their type and interactions with 
- Mobile entities.</div>
+<div class="block">The potion has no update states</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Immobile.html#update--">update</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>integer 1 or 0. Only destructable blocks (bricks) return 1 for fireball interactions</dd>
+<dd>int 0, as it is not a destructable block that returns a 1.</dd>
 </dl>
 </li>
 </ul>
@@ -345,13 +384,13 @@ extends <a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</
 <li class="blockList">
 <h4>getViable</h4>
 <pre>public&nbsp;boolean&nbsp;getViable()</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../gremlins/Immobile.html#getViable--">Immobile</a></code></span></div>
-<div class="block">Abstract getViable method returns the interactivity of the immobile object</div>
+<div class="block">Getter method for the potion's viability (to be hit)
+ The potion is never 'collidable' by projectiles, which means the wizard's fireballs can pass through.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Immobile.html#getViable--">getViable</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>true or false, depending on whether the wizard, gremlins, projectiles can interact with it</dd>
+<dd>false</dd>
 </dl>
 </li>
 </ul>
@@ -362,13 +401,13 @@ extends <a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</
 <li class="blockList">
 <h4>setViable</h4>
 <pre>public&nbsp;void&nbsp;setViable(boolean&nbsp;b)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../gremlins/Immobile.html#setViable-boolean-">Immobile</a></code></span></div>
-<div class="block">Abstract set viable method sets whether the block is interactable anymore</div>
+<div class="block">Setter method for the potion's viability 
+ The potion is never collidable, so despite the aguments supplied, the viability will always be false.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Immobile.html#setViable-boolean-">setViable</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>b</code> - true or false.</dd>
+<dd><code>b</code> - boolean</dd>
 </dl>
 </li>
 </ul>

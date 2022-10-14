@@ -118,7 +118,7 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public class <span class="typeNameLabel">Gremlin</span>
 extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></pre>
-<div class="block">Gremlin</div>
+<div class="block">Gremlin class: An extension of mobile entity that continuously moves, shoots, and respawns on a given map</div>
 </li>
 </ul>
 </div>
@@ -164,7 +164,9 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
        processing.core.PImage&nbsp;img,
        processing.core.PImage&nbsp;slimeball,
        processing.core.PImage&nbsp;frozenG,
-       processing.core.PImage&nbsp;frozenS)</code>&nbsp;</td>
+       processing.core.PImage&nbsp;frozenS)</code>
+<div class="block">Constructor for gremlin</div>
+</td>
 </tr>
 </table>
 </li>
@@ -191,7 +193,9 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>java.util.ArrayList&lt;<a href="../gremlins/SlimeBall.html" title="class in gremlins">SlimeBall</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#getAvailableSlimeballs--">getAvailableSlimeballs</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#getAvailableSlimeballs--">getAvailableSlimeballs</a></span>()</code>
+<div class="block">getter method for a singular gremlin's available slimeballs</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>int</code></td>
@@ -281,6 +285,16 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
                processing.core.PImage&nbsp;slimeball,
                processing.core.PImage&nbsp;frozenG,
                processing.core.PImage&nbsp;frozenS)</pre>
+<div class="block">Constructor for gremlin</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>x</code> - x coordinate</dd>
+<dd><code>y</code> - y coordinate</dd>
+<dd><code>img</code> - Gremlin sprite</dd>
+<dd><code>slimeball</code> - Slimeball projectile sprite</dd>
+<dd><code>frozenG</code> - Gremlin sprite when freeze potion is active</dd>
+<dd><code>frozenS</code> - Slimeball Sprite when freeze potion is active</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -298,6 +312,11 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <li class="blockList">
 <h4>getAvailableSlimeballs</h4>
 <pre>public&nbsp;java.util.ArrayList&lt;<a href="../gremlins/SlimeBall.html" title="class in gremlins">SlimeBall</a>&gt;&nbsp;getAvailableSlimeballs()</pre>
+<div class="block">getter method for a singular gremlin's available slimeballs</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>ArrayList of slimeballs that the current gremlin has available (not hit anything)</dd>
+</dl>
 </li>
 </ul>
 <a name="setAvailableSlimeballs-java.util.ArrayList-">

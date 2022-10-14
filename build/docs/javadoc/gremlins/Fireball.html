@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -194,39 +194,63 @@ extends <a href="../gremlins/Projectile.html" title="class in gremlins">Projecti
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Fireball.html#down--">down</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Fireball.html#down--">down</a></span>()</code>
+<div class="block">Down method sets the xVel, yVel, and direction of the fireball to correspond to moving down</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Fireball.html#draw-gremlins.App-">draw</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Fireball.html#draw-gremlins.App-">draw</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>
+<div class="block">Draw method to draw the fireball on screen</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Fireball.html#fireballHit-gremlins.App-">fireballHit</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>
+<div class="block">FireballHit is a method that evaluates whether the 'current' fireball considered has hit a valid destructable block on the map</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Fireball.html#fireballHitGremlin-gremlins.App-">fireballHitGremlin</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>
+<div class="block">FireballHitGremlin is a method that evaluates whether the 'current' fireball considered has hit a gremlin mobile entity on the screen</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Fireball.html#getDecaying--">getDecaying</a></span>()</code>
 <div class="block">Getter method for whether the fireball is decaying</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Fireball.html#left--">left</a></span>()</code>&nbsp;</td>
-</tr>
-<tr id="i4" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Fireball.html#right--">right</a></span>()</code>&nbsp;</td>
-</tr>
 <tr id="i5" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Fireball.html#left--">left</a></span>()</code>
+<div class="block">Left method sets the xVel, yVel, and direction of the fireball to correspond to moving left</div>
+</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Fireball.html#right--">right</a></span>()</code>
+<div class="block">Right Method sets the xVel, yVel and direction of the fireball to correspond to moving right</div>
+</td>
+</tr>
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Fireball.html#setDecaying-java.lang.Boolean-">setDecaying</a></span>(java.lang.Boolean&nbsp;d)</code>
 <div class="block">Setter method for whether the fireball is decaying</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Fireball.html#tick-gremlins.App-">tick</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Fireball.html#tick-gremlins.App-">tick</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>
+<div class="block">Tick method "updates" the fireball everytime called.</div>
+</td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Fireball.html#up--">up</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Fireball.html#up--">up</a></span>()</code>
+<div class="block">Up Method sets the yVel, xVel, and direction of the fireball to correspond to moving up</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -332,6 +356,7 @@ extends <a href="../gremlins/Projectile.html" title="class in gremlins">Projecti
 <li class="blockList">
 <h4>up</h4>
 <pre>public&nbsp;void&nbsp;up()</pre>
+<div class="block">Up Method sets the yVel, xVel, and direction of the fireball to correspond to moving up</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Mobile.html#up--">up</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></code></dd>
@@ -345,6 +370,7 @@ extends <a href="../gremlins/Projectile.html" title="class in gremlins">Projecti
 <li class="blockList">
 <h4>right</h4>
 <pre>public&nbsp;void&nbsp;right()</pre>
+<div class="block">Right Method sets the xVel, yVel and direction of the fireball to correspond to moving right</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Mobile.html#right--">right</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></code></dd>
@@ -358,6 +384,7 @@ extends <a href="../gremlins/Projectile.html" title="class in gremlins">Projecti
 <li class="blockList">
 <h4>down</h4>
 <pre>public&nbsp;void&nbsp;down()</pre>
+<div class="block">Down method sets the xVel, yVel, and direction of the fireball to correspond to moving down</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Mobile.html#down--">down</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></code></dd>
@@ -371,9 +398,42 @@ extends <a href="../gremlins/Projectile.html" title="class in gremlins">Projecti
 <li class="blockList">
 <h4>left</h4>
 <pre>public&nbsp;void&nbsp;left()</pre>
+<div class="block">Left method sets the xVel, yVel, and direction of the fireball to correspond to moving left</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Mobile.html#left--">left</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="fireballHit-gremlins.App-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>fireballHit</h4>
+<pre>public&nbsp;boolean&nbsp;fireballHit(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</pre>
+<div class="block">FireballHit is a method that evaluates whether the 'current' fireball considered has hit a valid destructable block on the map</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>app</code> - app is used to get the ArrayList of all blocks (destructable and indestructable) that are to be drawn</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>boolean corresponding to whether a destructable block that has not been destroyed has been hit by the current fireball</dd>
+</dl>
+</li>
+</ul>
+<a name="fireballHitGremlin-gremlins.App-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>fireballHitGremlin</h4>
+<pre>public&nbsp;boolean&nbsp;fireballHitGremlin(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</pre>
+<div class="block">FireballHitGremlin is a method that evaluates whether the 'current' fireball considered has hit a gremlin mobile entity on the screen</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>app</code> - app is used to get the ArrayList of all currently active gremlins that are to be drawn</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>boolean corresponding to whether a valid gremlin has been hit by the current fireball.</dd>
 </dl>
 </li>
 </ul>
@@ -384,9 +444,12 @@ extends <a href="../gremlins/Projectile.html" title="class in gremlins">Projecti
 <li class="blockList">
 <h4>draw</h4>
 <pre>public&nbsp;int&nbsp;draw(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</pre>
+<div class="block">Draw method to draw the fireball on screen</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Mobile.html#draw-gremlins.App-">draw</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>app</code> - inherits the image() method from PApplet</dd>
 </dl>
 </li>
 </ul>
@@ -397,9 +460,16 @@ extends <a href="../gremlins/Projectile.html" title="class in gremlins">Projecti
 <li class="blockList">
 <h4>tick</h4>
 <pre>public&nbsp;int&nbsp;tick(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</pre>
+<div class="block">Tick method "updates" the fireball everytime called. 
+ Under the condition that the fireball is still "alive" - meaning it can still be displayed on the next frame and be considered for movement
+ the tick method will check if it has collided with anything</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Mobile.html#tick-gremlins.App-">tick</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>app</code> - which is used in the mobile parent class to access all possible "collidable" objects</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>integer 1 (corresponds to having hit something) or integer 0 (corresponds to not having hit something)</dd>
 </dl>
 </li>
 </ul>

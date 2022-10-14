@@ -108,7 +108,7 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public class <span class="typeNameLabel">UpdateArrayList&lt;T&gt;</span>
 extends java.lang.Object</pre>
-<div class="block">UpdateArrayList</div>
+<div class="block">UpdateArrayList class: a generic helper class used to remove any null entries from an array given.</div>
 </li>
 </ul>
 </div>
@@ -127,7 +127,9 @@ extends java.lang.Object</pre>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../gremlins/UpdateArrayList.html#UpdateArrayList--">UpdateArrayList</a></span>()</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../gremlins/UpdateArrayList.html#UpdateArrayList--">UpdateArrayList</a></span>()</code>
+<div class="block">Constructor</div>
+</td>
 </tr>
 </table>
 </li>
@@ -146,7 +148,9 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>java.util.ArrayList&lt;<a href="../gremlins/UpdateArrayList.html" title="type parameter in UpdateArrayList">T</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/UpdateArrayList.html#update-java.util.ArrayList-">update</a></span>(java.util.ArrayList&lt;<a href="../gremlins/UpdateArrayList.html" title="type parameter in UpdateArrayList">T</a>&gt;&nbsp;toBeUpdated)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/UpdateArrayList.html#update-java.util.ArrayList-">update</a></span>(java.util.ArrayList&lt;<a href="../gremlins/UpdateArrayList.html" title="type parameter in UpdateArrayList">T</a>&gt;&nbsp;toBeUpdated)</code>
+<div class="block">Update method: deletes any null objects in a given Arraylist (and maintains order)</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -177,6 +181,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>UpdateArrayList</h4>
 <pre>public&nbsp;UpdateArrayList()</pre>
+<div class="block">Constructor</div>
 </li>
 </ul>
 </li>
@@ -194,6 +199,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>update</h4>
 <pre>public&nbsp;java.util.ArrayList&lt;<a href="../gremlins/UpdateArrayList.html" title="type parameter in UpdateArrayList">T</a>&gt;&nbsp;update(java.util.ArrayList&lt;<a href="../gremlins/UpdateArrayList.html" title="type parameter in UpdateArrayList">T</a>&gt;&nbsp;toBeUpdated)</pre>
+<div class="block">Update method: deletes any null objects in a given Arraylist (and maintains order)</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>toBeUpdated</code> - an ArrayList (type T) with potential null entries</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>returns an ArrayList (type T) with null entries removed and order maintained</dd>
+</dl>
 </li>
 </ul>
 </li>
