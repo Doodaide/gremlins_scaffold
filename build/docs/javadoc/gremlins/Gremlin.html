@@ -185,11 +185,16 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#down--">down</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#down--">down</a></span>()</code>
+<div class="block">Down method that sets various parameters of the gremlin to correspond to down 
+ yVel = speed = 1, direction = 2, and yDir = 2</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#draw-gremlins.App-">draw</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#draw-gremlins.App-">draw</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>
+<div class="block">Draw method displays the gremlin's sprite onscreen.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>java.util.ArrayList&lt;<a href="../gremlins/SlimeBall.html" title="class in gremlins">SlimeBall</a>&gt;</code></td>
@@ -199,43 +204,69 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#getSlimeCoolDown--">getSlimeCoolDown</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#getSlimeCoolDown--">getSlimeCoolDown</a></span>()</code>
+<div class="block">getter method for the current slim'e shooting cooldown</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#gremlinAI-gremlins.App-">gremlinAI</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#gremlinAI-gremlins.App-">gremlinAI</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>
+<div class="block">Gremlin AI method dictates all the movement a gremlin object can experience.</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#left--">left</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#left--">left</a></span>()</code>
+<div class="block">Left method that sets various parameters of the gremlin to correspond to left 
+ xVel = -speed = -1, direction = 3, and xDir = 3</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#right--">right</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#right--">right</a></span>()</code>
+<div class="block">Right method that sets various parameters of the gremlin to correspond to right 
+ xVel = speed = 1, direction = 1, and xDir = 1</div>
+</td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#setAvailableSlimeballs-java.util.ArrayList-">setAvailableSlimeballs</a></span>(java.util.ArrayList&lt;<a href="../gremlins/SlimeBall.html" title="class in gremlins">SlimeBall</a>&gt;&nbsp;arr)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#setAvailableSlimeballs-java.util.ArrayList-">setAvailableSlimeballs</a></span>(java.util.ArrayList&lt;<a href="../gremlins/SlimeBall.html" title="class in gremlins">SlimeBall</a>&gt;&nbsp;arr)</code>
+<div class="block">Setter method for a singular gremlin's available slimeballs</div>
+</td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#setSlimeCooldown-int-">setSlimeCooldown</a></span>(int&nbsp;x)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#setSlimeCooldown-int-">setSlimeCooldown</a></span>(int&nbsp;x)</code>
+<div class="block">setter method for the current slime's shooting cooldown</div>
+</td>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>java.util.ArrayList&lt;<a href="../gremlins/SlimeBall.html" title="class in gremlins">SlimeBall</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#shootSlimeBall--">shootSlimeBall</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#shootSlimeBall--">shootSlimeBall</a></span>()</code>
+<div class="block">Method that "shoots" a slimeball by creating a new slimeball object, and sending it in a direction (after adding it to the 
+ current gremlin's available slimeballs ArrayList attribute)</div>
+</td>
 </tr>
 <tr id="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#slimeballMechanics-gremlins.App-">slimeballMechanics</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#slimeballMechanics-gremlins.App-">slimeballMechanics</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>
+<div class="block">Slimeball mechanics dictates all the behaviour a slimeball should express
+ This is featured in the gremlin class as each gremlin has a set of fireballs, which makes it easier to control and 
+ modify then if it were in the slimeball class.</div>
+</td>
 </tr>
 <tr id="i11" class="rowColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#tick-gremlins.App-">tick</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#tick-gremlins.App-">tick</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>
+<div class="block">Tick method updates the gremlin object each game tick.</div>
+</td>
 </tr>
 <tr id="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#up--">up</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#up--">up</a></span>()</code>
+<div class="block">Up method that sets various parameters of the gremlin to correspond to up 
+ yVel = -speed = -1, direction = 0, and yDir = 0</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -326,6 +357,11 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <li class="blockList">
 <h4>setAvailableSlimeballs</h4>
 <pre>public&nbsp;void&nbsp;setAvailableSlimeballs(java.util.ArrayList&lt;<a href="../gremlins/SlimeBall.html" title="class in gremlins">SlimeBall</a>&gt;&nbsp;arr)</pre>
+<div class="block">Setter method for a singular gremlin's available slimeballs</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>arr</code> - an arrayList of updated slimeballs to assign to the current slimeballs</dd>
+</dl>
 </li>
 </ul>
 <a name="setSlimeCooldown-int-">
@@ -335,6 +371,11 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <li class="blockList">
 <h4>setSlimeCooldown</h4>
 <pre>public&nbsp;void&nbsp;setSlimeCooldown(int&nbsp;x)</pre>
+<div class="block">setter method for the current slime's shooting cooldown</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>x</code> - integer that the current slime's cooldown should be set to</dd>
+</dl>
 </li>
 </ul>
 <a name="getSlimeCoolDown--">
@@ -344,6 +385,11 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <li class="blockList">
 <h4>getSlimeCoolDown</h4>
 <pre>public&nbsp;int&nbsp;getSlimeCoolDown()</pre>
+<div class="block">getter method for the current slim'e shooting cooldown</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>integer that corresponds to the current slime's cooldown</dd>
+</dl>
 </li>
 </ul>
 <a name="shootSlimeBall--">
@@ -353,6 +399,12 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <li class="blockList">
 <h4>shootSlimeBall</h4>
 <pre>public&nbsp;java.util.ArrayList&lt;<a href="../gremlins/SlimeBall.html" title="class in gremlins">SlimeBall</a>&gt;&nbsp;shootSlimeBall()</pre>
+<div class="block">Method that "shoots" a slimeball by creating a new slimeball object, and sending it in a direction (after adding it to the 
+ current gremlin's available slimeballs ArrayList attribute)</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a new ArrayList with the new slimeball added in.</dd>
+</dl>
 </li>
 </ul>
 <a name="slimeballMechanics-gremlins.App-">
@@ -362,6 +414,13 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <li class="blockList">
 <h4>slimeballMechanics</h4>
 <pre>public&nbsp;void&nbsp;slimeballMechanics(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</pre>
+<div class="block">Slimeball mechanics dictates all the behaviour a slimeball should express
+ This is featured in the gremlin class as each gremlin has a set of fireballs, which makes it easier to control and 
+ modify then if it were in the slimeball class.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>app</code> - used to get various attributes such as the map, and other mobile entities</dd>
+</dl>
 </li>
 </ul>
 <a name="up--">
@@ -371,6 +430,8 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <li class="blockList">
 <h4>up</h4>
 <pre>public&nbsp;void&nbsp;up()</pre>
+<div class="block">Up method that sets various parameters of the gremlin to correspond to up 
+ yVel = -speed = -1, direction = 0, and yDir = 0</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Mobile.html#up--">up</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></code></dd>
@@ -384,6 +445,8 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <li class="blockList">
 <h4>right</h4>
 <pre>public&nbsp;void&nbsp;right()</pre>
+<div class="block">Right method that sets various parameters of the gremlin to correspond to right 
+ xVel = speed = 1, direction = 1, and xDir = 1</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Mobile.html#right--">right</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></code></dd>
@@ -397,6 +460,8 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <li class="blockList">
 <h4>down</h4>
 <pre>public&nbsp;void&nbsp;down()</pre>
+<div class="block">Down method that sets various parameters of the gremlin to correspond to down 
+ yVel = speed = 1, direction = 2, and yDir = 2</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Mobile.html#down--">down</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></code></dd>
@@ -410,6 +475,8 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <li class="blockList">
 <h4>left</h4>
 <pre>public&nbsp;void&nbsp;left()</pre>
+<div class="block">Left method that sets various parameters of the gremlin to correspond to left 
+ xVel = -speed = -1, direction = 3, and xDir = 3</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Mobile.html#left--">left</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></code></dd>
@@ -423,6 +490,17 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <li class="blockList">
 <h4>gremlinAI</h4>
 <pre>public&nbsp;int&nbsp;gremlinAI(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</pre>
+<div class="block">Gremlin AI method dictates all the movement a gremlin object can experience. 
+ The gremlin's current travelling direction, collisions, and surroundings are considered. 
+ Under the condition that the gremlin collides with something, a random direction is generated 
+ that is not in the same direction it just collided with the block in (i.e. no reversals)
+ (with specific exceptions such as a 3 way blockage).</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>app</code> - used as a parameter for simulating collisions in the mobile collision method</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>returns an integer n, which corresponds to the direction the gremlin should move in (0 - up, 1 - right, 2 - down ,3 - left)</dd>
+</dl>
 </li>
 </ul>
 <a name="draw-gremlins.App-">
@@ -432,9 +510,13 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <li class="blockList">
 <h4>draw</h4>
 <pre>public&nbsp;int&nbsp;draw(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</pre>
+<div class="block">Draw method displays the gremlin's sprite onscreen. 
+ Under the condition that the freeze potion is active, the gremlin's sprite is changed, but still drawn on screen.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Mobile.html#draw-gremlins.App-">draw</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the direction the gremlin was last drawn in.</dd>
 </dl>
 </li>
 </ul>
@@ -445,9 +527,17 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <li class="blockList">
 <h4>tick</h4>
 <pre>public&nbsp;int&nbsp;tick(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</pre>
+<div class="block">Tick method updates the gremlin object each game tick. 
+ When the freeze isn't active, the tick method repeatedly checks whether the gremlin is coming into contact with a wizard (in which case it kills the wizard)
+ Under the condition that a collision is experienced by the gremlin, the gremlinAI method is called, changing its direction. 
+ Additionally, each tick the gremlin checks if it can shoot another slimeball.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Mobile.html#tick-gremlins.App-">tick</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>app</code> - used in tandem with the collision algorithm, and to get other attributes like whether the wizard has acquired the freeze potion</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>integer 0 corresponds to nothing happened, and a normal tick cycle occurred. 10 means the gremlin killed the wizard.</dd>
 </dl>
 </li>
 </ul>

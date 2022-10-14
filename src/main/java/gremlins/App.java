@@ -2,8 +2,6 @@ package gremlins;
 
 import processing.core.PApplet;
 import processing.core.PImage;
-import processing.data.JSONObject;
-import processing.data.JSONArray;
 import processing.event.KeyEvent;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -45,13 +43,11 @@ public class App extends PApplet {
 
     // ! Object names
     public static final Random randomGenerator = new Random(); // random number generator 
-    private JSONObject json; // config file 
-    private JSONArray levelSpecs; // contents of said file 
     private Wizard w; // Player controlled character 
     private ArrayList<Immobile> mapToDraw; // map 
     private ArrayList<Gremlin> gArray; // array of gremlin objects 
     private ArrayList<Mobile> NPMobileEntities; // non projectile mobile entities
-
+    private JSONReader jr;
     /**
      * Fireballs on screen at one time. 
      */
@@ -87,7 +83,7 @@ public class App extends PApplet {
     /**
      * Constructor
      */
-    public App() {
+    public App(){
         this.configPath = "config.json";
     }
 
@@ -109,53 +105,37 @@ public class App extends PApplet {
         kCharge = 3;
         this.setFreezeActive(false);
         // Read JSON file 
-        json = loadJSONObject(new File(this.configPath));
-        this.lives = json.getInt("lives");
-        //this.livesToDraw = this.lives;
-        levelSpecs = json.getJSONArray("levels");
+        jr = new JSONReader(this.configPath);
+        this.lives = (int) Math.round(jr.getSpecs().get("lives"));
         String layout = "";
         if(!passedLvl2 && passedLvl1){
-            JSONObject level2 = levelSpecs.getJSONObject(1);
-            layout = level2.getString("layout");
-            this.enemyCooldown = level2.getDouble("enemy_cooldown") * FPS;
-            this.wizardCooldown = level2.getDouble("wizard_cooldown") * FPS;
+            try {
+                jr.readSpecs(1);
+            } catch (Exception e) {
+                System.err.println("Invalid input");
+            }
+
+            layout = jr.getLayout();
+            this.enemyCooldown = jr.getSpecs().get("enemy_cooldown") * FPS;
+            this.wizardCooldown = jr.getSpecs().get("wizard_cooldown") * FPS;
             this.level = 2;
         }
 
         else if (!passedLvl1){
-            JSONObject level1 = levelSpecs.getJSONObject(0);
-            layout = level1.getString("layout");
-            this.enemyCooldown = level1.getDouble("enemy_cooldown") * FPS;
-            this.wizardCooldown = level1.getDouble("wizard_cooldown") * FPS;
+            try {
+                jr.readSpecs(0);
+            } catch (Exception e) {
+                System.err.println("Invalid input");
+            }
+            layout = jr.getLayout(); 
+            this.enemyCooldown = jr.getSpecs().get("enemy_cooldown") * FPS;
+            this.wizardCooldown = jr.getSpecs().get("wizard_cooldown") * FPS;
             this.level = 1;
         }
         
-        ArrayList<Character[]> mapContents = new ArrayList<Character[]>(); // temporary list
-        
-        // * Parse file
-        try {
-            if(layout.equals("")){
-                throw new FileNotFoundException("Bruh moment");
-            }
-            File f = new File(layout); // File f = new File("level0.txt"); //
-            Scanner sc = new Scanner(f);
-            
-            while(sc.hasNextLine()){
-                Character [] temp = new String(
-                    sc.nextLine().trim().toCharArray()).chars()
-                    .mapToObj(c-> (char) c).toArray(Character[]::new);
-                mapContents.add(temp);
-                    
-            }
-
-            sc.close();
-            f = null;
-        } catch (FileNotFoundException e) {
-            System.out.println("bruh moment");
-        } catch (IndexOutOfBoundsException e){
-            System.out.println("map too big bro");
-        }
-        
+        ReadMap r = new ReadMap();
+        r.parseLayout(layout);
+        ArrayList<Character[]> mapContents = r.getMapContents();
         // * load all images
         try {
             this.wizardSprites = new PImage[5];
@@ -248,7 +228,7 @@ public class App extends PApplet {
         NPMobileEntities.add(w);
         NPMobileEntities.addAll(gArray);
         this.innateCooldown = 0;
-        json = null;
+        jr = null;
         w.setTpCooldown(0);
     }
     
@@ -302,6 +282,7 @@ public class App extends PApplet {
     public Wizard getWizard(){
         return this.w;
     }
+    
     /**
      * Receive key pressed signal from the keyboard.
     */

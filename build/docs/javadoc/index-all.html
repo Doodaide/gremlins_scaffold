@@ -121,7 +121,7 @@
 <dl>
 <dt><a href="gremlins/Destructable.html" title="class in gremlins"><span class="typeNameLink">Destructable</span></a> - Class in <a href="gremlins/package-summary.html">gremlins</a></dt>
 <dd>
-<div class="block">Destructable class: blocks that can be destroyed and deleted by the wizard's projectiles</div>
+<div class="block">Destructable class: blocks that extend from immobile entities can be destroyed and deleted by the wizard's projectiles</div>
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/Destructable.html#Destructable-int-int-processing.core.PImage-processing.core.PImage:A-">Destructable(int, int, PImage, PImage[])</a></span> - Constructor for class gremlins.<a href="gremlins/Destructable.html" title="class in gremlins">Destructable</a></dt>
 <dd>
@@ -136,7 +136,10 @@
 <div class="block">Down method sets the xVel, yVel, and direction of the fireball to correspond to moving down</div>
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/Gremlin.html#down--">down()</a></span> - Method in class gremlins.<a href="gremlins/Gremlin.html" title="class in gremlins">Gremlin</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Down method that sets various parameters of the gremlin to correspond to down 
+ yVel = speed = 1, direction = 2, and yDir = 2</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Kamehameha.html#down--">down()</a></span> - Method in class gremlins.<a href="gremlins/Kamehameha.html" title="class in gremlins">Kamehameha</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#down--">down()</a></span> - Method in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
@@ -166,7 +169,9 @@
 <div class="block">Draw method draw the image of the potion on screen.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/Gremlin.html#draw-gremlins.App-">draw(App)</a></span> - Method in class gremlins.<a href="gremlins/Gremlin.html" title="class in gremlins">Gremlin</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Draw method displays the gremlin's sprite onscreen.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Immobile.html#draw-gremlins.App-">draw(App)</a></span> - Method in class gremlins.<a href="gremlins/Immobile.html" title="class in gremlins">Immobile</a></dt>
 <dd>
 <div class="block">Abstract Draw method updates what the immobile object should look like on the screen</div>
@@ -197,7 +202,7 @@
 </dd>
 <dt><a href="gremlins/ExitPortal.html" title="class in gremlins"><span class="typeNameLink">ExitPortal</span></a> - Class in <a href="gremlins/package-summary.html">gremlins</a></dt>
 <dd>
-<div class="block">ExitPortal class: The immobile entity that allows the player 
+<div class="block">ExitPortal class: A block that extends from immobile entity that allows the player 
  to progress to the next stage of the game.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/ExitPortal.html#ExitPortal-int-int-processing.core.PImage-">ExitPortal(int, int, PImage)</a></span> - Constructor for class gremlins.<a href="gremlins/ExitPortal.html" title="class in gremlins">ExitPortal</a></dt>
@@ -212,7 +217,7 @@
 <dl>
 <dt><a href="gremlins/Fireball.html" title="class in gremlins"><span class="typeNameLink">Fireball</span></a> - Class in <a href="gremlins/package-summary.html">gremlins</a></dt>
 <dd>
-<div class="block">Fireball class: wizard's main projectile</div>
+<div class="block">Fireball class: A projectile that extends from mobile entities - the wizard's main projectile</div>
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/Fireball.html#Fireball-int-int-processing.core.PImage-">Fireball(int, int, PImage)</a></span> - Constructor for class gremlins.<a href="gremlins/Fireball.html" title="class in gremlins">Fireball</a></dt>
 <dd>
@@ -314,7 +319,9 @@
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#getSideAV--">getSideAV()</a></span> - Method in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Gremlin.html#getSlimeCoolDown--">getSlimeCoolDown()</a></span> - Method in class gremlins.<a href="gremlins/Gremlin.html" title="class in gremlins">Gremlin</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">getter method for the current slim'e shooting cooldown</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#getSpeed--">getSpeed()</a></span> - Method in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
 <dd>
 <div class="block">getter method for getting each mobile entity's base speed</div>
@@ -373,7 +380,9 @@
 <div class="block">Constructor for gremlin</div>
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/Gremlin.html#gremlinAI-gremlins.App-">gremlinAI(App)</a></span> - Method in class gremlins.<a href="gremlins/Gremlin.html" title="class in gremlins">Gremlin</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Gremlin AI method dictates all the movement a gremlin object can experience.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/App.html#gremlinRespawn-gremlins.Gremlin-">gremlinRespawn(Gremlin)</a></span> - Method in class gremlins.<a href="gremlins/App.html" title="class in gremlins">App</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="gremlins/package-summary.html">gremlins</a> - package gremlins</dt>
@@ -412,7 +421,7 @@
 <dd>&nbsp;</dd>
 <dt><a href="gremlins/Indestructable.html" title="class in gremlins"><span class="typeNameLink">Indestructable</span></a> - Class in <a href="gremlins/package-summary.html">gremlins</a></dt>
 <dd>
-<div class="block">Indestructable</div>
+<div class="block">Indestructable class: blocks that extend from immobile entities that cannot be deleted or destroyed by any means</div>
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/Indestructable.html#Indestructable-int-int-processing.core.PImage-">Indestructable(int, int, PImage)</a></span> - Constructor for class gremlins.<a href="gremlins/Indestructable.html" title="class in gremlins">Indestructable</a></dt>
 <dd>&nbsp;</dd>
@@ -457,7 +466,10 @@
 <div class="block">Left method sets the xVel, yVel, and direction of the fireball to correspond to moving left</div>
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/Gremlin.html#left--">left()</a></span> - Method in class gremlins.<a href="gremlins/Gremlin.html" title="class in gremlins">Gremlin</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Left method that sets various parameters of the gremlin to correspond to left 
+ xVel = -speed = -1, direction = 3, and xDir = 3</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Kamehameha.html#left--">left()</a></span> - Method in class gremlins.<a href="gremlins/Kamehameha.html" title="class in gremlins">Kamehameha</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#left--">left()</a></span> - Method in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
@@ -525,7 +537,10 @@
 <div class="block">Right Method sets the xVel, yVel and direction of the fireball to correspond to moving right</div>
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/Gremlin.html#right--">right()</a></span> - Method in class gremlins.<a href="gremlins/Gremlin.html" title="class in gremlins">Gremlin</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Right method that sets various parameters of the gremlin to correspond to right 
+ xVel = speed = 1, direction = 1, and xDir = 1</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Kamehameha.html#right--">right()</a></span> - Method in class gremlins.<a href="gremlins/Kamehameha.html" title="class in gremlins">Kamehameha</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#right--">right()</a></span> - Method in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
@@ -549,7 +564,9 @@
 <div class="block">setter method for whether the mobile should be displayed on screen or considered for collisions</div>
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/Gremlin.html#setAvailableSlimeballs-java.util.ArrayList-">setAvailableSlimeballs(ArrayList&lt;SlimeBall&gt;)</a></span> - Method in class gremlins.<a href="gremlins/Gremlin.html" title="class in gremlins">Gremlin</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Setter method for a singular gremlin's available slimeballs</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/FreezePotion.html#setConsumed-boolean-">setConsumed(boolean)</a></span> - Method in class gremlins.<a href="gremlins/FreezePotion.html" title="class in gremlins">FreezePotion</a></dt>
 <dd>
 <div class="block">Setter method for whether the potion has been collided with a wizard mobile entity</div>
@@ -578,7 +595,9 @@
 <dt><span class="memberNameLink"><a href="gremlins/Wizard.html#setManaCooldown-int-">setManaCooldown(int)</a></span> - Method in class gremlins.<a href="gremlins/Wizard.html" title="class in gremlins">Wizard</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Gremlin.html#setSlimeCooldown-int-">setSlimeCooldown(int)</a></span> - Method in class gremlins.<a href="gremlins/Gremlin.html" title="class in gremlins">Gremlin</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">setter method for the current slime's shooting cooldown</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Wizard.html#setTeleported-boolean-">setTeleported(boolean)</a></span> - Method in class gremlins.<a href="gremlins/Wizard.html" title="class in gremlins">Wizard</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="gremlins/App.html#settings--">settings()</a></span> - Method in class gremlins.<a href="gremlins/App.html" title="class in gremlins">App</a></dt>
@@ -619,7 +638,10 @@
 <div class="block">Setter method for y coordinate</div>
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/Gremlin.html#shootSlimeBall--">shootSlimeBall()</a></span> - Method in class gremlins.<a href="gremlins/Gremlin.html" title="class in gremlins">Gremlin</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Method that "shoots" a slimeball by creating a new slimeball object, and sending it in a direction (after adding it to the 
+ current gremlin's available slimeballs ArrayList attribute)</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#sideAV">sideAV</a></span> - Variable in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
 <dd>
 <div class="block">Sides of the mobile which are available to move</div>
@@ -633,7 +655,11 @@
 <dt><span class="memberNameLink"><a href="gremlins/SlimeBall.html#SlimeBall-int-int-processing.core.PImage-processing.core.PImage-">SlimeBall(int, int, PImage, PImage)</a></span> - Constructor for class gremlins.<a href="gremlins/SlimeBall.html" title="class in gremlins">SlimeBall</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Gremlin.html#slimeballMechanics-gremlins.App-">slimeballMechanics(App)</a></span> - Method in class gremlins.<a href="gremlins/Gremlin.html" title="class in gremlins">Gremlin</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Slimeball mechanics dictates all the behaviour a slimeball should express
+ This is featured in the gremlin class as each gremlin has a set of fireballs, which makes it easier to control and 
+ modify then if it were in the slimeball class.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#speed">speed</a></span> - Variable in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
 <dd>
 <div class="block">travel speed for each entity</div>
@@ -661,7 +687,9 @@
 <div class="block">Tick method "updates" the fireball everytime called.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/Gremlin.html#tick-gremlins.App-">tick(App)</a></span> - Method in class gremlins.<a href="gremlins/Gremlin.html" title="class in gremlins">Gremlin</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Tick method updates the gremlin object each game tick.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Kamehameha.html#tick-gremlins.App-">tick(App)</a></span> - Method in class gremlins.<a href="gremlins/Kamehameha.html" title="class in gremlins">Kamehameha</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#tick-gremlins.App-">tick(App)</a></span> - Method in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
@@ -685,7 +713,10 @@
 <div class="block">Up Method sets the yVel, xVel, and direction of the fireball to correspond to moving up</div>
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/Gremlin.html#up--">up()</a></span> - Method in class gremlins.<a href="gremlins/Gremlin.html" title="class in gremlins">Gremlin</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Up method that sets various parameters of the gremlin to correspond to up 
+ yVel = -speed = -1, direction = 0, and yDir = 0</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Kamehameha.html#up--">up()</a></span> - Method in class gremlins.<a href="gremlins/Kamehameha.html" title="class in gremlins">Kamehameha</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#up--">up()</a></span> - Method in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
