@@ -144,7 +144,6 @@ public class App extends PApplet {
             this.wizardSprites[2] = loadImage(URLDecoder.decode(this.getClass().getResource("wizard3.png").getPath(), StandardCharsets.UTF_8.toString())); // down
             this.wizardSprites[3] = loadImage(URLDecoder.decode(this.getClass().getResource("wizard0.png").getPath(), StandardCharsets.UTF_8.toString())); // left  
             this.wizardSprites[4] = loadImage(URLDecoder.decode(this.getClass().getResource("fireball.png").getPath(), StandardCharsets.UTF_8.toString())); // fireball
-            // Load images during setup
             this.stonewall = loadImage(this.getClass().getResource("stonewall.png").getPath().replace("%20", " "));
             this.brickwall = loadImage(this.getClass().getResource("brickwall.png").getPath().replace("%20", " "));
             this.brickwallDestruction = new PImage[4];
@@ -165,7 +164,7 @@ public class App extends PApplet {
             this.JTK.resize(HEIGHT, WIDTH);
        
         } catch (UnsupportedEncodingException e) {
-            System.err.println("Could not find Wizard");
+            System.err.println("Could not find an image");
             e.printStackTrace();
         }
 
