@@ -118,7 +118,7 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public class <span class="typeNameLabel">Wizard</span>
 extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></pre>
-<div class="block">Wizard</div>
+<div class="block">Wizard class: The player controlled character that extends a mobile entity</div>
 </li>
 </ul>
 </div>
@@ -162,7 +162,9 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <td class="colOne"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#Wizard-int-int-int-processing.core.PImage:A-">Wizard</a></span>(int&nbsp;x,
       int&nbsp;y,
       int&nbsp;speed,
-      processing.core.PImage[]&nbsp;wizardSprites)</code>&nbsp;</td>
+      processing.core.PImage[]&nbsp;wizardSprites)</code>
+<div class="block">Constructor for wizard object</div>
+</td>
 </tr>
 </table>
 </li>
@@ -181,75 +183,117 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#down--">down</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#down--">down</a></span>()</code>
+<div class="block">Overriden down method, that modifies the current wizard image, velocities, and direction of the wizard</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#draw-gremlins.App-">draw</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#draw-gremlins.App-">draw</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>
+<div class="block">Draw method for the wizard.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#fireballMechanics-gremlins.App-">fireballMechanics</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#fireballMechanics-gremlins.App-">fireballMechanics</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>
+<div class="block">FireballMechanics controls all the interactions between fireballs, and all other objects in the game 
+ This method is located in the wizard as every fireball within its available fireballs ArrayList must be updated.</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>processing.core.PImage</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#getCurrentImg--">getCurrentImg</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#getCurrentImg--">getCurrentImg</a></span>()</code>
+<div class="block">Getter method for the curent displayed Wizard image</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>java.util.ArrayList&lt;<a href="../gremlins/Fireball.html" title="class in gremlins">Fireball</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#getExistingFireballs--">getExistingFireballs</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#getExistingFireballs--">getExistingFireballs</a></span>()</code>
+<div class="block">Getter method that returns the ArrayList of fireballs the wizard is in posession of (valid fireballs are those that 
+ have not hit any mobile or immobile entities and thus will still be drawn on screen)</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#getManaCoolDown--">getManaCoolDown</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#getManaCoolDown--">getManaCoolDown</a></span>()</code>
+<div class="block">Getter method to get the amount of time until the wizard can next shoot a fireball</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#getTeleported--">getTeleported</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#getTeleported--">getTeleported</a></span>()</code>
+<div class="block">Getter method that gets whether the wizard has teleported in a teleport cycle.</div>
+</td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#getTpCooldown--">getTpCooldown</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#getTpCooldown--">getTpCooldown</a></span>()</code>
+<div class="block">Getter method for the teleport cooldown - the amount of time between valid teleports</div>
+</td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#left--">left</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#left--">left</a></span>()</code>
+<div class="block">Overriden method, that modifies the current wizard image, velocities, and direction of the wizard</div>
+</td>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#right--">right</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#right--">right</a></span>()</code>
+<div class="block">Overriden right method, that modifies the current wizard image, velocities, and direction of the wizard</div>
+</td>
 </tr>
 <tr id="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#setExistingFireballs-java.util.ArrayList-">setExistingFireballs</a></span>(java.util.ArrayList&lt;<a href="../gremlins/Fireball.html" title="class in gremlins">Fireball</a>&gt;&nbsp;a)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#setExistingFireballs-java.util.ArrayList-">setExistingFireballs</a></span>(java.util.ArrayList&lt;<a href="../gremlins/Fireball.html" title="class in gremlins">Fireball</a>&gt;&nbsp;a)</code>
+<div class="block">Setter method that sets the ArrayList of fireballs the wizard is in posession of (valid fireballs are those that 
+ have not hit any mobile or immobile entities and thus will still be drawn on screen)</div>
+</td>
 </tr>
 <tr id="i11" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#setManaCooldown-int-">setManaCooldown</a></span>(int&nbsp;x)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#setManaCooldown-int-">setManaCooldown</a></span>(int&nbsp;x)</code>
+<div class="block">Setter method for the mana Cooldown (delay between fireball shots)</div>
+</td>
 </tr>
 <tr id="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#setTeleported-boolean-">setTeleported</a></span>(boolean&nbsp;b)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#setTeleported-boolean-">setTeleported</a></span>(boolean&nbsp;b)</code>
+<div class="block">Setter method that sets whether the wizard has teleported in a teleport cycle.</div>
+</td>
 </tr>
 <tr id="i13" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#setTpCooldown-int-">setTpCooldown</a></span>(int&nbsp;x)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#setTpCooldown-int-">setTpCooldown</a></span>(int&nbsp;x)</code>
+<div class="block">Setter method to set the amount of time between the previous valid teleport request, and the next valid teleport</div>
+</td>
 </tr>
 <tr id="i14" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#shoot--">shoot</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#shoot--">shoot</a></span>()</code>
+<div class="block">Shoot method creates a new fireball, adds it to the exisitng list of fireballs, then
+ takes the newest one (indicated by the fact that it is the last one in the ArrayList)
+ and moves it in the direction that the wizard is facing.</div>
+</td>
 </tr>
 <tr id="i15" class="rowColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#tick-gremlins.App-">tick</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#tick-gremlins.App-">tick</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>
+<div class="block">Tick method for the wizard hosts all the logic to deal with fireball firing, entity collision and interactions, 
+ valid and invalid motion/movements, and wizard death.</div>
+</td>
 </tr>
 <tr id="i16" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#tp-gremlins.App-">tp</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#tp-gremlins.App-">tp</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>
+<div class="block">Teleport method that resets the wizard's current coordinates to new coordinates generated by the random generator.</div>
+</td>
 </tr>
 <tr id="i17" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#up--">up</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#up--">up</a></span>()</code>
+<div class="block">Overriden Up method, that modifies the current wizard image, velocities, and direction of the wizard</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -257,7 +301,7 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;gremlins.<a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></h3>
-<code><a href="../gremlins/Mobile.html#collides-int-int-gremlins.App-">collides</a>, <a href="../gremlins/Mobile.html#collision-gremlins.App-">collision</a>, <a href="../gremlins/Mobile.html#downCollision-gremlins.App-">downCollision</a>, <a href="../gremlins/Mobile.html#getAlive--">getAlive</a>, <a href="../gremlins/Mobile.html#getDirection--">getDirection</a>, <a href="../gremlins/Mobile.html#getFrameCounter--">getFrameCounter</a>, <a href="../gremlins/Mobile.html#getSideAV--">getSideAV</a>, <a href="../gremlins/Mobile.html#getSpeed--">getSpeed</a>, <a href="../gremlins/Mobile.html#getXVel--">getXVel</a>, <a href="../gremlins/Mobile.html#getYVel--">getYVel</a>, <a href="../gremlins/Mobile.html#incFrameCounter--">incFrameCounter</a>, <a href="../gremlins/Mobile.html#leftCollision-gremlins.App-">leftCollision</a>, <a href="../gremlins/Mobile.html#mobCollision-int-int-gremlins.App-">mobCollision</a>, <a href="../gremlins/Mobile.html#rightCollision-gremlins.App-">rightCollision</a>, <a href="../gremlins/Mobile.html#setAlive-boolean-">setAlive</a>, <a href="../gremlins/Mobile.html#setDirection-int-">setDirection</a>, <a href="../gremlins/Mobile.html#setFrameCounter-int-">setFrameCounter</a>, <a href="../gremlins/Mobile.html#stop--">stop</a>, <a href="../gremlins/Mobile.html#upCollision-gremlins.App-">upCollision</a>, <a href="../gremlins/Mobile.html#xStop--">xStop</a>, <a href="../gremlins/Mobile.html#yStop--">yStop</a></code></li>
+<code><a href="../gremlins/Mobile.html#collides-int-int-gremlins.App-">collides</a>, <a href="../gremlins/Mobile.html#collision-gremlins.App-">collision</a>, <a href="../gremlins/Mobile.html#downCollision-gremlins.App-">downCollision</a>, <a href="../gremlins/Mobile.html#getAlive--">getAlive</a>, <a href="../gremlins/Mobile.html#getDirection--">getDirection</a>, <a href="../gremlins/Mobile.html#getFrameCounter--">getFrameCounter</a>, <a href="../gremlins/Mobile.html#getSideAV--">getSideAV</a>, <a href="../gremlins/Mobile.html#getSpeed--">getSpeed</a>, <a href="../gremlins/Mobile.html#getXVel--">getXVel</a>, <a href="../gremlins/Mobile.html#getYVel--">getYVel</a>, <a href="../gremlins/Mobile.html#incFrameCounter--">incFrameCounter</a>, <a href="../gremlins/Mobile.html#leftCollision-gremlins.App-">leftCollision</a>, <a href="../gremlins/Mobile.html#rightCollision-gremlins.App-">rightCollision</a>, <a href="../gremlins/Mobile.html#setAlive-boolean-">setAlive</a>, <a href="../gremlins/Mobile.html#setDirection-int-">setDirection</a>, <a href="../gremlins/Mobile.html#setFrameCounter-int-">setFrameCounter</a>, <a href="../gremlins/Mobile.html#stop--">stop</a>, <a href="../gremlins/Mobile.html#upCollision-gremlins.App-">upCollision</a>, <a href="../gremlins/Mobile.html#xStop--">xStop</a>, <a href="../gremlins/Mobile.html#yStop--">yStop</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.gremlins.Entity">
@@ -297,6 +341,14 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
               int&nbsp;y,
               int&nbsp;speed,
               processing.core.PImage[]&nbsp;wizardSprites)</pre>
+<div class="block">Constructor for wizard object</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>x</code> - x coordinate</dd>
+<dd><code>y</code> - y coordinate</dd>
+<dd><code>speed</code> - how many pixels it moves per increment</dd>
+<dd><code>wizardSprites</code> - An array of sprites the wizard will use</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -314,6 +366,11 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <li class="blockList">
 <h4>getCurrentImg</h4>
 <pre>public&nbsp;processing.core.PImage&nbsp;getCurrentImg()</pre>
+<div class="block">Getter method for the curent displayed Wizard image</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a PImage that corresponds to the direction the wizard is facing</dd>
+</dl>
 </li>
 </ul>
 <a name="setManaCooldown-int-">
@@ -323,6 +380,11 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <li class="blockList">
 <h4>setManaCooldown</h4>
 <pre>public&nbsp;void&nbsp;setManaCooldown(int&nbsp;x)</pre>
+<div class="block">Setter method for the mana Cooldown (delay between fireball shots)</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>x</code> - an integer to set the mana cooldown to</dd>
+</dl>
 </li>
 </ul>
 <a name="getManaCoolDown--">
@@ -332,6 +394,11 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <li class="blockList">
 <h4>getManaCoolDown</h4>
 <pre>public&nbsp;int&nbsp;getManaCoolDown()</pre>
+<div class="block">Getter method to get the amount of time until the wizard can next shoot a fireball</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>integer that corresponds to the mana cooldown</dd>
+</dl>
 </li>
 </ul>
 <a name="setTpCooldown-int-">
@@ -341,6 +408,11 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <li class="blockList">
 <h4>setTpCooldown</h4>
 <pre>public&nbsp;void&nbsp;setTpCooldown(int&nbsp;x)</pre>
+<div class="block">Setter method to set the amount of time between the previous valid teleport request, and the next valid teleport</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>x</code> - an integer that corresponds with a new increment.</dd>
+</dl>
 </li>
 </ul>
 <a name="getTpCooldown--">
@@ -350,6 +422,11 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <li class="blockList">
 <h4>getTpCooldown</h4>
 <pre>public&nbsp;int&nbsp;getTpCooldown()</pre>
+<div class="block">Getter method for the teleport cooldown - the amount of time between valid teleports</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>an integer that corresponds to the time between the previous and next valid teleport</dd>
+</dl>
 </li>
 </ul>
 <a name="setTeleported-boolean-">
@@ -359,6 +436,11 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <li class="blockList">
 <h4>setTeleported</h4>
 <pre>public&nbsp;void&nbsp;setTeleported(boolean&nbsp;b)</pre>
+<div class="block">Setter method that sets whether the wizard has teleported in a teleport cycle. Used in conjunction with the teleport times</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>b</code> - boolean corresponding to whether the wizard has or has not teleported</dd>
+</dl>
 </li>
 </ul>
 <a name="getTeleported--">
@@ -368,6 +450,11 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <li class="blockList">
 <h4>getTeleported</h4>
 <pre>public&nbsp;boolean&nbsp;getTeleported()</pre>
+<div class="block">Getter method that gets whether the wizard has teleported in a teleport cycle. Used in conjunction with the teleport times</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>boolean corresponding to whether the wizard has or has not teleported</dd>
+</dl>
 </li>
 </ul>
 <a name="getExistingFireballs--">
@@ -377,6 +464,12 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <li class="blockList">
 <h4>getExistingFireballs</h4>
 <pre>public&nbsp;java.util.ArrayList&lt;<a href="../gremlins/Fireball.html" title="class in gremlins">Fireball</a>&gt;&nbsp;getExistingFireballs()</pre>
+<div class="block">Getter method that returns the ArrayList of fireballs the wizard is in posession of (valid fireballs are those that 
+ have not hit any mobile or immobile entities and thus will still be drawn on screen)</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>ArrayList of fireballs</dd>
+</dl>
 </li>
 </ul>
 <a name="setExistingFireballs-java.util.ArrayList-">
@@ -386,6 +479,12 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <li class="blockList">
 <h4>setExistingFireballs</h4>
 <pre>public&nbsp;void&nbsp;setExistingFireballs(java.util.ArrayList&lt;<a href="../gremlins/Fireball.html" title="class in gremlins">Fireball</a>&gt;&nbsp;a)</pre>
+<div class="block">Setter method that sets the ArrayList of fireballs the wizard is in posession of (valid fireballs are those that 
+ have not hit any mobile or immobile entities and thus will still be drawn on screen)</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>a</code> - An ArrayList of Fireball objects</dd>
+</dl>
 </li>
 </ul>
 <a name="shoot--">
@@ -395,6 +494,9 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <li class="blockList">
 <h4>shoot</h4>
 <pre>public&nbsp;void&nbsp;shoot()</pre>
+<div class="block">Shoot method creates a new fireball, adds it to the exisitng list of fireballs, then
+ takes the newest one (indicated by the fact that it is the last one in the ArrayList)
+ and moves it in the direction that the wizard is facing.</div>
 </li>
 </ul>
 <a name="up--">
@@ -404,6 +506,7 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <li class="blockList">
 <h4>up</h4>
 <pre>public&nbsp;void&nbsp;up()</pre>
+<div class="block">Overriden Up method, that modifies the current wizard image, velocities, and direction of the wizard</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Mobile.html#up--">up</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></code></dd>
@@ -417,6 +520,7 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <li class="blockList">
 <h4>right</h4>
 <pre>public&nbsp;void&nbsp;right()</pre>
+<div class="block">Overriden right method, that modifies the current wizard image, velocities, and direction of the wizard</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Mobile.html#right--">right</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></code></dd>
@@ -430,6 +534,7 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <li class="blockList">
 <h4>down</h4>
 <pre>public&nbsp;void&nbsp;down()</pre>
+<div class="block">Overriden down method, that modifies the current wizard image, velocities, and direction of the wizard</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Mobile.html#down--">down</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></code></dd>
@@ -443,6 +548,7 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <li class="blockList">
 <h4>left</h4>
 <pre>public&nbsp;void&nbsp;left()</pre>
+<div class="block">Overriden method, that modifies the current wizard image, velocities, and direction of the wizard</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Mobile.html#left--">left</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></code></dd>
@@ -456,6 +562,11 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <li class="blockList">
 <h4>tp</h4>
 <pre>public&nbsp;void&nbsp;tp(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</pre>
+<div class="block">Teleport method that resets the wizard's current coordinates to new coordinates generated by the random generator.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>app</code> - The app class, used to get data such as the current map's configuration</dd>
+</dl>
 </li>
 </ul>
 <a name="fireballMechanics-gremlins.App-">
@@ -465,6 +576,14 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <li class="blockList">
 <h4>fireballMechanics</h4>
 <pre>public&nbsp;void&nbsp;fireballMechanics(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</pre>
+<div class="block">FireballMechanics controls all the interactions between fireballs, and all other objects in the game 
+ This method is located in the wizard as every fireball within its available fireballs ArrayList must be updated. 
+ This method checks every existing fireball whether it has collided, or interacted with. 
+ Split into two large sections (regarding mobile and immobile interactions)</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>app</code> - A referene to the App class, where useful methods such as getMap and getMobiles are located</dd>
+</dl>
 </li>
 </ul>
 <a name="draw-gremlins.App-">
@@ -474,9 +593,13 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <li class="blockList">
 <h4>draw</h4>
 <pre>public&nbsp;int&nbsp;draw(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</pre>
+<div class="block">Draw method for the wizard. Draws the image of the wizard (if it is not null), and draws the teleport mechanics
+ as all the variables associated with it are in this class</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Mobile.html#draw-gremlins.App-">draw</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>An integer corresponding to the direction the wizard is facing.</dd>
 </dl>
 </li>
 </ul>
@@ -487,9 +610,15 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <li class="blockList">
 <h4>tick</h4>
 <pre>public&nbsp;int&nbsp;tick(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</pre>
+<div class="block">Tick method for the wizard hosts all the logic to deal with fireball firing, entity collision and interactions, 
+ valid and invalid motion/movements, and wizard death.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Mobile.html#tick-gremlins.App-">tick</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>app</code> - the App class that hosts many useful parameters and methods such as getGArray()</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>returns an integer that corresponds to whether the wizard is alive (0), dead (10), or running into the level's exit(20)</dd>
 </dl>
 </li>
 </ul>

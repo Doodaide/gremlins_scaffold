@@ -123,7 +123,7 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public class <span class="typeNameLabel">SlimeBall</span>
 extends <a href="../gremlins/Projectile.html" title="class in gremlins">Projectile</a></pre>
-<div class="block">SlimeBall</div>
+<div class="block">SlimeBall Class: The Slime's projectiles that extends a projectile (originates from mobile entity)</div>
 </li>
 </ul>
 </div>
@@ -174,7 +174,9 @@ extends <a href="../gremlins/Projectile.html" title="class in gremlins">Projecti
 <td class="colOne"><code><span class="memberNameLink"><a href="../gremlins/SlimeBall.html#SlimeBall-int-int-processing.core.PImage-processing.core.PImage-">SlimeBall</a></span>(int&nbsp;x,
          int&nbsp;y,
          processing.core.PImage&nbsp;sprite,
-         processing.core.PImage&nbsp;frozenS)</code>&nbsp;</td>
+         processing.core.PImage&nbsp;frozenS)</code>
+<div class="block">Constructor for SlimeBall</div>
+</td>
 </tr>
 </table>
 </li>
@@ -193,27 +195,40 @@ extends <a href="../gremlins/Projectile.html" title="class in gremlins">Projecti
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/SlimeBall.html#down--">down</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/SlimeBall.html#down--">down</a></span>()</code>
+<div class="block">Overriden down method that changes the yVelocity, xVelocity, and direction</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/SlimeBall.html#draw-gremlins.App-">draw</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/SlimeBall.html#draw-gremlins.App-">draw</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>
+<div class="block">Draw method draws the slimeball at each tick of the game.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/SlimeBall.html#left--">left</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/SlimeBall.html#left--">left</a></span>()</code>
+<div class="block">Overriden method that changes the yVelocity, xVelocity, and direction</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/SlimeBall.html#right--">right</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/SlimeBall.html#right--">right</a></span>()</code>
+<div class="block">Overriden right method that changes the yVelocity, xVelocity, and direction</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/SlimeBall.html#tick-gremlins.App-">tick</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/SlimeBall.html#tick-gremlins.App-">tick</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>
+<div class="block">Overriden Tick method that detects if the slimeball is both not frozen (powerup is not active)
+ and if it hasn't hit any entities.</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/SlimeBall.html#up--">up</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/SlimeBall.html#up--">up</a></span>()</code>
+<div class="block">Overriden up method that changes the yVelocity, xVelocity, and direction</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -221,14 +236,14 @@ extends <a href="../gremlins/Projectile.html" title="class in gremlins">Projecti
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;gremlins.<a href="../gremlins/Projectile.html" title="class in gremlins">Projectile</a></h3>
-<code><a href="../gremlins/Projectile.html#getCollisionEntity--">getCollisionEntity</a>, <a href="../gremlins/Projectile.html#hit--">hit</a>, <a href="../gremlins/Projectile.html#mobCollision-int-int-java.util.ArrayList-">mobCollision</a></code></li>
+<code><a href="../gremlins/Projectile.html#getCollisionEntity--">getCollisionEntity</a>, <a href="../gremlins/Projectile.html#hit--">hit</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.gremlins.Mobile">
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;gremlins.<a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></h3>
-<code><a href="../gremlins/Mobile.html#collides-int-int-gremlins.App-">collides</a>, <a href="../gremlins/Mobile.html#collision-gremlins.App-">collision</a>, <a href="../gremlins/Mobile.html#downCollision-gremlins.App-">downCollision</a>, <a href="../gremlins/Mobile.html#getAlive--">getAlive</a>, <a href="../gremlins/Mobile.html#getDirection--">getDirection</a>, <a href="../gremlins/Mobile.html#getFrameCounter--">getFrameCounter</a>, <a href="../gremlins/Mobile.html#getSideAV--">getSideAV</a>, <a href="../gremlins/Mobile.html#getSpeed--">getSpeed</a>, <a href="../gremlins/Mobile.html#getXVel--">getXVel</a>, <a href="../gremlins/Mobile.html#getYVel--">getYVel</a>, <a href="../gremlins/Mobile.html#incFrameCounter--">incFrameCounter</a>, <a href="../gremlins/Mobile.html#leftCollision-gremlins.App-">leftCollision</a>, <a href="../gremlins/Mobile.html#mobCollision-int-int-gremlins.App-">mobCollision</a>, <a href="../gremlins/Mobile.html#rightCollision-gremlins.App-">rightCollision</a>, <a href="../gremlins/Mobile.html#setAlive-boolean-">setAlive</a>, <a href="../gremlins/Mobile.html#setDirection-int-">setDirection</a>, <a href="../gremlins/Mobile.html#setFrameCounter-int-">setFrameCounter</a>, <a href="../gremlins/Mobile.html#stop--">stop</a>, <a href="../gremlins/Mobile.html#upCollision-gremlins.App-">upCollision</a>, <a href="../gremlins/Mobile.html#xStop--">xStop</a>, <a href="../gremlins/Mobile.html#yStop--">yStop</a></code></li>
+<code><a href="../gremlins/Mobile.html#collides-int-int-gremlins.App-">collides</a>, <a href="../gremlins/Mobile.html#collision-gremlins.App-">collision</a>, <a href="../gremlins/Mobile.html#downCollision-gremlins.App-">downCollision</a>, <a href="../gremlins/Mobile.html#getAlive--">getAlive</a>, <a href="../gremlins/Mobile.html#getDirection--">getDirection</a>, <a href="../gremlins/Mobile.html#getFrameCounter--">getFrameCounter</a>, <a href="../gremlins/Mobile.html#getSideAV--">getSideAV</a>, <a href="../gremlins/Mobile.html#getSpeed--">getSpeed</a>, <a href="../gremlins/Mobile.html#getXVel--">getXVel</a>, <a href="../gremlins/Mobile.html#getYVel--">getYVel</a>, <a href="../gremlins/Mobile.html#incFrameCounter--">incFrameCounter</a>, <a href="../gremlins/Mobile.html#leftCollision-gremlins.App-">leftCollision</a>, <a href="../gremlins/Mobile.html#rightCollision-gremlins.App-">rightCollision</a>, <a href="../gremlins/Mobile.html#setAlive-boolean-">setAlive</a>, <a href="../gremlins/Mobile.html#setDirection-int-">setDirection</a>, <a href="../gremlins/Mobile.html#setFrameCounter-int-">setFrameCounter</a>, <a href="../gremlins/Mobile.html#stop--">stop</a>, <a href="../gremlins/Mobile.html#upCollision-gremlins.App-">upCollision</a>, <a href="../gremlins/Mobile.html#xStop--">xStop</a>, <a href="../gremlins/Mobile.html#yStop--">yStop</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.gremlins.Entity">
@@ -268,6 +283,14 @@ extends <a href="../gremlins/Projectile.html" title="class in gremlins">Projecti
                  int&nbsp;y,
                  processing.core.PImage&nbsp;sprite,
                  processing.core.PImage&nbsp;frozenS)</pre>
+<div class="block">Constructor for SlimeBall</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>x</code> - x coordinate of slimeball</dd>
+<dd><code>y</code> - y coordinate of slimeball</dd>
+<dd><code>sprite</code> - PImage that is the slimeball's sprite</dd>
+<dd><code>frozenS</code> - PImage that is the slimeball's sprite when the frozen powerup is active.</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -285,6 +308,7 @@ extends <a href="../gremlins/Projectile.html" title="class in gremlins">Projecti
 <li class="blockList">
 <h4>up</h4>
 <pre>public&nbsp;void&nbsp;up()</pre>
+<div class="block">Overriden up method that changes the yVelocity, xVelocity, and direction</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Mobile.html#up--">up</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></code></dd>
@@ -298,6 +322,7 @@ extends <a href="../gremlins/Projectile.html" title="class in gremlins">Projecti
 <li class="blockList">
 <h4>right</h4>
 <pre>public&nbsp;void&nbsp;right()</pre>
+<div class="block">Overriden right method that changes the yVelocity, xVelocity, and direction</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Mobile.html#right--">right</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></code></dd>
@@ -311,6 +336,7 @@ extends <a href="../gremlins/Projectile.html" title="class in gremlins">Projecti
 <li class="blockList">
 <h4>down</h4>
 <pre>public&nbsp;void&nbsp;down()</pre>
+<div class="block">Overriden down method that changes the yVelocity, xVelocity, and direction</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Mobile.html#down--">down</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></code></dd>
@@ -324,6 +350,7 @@ extends <a href="../gremlins/Projectile.html" title="class in gremlins">Projecti
 <li class="blockList">
 <h4>left</h4>
 <pre>public&nbsp;void&nbsp;left()</pre>
+<div class="block">Overriden method that changes the yVelocity, xVelocity, and direction</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Mobile.html#left--">left</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></code></dd>
@@ -337,9 +364,15 @@ extends <a href="../gremlins/Projectile.html" title="class in gremlins">Projecti
 <li class="blockList">
 <h4>draw</h4>
 <pre>public&nbsp;int&nbsp;draw(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</pre>
+<div class="block">Draw method draws the slimeball at each tick of the game. 
+ If the powerup is active, the frozen skin is used.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Mobile.html#draw-gremlins.App-">draw</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>app</code> - the App class which extends PApplet, thus methods such as app.image() can be used</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>integer 0, that indicates no expected behaviour from the draw method.</dd>
 </dl>
 </li>
 </ul>
@@ -350,9 +383,16 @@ extends <a href="../gremlins/Projectile.html" title="class in gremlins">Projecti
 <li class="blockList">
 <h4>tick</h4>
 <pre>public&nbsp;int&nbsp;tick(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</pre>
+<div class="block">Overriden Tick method that detects if the slimeball is both not frozen (powerup is not active)
+ and if it hasn't hit any entities. Only then does it repeatedly detect whether a collision has happened</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Mobile.html#tick-gremlins.App-">tick</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>app</code> - the App class which is used to simulate collisions and access attributes from the app object 
+ such as the freezeActive parameter</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>integer 0, as no interaction is expected.</dd>
 </dl>
 </li>
 </ul>

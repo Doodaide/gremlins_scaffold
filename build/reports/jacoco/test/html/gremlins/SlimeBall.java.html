@@ -67,17 +67,17 @@ public class SlimeBall extends Projectile{
                         //System.out.println(&quot;bottom of block hit&quot;);
 <span class="fc" id="L68">                        return 1; // something hit</span>
                     }
-<span class="pc bpc" id="L70" title="3 of 4 branches missed.">                    if(!this.sideAV.get(2) &amp;&amp; this.direction == 2){</span>
+<span class="pc bpc" id="L70" title="1 of 4 branches missed.">                    if(!this.sideAV.get(2) &amp;&amp; this.direction == 2){</span>
                         //System.out.println(&quot;top of block hit&quot;);
-<span class="nc" id="L72">                        return 1; // something hit</span>
+<span class="fc" id="L72">                        return 1; // something hit</span>
                     }
-<span class="pc bpc" id="L74" title="1 of 4 branches missed.">                    if(!this.sideAV.get(1) &amp;&amp; this.direction == 1){</span>
+<span class="pc bpc" id="L74" title="2 of 4 branches missed.">                    if(!this.sideAV.get(1) &amp;&amp; this.direction == 1){</span>
                         //System.out.println(&quot;left of block hit&quot;);
 <span class="fc" id="L76">                        return 1; // something hit</span>
                     }
-<span class="pc bpc" id="L78" title="2 of 4 branches missed.">                    if(!this.sideAV.get(3) &amp;&amp; this.direction == 3){</span>
+<span class="nc bnc" id="L78" title="All 4 branches missed.">                    if(!this.sideAV.get(3) &amp;&amp; this.direction == 3){</span>
                         //System.out.println(&quot;Right of block hit&quot;);
-<span class="fc" id="L80">                        return 1; // something hit</span>
+<span class="nc" id="L80">                        return 1; // something hit</span>
                     }
     
                 }

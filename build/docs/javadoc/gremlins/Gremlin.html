@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -216,38 +216,44 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#gremlinRespawn-gremlins.App-">gremlinRespawn</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>
+<div class="block">Respawn method, that allows the gremlin to respawn on the map on an open block at least 10 blocks away from the wizard</div>
+</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#left--">left</a></span>()</code>
 <div class="block">Left method that sets various parameters of the gremlin to correspond to left 
  xVel = -speed = -1, direction = 3, and xDir = 3</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#right--">right</a></span>()</code>
 <div class="block">Right method that sets various parameters of the gremlin to correspond to right 
  xVel = speed = 1, direction = 1, and xDir = 1</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#setAvailableSlimeballs-java.util.ArrayList-">setAvailableSlimeballs</a></span>(java.util.ArrayList&lt;<a href="../gremlins/SlimeBall.html" title="class in gremlins">SlimeBall</a>&gt;&nbsp;arr)</code>
 <div class="block">Setter method for a singular gremlin's available slimeballs</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#setSlimeCooldown-int-">setSlimeCooldown</a></span>(int&nbsp;x)</code>
 <div class="block">setter method for the current slime's shooting cooldown</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>java.util.ArrayList&lt;<a href="../gremlins/SlimeBall.html" title="class in gremlins">SlimeBall</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#shootSlimeBall--">shootSlimeBall</a></span>()</code>
 <div class="block">Method that "shoots" a slimeball by creating a new slimeball object, and sending it in a direction (after adding it to the 
  current gremlin's available slimeballs ArrayList attribute)</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#slimeballMechanics-gremlins.App-">slimeballMechanics</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>
 <div class="block">Slimeball mechanics dictates all the behaviour a slimeball should express
@@ -255,13 +261,13 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
  modify then if it were in the slimeball class.</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#tick-gremlins.App-">tick</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>
 <div class="block">Tick method updates the gremlin object each game tick.</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Gremlin.html#up--">up</a></span>()</code>
 <div class="block">Up method that sets various parameters of the gremlin to correspond to up 
@@ -274,7 +280,7 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;gremlins.<a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></h3>
-<code><a href="../gremlins/Mobile.html#collides-int-int-gremlins.App-">collides</a>, <a href="../gremlins/Mobile.html#collision-gremlins.App-">collision</a>, <a href="../gremlins/Mobile.html#downCollision-gremlins.App-">downCollision</a>, <a href="../gremlins/Mobile.html#getAlive--">getAlive</a>, <a href="../gremlins/Mobile.html#getDirection--">getDirection</a>, <a href="../gremlins/Mobile.html#getFrameCounter--">getFrameCounter</a>, <a href="../gremlins/Mobile.html#getSideAV--">getSideAV</a>, <a href="../gremlins/Mobile.html#getSpeed--">getSpeed</a>, <a href="../gremlins/Mobile.html#getXVel--">getXVel</a>, <a href="../gremlins/Mobile.html#getYVel--">getYVel</a>, <a href="../gremlins/Mobile.html#incFrameCounter--">incFrameCounter</a>, <a href="../gremlins/Mobile.html#leftCollision-gremlins.App-">leftCollision</a>, <a href="../gremlins/Mobile.html#mobCollision-int-int-gremlins.App-">mobCollision</a>, <a href="../gremlins/Mobile.html#rightCollision-gremlins.App-">rightCollision</a>, <a href="../gremlins/Mobile.html#setAlive-boolean-">setAlive</a>, <a href="../gremlins/Mobile.html#setDirection-int-">setDirection</a>, <a href="../gremlins/Mobile.html#setFrameCounter-int-">setFrameCounter</a>, <a href="../gremlins/Mobile.html#stop--">stop</a>, <a href="../gremlins/Mobile.html#upCollision-gremlins.App-">upCollision</a>, <a href="../gremlins/Mobile.html#xStop--">xStop</a>, <a href="../gremlins/Mobile.html#yStop--">yStop</a></code></li>
+<code><a href="../gremlins/Mobile.html#collides-int-int-gremlins.App-">collides</a>, <a href="../gremlins/Mobile.html#collision-gremlins.App-">collision</a>, <a href="../gremlins/Mobile.html#downCollision-gremlins.App-">downCollision</a>, <a href="../gremlins/Mobile.html#getAlive--">getAlive</a>, <a href="../gremlins/Mobile.html#getDirection--">getDirection</a>, <a href="../gremlins/Mobile.html#getFrameCounter--">getFrameCounter</a>, <a href="../gremlins/Mobile.html#getSideAV--">getSideAV</a>, <a href="../gremlins/Mobile.html#getSpeed--">getSpeed</a>, <a href="../gremlins/Mobile.html#getXVel--">getXVel</a>, <a href="../gremlins/Mobile.html#getYVel--">getYVel</a>, <a href="../gremlins/Mobile.html#incFrameCounter--">incFrameCounter</a>, <a href="../gremlins/Mobile.html#leftCollision-gremlins.App-">leftCollision</a>, <a href="../gremlins/Mobile.html#rightCollision-gremlins.App-">rightCollision</a>, <a href="../gremlins/Mobile.html#setAlive-boolean-">setAlive</a>, <a href="../gremlins/Mobile.html#setDirection-int-">setDirection</a>, <a href="../gremlins/Mobile.html#setFrameCounter-int-">setFrameCounter</a>, <a href="../gremlins/Mobile.html#stop--">stop</a>, <a href="../gremlins/Mobile.html#upCollision-gremlins.App-">upCollision</a>, <a href="../gremlins/Mobile.html#xStop--">xStop</a>, <a href="../gremlins/Mobile.html#yStop--">yStop</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.gremlins.Entity">
@@ -480,6 +486,21 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../gremlins/Mobile.html#left--">left</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="gremlinRespawn-gremlins.App-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>gremlinRespawn</h4>
+<pre>public&nbsp;void&nbsp;gremlinRespawn(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</pre>
+<div class="block">Respawn method, that allows the gremlin to respawn on the map on an open block at least 10 blocks away from the wizard</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>app</code> - the current App screen with all "valid blocks", current objects, etc. on screen. 
+ This allows this method to detect where the gremlin can respawn.</dd>
 </dl>
 </li>
 </ul>

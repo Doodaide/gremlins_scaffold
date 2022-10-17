@@ -105,8 +105,8 @@ public class Gremlin extends Mobile{
 <span class="fc bfc" id="L105" title="All 2 branches covered.">            else if (this.getDirection() == 1){</span>
 <span class="fc" id="L106">                s.right();</span>
             }
-<span class="pc bpc" id="L108" title="1 of 2 branches missed.">            else if (this.getDirection() == 2){</span>
-<span class="nc" id="L109">                s.down();</span>
+<span class="fc bfc" id="L108" title="All 2 branches covered.">            else if (this.getDirection() == 2){</span>
+<span class="fc" id="L109">                s.down();</span>
             }
 <span class="pc bpc" id="L111" title="1 of 2 branches missed.">            else if (this.getDirection() == 3){</span>
 <span class="fc" id="L112">                s.left();</span>
@@ -132,7 +132,7 @@ public class Gremlin extends Mobile{
 <span class="nc bnc" id="L132" title="All 4 branches missed.">                    if(s.collisionEntity.getClass().getName().equals(&quot;gremlins.Fireball&quot;) &amp;&amp; s.collisionEntity.collisionBlock == null){</span>
 <span class="nc" id="L133">                        s.stop();</span>
 <span class="nc" id="L134">                        s.collisionEntity.stop();</span>
-<span class="nc" id="L135">                        app.getExistingFireballs().set(app.getExistingFireballs().indexOf(s.collisionEntity), null);</span>
+<span class="nc" id="L135">                        app.getWizard().getExistingFireballs().set(app.getWizard().getExistingFireballs().indexOf(s.collisionEntity), null);</span>
                     }
 <span class="nc bnc" id="L137" title="All 2 branches missed.">                    else if(s.collisionEntity.getClass().getName().equals(&quot;gremlins.Wizard&quot;)){</span>
 <span class="nc" id="L138">                        s.stop();</span>
@@ -203,6 +203,19 @@ public class Gremlin extends Mobile{
 <span class="fc" id="L203">    }</span>
 
     /**
+     * Respawn method, that allows the gremlin to respawn on the map on an open block at least 10 blocks away from the wizard 
+     * @param app the current App screen with all &quot;valid blocks&quot;, current objects, etc. on screen. 
+     * This allows this method to detect where the gremlin can respawn. 
+     */
+    public void gremlinRespawn(App app){
+<span class="nc" id="L211">        RespawnGenerator respawn = new RespawnGenerator(app.getWizard());</span>
+<span class="nc" id="L212">        int[] coords = respawn.respawnXBlocks(app);</span>
+<span class="nc" id="L213">        this.setX(coords[0]); </span>
+<span class="nc" id="L214">        this.setY(coords[1]);</span>
+<span class="nc" id="L215">        respawn = null;</span>
+<span class="nc" id="L216">    }</span>
+
+    /**
      * Gremlin AI method dictates all the movement a gremlin object can experience. 
      * The gremlin's current travelling direction, collisions, and surroundings are considered. 
      * Under the condition that the gremlin collides with something, a random direction is generated 
@@ -212,55 +225,55 @@ public class Gremlin extends Mobile{
      * @return returns an integer n, which corresponds to the direction the gremlin should move in (0 - up, 1 - right, 2 - down ,3 - left)
      */
     public int gremlinAI(App app){
-<span class="fc" id="L215">        int originalDirection = this.getDirection();</span>
-<span class="fc" id="L216">        boolean canMove = false;</span>
-<span class="fc" id="L217">        boolean[] travelOptions = this.getSideAV();</span>
-<span class="fc" id="L218">        boolean[] feasibleDirections = new boolean[4];</span>
-<span class="fc bfc" id="L219" title="All 2 branches covered.">        for(int i = 0; i &lt; 4; i++){</span>
-<span class="fc" id="L220">            feasibleDirections[i] = true;</span>
+<span class="fc" id="L228">        int originalDirection = this.getDirection();</span>
+<span class="fc" id="L229">        boolean canMove = false;</span>
+<span class="fc" id="L230">        boolean[] travelOptions = this.getSideAV();</span>
+<span class="fc" id="L231">        boolean[] feasibleDirections = new boolean[4];</span>
+<span class="fc bfc" id="L232" title="All 2 branches covered.">        for(int i = 0; i &lt; 4; i++){</span>
+<span class="fc" id="L233">            feasibleDirections[i] = true;</span>
         }
         
-<span class="fc" id="L223">        int prevLoc = 5;</span>
-<span class="fc bfc" id="L224" title="All 2 branches covered.">        if(this.direction == 0){prevLoc = 2;}</span>
-<span class="fc bfc" id="L225" title="All 2 branches covered.">        else if(this.direction == 1){prevLoc = 3;}</span>
-<span class="fc bfc" id="L226" title="All 2 branches covered.">        else if(this.direction == 2){prevLoc = 0;}</span>
-<span class="pc bpc" id="L227" title="1 of 2 branches missed.">        else if(this.direction == 3){prevLoc = 1;}</span>
+<span class="fc" id="L236">        int prevLoc = 5;</span>
+<span class="fc bfc" id="L237" title="All 2 branches covered.">        if(this.direction == 0){prevLoc = 2;}</span>
+<span class="fc bfc" id="L238" title="All 2 branches covered.">        else if(this.direction == 1){prevLoc = 3;}</span>
+<span class="fc bfc" id="L239" title="All 2 branches covered.">        else if(this.direction == 2){prevLoc = 0;}</span>
+<span class="pc bpc" id="L240" title="1 of 2 branches missed.">        else if(this.direction == 3){prevLoc = 1;}</span>
 
-<span class="fc" id="L229">        feasibleDirections[prevLoc] = false; // mark previous direction as false</span>
-<span class="fc" id="L230">        int n = 5;</span>
+<span class="fc" id="L242">        feasibleDirections[prevLoc] = false; // mark previous direction as false</span>
+<span class="fc" id="L243">        int n = 5;</span>
 
-<span class="fc bfc" id="L232" title="All 2 branches covered.">        while(!canMove){</span>
-<span class="fc" id="L233">            n = (int) (Math.random() * (4)); // generate random direction</span>
+<span class="fc bfc" id="L245" title="All 2 branches covered.">        while(!canMove){</span>
+<span class="fc" id="L246">            n = (int) (Math.random() * (4)); // generate random direction</span>
             //System.out.println(&quot;random number generated &quot; + n);
-<span class="fc" id="L235">            this.setDirection(n);</span>
-<span class="fc" id="L236">            this.collision(app);</span>
-<span class="fc" id="L237">            travelOptions = this.getSideAV();</span>
+<span class="fc" id="L248">            this.setDirection(n);</span>
+<span class="fc" id="L249">            this.collision(app);</span>
+<span class="fc" id="L250">            travelOptions = this.getSideAV();</span>
 
-<span class="fc bfc" id="L239" title="All 2 branches covered.">            if(feasibleDirections[n]){</span>
+<span class="fc bfc" id="L252" title="All 2 branches covered.">            if(feasibleDirections[n]){</span>
                 //System.out.println(&quot;Entering into else if loop&quot;);
-<span class="pc bpc" id="L241" title="1 of 4 branches missed.">                if(feasibleDirections[n] &amp;&amp; travelOptions[n]){</span>
-<span class="fc" id="L242">                    canMove = true; // return x;</span>
+<span class="pc bpc" id="L254" title="1 of 4 branches missed.">                if(feasibleDirections[n] &amp;&amp; travelOptions[n]){</span>
+<span class="fc" id="L255">                    canMove = true; // return x;</span>
                     //System.out.println(&quot;Proper direction detected: &quot; + n);
                     //return x;
                 }
                 else{
-<span class="fc" id="L247">                    feasibleDirections[n] = false;</span>
+<span class="fc" id="L260">                    feasibleDirections[n] = false;</span>
                 }
             }
 
-<span class="pc bpc" id="L251" title="1 of 8 branches missed.">            else if((!feasibleDirections[0] &amp;&amp; !feasibleDirections[1] &amp;&amp; !feasibleDirections[2] &amp;&amp; !feasibleDirections[3] )){</span>
-<span class="fc" id="L252">                n = prevLoc;</span>
+<span class="fc bfc" id="L264" title="All 8 branches covered.">            else if((!feasibleDirections[0] &amp;&amp; !feasibleDirections[1] &amp;&amp; !feasibleDirections[2] &amp;&amp; !feasibleDirections[3] )){</span>
+<span class="fc" id="L265">                n = prevLoc;</span>
                 //System.out.println(&quot;Enters u realm &quot; + n);
-<span class="fc" id="L254">                canMove = true;</span>
+<span class="fc" id="L267">                canMove = true;</span>
             }
         }
 
-<span class="fc" id="L258">        this.setDirection(originalDirection);</span>
-<span class="fc" id="L259">        this.collision(app);</span>
+<span class="fc" id="L271">        this.setDirection(originalDirection);</span>
+<span class="fc" id="L272">        this.collision(app);</span>
         //System.out.println(&quot;Direction to go 1&quot; + x);
-<span class="fc" id="L261">        travelOptions = null;</span>
-<span class="fc" id="L262">        feasibleDirections = null;</span>
-<span class="fc" id="L263">        return n;</span>
+<span class="fc" id="L274">        travelOptions = null;</span>
+<span class="fc" id="L275">        feasibleDirections = null;</span>
+<span class="fc" id="L276">        return n;</span>
     }
 
     /**
@@ -270,13 +283,13 @@ public class Gremlin extends Mobile{
      */
     @Override
     public int draw(App app){
-<span class="pc bpc" id="L273" title="1 of 2 branches missed.">        if(!app.getFreezeActive()){</span>
-<span class="fc" id="L274">            app.image(this.sprite, this.x, this.y);</span>
+<span class="pc bpc" id="L286" title="1 of 2 branches missed.">        if(!app.getFreezeActive()){</span>
+<span class="fc" id="L287">            app.image(this.sprite, this.x, this.y);</span>
         }
-<span class="nc bnc" id="L276" title="All 2 branches missed.">        else if(app.getFreezeActive()){</span>
-<span class="nc" id="L277">            app.image(this.frozenG, this.x, this.y);</span>
+<span class="nc bnc" id="L289" title="All 2 branches missed.">        else if(app.getFreezeActive()){</span>
+<span class="nc" id="L290">            app.image(this.frozenG, this.x, this.y);</span>
         }
-<span class="fc" id="L279">        return this.direction;</span>
+<span class="fc" id="L292">        return this.direction;</span>
         
     }
 
@@ -290,92 +303,92 @@ public class Gremlin extends Mobile{
      */
     @Override
     public int tick(App app){
-<span class="pc bpc" id="L293" title="1 of 2 branches missed.">        if(!app.getFreezeActive()){</span>
-<span class="pc bpc" id="L294" title="1 of 2 branches missed.">            if(this.collisionEntity != null){</span>
-<span class="nc bnc" id="L295" title="All 2 branches missed.">                if(this.collisionEntity.getClass().getName().equals(&quot;gremlins.Wizard&quot;)){</span>
+<span class="pc bpc" id="L306" title="1 of 2 branches missed.">        if(!app.getFreezeActive()){</span>
+<span class="pc bpc" id="L307" title="1 of 2 branches missed.">            if(this.collisionEntity != null){</span>
+<span class="nc bnc" id="L308" title="All 2 branches missed.">                if(this.collisionEntity.getClass().getName().equals(&quot;gremlins.Wizard&quot;)){</span>
                     //System.out.println(&quot;GOTCHA&quot;);
-<span class="nc" id="L297">                    this.collisionEntity.alive = false; // kill wizard behaviour</span>
-<span class="nc" id="L298">                    return 10;</span>
+<span class="nc" id="L310">                    this.collisionEntity.alive = false; // kill wizard behaviour</span>
+<span class="nc" id="L311">                    return 10;</span>
                 }
             }
-<span class="fc" id="L301">            int toGo = this.getDirection();</span>
-<span class="fc bfc" id="L302" title="All 2 branches covered.">            if(this.collision(app) == 1){</span>
-<span class="fc" id="L303">                toGo = this.gremlinAI(app);</span>
+<span class="fc" id="L314">            int toGo = this.getDirection();</span>
+<span class="fc bfc" id="L315" title="All 2 branches covered.">            if(this.collision(app) == 1){</span>
+<span class="fc" id="L316">                toGo = this.gremlinAI(app);</span>
             }
-<span class="fc bfc" id="L305" title="All 2 branches covered.">            if(toGo == 0){</span>
-<span class="fc" id="L306">                this.up();</span>
+<span class="fc bfc" id="L318" title="All 2 branches covered.">            if(toGo == 0){</span>
+<span class="fc" id="L319">                this.up();</span>
             }
-<span class="fc bfc" id="L308" title="All 2 branches covered.">            else if(toGo == 1){</span>
-<span class="fc" id="L309">                this.right();</span>
+<span class="fc bfc" id="L321" title="All 2 branches covered.">            else if(toGo == 1){</span>
+<span class="fc" id="L322">                this.right();</span>
             }
-<span class="fc bfc" id="L311" title="All 2 branches covered.">            else if(toGo == 2){</span>
-<span class="fc" id="L312">                this.down();</span>
+<span class="fc bfc" id="L324" title="All 2 branches covered.">            else if(toGo == 2){</span>
+<span class="fc" id="L325">                this.down();</span>
             }
-<span class="pc bpc" id="L314" title="1 of 2 branches missed.">            else if(toGo == 3){</span>
-<span class="fc" id="L315">                this.left();</span>
+<span class="pc bpc" id="L327" title="1 of 2 branches missed.">            else if(toGo == 3){</span>
+<span class="fc" id="L328">                this.left();</span>
             }
             
-<span class="fc bfc" id="L318" title="All 12 branches covered.">            if(((this.direction == 0 || this.direction == 2) &amp;&amp; this.xVel != 0 ) ||</span>
+<span class="fc bfc" id="L331" title="All 12 branches covered.">            if(((this.direction == 0 || this.direction == 2) &amp;&amp; this.xVel != 0 ) ||</span>
                 ((this.direction == 1 || this.direction == 3) &amp;&amp; this.yVel != 0)
             ){
-<span class="fc" id="L321">                this.stop();</span>
+<span class="fc" id="L334">                this.stop();</span>
             }
     
             else{
-<span class="pc bpc" id="L325" title="3 of 6 branches missed.">                if( (!this.sideAV.get(3) &amp;&amp; (this.xVel &lt; 0) &amp;&amp; this.direction == 3) ||</span>
-<span class="pc bpc" id="L326" title="3 of 6 branches missed.">                    (!this.sideAV.get(1) &amp;&amp; (this.xVel &gt; 0) &amp;&amp; this.direction == 1)){</span>
-<span class="nc" id="L327">                    this.xStop();</span>
-<span class="nc" id="L328">                    this.xVel = 0;</span>
+<span class="pc bpc" id="L338" title="3 of 6 branches missed.">                if( (!this.sideAV.get(3) &amp;&amp; (this.xVel &lt; 0) &amp;&amp; this.direction == 3) ||</span>
+<span class="pc bpc" id="L339" title="3 of 6 branches missed.">                    (!this.sideAV.get(1) &amp;&amp; (this.xVel &gt; 0) &amp;&amp; this.direction == 1)){</span>
+<span class="nc" id="L340">                    this.xStop();</span>
+<span class="nc" id="L341">                    this.xVel = 0;</span>
                 }
                 
         
-<span class="pc bpc" id="L332" title="3 of 6 branches missed.">                if( (!this.sideAV.get(0) &amp;&amp;(this.yVel &lt; 0) &amp;&amp; this.direction == 0) ||</span>
-<span class="pc bpc" id="L333" title="3 of 6 branches missed.">                    (!this.sideAV.get(2) &amp;&amp; (this.yVel &gt; 0) &amp;&amp; this.direction == 2)){</span>
-<span class="nc" id="L334">                    this.yStop();</span>
-<span class="nc" id="L335">                    this.yVel = 0;</span>
+<span class="pc bpc" id="L345" title="3 of 6 branches missed.">                if( (!this.sideAV.get(0) &amp;&amp;(this.yVel &lt; 0) &amp;&amp; this.direction == 0) ||</span>
+<span class="pc bpc" id="L346" title="3 of 6 branches missed.">                    (!this.sideAV.get(2) &amp;&amp; (this.yVel &gt; 0) &amp;&amp; this.direction == 2)){</span>
+<span class="nc" id="L347">                    this.yStop();</span>
+<span class="nc" id="L348">                    this.yVel = 0;</span>
                 }
                 
                 // Prevents diagonal movement 
-<span class="pc bpc" id="L339" title="1 of 4 branches missed.">                if(this.getXVel() == 0 || this.getYVel() == 0){</span>
+<span class="pc bpc" id="L352" title="1 of 4 branches missed.">                if(this.getXVel() == 0 || this.getYVel() == 0){</span>
                     // Check direction corresponds to velocity. 
                     // if direction != velocity direction 
-<span class="fc" id="L342">                    this.x += this.xVel;</span>
-<span class="fc" id="L343">                    this.y += this.yVel;</span>
+<span class="fc" id="L355">                    this.x += this.xVel;</span>
+<span class="fc" id="L356">                    this.y += this.yVel;</span>
                 }
                 
                   // full block movement 
-<span class="pc bpc" id="L347" title="1 of 4 branches missed.">                if (this.getX() % 20 != 0 &amp;&amp; this.getXVel() == 0){</span>
-<span class="nc bnc" id="L348" title="All 4 branches missed.">                    if(this.xDir == 3 &amp;&amp; this.sideAV.get(3)){</span>
-<span class="nc" id="L349">                        this.setX(this.getX() - 1);</span>
+<span class="pc bpc" id="L360" title="1 of 4 branches missed.">                if (this.getX() % 20 != 0 &amp;&amp; this.getXVel() == 0){</span>
+<span class="nc bnc" id="L361" title="All 4 branches missed.">                    if(this.xDir == 3 &amp;&amp; this.sideAV.get(3)){</span>
+<span class="nc" id="L362">                        this.setX(this.getX() - 1);</span>
                     }
-<span class="nc bnc" id="L351" title="All 4 branches missed.">                    else if (this.xDir == 1 &amp;&amp; this.sideAV.get(1)){</span>
-<span class="nc" id="L352">                        this.setX(this.getX() + 1);</span>
+<span class="nc bnc" id="L364" title="All 4 branches missed.">                    else if (this.xDir == 1 &amp;&amp; this.sideAV.get(1)){</span>
+<span class="nc" id="L365">                        this.setX(this.getX() + 1);</span>
                     }
                    
                 }
-<span class="pc bpc" id="L356" title="1 of 4 branches missed.">                if (this.getY() % 20 != 0 &amp;&amp; this.getYVel() == 0){</span>
-<span class="nc bnc" id="L357" title="All 4 branches missed.">                    if(this.yDir == 0 &amp;&amp; this.sideAV.get(0)){</span>
-<span class="nc" id="L358">                        this.setY(this.getY() - 1);</span>
+<span class="pc bpc" id="L369" title="1 of 4 branches missed.">                if (this.getY() % 20 != 0 &amp;&amp; this.getYVel() == 0){</span>
+<span class="nc bnc" id="L370" title="All 4 branches missed.">                    if(this.yDir == 0 &amp;&amp; this.sideAV.get(0)){</span>
+<span class="nc" id="L371">                        this.setY(this.getY() - 1);</span>
                     }
-<span class="nc bnc" id="L360" title="All 4 branches missed.">                    else if(this.yDir == 2 &amp;&amp; this.sideAV.get(2)){</span>
-<span class="nc" id="L361">                        this.setY(this.getY() + 1);</span>
+<span class="nc bnc" id="L373" title="All 4 branches missed.">                    else if(this.yDir == 2 &amp;&amp; this.sideAV.get(2)){</span>
+<span class="nc" id="L374">                        this.setY(this.getY() + 1);</span>
                     }
                     
                 }
                 
             }
             
-<span class="pc bpc" id="L368" title="1 of 6 branches missed.">            if((this.getSlimeCoolDown() &gt;= app.getEnemyCooldown()) &amp;&amp; (this.getX() % 20 == 0 || this.getY() % 20 == 0)){</span>
-<span class="fc" id="L369">                this.shootSlimeBall();</span>
-<span class="fc" id="L370">                this.setSlimeCooldown(0);</span>
+<span class="pc bpc" id="L381" title="1 of 6 branches missed.">            if((this.getSlimeCoolDown() &gt;= app.getEnemyCooldown()) &amp;&amp; (this.getX() % 20 == 0 || this.getY() % 20 == 0)){</span>
+<span class="fc" id="L382">                this.shootSlimeBall();</span>
+<span class="fc" id="L383">                this.setSlimeCooldown(0);</span>
             }
     
-<span class="pc bpc" id="L373" title="1 of 2 branches missed.">            else if(this.getSlimeCoolDown() &lt;= app.getEnemyCooldown()){</span>
-<span class="fc" id="L374">                this.setSlimeCooldown(this.getSlimeCoolDown() + 1);</span>
+<span class="pc bpc" id="L386" title="1 of 2 branches missed.">            else if(this.getSlimeCoolDown() &lt;= app.getEnemyCooldown()){</span>
+<span class="fc" id="L387">                this.setSlimeCooldown(this.getSlimeCoolDown() + 1);</span>
             }
         }
-<span class="fc" id="L377">            this.slimeballMechanics(app);</span>
-<span class="fc" id="L378">        return 0;</span>
+<span class="fc" id="L390">            this.slimeballMechanics(app);</span>
+<span class="fc" id="L391">        return 0;</span>
     }
 
 }

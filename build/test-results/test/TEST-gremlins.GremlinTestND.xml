@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="gremlins.GremlinTestND" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-10-17T07:01:40" hostname="Alexanders-MacBook-Pro-2.local" time="0.006">
+<testsuite name="gremlins.GremlinTestND" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-10-17T08:22:45" hostname="Alexanders-MacBook-Pro-2.local" time="0.006">
   <properties/>
-  <testcase name="constructor()" classname="gremlins.GremlinTestND" time="0.001"/>
-  <testcase name="movementTest()" classname="gremlins.GremlinTestND" time="0.001"/>
-  <testcase name="shootSlimeBallTest()" classname="gremlins.GremlinTestND" time="0.0"/>
+  <testcase name="constructor()" classname="gremlins.GremlinTestND" time="0.0"/>
+  <testcase name="movementTest()" classname="gremlins.GremlinTestND" time="0.0"/>
+  <testcase name="shootSlimeBallTest()" classname="gremlins.GremlinTestND" time="0.001"/>
   <testcase name="basicSlimeBallTest()" classname="gremlins.GremlinTestND" time="0.002"/>
   <testcase name="gremlinAITest()" classname="gremlins.GremlinTestND" time="0.0"/>
   <system-out><![CDATA[]]></system-out>

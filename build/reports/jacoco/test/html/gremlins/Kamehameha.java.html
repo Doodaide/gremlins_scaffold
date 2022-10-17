@@ -174,17 +174,37 @@ public class Kamehameha extends Projectile{
         
 
 <span class="nc bnc" id="L176" title="All 2 branches missed.">        if(this.alive){</span>
-            //System.out.println(&quot;Entering into 1&quot;);
-            //System.out.println(&quot;toDelete size &quot; + this.toDelete.size());
-<span class="nc bnc" id="L179" title="All 2 branches missed.">            for(Immobile i : this.toDelete){</span>
-<span class="nc bnc" id="L180" title="All 2 branches missed.">                if(i.getClass().getName().equals(&quot;gremlins.Destructable&quot;)){</span>
-<span class="nc" id="L181">                    app.getMap().set(app.getMap().indexOf(i), null);</span>
+<span class="nc bnc" id="L177" title="All 2 branches missed.">            for(Immobile i : this.toDelete){</span>
+<span class="nc bnc" id="L178" title="All 2 branches missed.">                if(i.getClass().getName().equals(&quot;gremlins.Destructable&quot;)){</span>
+<span class="nc" id="L179">                    app.getMap().set(app.getMap().indexOf(i), null);</span>
                 }
-<span class="nc" id="L183">            }</span>
+<span class="nc" id="L181">            }</span>
         }
-<span class="nc" id="L185">        return 0;</span>
+<span class="nc" id="L183">        return 0;</span>
     }
 
-    
+    public void update(App app){
+<span class="nc bnc" id="L187" title="All 2 branches missed.">        if(!this.getDrawing()){</span>
+<span class="nc" id="L188">            this.tick(app);</span>
+<span class="nc" id="L189">            this.setLifespan(this.getLifeSpan() + 1);</span>
+<span class="nc" id="L190">            this.setDrawing(true);</span>
+        }
+        
+<span class="nc bnc" id="L193" title="All 2 branches missed.">        if(this.getDrawing()){</span>
+<span class="nc" id="L194">            this.setLifespan(this.getLifeSpan() + 1);</span>
+<span class="nc" id="L195">            this.draw(app);</span>
+            
+        }
+<span class="nc" id="L198">    }</span>
+
+    public static void stuffUI(App app){
+<span class="pc bpc" id="L201" title="1 of 2 branches missed.">        if(app.getKCharge() &gt;= 0){</span>
+<span class="fc" id="L202">            app.text(&quot;R to clear all destructable blocks in front of you&quot;, 20, 710);</span>
+<span class="fc bfc" id="L203" title="All 2 branches covered.">            for(int i = 0; i &lt; app.getKCharge(); i++){</span>
+<span class="fc" id="L204">                app.image(app.hBeam, 375 + i*25, 695);</span>
+            }
+        }
+<span class="fc" id="L207">    }</span>
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
