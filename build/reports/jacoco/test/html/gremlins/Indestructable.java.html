@@ -1,38 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Indestructable.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gremlins_scaffold</a> &gt; <a href="index.source.html" class="el_package">gremlins</a> &gt; <span class="el_source">Indestructable.java</span></div><h1>Indestructable.java</h1><pre class="source lang-java linenums">package gremlins;
-
 import processing.core.PImage;
 
 
 /**
- * Indestructable
+ * Indestructable class: blocks that extend from immobile entities that cannot be deleted or destroyed by any means
  */
 public class Indestructable extends Immobile{
-    public Indestructable(int x, int y, PImage texture) {
-<span class="fc" id="L11">        super(x, y);   </span>
-<span class="fc" id="L12">        this.texture = texture;</span>
-<span class="fc" id="L13">    }</span>
-    
-    public void draw(App app){
-<span class="pc bpc" id="L16" title="1 of 2 branches missed.">        if(this.texture != null){</span>
-<span class="fc" id="L17">            app.image(this.texture, this.x, this.y);</span>
-        }
-<span class="fc" id="L19">    }</span>
 
+    /**
+     * Constructor for indestructable 
+     * @param x x coordinate 
+     * @param y y coordinate 
+     * @param texture Indestructable stone block sprite
+     */
+    public Indestructable(int x, int y, PImage texture) {
+<span class="fc" id="L17">        super(x, y);   </span>
+<span class="fc" id="L18">        this.texture = texture;</span>
+<span class="fc" id="L19">    }</span>
+    
+    /**
+     * Draw method draws the Indestructable block onto the screen. 
+     * @param app inherits from PApplet's image() method. 
+     */
+    public void draw(App app){
+<span class="pc bpc" id="L26" title="1 of 2 branches missed.">        if(this.texture != null){</span>
+<span class="fc" id="L27">            app.image(this.texture, this.x, this.y);</span>
+        }
+<span class="fc" id="L29">    }</span>
+
+    /**
+     * Necessary implementation of update. 
+     * @return 0 as the indestructable will never be updated 
+     */
     @Override
     public int update() {
-<span class="fc" id="L23">        return 0;</span>
+<span class="fc" id="L37">        return 0;</span>
         
     }
 
+    /**
+     * Method that returns the viability of the block
+     * @return true, always collides into other mobiles. 
+     */
     @Override
     public boolean getViable() {
-<span class="fc" id="L29">        return true;</span>
+<span class="fc" id="L47">        return true;</span>
     }
 
+    /**
+     * sets the viability of the block 
+     * @param b a boolean that denotes whether the block can be interacted with
+     */
     @Override
     public void setViable(boolean b) {
-<span class="fc" id="L34">        this.viable = true;</span>
+<span class="fc" id="L56">        this.viable = true;</span>
         
-<span class="fc" id="L36">    }</span>
+<span class="fc" id="L58">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

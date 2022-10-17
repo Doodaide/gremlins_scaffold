@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RespawnGenerator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gremlins_scaffold</a> &gt; <a href="index.source.html" class="el_package">gremlins</a> &gt; <span class="el_source">RespawnGenerator.java</span></div><h1>RespawnGenerator.java</h1><pre class="source lang-java linenums">package gremlins;
+
+import java.util.Random;
+
+/**
+ * RespawnGenerator
+ */
+public class RespawnGenerator {
+    private int x; 
+    private int y;
+    private boolean canRespawnX;
+    private boolean canRespawnY;
+<span class="nc" id="L13">    private static final Random randomGenerator = new Random(); // random number generator </span>
+    private Entity e;
+<span class="nc" id="L15">    public RespawnGenerator(Entity e){</span>
+<span class="nc" id="L16">        this.x = e.getX();</span>
+<span class="nc" id="L17">        this.y = e.getY();</span>
+<span class="nc" id="L18">        this.canRespawnX = false; </span>
+<span class="nc" id="L19">        this.canRespawnY = false; </span>
+<span class="nc" id="L20">        this.e = e;</span>
+
+<span class="nc" id="L22">    }</span>
+
+    public int[] respawnXBlocks(App app){
+<span class="nc" id="L25">        int xTest = x; </span>
+<span class="nc" id="L26">        int yTest = y; </span>
+
+<span class="nc bnc" id="L28" title="All 4 branches missed.">        while(!canRespawnX || !canRespawnY){</span>
+<span class="nc bnc" id="L29" title="All 2 branches missed.">            if(!canRespawnX){</span>
+<span class="nc" id="L30">                xTest = randomGenerator.nextInt(34) * 20;</span>
+                //System.out.println(&quot;x Respawn looping&quot;);
+<span class="nc bnc" id="L32" title="All 2 branches missed.">                if(xTest == 0){</span>
+<span class="nc" id="L33">                    continue;</span>
+                }
+<span class="nc bnc" id="L35" title="All 12 branches missed.">                else if((xTest &gt;= x + this.e.WIDTH+ 200 || xTest &lt;= x - 200) || </span>
+                ((xTest &lt; x + this.e.WIDTH + 200 &amp;&amp; xTest &gt; x - 200) &amp;&amp; ((yTest &gt; y + 200 + this.e.HEIGHT) || (yTest &lt; y - 200)))){ // too far left or right. Essentially both coords are valid. 
+<span class="nc" id="L37">                    boolean canPass = true;</span>
+<span class="nc bnc" id="L38" title="All 2 branches missed.">                    for(Immobile i : app.getMap()){</span>
+<span class="nc bnc" id="L39" title="All 2 branches missed.">                        if(i != null){</span>
+<span class="nc bnc" id="L40" title="All 4 branches missed.">                            if((i.getX() == xTest &amp;&amp; i.getY() == yTest)){</span>
+<span class="nc" id="L41">                                canPass = false;</span>
+                            }
+                        }
+<span class="nc" id="L44">                    }</span>
+<span class="nc bnc" id="L45" title="All 2 branches missed.">                    if(canPass){</span>
+                        //System.out.println(&quot;X: &quot; + xTest + &quot; Y: &quot; + yTest);
+<span class="nc" id="L47">                        canRespawnX = true;</span>
+<span class="nc" id="L48">                        canRespawnY = true;</span>
+                    }
+                }
+            }
+
+<span class="nc bnc" id="L53" title="All 2 branches missed.">            if(!canRespawnY){</span>
+<span class="nc" id="L54">                yTest = randomGenerator.nextInt(31) * 20; </span>
+                //System.out.println(&quot;Y respawn looping&quot;);
+<span class="nc bnc" id="L56" title="All 2 branches missed.">                if(yTest == 0){</span>
+<span class="nc" id="L57">                    continue;</span>
+                }
+<span class="nc bnc" id="L59" title="All 12 branches missed.">                else if((yTest &gt;= y + this.e.HEIGHT + 200 || yTest &lt;= y - 200) || </span>
+                (yTest &lt; x + this.e.HEIGHT + 200 &amp;&amp; yTest &gt; y - 200) &amp;&amp; (xTest &gt; x + this.e.WIDTH + 200 || xTest &lt; x - 200)){
+<span class="nc" id="L61">                    boolean canPass = true;</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">                    for(Immobile i : app.getMap()){</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">                        if(i != null){</span>
+<span class="nc bnc" id="L64" title="All 4 branches missed.">                            if(i.getX() == xTest &amp;&amp; i.getY() == yTest){</span>
+<span class="nc" id="L65">                                canPass = false;</span>
+                            }
+                        }
+<span class="nc" id="L68">                    }</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">                    if(canPass){</span>
+                        //System.out.println(&quot;X: &quot; + xTest + &quot; Y: &quot; + yTest);
+<span class="nc" id="L71">                        canRespawnX = true;</span>
+<span class="nc" id="L72">                        canRespawnY = true;</span>
+                    }
+<span class="nc" id="L74">                }</span>
+            }
+            
+        }
+
+<span class="nc" id="L79">        int[] toReturn = new int[2];</span>
+<span class="nc" id="L80">        toReturn[0] = xTest;</span>
+<span class="nc" id="L81">        toReturn[1] = yTest;</span>
+<span class="nc" id="L82">        return toReturn;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

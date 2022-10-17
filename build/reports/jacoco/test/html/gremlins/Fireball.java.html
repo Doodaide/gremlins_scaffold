@@ -3,7 +3,7 @@
 import processing.core.PImage;
 
 /**
- * Fireball class: wizard's main projectile 
+ * Fireball class: A projectile that extends from mobile entities - the wizard's main projectile 
  */
 public class Fireball extends Projectile{
     /**
@@ -40,7 +40,7 @@ public class Fireball extends Projectile{
 <span class="fc" id="L40">    }</span>
 
     /**
-     * 
+     * Up Method sets the yVel, xVel, and direction of the fireball to correspond to moving up
      */
     @Override
     public void up() {
@@ -49,86 +49,102 @@ public class Fireball extends Projectile{
 <span class="fc" id="L49">        this.direction = 0;</span>
 <span class="fc" id="L50">    }</span>
 
+    /**
+     * Right Method sets the xVel, yVel and direction of the fireball to correspond to moving right
+     */
     @Override
     public void right() {
-<span class="fc" id="L54">       this.xVel = speed;</span>
-<span class="fc" id="L55">       this.yVel = 0;</span>
-<span class="fc" id="L56">       this.direction = 1;</span>
-<span class="fc" id="L57">    }</span>
+<span class="fc" id="L57">       this.xVel = speed;</span>
+<span class="fc" id="L58">       this.yVel = 0;</span>
+<span class="fc" id="L59">       this.direction = 1;</span>
+<span class="fc" id="L60">    }</span>
 
+    /**
+     * Down method sets the xVel, yVel, and direction of the fireball to correspond to moving down
+     */
     @Override
     public void down() {
-<span class="fc" id="L61">        this.yVel = speed;</span>
-<span class="fc" id="L62">        this.xVel = 0;</span>
-<span class="fc" id="L63">        this.direction = 2;</span>
-<span class="fc" id="L64">    }</span>
+<span class="fc" id="L67">        this.yVel = speed;</span>
+<span class="fc" id="L68">        this.xVel = 0;</span>
+<span class="fc" id="L69">        this.direction = 2;</span>
+<span class="fc" id="L70">    }</span>
 
+    /**
+     * Left method sets the xVel, yVel, and direction of the fireball to correspond to moving left
+     */
     @Override
     public void left() {
-<span class="fc" id="L68">        this.xVel = -speed;</span>
-<span class="fc" id="L69">        this.yVel = 0;</span>
-<span class="fc" id="L70">        this.direction = 3;</span>
-<span class="fc" id="L71">    }</span>
+<span class="fc" id="L77">        this.xVel = -speed;</span>
+<span class="fc" id="L78">        this.yVel = 0;</span>
+<span class="fc" id="L79">        this.direction = 3;</span>
+<span class="fc" id="L80">    }</span>
 
+    /**
+     * FireballHit is a method that evaluates whether the 'current' fireball considered has hit a valid destructable block on the map
+     * @param app app is used to get the ArrayList of all blocks (destructable and indestructable) that are to be drawn 
+     * @return boolean corresponding to whether a destructable block that has not been destroyed has been hit by the current fireball 
+     */
     public boolean fireballHit(App app){
-<span class="nc bnc" id="L74" title="All 2 branches missed.">        for(Immobile i : app.getMap()){</span>
-<span class="nc bnc" id="L75" title="All 2 branches missed.">            if(i != null){</span>
-<span class="nc bnc" id="L76" title="All 4 branches missed.">                if(i == this.collisionBlock &amp;&amp; i.getClass().getName().equals(&quot;gremlins.Destructable&quot;)){</span>
-<span class="nc" id="L77">                    System.out.println(&quot;getting hit and it is a destructable&quot;);</span>
-<span class="nc" id="L78">                    return true; </span>
+<span class="nc bnc" id="L88" title="All 2 branches missed.">        for(Immobile i : app.getMap()){</span>
+<span class="nc bnc" id="L89" title="All 2 branches missed.">            if(i != null){</span>
+<span class="nc bnc" id="L90" title="All 4 branches missed.">                if(i == this.collisionBlock &amp;&amp; i.getClass().getName().equals(&quot;gremlins.Destructable&quot;)){</span>
+<span class="nc" id="L91">                    return true; </span>
                 }
             }
-<span class="nc" id="L81">        }</span>
-<span class="nc" id="L82">        return false;</span>
+<span class="nc" id="L94">        }</span>
+<span class="nc" id="L95">        return false;</span>
     }
 
+    /**
+     * FireballHitGremlin is a method that evaluates whether the 'current' fireball considered has hit a gremlin mobile entity on the screen 
+     * @param app app is used to get the ArrayList of all currently active gremlins that are to be drawn 
+     * @return boolean corresponding to whether a valid gremlin has been hit by the current fireball. 
+     */
     public boolean fireballHitGremlin(App app){
-<span class="nc bnc" id="L86" title="All 2 branches missed.">        for(Gremlin g : app.getGArray()){</span>
-<span class="nc bnc" id="L87" title="All 2 branches missed.">            if(g != null){</span>
-<span class="nc bnc" id="L88" title="All 2 branches missed.">                if(g == this.collisionEntity){</span>
-<span class="nc" id="L89">                    return true; </span>
+<span class="nc bnc" id="L104" title="All 2 branches missed.">        for(Gremlin g : app.getGArray()){</span>
+<span class="nc bnc" id="L105" title="All 2 branches missed.">            if(g != null){</span>
+<span class="nc bnc" id="L106" title="All 2 branches missed.">                if(g == this.collisionEntity){</span>
+<span class="nc" id="L107">                    return true; </span>
                 }
             }
-<span class="nc" id="L92">        }</span>
-<span class="nc" id="L93">        return false;</span>
+<span class="nc" id="L110">        }</span>
+<span class="nc" id="L111">        return false;</span>
     }
 
+    /**
+     * Draw method to draw the fireball on screen 
+     * @param app inherits the image() method from PApplet
+     */
+    @Override
     public int draw(App app){
-<span class="nc bnc" id="L97" title="All 2 branches missed.">        if(this.alive){</span>
-            //System.out.println(&quot;Alive&quot;);
-<span class="nc" id="L99">            app.image(this.sprite, this.x, this.y);</span>
-            //System.out.println(this.getX() + &quot; &quot; + this.getY());
+<span class="nc bnc" id="L120" title="All 2 branches missed.">        if(this.alive){</span>
+<span class="nc" id="L121">            app.image(this.sprite, this.x, this.y);</span>
         }
-<span class="nc" id="L102">        return 0;</span>
+<span class="nc" id="L123">        return 0;</span>
     }
 
+    /**
+     * Tick method &quot;updates&quot; the fireball everytime called. 
+     * Under the condition that the fireball is still &quot;alive&quot; - meaning it can still be displayed on the next frame and be considered for movement
+     * the tick method will check if it has collided with anything
+     * @param app which is used in the mobile parent class to access all possible &quot;collidable&quot; objects 
+     * @return integer 1 (corresponds to having hit something) or integer 0 (corresponds to not having hit something)
+     */
     @Override
     public int tick(App app) {
-<span class="nc bnc" id="L107" title="All 2 branches missed.">        if(this.alive){</span>
-<span class="nc bnc" id="L108" title="All 2 branches missed.">            if(this.collision(app) == 1){ // block collision </span>
-                //System.out.println(&quot;Collision&quot;);
-<span class="nc bnc" id="L110" title="All 4 branches missed.">                if(!this.sideAV.get(0) &amp;&amp; this.direction == 0){</span>
-                    //System.out.println(&quot;bottom of block hit&quot;);
-<span class="nc" id="L112">                    return 1; // something hit</span>
+<span class="nc bnc" id="L135" title="All 2 branches missed.">        if(this.alive){</span>
+<span class="nc bnc" id="L136" title="All 2 branches missed.">            if(this.collision(app) == 1){ // block collision </span>
+<span class="nc bnc" id="L137" title="All 4 branches missed.">                if((!this.sideAV.get(0) &amp;&amp; this.direction == 0) </span>
+<span class="nc bnc" id="L138" title="All 4 branches missed.">                || (!this.sideAV.get(2) &amp;&amp; this.direction == 2) </span>
+<span class="nc bnc" id="L139" title="All 4 branches missed.">                || (!this.sideAV.get(1) &amp;&amp; this.direction == 1) </span>
+<span class="nc bnc" id="L140" title="All 4 branches missed.">                || (!this.sideAV.get(3) &amp;&amp; this.direction == 3)){</span>
+<span class="nc" id="L141">                    return 1;</span>
                 }
-<span class="nc bnc" id="L114" title="All 4 branches missed.">                if(!this.sideAV.get(2) &amp;&amp; this.direction == 2){</span>
-                    //System.out.println(&quot;top of block hit&quot;);
-<span class="nc" id="L116">                    return 1; // something hit</span>
-                }
-<span class="nc bnc" id="L118" title="All 4 branches missed.">                if(!this.sideAV.get(1) &amp;&amp; this.direction == 1){</span>
-                    //System.out.println(&quot;left of block hit&quot;);
-<span class="nc" id="L120">                    return 1; // something hit</span>
-                }
-<span class="nc bnc" id="L122" title="All 4 branches missed.">                if(!this.sideAV.get(3) &amp;&amp; this.direction == 3){</span>
-                    //System.out.println(&quot;Right of block hit&quot;);
-<span class="nc" id="L124">                    return 1; // something hit</span>
-                }
-
             }
-<span class="nc" id="L128">            this.x += this.xVel; </span>
-<span class="nc" id="L129">            this.y += this.yVel;</span>
+<span class="nc" id="L144">            this.x += this.xVel; </span>
+<span class="nc" id="L145">            this.y += this.yVel;</span>
         }
-<span class="nc" id="L131">        return 0;</span>
+<span class="nc" id="L147">        return 0;</span>
         
     }
 }

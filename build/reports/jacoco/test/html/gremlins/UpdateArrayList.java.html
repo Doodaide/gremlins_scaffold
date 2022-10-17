@@ -3,20 +3,29 @@
 import java.util.ArrayList;
 
 /**
- * UpdateArrayList
+ * UpdateArrayList class: a generic helper class used to remove any null entries from an array given. 
  */
 public class UpdateArrayList &lt;T&gt; {
-<span class="fc" id="L9">    public UpdateArrayList(){</span>
-<span class="fc" id="L10">    }</span>
+    
+    /**
+     * Constructor
+     */
+<span class="fc" id="L13">    public UpdateArrayList(){</span>
+<span class="fc" id="L14">    }</span>
 
+    /**
+     * Update method: deletes any null objects in a given Arraylist (and maintains order)
+     * @param toBeUpdated an ArrayList (type T) with potential null entries 
+     * @return returns an ArrayList (type T) with null entries removed and order maintained 
+     */
     public ArrayList&lt;T&gt; update(ArrayList&lt;T&gt; toBeUpdated){
-<span class="fc" id="L13">        ArrayList&lt;T&gt; temp = new ArrayList&lt;T&gt;();</span>
-<span class="fc bfc" id="L14" title="All 2 branches covered.">        for(T e : toBeUpdated){</span>
-<span class="fc bfc" id="L15" title="All 2 branches covered.">            if(e != null){</span>
-<span class="fc" id="L16">                temp.add(e);</span>
+<span class="fc" id="L22">        ArrayList&lt;T&gt; temp = new ArrayList&lt;T&gt;();</span>
+<span class="fc bfc" id="L23" title="All 2 branches covered.">        for(T e : toBeUpdated){</span>
+<span class="fc bfc" id="L24" title="All 2 branches covered.">            if(e != null){</span>
+<span class="fc" id="L25">                temp.add(e);</span>
             }
-<span class="fc" id="L18">        }</span>
-<span class="fc" id="L19">        return temp;</span>
+<span class="fc" id="L27">        }</span>
+<span class="fc" id="L28">        return temp;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

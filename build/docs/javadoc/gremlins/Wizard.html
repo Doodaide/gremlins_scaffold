@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -188,50 +188,66 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#draw-gremlins.App-">draw</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#fireballMechanics-gremlins.App-">fireballMechanics</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>processing.core.PImage</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#getCurrentImg--">getCurrentImg</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i3" class="rowColor">
-<td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#getManaCoolDown--">getManaCoolDown</a></span>()</code>&nbsp;</td>
-</tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#getTeleported--">getTeleported</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code>java.util.ArrayList&lt;<a href="../gremlins/Fireball.html" title="class in gremlins">Fireball</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#getExistingFireballs--">getExistingFireballs</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#getTpCooldown--">getTpCooldown</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#getManaCoolDown--">getManaCoolDown</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i6" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#left--">left</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#getTeleported--">getTeleported</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i7" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#right--">right</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#getTpCooldown--">getTpCooldown</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#setManaCooldown-int-">setManaCooldown</a></span>(int&nbsp;x)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#left--">left</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#setTeleported-boolean-">setTeleported</a></span>(boolean&nbsp;b)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#right--">right</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#setTpCooldown-int-">setTpCooldown</a></span>(int&nbsp;x)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#setExistingFireballs-java.util.ArrayList-">setExistingFireballs</a></span>(java.util.ArrayList&lt;<a href="../gremlins/Fireball.html" title="class in gremlins">Fireball</a>&gt;&nbsp;a)</code>&nbsp;</td>
 </tr>
 <tr id="i11" class="rowColor">
-<td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#tick-gremlins.App-">tick</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>&nbsp;</td>
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#setManaCooldown-int-">setManaCooldown</a></span>(int&nbsp;x)</code>&nbsp;</td>
 </tr>
 <tr id="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#tp-gremlins.App-">tp</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#setTeleported-boolean-">setTeleported</a></span>(boolean&nbsp;b)</code>&nbsp;</td>
 </tr>
 <tr id="i13" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#setTpCooldown-int-">setTpCooldown</a></span>(int&nbsp;x)</code>&nbsp;</td>
+</tr>
+<tr id="i14" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#shoot--">shoot</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i15" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#tick-gremlins.App-">tick</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>&nbsp;</td>
+</tr>
+<tr id="i16" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#tp-gremlins.App-">tp</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>&nbsp;</td>
+</tr>
+<tr id="i17" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Wizard.html#up--">up</a></span>()</code>&nbsp;</td>
 </tr>
@@ -354,6 +370,33 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <pre>public&nbsp;boolean&nbsp;getTeleported()</pre>
 </li>
 </ul>
+<a name="getExistingFireballs--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getExistingFireballs</h4>
+<pre>public&nbsp;java.util.ArrayList&lt;<a href="../gremlins/Fireball.html" title="class in gremlins">Fireball</a>&gt;&nbsp;getExistingFireballs()</pre>
+</li>
+</ul>
+<a name="setExistingFireballs-java.util.ArrayList-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setExistingFireballs</h4>
+<pre>public&nbsp;void&nbsp;setExistingFireballs(java.util.ArrayList&lt;<a href="../gremlins/Fireball.html" title="class in gremlins">Fireball</a>&gt;&nbsp;a)</pre>
+</li>
+</ul>
+<a name="shoot--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>shoot</h4>
+<pre>public&nbsp;void&nbsp;shoot()</pre>
+</li>
+</ul>
 <a name="up--">
 <!--   -->
 </a>
@@ -413,6 +456,15 @@ extends <a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></
 <li class="blockList">
 <h4>tp</h4>
 <pre>public&nbsp;void&nbsp;tp(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</pre>
+</li>
+</ul>
+<a name="fireballMechanics-gremlins.App-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>fireballMechanics</h4>
+<pre>public&nbsp;void&nbsp;fireballMechanics(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</pre>
 </li>
 </ul>
 <a name="draw-gremlins.App-">

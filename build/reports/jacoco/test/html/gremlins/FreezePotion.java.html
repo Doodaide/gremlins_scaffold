@@ -3,59 +3,110 @@
 import processing.core.PImage;
 
 /**
- * FreezePotion
+ * FreezePotion class: An extension of the immobile entity that freezes all hostile entities. 
  */
 public class FreezePotion extends Immobile{
+    /**
+     * whether the potion has collided with the wizard
+     */
     private boolean consumed;
+
+    /**
+     * the potion's sprite
+     */
     private PImage sprite;
+
+    /**
+     * The length of time the freeze effect lasts
+     */
     private int innateCooldown;
+
+    /**
+     * Constructor for Freeze potion
+     * @param x x coordinate of potion 
+     * @param y y coordinate of potion 
+     * @param sprite sprite of potion 
+     */
     public FreezePotion(int x, int y, PImage sprite) {
-<span class="fc" id="L13">        super(x, y);</span>
-<span class="fc" id="L14">        this.sprite = sprite;</span>
-<span class="fc" id="L15">        this.consumed = false;</span>
-<span class="fc" id="L16">        this.innateCooldown = 0;</span>
-<span class="fc" id="L17">    }</span>
+<span class="fc" id="L31">        super(x, y);</span>
+<span class="fc" id="L32">        this.sprite = sprite;</span>
+<span class="fc" id="L33">        this.consumed = false;</span>
+<span class="fc" id="L34">        this.innateCooldown = 0;</span>
+<span class="fc" id="L35">    }</span>
 
+    /**
+     * Setter method for whether the potion has been collided with a wizard mobile entity 
+     * @param b a boolean for whether the potion is consumed (not display on screen) or not. 
+     */
     public void setConsumed(boolean b){
-<span class="fc" id="L20">        this.consumed = b;</span>
-<span class="fc" id="L21">    }</span>
+<span class="fc" id="L42">        this.consumed = b;</span>
+<span class="fc" id="L43">    }</span>
 
+    /**
+     * Getter method for whether the potion has been consumed by the wizard mobile entity
+     * @return boolean for whether the potion has been consumed or not. 
+     */
     public boolean getConsumed(){
-<span class="fc" id="L24">        return this.consumed;</span>
+<span class="fc" id="L50">        return this.consumed;</span>
     }
 
+    /**
+     * Getter method for the potion's cooldown (how long the freeze 
+     * effect lasts, not the time taken for the potion to respawn)
+     * @return integer for how much longer the potion lasts 
+     */
     public int getCooldown(){
-<span class="fc" id="L28">        return this.innateCooldown;</span>
+<span class="fc" id="L59">        return this.innateCooldown;</span>
     }
 
+    /**
+     * Setter method for the potion's cooldown (how long the freeze 
+     * effect lasts, not the time taken for the potion to respawn)
+     * @param i an integer corresponding to whether the time should be incremented up. 
+     */
     public void setCooldown(int i){
-<span class="fc" id="L32">        this.innateCooldown = i;</span>
-<span class="fc" id="L33">    }</span>
+<span class="fc" id="L68">        this.innateCooldown = i;</span>
+<span class="fc" id="L69">    }</span>
 
-
-
+    /**
+     * Draw method draw the image of the potion on screen. &quot;Draws&quot; the image onscreen iff the potion is not consumed
+     * @param app used to inherit the image() method. 
+     */
     @Override
     public void draw(App app) {
-<span class="pc bpc" id="L39" title="1 of 2 branches missed.">        if(!this.consumed){</span>
-<span class="fc" id="L40">            app.image(this.sprite, this.x, this.y);</span>
+<span class="pc bpc" id="L77" title="1 of 2 branches missed.">        if(!this.consumed){</span>
+<span class="fc" id="L78">            app.image(this.sprite, this.x, this.y);</span>
         }
-<span class="fc" id="L42">    }</span>
+<span class="fc" id="L80">    }</span>
 
+    /**
+     * The potion has no update states
+     * @return int 0, as it is not a destructable block that returns a 1. 
+     */
     @Override
     public int update() {
-<span class="fc" id="L46">        return 0;</span>
+<span class="fc" id="L88">        return 0;</span>
     }
 
-
+    /**
+     * Getter method for the potion's viability (to be hit)
+     * The potion is never 'collidable' by projectiles, which means the wizard's fireballs can pass through. 
+     * @return false 
+     */
     @Override
     public boolean getViable() {
-<span class="fc" id="L52">        return false;</span>
+<span class="fc" id="L98">        return false;</span>
     }
 
+    /** 
+     * Setter method for the potion's viability 
+     * The potion is never collidable, so despite the aguments supplied, the viability will always be false.
+     * @param b boolean
+     */
     @Override
     public void setViable(boolean b) {
-<span class="fc" id="L57">        this.viable = false;</span>
-<span class="fc" id="L58">    }</span>
+<span class="fc" id="L108">        this.viable = false;</span>
+<span class="fc" id="L109">    }</span>
 
     
 }

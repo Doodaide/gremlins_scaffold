@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="gremlins.WizardTestND" tests="6" skipped="0" failures="0" errors="0" timestamp="2022-10-13T12:04:08" hostname="Alexanders-MacBook-Pro-2.local" time="5.875">
+<testsuite name="gremlins.WizardTestND" tests="6" skipped="0" failures="0" errors="0" timestamp="2022-10-17T07:01:40" hostname="Alexanders-MacBook-Pro-2.local" time="5.731">
   <properties/>
   <testcase name="constructor()" classname="gremlins.WizardTestND" time="0.0"/>
-  <testcase name="tpTest()" classname="gremlins.WizardTestND" time="0.0"/>
+  <testcase name="tpTest()" classname="gremlins.WizardTestND" time="0.001"/>
   <testcase name="directionTest()" classname="gremlins.WizardTestND" time="0.0"/>
-  <testcase name="manaTest()" classname="gremlins.WizardTestND" time="0.0"/>
-  <testcase name="movementImageTest()" classname="gremlins.WizardTestND" time="5.708"/>
-  <testcase name="staticImageTest()" classname="gremlins.WizardTestND" time="0.165"/>
+  <testcase name="manaTest()" classname="gremlins.WizardTestND" time="0.001"/>
+  <testcase name="movementImageTest()" classname="gremlins.WizardTestND" time="5.568"/>
+  <testcase name="staticImageTest()" classname="gremlins.WizardTestND" time="0.161"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
