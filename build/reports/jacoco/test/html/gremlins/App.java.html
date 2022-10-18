@@ -6,42 +6,103 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
-import java.io.*;
-
 /**
- * App class
+ * App class: The main body of code extending PApplet, that integrates all of the individual object classes, and dictates how 
+ * the game runs 
  */
 public class App extends PApplet {
-
-    // Window dimensions 
+     
+    /**
+     * The dimensions of the app window generated (in pixels)
+     * All static final variables, so no modifications are possible
+     */
     public static final int WIDTH = 720;
     public static final int HEIGHT = 720;
     public static final int SPRITESIZE = 20;
     public static final int BOTTOMBAR = 60;
 
-    // Hardset boundaries
-<span class="fc" id="L23">    public int leftBound = 20;</span>
-<span class="fc" id="L24">    public int rightBound = 700;</span>
-<span class="fc" id="L25">    public int upperBound = 20;</span>
-<span class="fc" id="L26">    public int lowerBound = 660;</span>
+    /**
+     * These are a set of hardset boundaries that the no mobile objects can pass 
+     */
+    public static final int leftBound = 20;
+    public static final int rightBound = 700;
+    public static final int upperBound = 20;
+    public static final int lowerBound = 660;
 
+    /**
+     * the PImage variable for the destructable immobile entity 
+     */
     public PImage brickwall;
+
+    /**
+     * the PImage variable for the indestructable immobile entity 
+     */
     public PImage stonewall;
+
+    /**
+     * the PImage variable for the mobile gremlin entity, the enemy of the player 
+     */
     public PImage gremlin;
+
+    /**
+     * the PImage variable for the immobile portal entity, the goal to reach
+     */
     public PImage portal;
+
+    /**
+     * the PImage variable for the gremlin's slime projectile 
+     */
     public PImage slime;
+
+    /**
+     * the PImage variable for the immobile powerup entity
+     */
     public PImage powerUp;
+
+    /**
+     * the PImage variable of the gremlin under the effect of the powerUp
+     */
     public PImage frozenG;
+
+    /**
+     * the PImage of the gremlin's slime under the effect of the powerUp
+     */
     public PImage frozenS;
+
+    /**
+     * A PImage array that contains the destruction sequence of the destructable immobile entities
+     */
     public PImage[] brickwallDestruction; 
+    
+    /**
+     * A PImage array that contains the different sprites associated with the wizard
+     */
     public PImage[] wizardSprites;
+
+    /**
+     * A PImage array that contains the modified wizard sprite that is used in the teleport UI
+     */
     public PImage tPIcon;
+
+    /**
+     * the PImage variable associated with a Kahmehameha beam that is fired left or right 
+     */
     public PImage hBeam; 
+
+    /**
+     * the PImage variable associated with a Kamehameha beam that is fired upwards or downwards 
+     */
     public PImage vBeam; 
+
+    /**
+     * the PImage variable associated with the game over screen. 
+     */
     public PImage JTK; 
 
-<span class="fc" id="L43">    public static final Random randomGenerator = new Random(); // random number generator </span>
-    private Wizard w; // Player controlled character 
+    /**
+     * Object references
+     */
+    private Wizard w; 
     private ArrayList&lt;Immobile&gt; mapToDraw; // map 
     private ArrayList&lt;Gremlin&gt; gArray; // array of gremlin objects 
     private ArrayList&lt;Mobile&gt; NPMobileEntities; // non projectile mobile entities
@@ -53,535 +114,555 @@ public class App extends PApplet {
     public static final int FPS = 60;
     private String configPath; 
     
-<span class="fc" id="L56">    private int universalCounter = 0;</span>
-<span class="fc" id="L57">    private int seconds = 0;</span>
+<span class="fc" id="L117">    private int universalCounter = 0;</span>
+<span class="fc" id="L118">    private int seconds = 0;</span>
     private int lives;
     private int level;
-<span class="fc" id="L60">    private int deaths = 0;</span>
-<span class="fc" id="L61">    private int innateCooldown = 0;</span>
-<span class="fc" id="L62">    private int kCharge = 3;</span>
+<span class="fc" id="L121">    private int deaths = 0;</span>
+
+
+<span class="fc" id="L124">    private int innateCooldown = 0;</span>
+<span class="fc" id="L125">    private int kCharge = 3;</span>
     private int[] powerUpCoords;
     private double wizardCooldown;
     private double enemyCooldown;
+
+    
     private boolean won;
-<span class="fc" id="L67">    private boolean passedLvl2 = false;</span>
-<span class="fc" id="L68">    private boolean passedLvl1 = false;</span>
-<span class="fc" id="L69">    private boolean powerUpSpawned = false; </span>
-<span class="fc" id="L70">    private boolean restart = false;</span>
-<span class="fc" id="L71">    private boolean freezeActive = false;</span>
-<span class="fc" id="L72">    private boolean powerUpConsumedOnce = false; </span>
-<span class="fc" id="L73">    private boolean kHit = false; </span>
+<span class="fc" id="L132">    private boolean passedLvl2 = false;</span>
+<span class="fc" id="L133">    private boolean passedLvl1 = false;</span>
+<span class="fc" id="L134">    private boolean powerUpSpawned = false; </span>
+<span class="fc" id="L135">    private boolean restart = false;</span>
+<span class="fc" id="L136">    private boolean freezeActive = false;</span>
+
+
+<span class="fc" id="L139">    private boolean powerUpConsumedOnce = false; </span>
+<span class="fc" id="L140">    private boolean kHit = false; </span>
 
     /**
-     * Constructor
+     * Constructor for App instance 
      */
-<span class="fc" id="L78">    public App(){</span>
-<span class="fc" id="L79">        this.configPath = &quot;config.json&quot;;</span>
-<span class="fc" id="L80">    }</span>
+<span class="fc" id="L145">    public App(){</span>
+<span class="fc" id="L146">        this.configPath = &quot;config.json&quot;;</span>
+<span class="fc" id="L147">    }</span>
 
     /**
-     * Initialise the setting of the window size.
+     * Initialise the setting of the window size. 
     */
     public void settings() {
-<span class="fc" id="L86">        size(WIDTH, HEIGHT);</span>
-<span class="fc" id="L87">    }</span>
+<span class="fc" id="L153">        size(WIDTH, HEIGHT);</span>
+<span class="fc" id="L154">    }</span>
 
     /**
      * Load all resources such as images. Initialise the elements such as the player, enemies and map elements.
+     * Many objects are instantiated within other helper classes such as DrawMap that produces a something readable
+     * from the config path. However, other instances such as the wizard are instantiated here 
     */
     public void setup() {
-<span class="fc" id="L93">        frameRate(FPS);</span>
-<span class="fc" id="L94">        this.seconds = 0;</span>
-<span class="fc" id="L95">        this.universalCounter = 0;</span>
-<span class="fc" id="L96">        kHit = false; </span>
-<span class="fc" id="L97">        kCharge = 3;</span>
-<span class="fc" id="L98">        this.setFreezeActive(false);</span>
+<span class="fc" id="L162">        frameRate(FPS);</span>
+<span class="fc" id="L163">        this.seconds = 0;</span>
+<span class="fc" id="L164">        this.universalCounter = 0;</span>
+<span class="fc" id="L165">        kHit = false; </span>
+<span class="fc" id="L166">        kCharge = 3;</span>
+<span class="fc" id="L167">        this.setFreezeActive(false);</span>
         // Read JSON file 
-<span class="fc" id="L100">        jr = new JSONReader(this.configPath);</span>
-<span class="fc" id="L101">        this.lives = (int) Math.round(jr.getSpecs().get(&quot;lives&quot;));</span>
-<span class="fc" id="L102">        String layout = &quot;&quot;;</span>
-<span class="pc bpc" id="L103" title="2 of 4 branches missed.">        if(!passedLvl2 &amp;&amp; passedLvl1){</span>
+<span class="fc" id="L169">        jr = new JSONReader(this.configPath);</span>
+<span class="fc" id="L170">        this.lives = (int) Math.round(jr.getSpecs().get(&quot;lives&quot;));</span>
+<span class="fc" id="L171">        String layout = &quot;&quot;;</span>
+<span class="pc bpc" id="L172" title="2 of 4 branches missed.">        if(!passedLvl2 &amp;&amp; passedLvl1){</span>
             try {
-<span class="nc" id="L105">                jr.readSpecs(1);</span>
-<span class="nc" id="L106">            } catch (Exception e) {</span>
-<span class="nc" id="L107">                System.err.println(&quot;Invalid input&quot;);</span>
-<span class="nc" id="L108">            }</span>
+<span class="nc" id="L174">                jr.readSpecs(1);</span>
+<span class="nc" id="L175">            } catch (Exception e) {</span>
+<span class="nc" id="L176">                System.err.println(&quot;Invalid input&quot;);</span>
+<span class="nc" id="L177">            }</span>
 
-<span class="nc" id="L110">            layout = jr.getLayout();</span>
-<span class="nc" id="L111">            this.enemyCooldown = jr.getSpecs().get(&quot;enemy_cooldown&quot;) * FPS;</span>
-<span class="nc" id="L112">            this.wizardCooldown = jr.getSpecs().get(&quot;wizard_cooldown&quot;) * FPS;</span>
-<span class="nc" id="L113">            this.level = 2;</span>
+<span class="nc" id="L179">            layout = jr.getLayout();</span>
+<span class="nc" id="L180">            this.enemyCooldown = jr.getSpecs().get(&quot;enemy_cooldown&quot;) * FPS;</span>
+<span class="nc" id="L181">            this.wizardCooldown = jr.getSpecs().get(&quot;wizard_cooldown&quot;) * FPS;</span>
+<span class="nc" id="L182">            this.level = 2;</span>
         }
 
-<span class="pc bpc" id="L116" title="1 of 2 branches missed.">        else if (!passedLvl1){</span>
+<span class="pc bpc" id="L185" title="1 of 2 branches missed.">        else if (!passedLvl1){</span>
             try {
-<span class="fc" id="L118">                jr.readSpecs(0);</span>
-<span class="nc" id="L119">            } catch (Exception e) {</span>
-<span class="nc" id="L120">                System.err.println(&quot;Invalid input&quot;);</span>
-<span class="fc" id="L121">            }</span>
-<span class="fc" id="L122">            layout = jr.getLayout(); </span>
-<span class="fc" id="L123">            this.enemyCooldown = jr.getSpecs().get(&quot;enemy_cooldown&quot;) * FPS;</span>
-<span class="fc" id="L124">            this.wizardCooldown = jr.getSpecs().get(&quot;wizard_cooldown&quot;) * FPS;</span>
-<span class="fc" id="L125">            this.level = 1;</span>
+<span class="fc" id="L187">                jr.readSpecs(0);</span>
+<span class="nc" id="L188">            } catch (Exception e) {</span>
+<span class="nc" id="L189">                System.err.println(&quot;Invalid input&quot;);</span>
+<span class="fc" id="L190">            }</span>
+<span class="fc" id="L191">            layout = jr.getLayout(); </span>
+<span class="fc" id="L192">            this.enemyCooldown = jr.getSpecs().get(&quot;enemy_cooldown&quot;) * FPS;</span>
+<span class="fc" id="L193">            this.wizardCooldown = jr.getSpecs().get(&quot;wizard_cooldown&quot;) * FPS;</span>
+<span class="fc" id="L194">            this.level = 1;</span>
         }
         try {
-<span class="fc" id="L128">            this.wizardSprites = new PImage[5];</span>
-<span class="fc" id="L129">            this.wizardSprites[0] = loadImage(URLDecoder.decode(this.getClass().getResource(&quot;wizard2.png&quot;).getPath(), StandardCharsets.UTF_8.toString())); // up</span>
-<span class="fc" id="L130">            this.wizardSprites[1] = loadImage(URLDecoder.decode(this.getClass().getResource(&quot;wizard1.png&quot;).getPath(), StandardCharsets.UTF_8.toString()));  // right </span>
-<span class="fc" id="L131">            this.wizardSprites[2] = loadImage(URLDecoder.decode(this.getClass().getResource(&quot;wizard3.png&quot;).getPath(), StandardCharsets.UTF_8.toString())); // down</span>
-<span class="fc" id="L132">            this.wizardSprites[3] = loadImage(URLDecoder.decode(this.getClass().getResource(&quot;wizard0.png&quot;).getPath(), StandardCharsets.UTF_8.toString())); // left  </span>
-<span class="fc" id="L133">            this.wizardSprites[4] = loadImage(URLDecoder.decode(this.getClass().getResource(&quot;fireball.png&quot;).getPath(), StandardCharsets.UTF_8.toString())); // fireball</span>
-<span class="fc" id="L134">            this.stonewall = loadImage(this.getClass().getResource(&quot;stonewall.png&quot;).getPath().replace(&quot;%20&quot;, &quot; &quot;));</span>
-<span class="fc" id="L135">            this.brickwall = loadImage(this.getClass().getResource(&quot;brickwall.png&quot;).getPath().replace(&quot;%20&quot;, &quot; &quot;));</span>
-<span class="fc" id="L136">            this.brickwallDestruction = new PImage[4];</span>
-<span class="fc" id="L137">            this.brickwallDestruction[0] = loadImage(this.getClass().getResource(&quot;brickwall_destroyed0.png&quot;).getPath().replace(&quot;%20&quot;, &quot; &quot;));</span>
-<span class="fc" id="L138">            this.brickwallDestruction[1] = loadImage(this.getClass().getResource(&quot;brickwall_destroyed1.png&quot;).getPath().replace(&quot;%20&quot;, &quot; &quot;));</span>
-<span class="fc" id="L139">            this.brickwallDestruction[2] = loadImage(this.getClass().getResource(&quot;brickwall_destroyed2.png&quot;).getPath().replace(&quot;%20&quot;, &quot; &quot;));</span>
-<span class="fc" id="L140">            this.brickwallDestruction[3] = loadImage(this.getClass().getResource(&quot;brickwall_destroyed3.png&quot;).getPath().replace(&quot;%20&quot;, &quot; &quot;));</span>
-<span class="fc" id="L141">            this.gremlin = loadImage(URLDecoder.decode(this.getClass().getResource(&quot;gremlin.png&quot;).getPath(), StandardCharsets.UTF_8.toString()));</span>
-<span class="fc" id="L142">            this.slime = loadImage(this.getClass().getResource(&quot;slime.png&quot;).getPath().replace(&quot;%20&quot;, &quot; &quot;));</span>
-<span class="fc" id="L143">            this.portal = loadImage(this.getClass().getResource(&quot;portal.png&quot;).getPath().replace(&quot;%20&quot;, &quot; &quot;));</span>
-<span class="fc" id="L144">            this.powerUp = loadImage(this.getClass().getResource(&quot;Powerup_Freeze.png&quot;).getPath().replace(&quot;%20&quot;, &quot; &quot;));</span>
-<span class="fc" id="L145">            this.frozenG = loadImage(this.getClass().getResource(&quot;frozenGremlin.png&quot;).getPath().replace(&quot;%20&quot;, &quot; &quot;));</span>
-<span class="fc" id="L146">            this.frozenS = loadImage(this.getClass().getResource(&quot;frozenSlime.png&quot;).getPath().replace(&quot;%20&quot;, &quot; &quot;));</span>
-<span class="fc" id="L147">            this.tPIcon = loadImage(this.getClass().getResource(&quot;wizardTP.png&quot;).getPath().replace(&quot;%20&quot;, &quot; &quot;));</span>
-<span class="fc" id="L148">            this.hBeam = loadImage(this.getClass().getResource(&quot;Beam_Horizontal.png&quot;).getPath().replace(&quot;%20&quot;, &quot; &quot;));</span>
-<span class="fc" id="L149">            this.vBeam = loadImage(this.getClass().getResource(&quot;Beam_Vertical.png&quot;).getPath().replace(&quot;%20&quot;, &quot; &quot;));</span>
-<span class="fc" id="L150">            this.JTK = loadImage(this.getClass().getResource(&quot;JTK.png&quot;).getPath().replace(&quot;%20&quot;, &quot; &quot;));</span>
-<span class="fc" id="L151">            this.JTK.resize(HEIGHT, WIDTH);</span>
+<span class="fc" id="L197">            this.wizardSprites = new PImage[5];</span>
+<span class="fc" id="L198">            this.wizardSprites[0] = loadImage(URLDecoder.decode(this.getClass().getResource(&quot;wizard2.png&quot;).getPath(), StandardCharsets.UTF_8.toString())); // up</span>
+<span class="fc" id="L199">            this.wizardSprites[1] = loadImage(URLDecoder.decode(this.getClass().getResource(&quot;wizard1.png&quot;).getPath(), StandardCharsets.UTF_8.toString()));  // right </span>
+<span class="fc" id="L200">            this.wizardSprites[2] = loadImage(URLDecoder.decode(this.getClass().getResource(&quot;wizard3.png&quot;).getPath(), StandardCharsets.UTF_8.toString())); // down</span>
+<span class="fc" id="L201">            this.wizardSprites[3] = loadImage(URLDecoder.decode(this.getClass().getResource(&quot;wizard0.png&quot;).getPath(), StandardCharsets.UTF_8.toString())); // left  </span>
+<span class="fc" id="L202">            this.wizardSprites[4] = loadImage(URLDecoder.decode(this.getClass().getResource(&quot;fireball.png&quot;).getPath(), StandardCharsets.UTF_8.toString())); // fireball</span>
+<span class="fc" id="L203">            this.stonewall = loadImage(this.getClass().getResource(&quot;stonewall.png&quot;).getPath().replace(&quot;%20&quot;, &quot; &quot;));</span>
+<span class="fc" id="L204">            this.brickwall = loadImage(this.getClass().getResource(&quot;brickwall.png&quot;).getPath().replace(&quot;%20&quot;, &quot; &quot;));</span>
+<span class="fc" id="L205">            this.brickwallDestruction = new PImage[4];</span>
+<span class="fc" id="L206">            this.brickwallDestruction[0] = loadImage(this.getClass().getResource(&quot;brickwall_destroyed0.png&quot;).getPath().replace(&quot;%20&quot;, &quot; &quot;));</span>
+<span class="fc" id="L207">            this.brickwallDestruction[1] = loadImage(this.getClass().getResource(&quot;brickwall_destroyed1.png&quot;).getPath().replace(&quot;%20&quot;, &quot; &quot;));</span>
+<span class="fc" id="L208">            this.brickwallDestruction[2] = loadImage(this.getClass().getResource(&quot;brickwall_destroyed2.png&quot;).getPath().replace(&quot;%20&quot;, &quot; &quot;));</span>
+<span class="fc" id="L209">            this.brickwallDestruction[3] = loadImage(this.getClass().getResource(&quot;brickwall_destroyed3.png&quot;).getPath().replace(&quot;%20&quot;, &quot; &quot;));</span>
+<span class="fc" id="L210">            this.gremlin = loadImage(URLDecoder.decode(this.getClass().getResource(&quot;gremlin.png&quot;).getPath(), StandardCharsets.UTF_8.toString()));</span>
+<span class="fc" id="L211">            this.slime = loadImage(this.getClass().getResource(&quot;slime.png&quot;).getPath().replace(&quot;%20&quot;, &quot; &quot;));</span>
+<span class="fc" id="L212">            this.portal = loadImage(this.getClass().getResource(&quot;portal.png&quot;).getPath().replace(&quot;%20&quot;, &quot; &quot;));</span>
+<span class="fc" id="L213">            this.powerUp = loadImage(this.getClass().getResource(&quot;Powerup_Freeze.png&quot;).getPath().replace(&quot;%20&quot;, &quot; &quot;));</span>
+<span class="fc" id="L214">            this.frozenG = loadImage(this.getClass().getResource(&quot;frozenGremlin.png&quot;).getPath().replace(&quot;%20&quot;, &quot; &quot;));</span>
+<span class="fc" id="L215">            this.frozenS = loadImage(this.getClass().getResource(&quot;frozenSlime.png&quot;).getPath().replace(&quot;%20&quot;, &quot; &quot;));</span>
+<span class="fc" id="L216">            this.tPIcon = loadImage(this.getClass().getResource(&quot;wizardTP.png&quot;).getPath().replace(&quot;%20&quot;, &quot; &quot;));</span>
+<span class="fc" id="L217">            this.hBeam = loadImage(this.getClass().getResource(&quot;Beam_Horizontal.png&quot;).getPath().replace(&quot;%20&quot;, &quot; &quot;));</span>
+<span class="fc" id="L218">            this.vBeam = loadImage(this.getClass().getResource(&quot;Beam_Vertical.png&quot;).getPath().replace(&quot;%20&quot;, &quot; &quot;));</span>
+<span class="fc" id="L219">            this.JTK = loadImage(this.getClass().getResource(&quot;JTK.png&quot;).getPath().replace(&quot;%20&quot;, &quot; &quot;));</span>
+<span class="fc" id="L220">            this.JTK.resize(HEIGHT, WIDTH);</span>
        
-<span class="nc" id="L153">        } catch (UnsupportedEncodingException e) {</span>
-<span class="nc" id="L154">            System.err.println(&quot;Could not find an image&quot;);</span>
-<span class="nc" id="L155">            e.printStackTrace();</span>
-<span class="fc" id="L156">        }</span>
+<span class="nc" id="L222">        } catch (UnsupportedEncodingException e) {</span>
+<span class="nc" id="L223">            System.err.println(&quot;Could not find an image&quot;);</span>
+<span class="nc" id="L224">            e.printStackTrace();</span>
+<span class="fc" id="L225">        }</span>
 
-<span class="fc" id="L158">        ReadMap r = new ReadMap();</span>
-<span class="fc" id="L159">        r.parseLayout(layout);</span>
+<span class="fc" id="L227">        ReadMap r = new ReadMap();</span>
+<span class="fc" id="L228">        r.parseLayout(layout);</span>
 
-<span class="fc" id="L161">        mapToDraw = new ArrayList&lt;Immobile&gt;(); // ArrayList that contains all block objects to be drawn</span>
-<span class="fc" id="L162">        gArray = new ArrayList&lt;Gremlin&gt;();</span>
-<span class="fc" id="L163">        NPMobileEntities = new ArrayList&lt;Mobile&gt;();</span>
-<span class="fc" id="L164">        powerUpCoords = new int[2];</span>
-<span class="fc" id="L165">        powerUpCoords[0] = 999; </span>
-<span class="fc" id="L166">        powerUpCoords[1] = 999; </span>
-<span class="fc" id="L167">        this.powerUpConsumedOnce = false; </span>
+<span class="fc" id="L230">        mapToDraw = new ArrayList&lt;Immobile&gt;(); // ArrayList that contains all block objects to be drawn</span>
+<span class="fc" id="L231">        gArray = new ArrayList&lt;Gremlin&gt;();</span>
+<span class="fc" id="L232">        NPMobileEntities = new ArrayList&lt;Mobile&gt;();</span>
+<span class="fc" id="L233">        powerUpCoords = new int[2];</span>
+<span class="fc" id="L234">        powerUpCoords[0] = 999; </span>
+<span class="fc" id="L235">        powerUpCoords[1] = 999; </span>
+<span class="fc" id="L236">        this.powerUpConsumedOnce = false; </span>
         
-<span class="fc" id="L169">        DrawMap d = new DrawMap();</span>
-<span class="fc" id="L170">        d.generateMap(r.getMapContents(), this);</span>
-<span class="fc" id="L171">        w = new Wizard(d.getWizardStart()[0], d.getWizardStart()[1], 2, this.wizardSprites);</span>
-<span class="fc" id="L172">        w.setManaCooldown((int)this.wizardCooldown);</span>
-<span class="fc" id="L173">        NPMobileEntities.add(w);</span>
-<span class="fc" id="L174">        NPMobileEntities.addAll(gArray);</span>
-<span class="fc" id="L175">        this.innateCooldown = 0;</span>
-<span class="fc" id="L176">        jr = null;</span>
-<span class="fc" id="L177">        r = null;</span>
-<span class="fc" id="L178">        d = null;</span>
-<span class="fc" id="L179">        w.setTpCooldown(0);</span>
-<span class="fc" id="L180">    }</span>
+<span class="fc" id="L238">        DrawMap d = new DrawMap();</span>
+<span class="fc" id="L239">        d.generateMap(r.getMapContents(), this);</span>
+<span class="fc" id="L240">        w = new Wizard(d.getWizardStart()[0], d.getWizardStart()[1], 2, this.wizardSprites);</span>
+<span class="fc" id="L241">        w.setManaCooldown((int)this.wizardCooldown);</span>
+<span class="fc" id="L242">        NPMobileEntities.add(w);</span>
+<span class="fc" id="L243">        NPMobileEntities.addAll(gArray);</span>
+<span class="fc" id="L244">        this.innateCooldown = 0;</span>
+<span class="fc" id="L245">        jr = null;</span>
+<span class="fc" id="L246">        r = null;</span>
+<span class="fc" id="L247">        d = null;</span>
+<span class="fc" id="L248">        w.setTpCooldown(0);</span>
+<span class="fc" id="L249">    }</span>
     
+    /**
+     * Getter method for the Current kamehameha beam reference 
+     * @return the reference to the current kamehameha object 
+     */
     public Kamehameha getK(){
-<span class="pc bpc" id="L183" title="1 of 2 branches missed.">        if(this.k != null){</span>
-<span class="nc" id="L184">            return this.k;</span>
+<span class="pc bpc" id="L256" title="1 of 2 branches missed.">        if(this.k != null){</span>
+<span class="nc" id="L257">            return this.k;</span>
         }
-<span class="fc" id="L186">        return null;</span>
+<span class="fc" id="L259">        return null;</span>
     }
 
+    /**
+     * Getter method for whether the freeze effect is active. 
+     * @return boolean determining whether this is true or false
+     */
     public boolean getFreezeActive(){
-<span class="fc" id="L190">        return this.freezeActive;</span>
+<span class="fc" id="L267">        return this.freezeActive;</span>
     }
 
+    /**
+     * Setter method for whether the freeze effect is active or not 
+     * @param b a boolean corresponding to whether the effect is active 
+     */
     public void setFreezeActive(boolean b){
-<span class="fc" id="L194">        this.freezeActive = b;</span>
-<span class="fc" id="L195">    }</span>
+<span class="fc" id="L275">        this.freezeActive = b;</span>
+<span class="fc" id="L276">    }</span>
 
+    /**
+     * Getter method for the ArrayList that stores all the Immobiles to be drawn
+     * @return an ArrayList containing the Immobile entities that should be drawn onscreen. 
+     */
     public ArrayList&lt;Immobile&gt; getMap(){
-<span class="fc" id="L198">        return this.mapToDraw;</span>
+<span class="fc" id="L283">        return this.mapToDraw;</span>
     }
 
     public ArrayList&lt;Mobile&gt; getMobiles(){
-<span class="fc" id="L202">        return this.NPMobileEntities;</span>
+<span class="fc" id="L287">        return this.NPMobileEntities;</span>
     }
 
     public ArrayList&lt;Gremlin&gt; getGArray(){
-<span class="fc" id="L206">        return this.gArray;</span>
+<span class="fc" id="L291">        return this.gArray;</span>
     }
     
     public double getEnemyCooldown(){
-<span class="fc" id="L210">        return this.enemyCooldown;</span>
+<span class="fc" id="L295">        return this.enemyCooldown;</span>
     }
 
     public double getWizardCooldown(){
-<span class="fc" id="L214">        return this.wizardCooldown;</span>
+<span class="fc" id="L299">        return this.wizardCooldown;</span>
     }
 
     public boolean getPowerUpAvailable(){
-<span class="fc" id="L218">        return this.powerUpSpawned;</span>
+<span class="fc" id="L303">        return this.powerUpSpawned;</span>
     }
 
     public void setPowerUpSpawned(boolean b){
-<span class="nc" id="L222">        this.powerUpSpawned = b;</span>
-<span class="nc" id="L223">    }</span>
+<span class="nc" id="L307">        this.powerUpSpawned = b;</span>
+<span class="nc" id="L308">    }</span>
     
     public FreezePotion getPowerUp(){
-<span class="nc" id="L226">        return this.p;</span>
+<span class="fc" id="L311">        return this.p;</span>
     }
 
     public Wizard getWizard(){
-<span class="fc" id="L230">        return this.w;</span>
+<span class="fc" id="L315">        return this.w;</span>
     }
     
     public int getSeconds(){
-<span class="nc" id="L234">        return this.seconds;</span>
+<span class="nc" id="L319">        return this.seconds;</span>
     }
 
     public int getInnateCooldown(){
-<span class="nc" id="L238">        return this.innateCooldown;</span>
+<span class="nc" id="L323">        return this.innateCooldown;</span>
     }
 
     public int[] getPowerUpCoords(){
-<span class="nc" id="L242">        return this.powerUpCoords;</span>
+<span class="nc" id="L327">        return this.powerUpCoords;</span>
     }
 
     public void setPowerUpCoords(int x, int y){
-<span class="fc" id="L246">        this.powerUpCoords[0] = x;</span>
-<span class="fc" id="L247">        this.powerUpCoords[1] = y;</span>
-<span class="fc" id="L248">    }</span>
+<span class="fc" id="L331">        this.powerUpCoords[0] = x;</span>
+<span class="fc" id="L332">        this.powerUpCoords[1] = y;</span>
+<span class="fc" id="L333">    }</span>
     
     public void setPowerUpConsumedOnce(boolean t){
-<span class="nc" id="L251">        this.powerUpConsumedOnce = t;</span>
-<span class="nc" id="L252">    }</span>
+<span class="nc" id="L336">        this.powerUpConsumedOnce = t;</span>
+<span class="nc" id="L337">    }</span>
 
     public boolean getPowerUpConsumedOnce(){
-<span class="nc" id="L255">        return this.powerUpConsumedOnce;</span>
+<span class="nc" id="L340">        return this.powerUpConsumedOnce;</span>
     }
 
     public int getKCharge(){
-<span class="fc" id="L259">        return this.kCharge;</span>
+<span class="fc" id="L344">        return this.kCharge;</span>
     }
 
     /**
      * Receive key pressed signal from the keyboard.
     */
     public void keyPressed(KeyEvent e){
-<span class="nc" id="L266">        int key = e.getKeyCode(); </span>
-<span class="nc bnc" id="L267" title="All 2 branches missed.">        if(key == 37){ //left arrow </span>
-<span class="nc" id="L268">            w.left();</span>
+<span class="nc" id="L351">        int key = e.getKeyCode(); </span>
+<span class="nc bnc" id="L352" title="All 2 branches missed.">        if(key == 37){ //left arrow </span>
+<span class="nc" id="L353">            w.left();</span>
         }
         
-<span class="nc bnc" id="L271" title="All 2 branches missed.">        if (key == 39){ //right arrow </span>
-<span class="nc" id="L272">            w.right();</span>
+<span class="nc bnc" id="L356" title="All 2 branches missed.">        if (key == 39){ //right arrow </span>
+<span class="nc" id="L357">            w.right();</span>
         }
         
-<span class="nc bnc" id="L275" title="All 2 branches missed.">        if (key == 38){ //up arrow </span>
-<span class="nc" id="L276">            w.up();</span>
+<span class="nc bnc" id="L360" title="All 2 branches missed.">        if (key == 38){ //up arrow </span>
+<span class="nc" id="L361">            w.up();</span>
         }
         
-<span class="nc bnc" id="L279" title="All 2 branches missed.">        if (key == 40){ //down arrow</span>
-<span class="nc" id="L280">            w.down();</span>
+<span class="nc bnc" id="L364" title="All 2 branches missed.">        if (key == 40){ //down arrow</span>
+<span class="nc" id="L365">            w.down();</span>
         }
         
-<span class="nc bnc" id="L283" title="All 4 branches missed.">        if (key == 32 &amp;&amp; k == null){ //space </span>
-<span class="nc bnc" id="L284" title="All 2 branches missed.">            if(w.getManaCoolDown() &gt;= this.wizardCooldown){</span>
-<span class="nc" id="L285">                w.setManaCooldown(0);</span>
-<span class="nc" id="L286">                w.shoot();</span>
-<span class="nc" id="L287">                NPMobileEntities.addAll(w.getExistingFireballs());    </span>
+<span class="nc bnc" id="L368" title="All 4 branches missed.">        if (key == 32 &amp;&amp; k == null){ //space </span>
+<span class="nc bnc" id="L369" title="All 2 branches missed.">            if(w.getManaCoolDown() &gt;= this.wizardCooldown){</span>
+<span class="nc" id="L370">                w.setManaCooldown(0);</span>
+<span class="nc" id="L371">                w.shoot();</span>
+<span class="nc" id="L372">                NPMobileEntities.addAll(w.getExistingFireballs());    </span>
             }
         }
         
-<span class="nc bnc" id="L291" title="All 2 branches missed.">        else if (key == 84){ // t</span>
-<span class="nc bnc" id="L292" title="All 2 branches missed.">            if(w.getTpCooldown() == 0){</span>
-<span class="nc" id="L293">                w.tp(this);</span>
-<span class="nc" id="L294">                w.setTeleported(true);</span>
-<span class="nc" id="L295">                w.setTpCooldown(5 * FPS);</span>
+<span class="nc bnc" id="L376" title="All 2 branches missed.">        else if (key == 84){ // t</span>
+<span class="nc bnc" id="L377" title="All 6 branches missed.">            if(w.getTpCooldown() == 0 &amp;&amp; (w.getX() % 20 == 0 &amp;&amp; w.getY() % 20 == 0)){</span>
+<span class="nc" id="L378">                w.tp(this);</span>
+<span class="nc" id="L379">                w.setTeleported(true);</span>
+<span class="nc" id="L380">                w.setTpCooldown(5 * FPS);</span>
             }
         }
     
-<span class="nc bnc" id="L299" title="All 2 branches missed.">        else if (key == 82){ // r</span>
-<span class="nc bnc" id="L300" title="All 6 branches missed.">            if(this.kCharge != 0 &amp;&amp; w.getX() % 20 == 0 &amp;&amp; w.getY() % 20 == 0){</span>
+<span class="nc bnc" id="L384" title="All 2 branches missed.">        else if (key == 82){ // r</span>
+<span class="nc bnc" id="L385" title="All 6 branches missed.">            if(this.kCharge != 0 &amp;&amp; w.getX() % 20 == 0 &amp;&amp; w.getY() % 20 == 0){</span>
 
-<span class="nc bnc" id="L302" title="All 4 branches missed.">                if(w.getDirection() == 0 || w.getDirection() == 2){</span>
-<span class="nc" id="L303">                    k = new Kamehameha(w.getX(), w.getY(), this.vBeam);</span>
+<span class="nc bnc" id="L387" title="All 4 branches missed.">                if(w.getDirection() == 0 || w.getDirection() == 2){</span>
+<span class="nc" id="L388">                    k = new Kamehameha(w.getX(), w.getY(), this.vBeam);</span>
                 }
     
                 else{
-<span class="nc" id="L307">                    k = new Kamehameha(w.getX(), w.getY(), this.hBeam);</span>
+<span class="nc" id="L392">                    k = new Kamehameha(w.getX(), w.getY(), this.hBeam);</span>
                 }
-<span class="nc" id="L309">                this.kCharge -= 1; </span>
+<span class="nc" id="L394">                this.kCharge -= 1; </span>
             }
         }
-<span class="nc" id="L312">    }</span>
+<span class="nc" id="L397">    }</span>
     
     /**
      * Receive key released signal from the keyboard.
     */
     public void keyReleased(KeyEvent e) {
-<span class="nc" id="L318">        int key = e.getKeyCode();</span>
+<span class="nc" id="L403">        int key = e.getKeyCode();</span>
 
-<span class="nc bnc" id="L320" title="All 2 branches missed.">        if(key == 38){ // up</span>
-<span class="nc" id="L321">            w.yStop();</span>
+<span class="nc bnc" id="L405" title="All 2 branches missed.">        if(key == 38){ // up</span>
+<span class="nc" id="L406">            w.yStop();</span>
         }
 
-<span class="nc bnc" id="L324" title="All 2 branches missed.">        if(key == 40){ // down</span>
-<span class="nc" id="L325">            w.yStop();</span>
+<span class="nc bnc" id="L409" title="All 2 branches missed.">        if(key == 40){ // down</span>
+<span class="nc" id="L410">            w.yStop();</span>
         }
 
-<span class="nc bnc" id="L328" title="All 2 branches missed.">        if(key == 37){ // left </span>
-<span class="nc" id="L329">            w.xStop();</span>
+<span class="nc bnc" id="L413" title="All 2 branches missed.">        if(key == 37){ // left </span>
+<span class="nc" id="L414">            w.xStop();</span>
         }
 
-<span class="nc bnc" id="L332" title="All 2 branches missed.">        if (key == 39){ // right</span>
-<span class="nc" id="L333">            w.xStop();</span>
+<span class="nc bnc" id="L417" title="All 2 branches missed.">        if (key == 39){ // right</span>
+<span class="nc" id="L418">            w.xStop();</span>
         }
-<span class="nc" id="L335">    }</span>
+<span class="nc" id="L420">    }</span>
 
     private void instructions(){
-<span class="nc" id="L338">            System.out.println(&quot;Entered&quot;);</span>
-<span class="nc" id="L339">            background(192,164,132);</span>
-<span class="nc" id="L340">            textSize(20);</span>
-<span class="nc" id="L341">            text(&quot;Welcome to Gremlins!!&quot;, 300, 80);</span>
-<span class="nc" id="L342">            text(&quot;Use arrow keys to move the wizard, shoot fireballs with space&quot;, 100, 110); </span>
-<span class="nc" id="L343">            text(&quot;Avoid the gremlins and slime at all costs&quot;, 140, 140); </span>
-<span class="nc" id="L344">            text(&quot;Touch the pink portal to progress, Touch the blue portal for a pretty cool experience&quot;, 90, 160);</span>
-<span class="nc" id="L345">            text(&quot;Be wary, frozen slime is harmless, frozen gremlins still hurt though&quot;, 90, 180); </span>
-<span class="nc" id="L346">            text(&quot;More instructions are specified in the interface at the bottom&quot;, 120, 200);</span>
-<span class="nc" id="L347">            fill(0,0,0);</span>
-<span class="nc" id="L348">    }</span>
+<span class="nc" id="L423">            background(192,164,132);</span>
+<span class="nc" id="L424">            textSize(20);</span>
+<span class="nc" id="L425">            text(&quot;Welcome to Gremlins!!&quot;, 300, 80);</span>
+<span class="nc" id="L426">            text(&quot;Use arrow keys to move the wizard, shoot fireballs with space&quot;, 100, 110); </span>
+<span class="nc" id="L427">            text(&quot;Avoid the gremlins and slime at all costs&quot;, 140, 140); </span>
+<span class="nc" id="L428">            text(&quot;Touch the pink portal to progress, Touch the blue portal for a pretty cool experience&quot;, 90, 160);</span>
+<span class="nc" id="L429">            text(&quot;Be wary, frozen slime is harmless, frozen gremlins still hurt though&quot;, 90, 180); </span>
+<span class="nc" id="L430">            text(&quot;More instructions are specified in the interface at the bottom&quot;, 120, 200);</span>
+<span class="nc" id="L431">            fill(0,0,0);</span>
+<span class="nc" id="L432">    }</span>
 
     // Draws basic screen stuff
     private void basicGraphics(){
-<span class="fc" id="L352">        background(192,164,132);</span>
-<span class="fc" id="L353">        textSize(20);</span>
-<span class="fc" id="L354">        text(&quot;Lives: &quot;, 20, HEIGHT - 35);</span>
-<span class="fc" id="L355">        String lvlMessage = (&quot;Level &quot; + this.level + &quot;/2&quot;);</span>
-<span class="fc" id="L356">        text(lvlMessage, 240, HEIGHT - 35);</span>
-<span class="fc" id="L357">        fill(255, 255, 255);</span>
-<span class="fc" id="L358">        lvlMessage = null;</span>
-<span class="fc bfc" id="L359" title="All 2 branches covered.">        if(p != null){</span>
-<span class="pc bpc" id="L360" title="3 of 4 branches missed.">            if(p.getConsumed() &amp;&amp; this.freezeActive){</span>
-                //System.out.println(&quot;Time left: &quot; + ((p.getCooldown()/FPS)));
-<span class="nc" id="L362">                this.image(this.powerUp, 375, 673);</span>
-<span class="nc" id="L363">                this.rect(400,680, 50, 6);</span>
-<span class="nc" id="L364">                this.fill(0,0,255);</span>
-<span class="nc" id="L365">                this.rect(400, 680, (float) (50 - (p.getCooldown()*10/FPS)), 6);</span>
-<span class="nc" id="L366">                this.fill(255,255,255);</span>
+<span class="fc" id="L436">        background(192,164,132);</span>
+<span class="fc" id="L437">        textSize(20);</span>
+<span class="fc" id="L438">        text(&quot;Lives: &quot;, 20, HEIGHT - 35);</span>
+<span class="fc" id="L439">        String lvlMessage = (&quot;Level &quot; + this.level + &quot;/2&quot;);</span>
+<span class="fc" id="L440">        text(lvlMessage, 240, HEIGHT - 35);</span>
+<span class="fc" id="L441">        fill(255, 255, 255);</span>
+<span class="fc" id="L442">        lvlMessage = null;</span>
+<span class="fc bfc" id="L443" title="All 2 branches covered.">        if(p != null){</span>
+<span class="pc bpc" id="L444" title="3 of 4 branches missed.">            if(p.getConsumed() &amp;&amp; this.freezeActive){</span>
+<span class="nc" id="L445">                this.image(this.powerUp, 375, 673);</span>
+<span class="nc" id="L446">                this.rect(400,680, 50, 6);</span>
+<span class="nc" id="L447">                this.fill(0,0,255);</span>
+<span class="nc" id="L448">                this.rect(400, 680, (float) (50 - (p.getCooldown()*10/FPS)), 6);</span>
+<span class="nc" id="L449">                this.fill(255,255,255);</span>
             }
         }
-<span class="fc" id="L369">    }</span>
+<span class="fc" id="L452">    }</span>
 
     private int wizardGraphics(){
-<span class="fc" id="L372">        int retVal = w.tick(this);</span>
-<span class="pc bpc" id="L373" title="1 of 2 branches missed.">        if(retVal == 10){ // 10 is death </span>
-<span class="nc" id="L374">            this.deaths += 1;</span>
-<span class="nc" id="L375">            this.setup();</span>
-<span class="nc" id="L376">            this.lives -= deaths;</span>
-<span class="nc" id="L377">            this.powerUpSpawned = false;</span>
-<span class="nc" id="L378">            this.innateCooldown = 0;</span>
-<span class="nc" id="L379">            p = null;</span>
-<span class="nc" id="L380">            powerUpSpawned = false;</span>
-<span class="nc" id="L381">            return 0;</span>
+<span class="fc" id="L455">        int retVal = w.tick(this);</span>
+<span class="pc bpc" id="L456" title="1 of 2 branches missed.">        if(retVal == 10){ // 10 is death </span>
+<span class="nc" id="L457">            this.deaths += 1;</span>
+<span class="nc" id="L458">            this.setup();</span>
+<span class="nc" id="L459">            this.lives -= deaths;</span>
+<span class="nc" id="L460">            this.powerUpSpawned = false;</span>
+<span class="nc" id="L461">            this.innateCooldown = 0;</span>
+<span class="nc" id="L462">            p = null;</span>
+<span class="nc" id="L463">            powerUpSpawned = false;</span>
+<span class="nc" id="L464">            return 0;</span>
         }
         
-<span class="fc bfc" id="L384" title="All 2 branches covered.">        for(int i = 0; i &lt; this.lives; i++){</span>
-<span class="fc" id="L385">            this.image(this.wizardSprites[1], 20 + i*20 +60, HEIGHT - 50);</span>
+<span class="fc bfc" id="L467" title="All 2 branches covered.">        for(int i = 0; i &lt; this.lives; i++){</span>
+<span class="fc" id="L468">            this.image(this.wizardSprites[1], 20 + i*20 +60, HEIGHT - 50);</span>
         }
-<span class="fc" id="L387">        w.draw(this);</span>
-<span class="fc" id="L388">        return retVal;</span>
+<span class="fc" id="L470">        w.draw(this);</span>
+<span class="fc" id="L471">        return retVal;</span>
     }
 
     private void mapGraphics(){
-<span class="fc bfc" id="L392" title="All 2 branches covered.">        for (Immobile i : mapToDraw) {</span>
-<span class="fc bfc" id="L393" title="All 2 branches covered.">            if(i != null){</span>
-<span class="fc" id="L394">                i.draw(this);</span>
+<span class="fc bfc" id="L475" title="All 2 branches covered.">        for (Immobile i : mapToDraw) {</span>
+<span class="fc bfc" id="L476" title="All 2 branches covered.">            if(i != null){</span>
+<span class="fc" id="L477">                i.draw(this);</span>
             }
-<span class="fc" id="L396">        }</span>
-<span class="fc" id="L397">    }</span>
+<span class="fc" id="L479">        }</span>
+<span class="fc" id="L480">    }</span>
     
     private void gremlinGraphics(){
-<span class="fc bfc" id="L400" title="All 2 branches covered.">        for(Gremlin g : gArray){</span>
-<span class="pc bpc" id="L401" title="1 of 2 branches missed.">            if(g != null){</span>
-<span class="fc" id="L402">                g.tick(this);</span>
-<span class="fc" id="L403">                g.draw(this);</span>
+<span class="fc bfc" id="L483" title="All 2 branches covered.">        for(Gremlin g : gArray){</span>
+<span class="pc bpc" id="L484" title="1 of 2 branches missed.">            if(g != null){</span>
+<span class="fc" id="L485">                g.tick(this);</span>
+<span class="fc" id="L486">                g.draw(this);</span>
             }
-<span class="fc" id="L405">        }</span>
-<span class="fc" id="L406">    }</span>
+<span class="fc" id="L488">        }</span>
+<span class="fc" id="L489">    }</span>
     
     private void arrayListUpdates(){
-<span class="fc" id="L409">        UpdateArrayList&lt;Fireball&gt; updater1 = new UpdateArrayList&lt;Fireball&gt;();</span>
-<span class="fc" id="L410">        w.setExistingFireballs(updater1.update(w.getExistingFireballs())); </span>
-<span class="fc" id="L411">        updater1 = null;</span>
+<span class="fc" id="L492">        UpdateArrayList&lt;Fireball&gt; updater1 = new UpdateArrayList&lt;Fireball&gt;();</span>
+<span class="fc" id="L493">        w.setExistingFireballs(updater1.update(w.getExistingFireballs())); </span>
+<span class="fc" id="L494">        updater1 = null;</span>
 
-<span class="fc" id="L413">        UpdateArrayList&lt;Gremlin&gt; updater2 = new UpdateArrayList&lt;Gremlin&gt;();</span>
-<span class="fc" id="L414">        this.gArray = updater2.update(gArray);</span>
-<span class="fc" id="L415">        updater2 = null;</span>
+<span class="fc" id="L496">        UpdateArrayList&lt;Gremlin&gt; updater2 = new UpdateArrayList&lt;Gremlin&gt;();</span>
+<span class="fc" id="L497">        this.gArray = updater2.update(gArray);</span>
+<span class="fc" id="L498">        updater2 = null;</span>
 
-<span class="fc" id="L417">        ArrayList&lt;Mobile&gt; temp2 = new ArrayList&lt;Mobile&gt;();</span>
-<span class="fc bfc" id="L418" title="All 2 branches covered.">        for (Mobile entity : this.NPMobileEntities) {</span>
-<span class="pc bpc" id="L419" title="2 of 6 branches missed.">            if(!entity.getClass().getName().equals(&quot;gremlins.Fireball&quot;) &amp;&amp; !entity.getClass().getName().equals(&quot;gremlins.Gremlin&quot;) &amp;&amp; !entity.getClass().getName().equals(&quot;gremlins.SlimeBall&quot;)){</span>
-<span class="fc" id="L420">                temp2.add(entity);</span>
+<span class="fc" id="L500">        ArrayList&lt;Mobile&gt; temp2 = new ArrayList&lt;Mobile&gt;();</span>
+<span class="fc bfc" id="L501" title="All 2 branches covered.">        for (Mobile entity : this.NPMobileEntities) {</span>
+<span class="pc bpc" id="L502" title="1 of 6 branches missed.">            if(!entity.getClass().getName().equals(&quot;gremlins.Fireball&quot;) &amp;&amp; !entity.getClass().getName().equals(&quot;gremlins.Gremlin&quot;) &amp;&amp; !entity.getClass().getName().equals(&quot;gremlins.SlimeBall&quot;)){</span>
+<span class="fc" id="L503">                temp2.add(entity);</span>
                 
             }
-<span class="fc" id="L423">        }</span>
-<span class="fc" id="L424">        this.NPMobileEntities = temp2;</span>
+<span class="fc" id="L506">        }</span>
+<span class="fc" id="L507">        this.NPMobileEntities = temp2;</span>
         
-<span class="fc" id="L426">        temp2 = null;</span>
+<span class="fc" id="L509">        temp2 = null;</span>
 
-<span class="fc" id="L428">        this.NPMobileEntities.addAll(this.gArray);</span>
-<span class="fc" id="L429">        this.NPMobileEntities.addAll(w.getExistingFireballs());</span>
+<span class="fc" id="L511">        this.NPMobileEntities.addAll(this.gArray);</span>
+<span class="fc" id="L512">        this.NPMobileEntities.addAll(w.getExistingFireballs());</span>
 
-<span class="fc" id="L431">        UpdateArrayList&lt;Immobile&gt; updater3 = new UpdateArrayList&lt;Immobile&gt;();</span>
-<span class="fc" id="L432">        this.mapToDraw = updater3.update(mapToDraw);</span>
-<span class="fc" id="L433">        updater3 = null;</span>
-<span class="fc" id="L434">    }</span>
+<span class="fc" id="L514">        UpdateArrayList&lt;Immobile&gt; updater3 = new UpdateArrayList&lt;Immobile&gt;();</span>
+<span class="fc" id="L515">        this.mapToDraw = updater3.update(mapToDraw);</span>
+<span class="fc" id="L516">        updater3 = null;</span>
+<span class="fc" id="L517">    }</span>
 
     private void waitScreen(){
-<span class="nc bnc" id="L437" title="All 6 branches missed.">        if(restart &amp;&amp; keyPressed &amp;&amp; universalCounter &gt; 3*FPS){</span>
-<span class="nc" id="L438">            won = false;</span>
-<span class="nc" id="L439">            this.passedLvl1 = false;</span>
-<span class="nc" id="L440">            this.deaths = 0;</span>
-<span class="nc" id="L441">            this.setup();</span>
-<span class="nc" id="L442">            this.restart = false;</span>
+<span class="nc bnc" id="L520" title="All 6 branches missed.">        if(restart &amp;&amp; keyPressed &amp;&amp; universalCounter &gt; 3*FPS){</span>
+<span class="nc" id="L521">            won = false;</span>
+<span class="nc" id="L522">            this.passedLvl1 = false;</span>
+<span class="nc" id="L523">            this.deaths = 0;</span>
+<span class="nc" id="L524">            this.setup();</span>
+<span class="nc" id="L525">            this.restart = false;</span>
         }
-<span class="nc" id="L444">        universalCounter += 1;</span>
-<span class="nc" id="L445">    }</span>
+<span class="nc" id="L527">        universalCounter += 1;</span>
+<span class="nc" id="L528">    }</span>
     
     private void powerUpSpawn(int seconds){
-<span class="fc bfc" id="L448" title="All 2 branches covered.">        if(seconds &gt; 3){</span>
-<span class="pc bpc" id="L449" title="2 of 4 branches missed.">            if(powerUpCoords[0] == 999 || powerUpCoords[1] == 999){</span>
-<span class="nc" id="L450">                this.powerUpConsumedOnce = true;</span>
+<span class="fc bfc" id="L531" title="All 2 branches covered.">        if(seconds &gt; 3){</span>
+<span class="pc bpc" id="L532" title="2 of 4 branches missed.">            if(powerUpCoords[0] == 999 || powerUpCoords[1] == 999){</span>
+<span class="nc" id="L533">                this.powerUpConsumedOnce = true;</span>
             }
 
-<span class="pc bpc" id="L453" title="2 of 6 branches missed.">            if(!powerUpSpawned &amp;&amp; this.innateCooldown == 0 &amp;&amp; this.powerUpConsumedOnce){</span>
-<span class="nc" id="L454">                int[] coords = FreezePotion.spawn(this);</span>
-<span class="nc bnc" id="L455" title="All 4 branches missed.">                if(coords[0] != 0 &amp;&amp; coords[1] != 0){</span>
-<span class="nc" id="L456">                    p = new FreezePotion(coords[0], coords[1], this.powerUp);</span>
-<span class="nc" id="L457">                    powerUpSpawned = true;</span>
-<span class="nc" id="L458">                    this.innateCooldown = 20 * FPS;</span>
+<span class="pc bpc" id="L536" title="6 of 10 branches missed.">            if(!powerUpSpawned &amp;&amp; this.innateCooldown == 0 &amp;&amp; this.powerUpConsumedOnce &amp;&amp; w.getX()%20 == 0 &amp;&amp; w.getY()%20 == 0){</span>
+<span class="nc" id="L537">                int[] coords = FreezePotion.spawn(this);</span>
+<span class="nc bnc" id="L538" title="All 4 branches missed.">                if(coords[0] != 0 &amp;&amp; coords[1] != 0){</span>
+<span class="nc" id="L539">                    p = new FreezePotion(coords[0], coords[1], this.powerUp);</span>
+<span class="nc" id="L540">                    powerUpSpawned = true;</span>
+<span class="nc" id="L541">                    this.innateCooldown = 20 * FPS;</span>
                 }
-<span class="nc" id="L460">            }</span>
+<span class="nc" id="L543">            }</span>
 
-<span class="pc bpc" id="L462" title="2 of 6 branches missed.">            else if(!powerUpSpawned &amp;&amp; this.innateCooldown == 0 &amp;&amp; !this.powerUpConsumedOnce){</span>
-<span class="fc" id="L463">                p = new FreezePotion(powerUpCoords[0], powerUpCoords[1], this.powerUp);</span>
-<span class="fc" id="L464">                powerUpSpawned = true; </span>
-<span class="fc" id="L465">                this.innateCooldown = 20*FPS;</span>
-<span class="fc" id="L466">                this.powerUpConsumedOnce = true;</span>
+<span class="pc bpc" id="L545" title="4 of 10 branches missed.">            else if(!powerUpSpawned &amp;&amp; this.innateCooldown == 0 &amp;&amp; !this.powerUpConsumedOnce &amp;&amp; w.getX()%20 == 0 &amp;&amp; w.getY()%20 == 0){</span>
+<span class="fc" id="L546">                p = new FreezePotion(powerUpCoords[0], powerUpCoords[1], this.powerUp);</span>
+<span class="fc" id="L547">                powerUpSpawned = true; </span>
+<span class="fc" id="L548">                this.innateCooldown = 20*FPS;</span>
+<span class="fc" id="L549">                this.powerUpConsumedOnce = true;</span>
             }
         }
 
-<span class="fc bfc" id="L470" title="All 2 branches covered.">        if(p != null){</span>
-<span class="pc bpc" id="L471" title="1 of 2 branches missed.">            if(!p.getConsumed()){</span>
-<span class="fc" id="L472">                mapToDraw.add(p); </span>
+<span class="fc bfc" id="L553" title="All 2 branches covered.">        if(p != null){</span>
+<span class="pc bpc" id="L554" title="1 of 2 branches missed.">            if(!p.getConsumed()){</span>
+<span class="fc" id="L555">                mapToDraw.add(p); </span>
             }
             
-<span class="nc bnc" id="L475" title="All 2 branches missed.">            else if(this.innateCooldown == 0){</span>
-<span class="nc" id="L476">                System.out.println(&quot;p nulled&quot;);</span>
-<span class="nc" id="L477">                powerUpSpawned = false;</span>
-<span class="nc" id="L478">                this.setFreezeActive(false);</span>
-<span class="nc" id="L479">                p = null;</span>
+<span class="nc bnc" id="L558" title="All 2 branches missed.">            else if(this.innateCooldown == 0){</span>
+<span class="nc" id="L559">                powerUpSpawned = false;</span>
+<span class="nc" id="L560">                this.setFreezeActive(false);</span>
+<span class="nc" id="L561">                p = null;</span>
             }
 
-<span class="nc bnc" id="L482" title="All 4 branches missed.">            else if(p.getConsumed() &amp;&amp; this.innateCooldown == 20*FPS){ </span>
-<span class="nc" id="L483">                this.mapToDraw.set(mapToDraw.indexOf(p), null);</span>
-<span class="nc" id="L484">                this.powerUpSpawned = false;</span>
-<span class="nc" id="L485">                this.innateCooldown -= 1;</span>
+<span class="nc bnc" id="L564" title="All 4 branches missed.">            else if(p.getConsumed() &amp;&amp; this.innateCooldown == 20*FPS){ </span>
+<span class="nc" id="L565">                this.mapToDraw.set(mapToDraw.indexOf(p), null);</span>
+<span class="nc" id="L566">                this.powerUpSpawned = false;</span>
+<span class="nc" id="L567">                this.innateCooldown -= 1;</span>
             }
 
-<span class="nc bnc" id="L488" title="All 4 branches missed.">            else if (p.getConsumed() &amp;&amp; this.innateCooldown &lt;= 20*FPS){</span>
-<span class="nc" id="L489">                this.innateCooldown -= 1;</span>
+<span class="nc bnc" id="L570" title="All 4 branches missed.">            else if (p.getConsumed() &amp;&amp; this.innateCooldown &lt;= 20*FPS){</span>
+<span class="nc" id="L571">                this.innateCooldown -= 1;</span>
             }
         }
         
-<span class="fc" id="L493">    } </span>
+<span class="fc" id="L575">    } </span>
 
     public void checkGameState(int retVal){
-<span class="pc bpc" id="L496" title="1 of 2 branches missed.">        if(this.lives &lt;= 0){</span>
-<span class="nc" id="L497">            this.restart = true;</span>
-<span class="nc" id="L498">            won = true;</span>
-<span class="nc" id="L499">            p = null;</span>
-<span class="nc" id="L500">            powerUpSpawned = false;</span>
-<span class="nc" id="L501">            kHit = false; </span>
-<span class="nc" id="L502">            kCharge = 3;</span>
-<span class="nc" id="L503">            this.image(this.JTK, 0,0);</span>
+<span class="pc bpc" id="L578" title="1 of 2 branches missed.">        if(this.lives &lt;= 0){</span>
+<span class="nc" id="L579">            this.restart = true;</span>
+<span class="nc" id="L580">            won = true;</span>
+<span class="nc" id="L581">            p = null;</span>
+<span class="nc" id="L582">            powerUpSpawned = false;</span>
+<span class="nc" id="L583">            kHit = false; </span>
+<span class="nc" id="L584">            kCharge = 3;</span>
+<span class="nc" id="L585">            this.image(this.JTK, 0,0);</span>
         }
  
-<span class="pc bpc" id="L506" title="3 of 4 branches missed.">        else if(retVal == 20 &amp;&amp; passedLvl1){ // Win condition (pass lvl 2)</span>
-<span class="nc" id="L507">            background(219, 160, 9);</span>
-<span class="nc" id="L508">            textSize(40);</span>
-<span class="nc" id="L509">            fill(107, 9, 219);</span>
-<span class="nc" id="L510">            text(&quot;YOU WIN&quot;, WIDTH*0.2f, HEIGHT*0.4f);</span>
-<span class="nc" id="L511">            won = true;</span>
-<span class="nc" id="L512">            this.restart = true;</span>
-<span class="nc" id="L513">            kHit = false; </span>
-<span class="nc" id="L514">            kCharge = 3;</span>
+<span class="pc bpc" id="L588" title="3 of 4 branches missed.">        else if(retVal == 20 &amp;&amp; passedLvl1){ // Win condition (pass lvl 2)</span>
+<span class="nc" id="L589">            background(219, 160, 9);</span>
+<span class="nc" id="L590">            textSize(40);</span>
+<span class="nc" id="L591">            fill(107, 9, 219);</span>
+<span class="nc" id="L592">            text(&quot;YOU WIN&quot;, WIDTH*0.2f, HEIGHT*0.4f);</span>
+<span class="nc" id="L593">            won = true;</span>
+<span class="nc" id="L594">            this.restart = true;</span>
+<span class="nc" id="L595">            kHit = false; </span>
+<span class="nc" id="L596">            kCharge = 3;</span>
             
         }
 
-<span class="pc bpc" id="L518" title="1 of 2 branches missed.">        else if(retVal == 20){  // win condition (pass lvl 1)</span>
-<span class="nc" id="L519">            won = true;</span>
-<span class="nc" id="L520">            this.passedLvl1 = true;</span>
-<span class="nc" id="L521">            int liveSave = this.lives;</span>
-<span class="nc" id="L522">            this.setup();</span>
-<span class="nc" id="L523">            this.lives = liveSave;</span>
-<span class="nc" id="L524">            won = false;</span>
-<span class="nc" id="L525">            p = null;</span>
-<span class="nc" id="L526">            powerUpSpawned = false;</span>
-<span class="nc" id="L527">            kHit = false; </span>
-<span class="nc" id="L528">            kCharge = 3;</span>
+<span class="pc bpc" id="L600" title="1 of 2 branches missed.">        else if(retVal == 20){  // win condition (pass lvl 1)</span>
+<span class="nc" id="L601">            won = true;</span>
+<span class="nc" id="L602">            this.passedLvl1 = true;</span>
+<span class="nc" id="L603">            int liveSave = this.lives;</span>
+<span class="nc" id="L604">            this.setup();</span>
+<span class="nc" id="L605">            this.lives = liveSave;</span>
+<span class="nc" id="L606">            won = false;</span>
+<span class="nc" id="L607">            p = null;</span>
+<span class="nc" id="L608">            powerUpSpawned = false;</span>
+<span class="nc" id="L609">            kHit = false; </span>
+<span class="nc" id="L610">            kCharge = 3;</span>
         }
-<span class="fc" id="L530">    }</span>
+<span class="fc" id="L612">    }</span>
 
     public void powerUpUpdates(){
-<span class="fc bfc" id="L533" title="All 2 branches covered.">        if(p != null){</span>
-<span class="fc" id="L534">            p.update(this);</span>
+<span class="fc bfc" id="L615" title="All 2 branches covered.">        if(p != null){</span>
+<span class="fc" id="L616">            p.update(this);</span>
         }
-<span class="fc" id="L536">    }</span>
+<span class="fc" id="L618">    }</span>
 
     public void kamehameha(){
-<span class="pc bpc" id="L539" title="1 of 2 branches missed.">        if(k != null){</span>
-<span class="nc" id="L540">            k.update(this);</span>
-<span class="nc bnc" id="L541" title="All 2 branches missed.">            if(k.getLifeSpan() &gt; 60){</span>
-<span class="nc" id="L542">                k.setLifespan(0);</span>
-<span class="nc" id="L543">                k.setDrawing(false);</span>
-<span class="nc" id="L544">                k = null;</span>
+<span class="pc bpc" id="L621" title="1 of 2 branches missed.">        if(k != null){</span>
+<span class="nc" id="L622">            k.update(this);</span>
+<span class="nc bnc" id="L623" title="All 2 branches missed.">            if(k.getLifeSpan() &gt; 60){</span>
+<span class="nc" id="L624">                k.setLifespan(0);</span>
+<span class="nc" id="L625">                k.setDrawing(false);</span>
+<span class="nc" id="L626">                k = null;</span>
             }
         }
-<span class="fc" id="L547">        Kamehameha.stuffUI(this);</span>
-<span class="fc" id="L548">    }</span>
+<span class="fc" id="L629">        Kamehameha.stuffUI(this);</span>
+<span class="fc" id="L630">    }</span>
 
     /**
      * Draw all elements in the game by current frame. 
 	 */
     public void draw() {
-<span class="pc bpc" id="L554" title="1 of 2 branches missed.">        if(!won){</span>
-<span class="fc" id="L555">            this.basicGraphics();</span>
-<span class="fc" id="L556">            this.powerUpSpawn(seconds);</span>
-<span class="fc" id="L557">            int retVal = this.wizardGraphics();</span>
-<span class="fc" id="L558">            w.fireballMechanics(this);</span>
-<span class="fc" id="L559">            this.kamehameha();</span>
-<span class="fc" id="L560">            this.mapGraphics();</span>
-<span class="fc" id="L561">            this.gremlinGraphics();</span>
-<span class="fc" id="L562">            this.powerUpUpdates();</span>
-<span class="fc" id="L563">            this.arrayListUpdates();</span>
-<span class="fc bfc" id="L564" title="All 2 branches covered.">            if(universalCounter == 60){</span>
-<span class="fc" id="L565">                seconds += 1;</span>
-<span class="fc" id="L566">                universalCounter = 0;</span>
+<span class="pc bpc" id="L636" title="1 of 2 branches missed.">        if(!won){</span>
+<span class="fc" id="L637">            this.basicGraphics();</span>
+<span class="fc" id="L638">            this.powerUpSpawn(seconds);</span>
+<span class="fc" id="L639">            int retVal = this.wizardGraphics();</span>
+<span class="fc" id="L640">            w.fireballMechanics(this);</span>
+<span class="fc" id="L641">            this.kamehameha();</span>
+<span class="fc" id="L642">            this.mapGraphics();</span>
+<span class="fc" id="L643">            this.gremlinGraphics();</span>
+<span class="fc" id="L644">            this.powerUpUpdates();</span>
+<span class="fc" id="L645">            this.arrayListUpdates();</span>
+<span class="fc bfc" id="L646" title="All 2 branches covered.">            if(universalCounter == 60){</span>
+<span class="fc" id="L647">                seconds += 1;</span>
+<span class="fc" id="L648">                universalCounter = 0;</span>
                 
-<span class="pc bpc" id="L568" title="1 of 2 branches missed.">                if(seconds == 60){</span>
-<span class="nc" id="L569">                    seconds = 0;</span>
+<span class="pc bpc" id="L650" title="1 of 2 branches missed.">                if(seconds == 60){</span>
+<span class="nc" id="L651">                    seconds = 0;</span>
                 }
             }
-<span class="fc" id="L572">            universalCounter += 1;</span>
-<span class="fc" id="L573">            this.checkGameState(retVal);</span>
-<span class="fc" id="L574">            return;</span>
+<span class="fc" id="L654">            universalCounter += 1;</span>
+<span class="fc" id="L655">            this.checkGameState(retVal);</span>
+<span class="fc" id="L656">            return;</span>
         }
+<span class="nc" id="L658">        this.waitScreen();</span>
+<span class="nc" id="L659">        p = null;</span>
+<span class="nc" id="L660">        powerUpSpawned = false;</span>
         
-<span class="nc" id="L577">        this.waitScreen();</span>
-<span class="nc" id="L578">        p = null;</span>
-<span class="nc" id="L579">        powerUpSpawned = false;</span>
-        
-<span class="nc" id="L581">    }</span>
+<span class="nc" id="L662">    }</span>
 
     public static void main(String[] args) {
-<span class="nc" id="L584">        PApplet.main(&quot;gremlins.App&quot;);</span>
-<span class="nc" id="L585">    }</span>
+<span class="nc" id="L665">        PApplet.main(&quot;gremlins.App&quot;);</span>
+<span class="nc" id="L666">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

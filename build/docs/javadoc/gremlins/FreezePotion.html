@@ -228,7 +228,9 @@ extends <a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>static int[]</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/FreezePotion.html#spawn-gremlins.App-">spawn</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/FreezePotion.html#spawn-gremlins.App-">spawn</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>
+<div class="block">This static method generates new coordinates for the freeze potion to respawn.</div>
+</td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>int</code></td>
@@ -238,7 +240,10 @@ extends <a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/FreezePotion.html#update-gremlins.App-">update</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/FreezePotion.html#update-gremlins.App-">update</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>
+<div class="block">Update method increments the freeze potion and updates the cooldown depending on whether the potion has been consumed (and its effect
+ is still active) or not.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -426,6 +431,12 @@ extends <a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</
 <li class="blockList">
 <h4>update</h4>
 <pre>public&nbsp;void&nbsp;update(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</pre>
+<div class="block">Update method increments the freeze potion and updates the cooldown depending on whether the potion has been consumed (and its effect
+ is still active) or not.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>app</code> - </dd>
+</dl>
 </li>
 </ul>
 <a name="spawn-gremlins.App-">
@@ -435,6 +446,15 @@ extends <a href="../gremlins/Immobile.html" title="class in gremlins">Immobile</
 <li class="blockList">
 <h4>spawn</h4>
 <pre>public static&nbsp;int[]&nbsp;spawn(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</pre>
+<div class="block">This static method generates new coordinates for the freeze potion to respawn. 
+ It's target is the wizard, so it should spawn around 10 blocks away or more from the wizard. 
+ However, the first time, the freeze potion will always spawn at a predetermined location</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>app</code> - the App class, that allows access of methods like gArray.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>an integer array that contains the x and y coordinates of the potion's new spawn location</dd>
+</dl>
 </li>
 </ul>
 </li>

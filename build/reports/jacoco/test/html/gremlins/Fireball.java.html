@@ -85,14 +85,14 @@ public class Fireball extends Projectile{
      * @return boolean corresponding to whether a destructable block that has not been destroyed has been hit by the current fireball 
      */
     public boolean fireballHit(App app){
-<span class="nc bnc" id="L88" title="All 2 branches missed.">        for(Immobile i : app.getMap()){</span>
-<span class="nc bnc" id="L89" title="All 2 branches missed.">            if(i != null){</span>
-<span class="nc bnc" id="L90" title="All 4 branches missed.">                if(i == this.collisionBlock &amp;&amp; i.getClass().getName().equals(&quot;gremlins.Destructable&quot;)){</span>
-<span class="nc" id="L91">                    return true; </span>
+<span class="fc bfc" id="L88" title="All 2 branches covered.">        for(Immobile i : app.getMap()){</span>
+<span class="pc bpc" id="L89" title="1 of 2 branches missed.">            if(i != null){</span>
+<span class="fc bfc" id="L90" title="All 4 branches covered.">                if(i == this.collisionBlock &amp;&amp; i.getClass().getName().equals(&quot;gremlins.Destructable&quot;)){</span>
+<span class="fc" id="L91">                    return true; </span>
                 }
             }
-<span class="nc" id="L94">        }</span>
-<span class="nc" id="L95">        return false;</span>
+<span class="fc" id="L94">        }</span>
+<span class="fc" id="L95">        return false;</span>
     }
 
     /**
@@ -117,10 +117,10 @@ public class Fireball extends Projectile{
      */
     @Override
     public int draw(App app){
-<span class="nc bnc" id="L120" title="All 2 branches missed.">        if(this.alive){</span>
-<span class="nc" id="L121">            app.image(this.sprite, this.x, this.y);</span>
+<span class="fc bfc" id="L120" title="All 2 branches covered.">        if(this.alive){</span>
+<span class="fc" id="L121">            app.image(this.sprite, this.x, this.y);</span>
         }
-<span class="nc" id="L123">        return 0;</span>
+<span class="fc" id="L123">        return 0;</span>
     }
 
     /**
@@ -132,19 +132,19 @@ public class Fireball extends Projectile{
      */
     @Override
     public int tick(App app) {
-<span class="nc bnc" id="L135" title="All 2 branches missed.">        if(this.alive){</span>
-<span class="nc bnc" id="L136" title="All 2 branches missed.">            if(this.collision(app) == 1){ // block collision </span>
-<span class="nc bnc" id="L137" title="All 4 branches missed.">                if((!this.sideAV.get(0) &amp;&amp; this.direction == 0) </span>
-<span class="nc bnc" id="L138" title="All 4 branches missed.">                || (!this.sideAV.get(2) &amp;&amp; this.direction == 2) </span>
-<span class="nc bnc" id="L139" title="All 4 branches missed.">                || (!this.sideAV.get(1) &amp;&amp; this.direction == 1) </span>
-<span class="nc bnc" id="L140" title="All 4 branches missed.">                || (!this.sideAV.get(3) &amp;&amp; this.direction == 3)){</span>
-<span class="nc" id="L141">                    return 1;</span>
+<span class="fc bfc" id="L135" title="All 2 branches covered.">        if(this.alive){</span>
+<span class="fc bfc" id="L136" title="All 2 branches covered.">            if(this.collision(app) == 1){ // block collision </span>
+<span class="pc bpc" id="L137" title="3 of 4 branches missed.">                if((!this.sideAV.get(0) &amp;&amp; this.direction == 0) </span>
+<span class="pc bpc" id="L138" title="3 of 4 branches missed.">                || (!this.sideAV.get(2) &amp;&amp; this.direction == 2) </span>
+<span class="pc bpc" id="L139" title="1 of 4 branches missed.">                || (!this.sideAV.get(1) &amp;&amp; this.direction == 1) </span>
+<span class="pc bpc" id="L140" title="2 of 4 branches missed.">                || (!this.sideAV.get(3) &amp;&amp; this.direction == 3)){</span>
+<span class="fc" id="L141">                    return 1;</span>
                 }
             }
-<span class="nc" id="L144">            this.x += this.xVel; </span>
-<span class="nc" id="L145">            this.y += this.yVel;</span>
+<span class="fc" id="L144">            this.x += this.xVel; </span>
+<span class="fc" id="L145">            this.y += this.yVel;</span>
         }
-<span class="nc" id="L147">        return 0;</span>
+<span class="fc" id="L147">        return 0;</span>
         
     }
 }

@@ -248,13 +248,15 @@ public class Wizard extends Mobile{
                         f = null;
                     }
                     
-                    else if(f.getFrameCounter() % 4 == 0){ // been either 0, 4, 8, 12, 16 frames since firball hit 
+                    else if(f.getFrameCounter() % 4 == 0 && f.getFrameCounter() != 0){ // been either 0, 4, 8, 12, 16 frames since firball hit 
                         f.collisionBlock.update();
-                        f.incFrameCounter();
+                        //f.incFrameCounter();
+                        f.setFrameCounter(f.getFrameCounter() + 1);
                     }
                     
                     if(f != null){
-                        f.incFrameCounter(); // if the fireball has not hit an indestructable entity 
+                        //f.incFrameCounter(); // if the fireball has not hit an indestructable entity 
+                        f.setFrameCounter(f.getFrameCounter() + 1);
                     }
                     
                 }

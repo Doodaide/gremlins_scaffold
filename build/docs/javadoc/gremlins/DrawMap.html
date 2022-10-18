@@ -108,7 +108,8 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public class <span class="typeNameLabel">DrawMap</span>
 extends java.lang.Object</pre>
-<div class="block">DrawMap</div>
+<div class="block">DrawMap class: A helper class that reads the character ArrayList produced by the 
+ ReadMap class. This method puts all of the correct objects in the right locations, and has the attribute of the wizard's starting location</div>
 </li>
 </ul>
 </div>
@@ -127,7 +128,9 @@ extends java.lang.Object</pre>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../gremlins/DrawMap.html#DrawMap--">DrawMap</a></span>()</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../gremlins/DrawMap.html#DrawMap--">DrawMap</a></span>()</code>
+<div class="block">Constructor</div>
+</td>
 </tr>
 </table>
 </li>
@@ -147,11 +150,16 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/DrawMap.html#generateMap-java.util.ArrayList-gremlins.App-">generateMap</a></span>(java.util.ArrayList&lt;java.lang.Character[]&gt;&nbsp;a,
-           <a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>&nbsp;</td>
+           <a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>
+<div class="block">The generateMap function allocates all the correct objects to their rightful places as denoted by the character array 
+ fed in as a parameter.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>int[]</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/DrawMap.html#getWizardStart--">getWizardStart</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/DrawMap.html#getWizardStart--">getWizardStart</a></span>()</code>
+<div class="block">A getter method that gets the wizard's starting coordinates in the form of an integer array</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -182,6 +190,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>DrawMap</h4>
 <pre>public&nbsp;DrawMap()</pre>
+<div class="block">Constructor</div>
 </li>
 </ul>
 </li>
@@ -200,6 +209,13 @@ extends java.lang.Object</pre>
 <h4>generateMap</h4>
 <pre>public&nbsp;void&nbsp;generateMap(java.util.ArrayList&lt;java.lang.Character[]&gt;&nbsp;a,
                         <a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</pre>
+<div class="block">The generateMap function allocates all the correct objects to their rightful places as denoted by the character array 
+ fed in as a parameter.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>a</code> - the Character array produced by the ReadMap class that denotes where all the objects should be placed on the map</dd>
+<dd><code>app</code> - the App class that contains the ArrayLists that contain all the objects.</dd>
+</dl>
 </li>
 </ul>
 <a name="getWizardStart--">
@@ -209,6 +225,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getWizardStart</h4>
 <pre>public&nbsp;int[]&nbsp;getWizardStart()</pre>
+<div class="block">A getter method that gets the wizard's starting coordinates in the form of an integer array</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>an integer array in the form [x coordinate, y coordinate]</dd>
+</dl>
 </li>
 </ul>
 </li>

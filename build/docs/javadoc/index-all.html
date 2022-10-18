@@ -104,9 +104,14 @@
 <dt><span class="memberNameLink"><a href="gremlins/App.html#checkGameState-int-">checkGameState(int)</a></span> - Method in class gremlins.<a href="gremlins/App.html" title="class in gremlins">App</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#collides-int-int-gremlins.App-">collides(int, int, App)</a></span> - Method in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">The collides method truely assesses whether two objects are colliding (i.e.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#collision-gremlins.App-">collision(App)</a></span> - Method in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">This collision method is consistently called, but the only collisions for the mobile that are assessed are in the direction
+ it is travelling.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#collisionBlock">collisionBlock</a></span> - Variable in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
 <dd>
 <div class="block">block the mobile has collided with.</div>
@@ -147,7 +152,9 @@
 <div class="block">Overriden down method, sets the directino to 2</div>
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#down--">down()</a></span> - Method in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Abstract down method</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/SlimeBall.html#down--">down()</a></span> - Method in class gremlins.<a href="gremlins/SlimeBall.html" title="class in gremlins">SlimeBall</a></dt>
 <dd>
 <div class="block">Overriden down method that changes the yVelocity, xVelocity, and direction</div>
@@ -157,7 +164,9 @@
 <div class="block">Overriden down method, that modifies the current wizard image, velocities, and direction of the wizard</div>
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#downCollision-gremlins.App-">downCollision(App)</a></span> - Method in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Last of 4 directional collision methods.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/App.html#draw--">draw()</a></span> - Method in class gremlins.<a href="gremlins/App.html" title="class in gremlins">App</a></dt>
 <dd>
 <div class="block">Draw all elements in the game by current frame.</div>
@@ -193,7 +202,9 @@
 <div class="block">Overriden draw method.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#draw-gremlins.App-">draw(App)</a></span> - Method in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Abstract draw method</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/SlimeBall.html#draw-gremlins.App-">draw(App)</a></span> - Method in class gremlins.<a href="gremlins/SlimeBall.html" title="class in gremlins">SlimeBall</a></dt>
 <dd>
 <div class="block">Draw method draws the slimeball at each tick of the game.</div>
@@ -204,10 +215,13 @@
 </dd>
 <dt><a href="gremlins/DrawMap.html" title="class in gremlins"><span class="typeNameLink">DrawMap</span></a> - Class in <a href="gremlins/package-summary.html">gremlins</a></dt>
 <dd>
-<div class="block">DrawMap</div>
+<div class="block">DrawMap class: A helper class that reads the character ArrayList produced by the 
+ ReadMap class.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/DrawMap.html#DrawMap--">DrawMap()</a></span> - Constructor for class gremlins.<a href="gremlins/DrawMap.html" title="class in gremlins">DrawMap</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Constructor</div>
+</dd>
 </dl>
 <a name="I:E">
 <!--   -->
@@ -283,7 +297,10 @@
 <h2 class="title">G</h2>
 <dl>
 <dt><span class="memberNameLink"><a href="gremlins/DrawMap.html#generateMap-java.util.ArrayList-gremlins.App-">generateMap(ArrayList&lt;Character[]&gt;, App)</a></span> - Method in class gremlins.<a href="gremlins/DrawMap.html" title="class in gremlins">DrawMap</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">The generateMap function allocates all the correct objects to their rightful places as denoted by the character array 
+ fed in as a parameter.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#getAlive--">getAlive()</a></span> - Method in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
 <dd>
 <div class="block">getter method for whether the mobile should be displayed on screen or considered for collisions</div>
@@ -333,7 +350,9 @@
  have not hit any mobile or immobile entities and thus will still be drawn on screen)</div>
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#getFrameCounter--">getFrameCounter()</a></span> - Method in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Getter method for the number of frames elapsed</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/App.html#getFreezeActive--">getFreezeActive()</a></span> - Method in class gremlins.<a href="gremlins/App.html" title="class in gremlins">App</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="gremlins/App.html#getGArray--">getGArray()</a></span> - Method in class gremlins.<a href="gremlins/App.html" title="class in gremlins">App</a></dt>
@@ -424,7 +443,9 @@
 <dt><span class="memberNameLink"><a href="gremlins/App.html#getWizardCooldown--">getWizardCooldown()</a></span> - Method in class gremlins.<a href="gremlins/App.html" title="class in gremlins">App</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="gremlins/DrawMap.html#getWizardStart--">getWizardStart()</a></span> - Method in class gremlins.<a href="gremlins/DrawMap.html" title="class in gremlins">DrawMap</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">A getter method that gets the wizard's starting coordinates in the form of an integer array</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Entity.html#getX--">getX()</a></span> - Method in class gremlins.<a href="gremlins/Entity.html" title="class in gremlins">Entity</a></dt>
 <dd>
 <div class="block">Getter method for x coordinate</div>
@@ -493,8 +514,6 @@
 <dd>
 <div class="block">Constructor for an immobile object</div>
 </dd>
-<dt><span class="memberNameLink"><a href="gremlins/Mobile.html#incFrameCounter--">incFrameCounter()</a></span> - Method in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
-<dd>&nbsp;</dd>
 <dt><a href="gremlins/Indestructable.html" title="class in gremlins"><span class="typeNameLink">Indestructable</span></a> - Class in <a href="gremlins/package-summary.html">gremlins</a></dt>
 <dd>
 <div class="block">Indestructable class: blocks that extend from immobile entities that cannot be deleted or destroyed by any means</div>
@@ -563,7 +582,9 @@
 <div class="block">Overriden left method, sets direction to 3</div>
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#left--">left()</a></span> - Method in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Abstract left method</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/SlimeBall.html#left--">left()</a></span> - Method in class gremlins.<a href="gremlins/SlimeBall.html" title="class in gremlins">SlimeBall</a></dt>
 <dd>
 <div class="block">Overriden method that changes the yVelocity, xVelocity, and direction</div>
@@ -575,7 +596,9 @@
 <dt><span class="memberNameLink"><a href="gremlins/App.html#leftBound">leftBound</a></span> - Variable in class gremlins.<a href="gremlins/App.html" title="class in gremlins">App</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#leftCollision-gremlins.App-">leftCollision(App)</a></span> - Method in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Third of 4 directional collision methods.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/App.html#lowerBound">lowerBound</a></span> - Variable in class gremlins.<a href="gremlins/App.html" title="class in gremlins">App</a></dt>
 <dd>&nbsp;</dd>
 </dl>
@@ -588,7 +611,7 @@
 <dd>&nbsp;</dd>
 <dt><a href="gremlins/Mobile.html" title="class in gremlins"><span class="typeNameLink">Mobile</span></a> - Class in <a href="gremlins/package-summary.html">gremlins</a></dt>
 <dd>
-<div class="block">TOFINISH</div>
+<div class="block">Mobile class: An abstract entity that has the ability to actively change their location</div>
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#Mobile-int-int-int-int-int-">Mobile(int, int, int, int, int)</a></span> - Constructor for class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
 <dd>
@@ -667,7 +690,9 @@
 <div class="block">Overriden right method, sets the direction to 1</div>
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#right--">right()</a></span> - Method in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Abstract right method</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/SlimeBall.html#right--">right()</a></span> - Method in class gremlins.<a href="gremlins/SlimeBall.html" title="class in gremlins">SlimeBall</a></dt>
 <dd>
 <div class="block">Overriden right method that changes the yVelocity, xVelocity, and direction</div>
@@ -679,7 +704,9 @@
 <dt><span class="memberNameLink"><a href="gremlins/App.html#rightBound">rightBound</a></span> - Variable in class gremlins.<a href="gremlins/App.html" title="class in gremlins">App</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#rightCollision-gremlins.App-">rightCollision(App)</a></span> - Method in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Second of 4 directional collision methods.</div>
+</dd>
 </dl>
 <a name="I:S">
 <!--   -->
@@ -721,7 +748,9 @@
  have not hit any mobile or immobile entities and thus will still be drawn on screen)</div>
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#setFrameCounter-int-">setFrameCounter(int)</a></span> - Method in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Setter method for the framecounter (number of frames elapsed)</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/App.html#setFreezeActive-boolean-">setFreezeActive(boolean)</a></span> - Method in class gremlins.<a href="gremlins/App.html" title="class in gremlins">App</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Kamehameha.html#setLifespan-int-">setLifespan(int)</a></span> - Method in class gremlins.<a href="gremlins/Kamehameha.html" title="class in gremlins">Kamehameha</a></dt>
@@ -800,7 +829,7 @@
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#sideAV">sideAV</a></span> - Variable in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
 <dd>
-<div class="block">Sides of the mobile which are available to move</div>
+<div class="block">A hashmap that denotes which sides of the mobile are available to move</div>
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/App.html#slime">slime</a></span> - Variable in class gremlins.<a href="gremlins/App.html" title="class in gremlins">App</a></dt>
 <dd>&nbsp;</dd>
@@ -819,7 +848,9 @@
  modify then if it were in the slimeball class.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/FreezePotion.html#spawn-gremlins.App-">spawn(App)</a></span> - Static method in class gremlins.<a href="gremlins/FreezePotion.html" title="class in gremlins">FreezePotion</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">This static method generates new coordinates for the freeze potion to respawn.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#speed">speed</a></span> - Variable in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
 <dd>
 <div class="block">travel speed for each entity</div>
@@ -833,7 +864,9 @@
 <dt><span class="memberNameLink"><a href="gremlins/App.html#stonewall">stonewall</a></span> - Variable in class gremlins.<a href="gremlins/App.html" title="class in gremlins">App</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#stop--">stop()</a></span> - Method in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Universal stop method that stops movement in both directions</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Kamehameha.html#stuffUI-gremlins.App-">stuffUI(App)</a></span> - Static method in class gremlins.<a href="gremlins/Kamehameha.html" title="class in gremlins">Kamehameha</a></dt>
 <dd>
 <div class="block">This static method is used regardless of whether a kamehameha object exists, as it points to no object
@@ -863,7 +896,9 @@
  and gathers all possible blocks in that row or column.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#tick-gremlins.App-">tick(App)</a></span> - Method in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Abastract tick method</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/SlimeBall.html#tick-gremlins.App-">tick(App)</a></span> - Method in class gremlins.<a href="gremlins/SlimeBall.html" title="class in gremlins">SlimeBall</a></dt>
 <dd>
 <div class="block">Overriden Tick method that detects if the slimeball is both not frozen (powerup is not active)
@@ -900,7 +935,9 @@
 <div class="block">Overriden up method, sets the direction to 0</div>
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#up--">up()</a></span> - Method in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Abstract up method</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/SlimeBall.html#up--">up()</a></span> - Method in class gremlins.<a href="gremlins/SlimeBall.html" title="class in gremlins">SlimeBall</a></dt>
 <dd>
 <div class="block">Overriden up method that changes the yVelocity, xVelocity, and direction</div>
@@ -910,7 +947,9 @@
 <div class="block">Overriden Up method, that modifies the current wizard image, velocities, and direction of the wizard</div>
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#upCollision-gremlins.App-">upCollision(App)</a></span> - Method in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">First of 4 directional collision methods.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Destructable.html#update--">update()</a></span> - Method in class gremlins.<a href="gremlins/Destructable.html" title="class in gremlins">Destructable</a></dt>
 <dd>
 <div class="block">Updates the current texture of the destructable block 
@@ -925,7 +964,10 @@
 <div class="block">The potion has no update states</div>
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/FreezePotion.html#update-gremlins.App-">update(App)</a></span> - Method in class gremlins.<a href="gremlins/FreezePotion.html" title="class in gremlins">FreezePotion</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Update method increments the freeze potion and updates the cooldown depending on whether the potion has been consumed (and its effect
+ is still active) or not.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Immobile.html#update--">update()</a></span> - Method in class gremlins.<a href="gremlins/Immobile.html" title="class in gremlins">Immobile</a></dt>
 <dd>
 <div class="block">Abstract Update method, performs various update tasks on blocks depending on their type and interactions with 
@@ -1003,7 +1045,9 @@
 <div class="block">specific directional variables</div>
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#xStop--">xStop()</a></span> - Method in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Directional stop method (that only stops movement in one direction) - stops x axis movement</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#xVel">xVel</a></span> - Variable in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
 <dd>
 <div class="block">Allows the mobile to change its coordinates at a certain rate.</div>
@@ -1023,7 +1067,9 @@
 <div class="block">specific directional variables</div>
 </dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#yStop--">yStop()</a></span> - Method in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Directional stop method (that only stops movement in one direction) - stops y axis movement</div>
+</dd>
 <dt><span class="memberNameLink"><a href="gremlins/Mobile.html#yVel">yVel</a></span> - Variable in class gremlins.<a href="gremlins/Mobile.html" title="class in gremlins">Mobile</a></dt>
 <dd>
 <div class="block">Allows the mobile to change its coordinates at a certain rate.</div>

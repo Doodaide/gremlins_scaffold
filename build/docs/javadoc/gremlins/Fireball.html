@@ -265,7 +265,7 @@ extends <a href="../gremlins/Projectile.html" title="class in gremlins">Projecti
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;gremlins.<a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></h3>
-<code><a href="../gremlins/Mobile.html#collides-int-int-gremlins.App-">collides</a>, <a href="../gremlins/Mobile.html#collision-gremlins.App-">collision</a>, <a href="../gremlins/Mobile.html#downCollision-gremlins.App-">downCollision</a>, <a href="../gremlins/Mobile.html#getAlive--">getAlive</a>, <a href="../gremlins/Mobile.html#getDirection--">getDirection</a>, <a href="../gremlins/Mobile.html#getFrameCounter--">getFrameCounter</a>, <a href="../gremlins/Mobile.html#getSideAV--">getSideAV</a>, <a href="../gremlins/Mobile.html#getSpeed--">getSpeed</a>, <a href="../gremlins/Mobile.html#getXVel--">getXVel</a>, <a href="../gremlins/Mobile.html#getYVel--">getYVel</a>, <a href="../gremlins/Mobile.html#incFrameCounter--">incFrameCounter</a>, <a href="../gremlins/Mobile.html#leftCollision-gremlins.App-">leftCollision</a>, <a href="../gremlins/Mobile.html#rightCollision-gremlins.App-">rightCollision</a>, <a href="../gremlins/Mobile.html#setAlive-boolean-">setAlive</a>, <a href="../gremlins/Mobile.html#setDirection-int-">setDirection</a>, <a href="../gremlins/Mobile.html#setFrameCounter-int-">setFrameCounter</a>, <a href="../gremlins/Mobile.html#stop--">stop</a>, <a href="../gremlins/Mobile.html#upCollision-gremlins.App-">upCollision</a>, <a href="../gremlins/Mobile.html#xStop--">xStop</a>, <a href="../gremlins/Mobile.html#yStop--">yStop</a></code></li>
+<code><a href="../gremlins/Mobile.html#collides-int-int-gremlins.App-">collides</a>, <a href="../gremlins/Mobile.html#collision-gremlins.App-">collision</a>, <a href="../gremlins/Mobile.html#downCollision-gremlins.App-">downCollision</a>, <a href="../gremlins/Mobile.html#getAlive--">getAlive</a>, <a href="../gremlins/Mobile.html#getDirection--">getDirection</a>, <a href="../gremlins/Mobile.html#getFrameCounter--">getFrameCounter</a>, <a href="../gremlins/Mobile.html#getSideAV--">getSideAV</a>, <a href="../gremlins/Mobile.html#getSpeed--">getSpeed</a>, <a href="../gremlins/Mobile.html#getXVel--">getXVel</a>, <a href="../gremlins/Mobile.html#getYVel--">getYVel</a>, <a href="../gremlins/Mobile.html#leftCollision-gremlins.App-">leftCollision</a>, <a href="../gremlins/Mobile.html#rightCollision-gremlins.App-">rightCollision</a>, <a href="../gremlins/Mobile.html#setAlive-boolean-">setAlive</a>, <a href="../gremlins/Mobile.html#setDirection-int-">setDirection</a>, <a href="../gremlins/Mobile.html#setFrameCounter-int-">setFrameCounter</a>, <a href="../gremlins/Mobile.html#stop--">stop</a>, <a href="../gremlins/Mobile.html#upCollision-gremlins.App-">upCollision</a>, <a href="../gremlins/Mobile.html#xStop--">xStop</a>, <a href="../gremlins/Mobile.html#yStop--">yStop</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.gremlins.Entity">
@@ -450,6 +450,9 @@ extends <a href="../gremlins/Projectile.html" title="class in gremlins">Projecti
 <dd><code><a href="../gremlins/Mobile.html#draw-gremlins.App-">draw</a></code>&nbsp;in class&nbsp;<code><a href="../gremlins/Mobile.html" title="class in gremlins">Mobile</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>app</code> - inherits the image() method from PApplet</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>an integer that determines how that object may interact with other objects. A 0 is typically returned, but in the case of
+ a mobile like the wizard, the draw method returns the direction it was last drawn in.</dd>
 </dl>
 </li>
 </ul>

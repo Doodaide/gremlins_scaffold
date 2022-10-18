@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UpdateArrayList.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gremlins_scaffold</a> &gt; <a href="index.source.html" class="el_package">gremlins</a> &gt; <span class="el_source">UpdateArrayList.java</span></div><h1>UpdateArrayList.java</h1><pre class="source lang-java linenums">package gremlins;
-
 import java.util.ArrayList;
-
 /**
  * UpdateArrayList class: a generic helper class used to remove any null entries from an array given. 
  */
@@ -10,8 +8,8 @@ public class UpdateArrayList &lt;T&gt; {
     /**
      * Constructor
      */
-<span class="fc" id="L13">    public UpdateArrayList(){</span>
-<span class="fc" id="L14">    }</span>
+<span class="fc" id="L11">    public UpdateArrayList(){</span>
+<span class="fc" id="L12">    }</span>
 
     /**
      * Update method: deletes any null objects in a given Arraylist (and maintains order)
@@ -19,13 +17,13 @@ public class UpdateArrayList &lt;T&gt; {
      * @return returns an ArrayList (type T) with null entries removed and order maintained 
      */
     public ArrayList&lt;T&gt; update(ArrayList&lt;T&gt; toBeUpdated){
-<span class="fc" id="L22">        ArrayList&lt;T&gt; temp = new ArrayList&lt;T&gt;();</span>
-<span class="fc bfc" id="L23" title="All 2 branches covered.">        for(T e : toBeUpdated){</span>
-<span class="fc bfc" id="L24" title="All 2 branches covered.">            if(e != null){</span>
-<span class="fc" id="L25">                temp.add(e);</span>
+<span class="fc" id="L20">        ArrayList&lt;T&gt; temp = new ArrayList&lt;T&gt;();</span>
+<span class="fc bfc" id="L21" title="All 2 branches covered.">        for(T e : toBeUpdated){</span>
+<span class="fc bfc" id="L22" title="All 2 branches covered.">            if(e != null){</span>
+<span class="fc" id="L23">                temp.add(e);</span>
             }
-<span class="fc" id="L27">        }</span>
-<span class="fc" id="L28">        return temp;</span>
+<span class="fc" id="L25">        }</span>
+<span class="fc" id="L26">        return temp;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -1,85 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RespawnGenerator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gremlins_scaffold</a> &gt; <a href="index.source.html" class="el_package">gremlins</a> &gt; <span class="el_source">RespawnGenerator.java</span></div><h1>RespawnGenerator.java</h1><pre class="source lang-java linenums">package gremlins;
-
 import java.util.Random;
-
 /**
- * RespawnGenerator
+ * RespawnGenerator class: a helper class that uses the Random library to generate a set of random coordinates 
+ * That are at least a 10 block radius away from a specified entity. 
  */
 public class RespawnGenerator {
+    /**
+     * x coordinate of the entity at the epicentre 
+     */
     private int x; 
+
+    /**
+     * y coordinate of the entity at the epicentre 
+     */
     private int y;
+
+    /**
+     * Whether the x coordinate randomly generated is far enough from the entity's x coordinate 
+     */
     private boolean canRespawnX;
+
+    /**
+     * Whether the y coordinate randomly generated is far enough from the entity's y coordinate
+     */
     private boolean canRespawnY;
-<span class="nc" id="L13">    private static final Random randomGenerator = new Random(); // random number generator </span>
+
+    /**
+     * Static random generator object, that produces random numbers 
+     */
+<span class="nc" id="L31">    private static final Random randomGenerator = new Random(); // random number generator </span>
+
+    /**
+     * Entity e the entity at the epicentre, that the random generator will attempt to find coordinates that are 10 blocks away from checks
+     */
     private Entity e;
-<span class="nc" id="L15">    public RespawnGenerator(Entity e){</span>
-<span class="nc" id="L16">        this.x = e.getX();</span>
-<span class="nc" id="L17">        this.y = e.getY();</span>
-<span class="nc" id="L18">        this.canRespawnX = false; </span>
-<span class="nc" id="L19">        this.canRespawnY = false; </span>
-<span class="nc" id="L20">        this.e = e;</span>
 
-<span class="nc" id="L22">    }</span>
+    /**
+     * Constructor for RandomGenerator Object 
+     * @param e An entity in the game that the objects will be spawned 10 blocks away from 
+     */
+<span class="nc" id="L42">    public RespawnGenerator(Entity e){</span>
+<span class="nc" id="L43">        this.x = e.getX();</span>
+<span class="nc" id="L44">        this.y = e.getY();</span>
+<span class="nc" id="L45">        this.canRespawnX = false; </span>
+<span class="nc" id="L46">        this.canRespawnY = false; </span>
+<span class="nc" id="L47">        this.e = e;</span>
 
+<span class="nc" id="L49">    }</span>
+
+    /**
+     * respawnXBlocks (10 blocks) is a method that generates coordinates at least 10 blocks away from the entity at the epicentre. 
+     * @param app the App class, which contains the map of blocks that must be checked. 
+     * @return An integer array that corresponds to {x coordinate, y coordinate}
+     */
     public int[] respawnXBlocks(App app){
-<span class="nc" id="L25">        int xTest = x; </span>
-<span class="nc" id="L26">        int yTest = y; </span>
-
-<span class="nc bnc" id="L28" title="All 4 branches missed.">        while(!canRespawnX || !canRespawnY){</span>
-<span class="nc bnc" id="L29" title="All 2 branches missed.">            if(!canRespawnX){</span>
-<span class="nc" id="L30">                xTest = randomGenerator.nextInt(34) * 20;</span>
-                //System.out.println(&quot;x Respawn looping&quot;);
-<span class="nc bnc" id="L32" title="All 2 branches missed.">                if(xTest == 0){</span>
-<span class="nc" id="L33">                    continue;</span>
+<span class="nc" id="L57">        int xTest = x; </span>
+<span class="nc" id="L58">        int yTest = y; </span>
+<span class="nc bnc" id="L59" title="All 4 branches missed.">        while(!canRespawnX || !canRespawnY){</span>
+<span class="nc bnc" id="L60" title="All 2 branches missed.">            if(!canRespawnX){</span>
+<span class="nc" id="L61">                xTest = randomGenerator.nextInt(34) * 20;</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">                if(xTest == 0){</span>
+<span class="nc" id="L63">                    continue;</span>
                 }
-<span class="nc bnc" id="L35" title="All 12 branches missed.">                else if((xTest &gt;= x + this.e.WIDTH+ 200 || xTest &lt;= x - 200) || </span>
+<span class="nc bnc" id="L65" title="All 12 branches missed.">                else if((xTest &gt;= x + this.e.WIDTH+ 200 || xTest &lt;= x - 200) || </span>
                 ((xTest &lt; x + this.e.WIDTH + 200 &amp;&amp; xTest &gt; x - 200) &amp;&amp; ((yTest &gt; y + 200 + this.e.HEIGHT) || (yTest &lt; y - 200)))){ // too far left or right. Essentially both coords are valid. 
-<span class="nc" id="L37">                    boolean canPass = true;</span>
-<span class="nc bnc" id="L38" title="All 2 branches missed.">                    for(Immobile i : app.getMap()){</span>
-<span class="nc bnc" id="L39" title="All 2 branches missed.">                        if(i != null){</span>
-<span class="nc bnc" id="L40" title="All 4 branches missed.">                            if((i.getX() == xTest &amp;&amp; i.getY() == yTest)){</span>
-<span class="nc" id="L41">                                canPass = false;</span>
+<span class="nc" id="L67">                    boolean canPass = true;</span>
+<span class="nc bnc" id="L68" title="All 2 branches missed.">                    for(Immobile i : app.getMap()){</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">                        if(i != null){</span>
+<span class="nc bnc" id="L70" title="All 4 branches missed.">                            if((i.getX() == xTest &amp;&amp; i.getY() == yTest)){</span>
+<span class="nc" id="L71">                                canPass = false;</span>
                             }
                         }
-<span class="nc" id="L44">                    }</span>
-<span class="nc bnc" id="L45" title="All 2 branches missed.">                    if(canPass){</span>
-                        //System.out.println(&quot;X: &quot; + xTest + &quot; Y: &quot; + yTest);
-<span class="nc" id="L47">                        canRespawnX = true;</span>
-<span class="nc" id="L48">                        canRespawnY = true;</span>
+<span class="nc" id="L74">                    }</span>
+<span class="nc bnc" id="L75" title="All 2 branches missed.">                    if(canPass){</span>
+<span class="nc" id="L76">                        canRespawnX = true;</span>
+<span class="nc" id="L77">                        canRespawnY = true;</span>
                     }
                 }
             }
 
-<span class="nc bnc" id="L53" title="All 2 branches missed.">            if(!canRespawnY){</span>
-<span class="nc" id="L54">                yTest = randomGenerator.nextInt(31) * 20; </span>
-                //System.out.println(&quot;Y respawn looping&quot;);
-<span class="nc bnc" id="L56" title="All 2 branches missed.">                if(yTest == 0){</span>
-<span class="nc" id="L57">                    continue;</span>
+<span class="nc bnc" id="L82" title="All 2 branches missed.">            if(!canRespawnY){</span>
+<span class="nc" id="L83">                yTest = randomGenerator.nextInt(31) * 20; </span>
+<span class="nc bnc" id="L84" title="All 2 branches missed.">                if(yTest == 0){</span>
+<span class="nc" id="L85">                    continue;</span>
                 }
-<span class="nc bnc" id="L59" title="All 12 branches missed.">                else if((yTest &gt;= y + this.e.HEIGHT + 200 || yTest &lt;= y - 200) || </span>
+<span class="nc bnc" id="L87" title="All 12 branches missed.">                else if((yTest &gt;= y + this.e.HEIGHT + 200 || yTest &lt;= y - 200) || </span>
                 (yTest &lt; x + this.e.HEIGHT + 200 &amp;&amp; yTest &gt; y - 200) &amp;&amp; (xTest &gt; x + this.e.WIDTH + 200 || xTest &lt; x - 200)){
-<span class="nc" id="L61">                    boolean canPass = true;</span>
-<span class="nc bnc" id="L62" title="All 2 branches missed.">                    for(Immobile i : app.getMap()){</span>
-<span class="nc bnc" id="L63" title="All 2 branches missed.">                        if(i != null){</span>
-<span class="nc bnc" id="L64" title="All 4 branches missed.">                            if(i.getX() == xTest &amp;&amp; i.getY() == yTest){</span>
-<span class="nc" id="L65">                                canPass = false;</span>
+<span class="nc" id="L89">                    boolean canPass = true;</span>
+<span class="nc bnc" id="L90" title="All 2 branches missed.">                    for(Immobile i : app.getMap()){</span>
+<span class="nc bnc" id="L91" title="All 2 branches missed.">                        if(i != null){</span>
+<span class="nc bnc" id="L92" title="All 4 branches missed.">                            if(i.getX() == xTest &amp;&amp; i.getY() == yTest){</span>
+<span class="nc" id="L93">                                canPass = false;</span>
                             }
                         }
-<span class="nc" id="L68">                    }</span>
-<span class="nc bnc" id="L69" title="All 2 branches missed.">                    if(canPass){</span>
-                        //System.out.println(&quot;X: &quot; + xTest + &quot; Y: &quot; + yTest);
-<span class="nc" id="L71">                        canRespawnX = true;</span>
-<span class="nc" id="L72">                        canRespawnY = true;</span>
+<span class="nc" id="L96">                    }</span>
+<span class="nc bnc" id="L97" title="All 2 branches missed.">                    if(canPass){</span>
+<span class="nc" id="L98">                        canRespawnX = true;</span>
+<span class="nc" id="L99">                        canRespawnY = true;</span>
                     }
-<span class="nc" id="L74">                }</span>
+<span class="nc" id="L101">                }</span>
             }
             
         }
-
-<span class="nc" id="L79">        int[] toReturn = new int[2];</span>
-<span class="nc" id="L80">        toReturn[0] = xTest;</span>
-<span class="nc" id="L81">        toReturn[1] = yTest;</span>
-<span class="nc" id="L82">        return toReturn;</span>
+        
+<span class="nc" id="L106">        int[] toReturn = new int[2];</span>
+<span class="nc" id="L107">        toReturn[0] = xTest;</span>
+<span class="nc" id="L108">        toReturn[1] = yTest;</span>
+<span class="nc" id="L109">        return toReturn;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

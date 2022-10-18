@@ -108,33 +108,45 @@ public class FreezePotion extends Immobile{
 <span class="fc" id="L108">        this.viable = false;</span>
 <span class="fc" id="L109">    }</span>
 
+    /**
+     * Update method increments the freeze potion and updates the cooldown depending on whether the potion has been consumed (and its effect
+     * is still active) or not. 
+     * @param app
+     */
     public void update(App app){
-<span class="pc bpc" id="L112" title="5 of 6 branches missed.">        if(!app.getPowerUpAvailable() &amp;&amp; this.getConsumed() &amp;&amp; app.getFreezeActive()){ // consumed and not on screen </span>
-<span class="nc bnc" id="L113" title="All 2 branches missed.">            if(this.getCooldown() == 5*App.FPS){</span>
-<span class="nc" id="L114">                this.setCooldown(0);</span>
-<span class="nc" id="L115">                app.setFreezeActive(false);</span>
+<span class="pc bpc" id="L117" title="5 of 6 branches missed.">        if(!app.getPowerUpAvailable() &amp;&amp; this.getConsumed() &amp;&amp; app.getFreezeActive()){ // consumed and not on screen </span>
+<span class="nc bnc" id="L118" title="All 2 branches missed.">            if(this.getCooldown() == 5*App.FPS){</span>
+<span class="nc" id="L119">                this.setCooldown(0);</span>
+<span class="nc" id="L120">                app.setFreezeActive(false);</span>
             }
 
-<span class="nc bnc" id="L118" title="All 2 branches missed.">            else if (this.getCooldown() &lt; 5*App.FPS){</span>
-<span class="nc" id="L119">                this.setCooldown(this.getCooldown() + 1);</span>
+<span class="nc bnc" id="L123" title="All 2 branches missed.">            else if (this.getCooldown() &lt; 5*App.FPS){</span>
+<span class="nc" id="L124">                this.setCooldown(this.getCooldown() + 1);</span>
             }
         }
-<span class="fc" id="L122">    }</span>
-
+<span class="fc" id="L127">    }</span>
+    /**
+     * This static method generates new coordinates for the freeze potion to respawn. 
+     * It's target is the wizard, so it should spawn around 10 blocks away or more from the wizard. 
+     * However, the first time, the freeze potion will always spawn at a predetermined location
+     * @param app the App class, that allows access of methods like gArray. 
+     * @return an integer array that contains the x and y coordinates of the potion's new spawn location 
+     */
     public static int[] spawn(App app){
-<span class="nc" id="L125">        RespawnGenerator respawn = new RespawnGenerator(app.getWizard());</span>
-<span class="nc" id="L126">        int[] coords = {0,0};</span>
-<span class="nc" id="L127">        boolean canBreak = false;</span>
-<span class="nc bnc" id="L128" title="All 2 branches missed.">        while(!canBreak){</span>
-<span class="nc" id="L129">            coords = respawn.respawnXBlocks(app);</span>
-<span class="nc bnc" id="L130" title="All 2 branches missed.">            for(Gremlin g : app.getGArray()){</span>
-<span class="nc bnc" id="L131" title="All 4 branches missed.">                if(coords[0] == g.getX() &amp;&amp; coords[1] == g.getY()){</span>
-<span class="nc" id="L132">                    break;</span>
+<span class="nc" id="L136">        RespawnGenerator respawn = new RespawnGenerator(app.getWizard());</span>
+<span class="nc" id="L137">        int[] coords = {0,0};</span>
+<span class="nc" id="L138">        boolean canBreak = false;</span>
+<span class="nc bnc" id="L139" title="All 2 branches missed.">        while(!canBreak){</span>
+<span class="nc" id="L140">            coords = respawn.respawnXBlocks(app);</span>
+<span class="nc bnc" id="L141" title="All 2 branches missed.">            for(Gremlin g : app.getGArray()){</span>
+<span class="nc bnc" id="L142" title="All 4 branches missed.">                if(coords[0] == g.getX() &amp;&amp; coords[1] == g.getY()){</span>
+<span class="nc" id="L143">                    break;</span>
                 }
-<span class="nc" id="L134">                canBreak = true;</span>
-<span class="nc" id="L135">            }</span>
+<span class="nc" id="L145">                canBreak = true;</span>
+<span class="nc" id="L146">            }</span>
         }
-<span class="nc" id="L137">        return coords;</span>
+<span class="nc" id="L148">        return coords;</span>
     }
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Mobile.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gremlins_scaffold</a> &gt; <a href="index.source.html" class="el_package">gremlins</a> &gt; <span class="el_source">Mobile.java</span></div><h1>Mobile.java</h1><pre class="source lang-java linenums">package gremlins;
-
 import java.util.HashMap;
 
 /**
- * Abstract Mobile class of objects  
+ * Mobile class: An abstract entity that has the ability to actively change their location 
  */
 public abstract class Mobile extends Entity{
 
@@ -38,9 +37,9 @@ public abstract class Mobile extends Entity{
     protected Immobile collisionBlock; 
 
     /**
-     * Sides of the mobile which are available to move
+     * A hashmap that denotes which sides of the mobile are available to move
      */
-<span class="fc" id="L43">    protected HashMap&lt;Integer, Boolean&gt; sideAV = new HashMap&lt;Integer, Boolean&gt;();</span>
+<span class="fc" id="L42">    protected HashMap&lt;Integer, Boolean&gt; sideAV = new HashMap&lt;Integer, Boolean&gt;();</span>
     
     /**
      * mobile entity the mobile has collided with 
@@ -61,29 +60,29 @@ public abstract class Mobile extends Entity{
      * @param yVel rate of change of y posiiton 
      */
     public Mobile(int x, int y, int speed, int xVel, int yVel) {
-<span class="fc" id="L64">        super(x, y, 20, 20);</span>
-<span class="fc" id="L65">        this.speed = speed; </span>
-<span class="fc" id="L66">        this.alive = true;</span>
-<span class="fc" id="L67">        this.direction = 3; </span>
-<span class="fc" id="L68">        this.xVel = xVel;</span>
-<span class="fc" id="L69">        this.yVel = yVel;</span>
+<span class="fc" id="L63">        super(x, y, 20, 20);</span>
+<span class="fc" id="L64">        this.speed = speed; </span>
+<span class="fc" id="L65">        this.alive = true;</span>
+<span class="fc" id="L66">        this.direction = 3; </span>
+<span class="fc" id="L67">        this.xVel = xVel;</span>
+<span class="fc" id="L68">        this.yVel = yVel;</span>
 
-<span class="fc" id="L71">        this.collisionBlock = null;</span>
-<span class="fc" id="L72">        this.collisionEntity = null;</span>
+<span class="fc" id="L70">        this.collisionBlock = null;</span>
+<span class="fc" id="L71">        this.collisionEntity = null;</span>
 
-<span class="fc" id="L74">        this.sideAV.put(0, true);</span>
-<span class="fc" id="L75">        this.sideAV.put(1, true);</span>
-<span class="fc" id="L76">        this.sideAV.put(2, true);</span>
-<span class="fc" id="L77">        this.sideAV.put(3, true);</span>
-<span class="fc" id="L78">        this.frameCounter = 0;</span>
-<span class="fc" id="L79">    }</span>
+<span class="fc" id="L73">        this.sideAV.put(0, true);</span>
+<span class="fc" id="L74">        this.sideAV.put(1, true);</span>
+<span class="fc" id="L75">        this.sideAV.put(2, true);</span>
+<span class="fc" id="L76">        this.sideAV.put(3, true);</span>
+<span class="fc" id="L77">        this.frameCounter = 0;</span>
+<span class="fc" id="L78">    }</span>
 
     /**
      * getter method for whether the mobile should be displayed on screen or considered for collisions 
      * @return boolean whether the mobile is alive or not
      */
     public boolean getAlive(){
-<span class="fc" id="L86">        return this.alive;</span>
+<span class="fc" id="L85">        return this.alive;</span>
     }
 
     /**
@@ -91,15 +90,15 @@ public abstract class Mobile extends Entity{
      * @param b boolean whether the mobile is alive or not 
      */
     public void setAlive(boolean b){
-<span class="nc" id="L94">        this.alive = b;</span>
-<span class="nc" id="L95">    }</span>
+<span class="nc" id="L93">        this.alive = b;</span>
+<span class="nc" id="L94">    }</span>
 
     /**
      * getter method for getting each mobile entity's base speed 
      * @return speed integer that corresponds to the number of pixels each entity moves per tick. 
      */
     public int getSpeed(){
-<span class="fc" id="L102">        return this.speed;</span>
+<span class="fc" id="L101">        return this.speed;</span>
     }
 
     /**
@@ -107,7 +106,7 @@ public abstract class Mobile extends Entity{
      * @return integer that corresponds with the direction the mobile is facing (0, up; 1, right; 2 down; 3, left)
      */
     public int getDirection(){
-<span class="fc" id="L110">        return this.direction; </span>
+<span class="fc" id="L109">        return this.direction; </span>
     }
 
     /**
@@ -115,15 +114,15 @@ public abstract class Mobile extends Entity{
      * @param dir integer that corresponds with the direction the mobile is facing (0, up; 1, right; 2 down; 3, left)
      */
     public void setDirection(int dir){
-<span class="fc" id="L118">        this.direction = dir;</span>
-<span class="fc" id="L119">    }</span>
+<span class="fc" id="L117">        this.direction = dir;</span>
+<span class="fc" id="L118">    }</span>
 
     /**
      * getter method for the mobile's x velocity 
      * @return integer that corresponds to +/- mobile speed 
      */
     public int getXVel(){
-<span class="fc" id="L126">        return this.xVel;</span>
+<span class="fc" id="L125">        return this.xVel;</span>
     }
 
     /**
@@ -131,7 +130,7 @@ public abstract class Mobile extends Entity{
      * @return integer that correspods to +/- mobile speed 
      */
     public int getYVel(){
-<span class="fc" id="L134">        return this.yVel;</span>
+<span class="fc" id="L133">        return this.yVel;</span>
     }
 
     /**
@@ -139,272 +138,303 @@ public abstract class Mobile extends Entity{
      * @return an array of booleans that corresponds with which sides are available [up, right, down, left]. 
      */
     public boolean[] getSideAV(){
-<span class="fc" id="L142">        boolean [] temp = new boolean[4];</span>
-<span class="fc bfc" id="L143" title="All 2 branches covered.">        for(int i = 0; i &lt; temp.length; i++){</span>
-<span class="fc" id="L144">            temp[i] = this.sideAV.get(i);</span>
+<span class="fc" id="L141">        boolean [] temp = new boolean[4];</span>
+<span class="fc bfc" id="L142" title="All 2 branches covered.">        for(int i = 0; i &lt; temp.length; i++){</span>
+<span class="fc" id="L143">            temp[i] = this.sideAV.get(i);</span>
         }
-<span class="fc" id="L146">        return temp;</span>
+<span class="fc" id="L145">        return temp;</span>
     }
 
-    // Custom movement instructions 
-
+    /**
+     * Abstract up method 
+     */
     public abstract void up();
 
+    /**
+     * Abstract right method 
+     */
     public abstract void right();
 
+    /**
+     * Abstract down method 
+     */
     public abstract void down(); 
 
+    /**
+     * Abstract left method 
+     */
     public abstract void left();
 
+    /**
+     * Abstract draw method 
+     * @param app takes in the App class object to use the methods it has extended from PApplet such as app.image() 
+     * @return an integer that determines how that object may interact with other objects. A 0 is typically returned, but in the case of
+     * a mobile like the wizard, the draw method returns the direction it was last drawn in. 
+     */
     public abstract int draw(App app);
     
+    /**
+     * Abastract tick method 
+     * @param app takes in the App class object to use the methods such as the getters for the map, mobile, and immobile objects. 
+     * This allows interactions to take place 
+     * @return an integer is returned depending on how/what kinds of interactions are expected after a certain set of logic is ececuted. 
+     */
     public abstract int tick(App app);
 
+    /**
+     * Getter method for the number of frames elapsed 
+     * @return an integer that corresponds to the number of frames elapsed 
+     */
     public int getFrameCounter(){
-<span class="nc" id="L164">        return this.frameCounter;</span>
+<span class="fc" id="L189">        return this.frameCounter;</span>
     }
-    
-    public void incFrameCounter(){
-<span class="nc" id="L168">        this.frameCounter += 1;</span>
-<span class="nc" id="L169">    }</span>
 
+    /**
+     * Setter method for the framecounter (number of frames elapsed)
+     * @param x an integer that corresponds to a frame number 
+     */
     public void setFrameCounter(int x){
-<span class="nc" id="L172">        this.frameCounter = x;</span>
-<span class="nc" id="L173">    }</span>
-
-    /* Consider how to modify this, so that if the mobile is not on a multiple of 20
-     * it will continue moving until it stops on a multiple of 20. 
-     */ 
-
-    // ! FIX STOP MECHANICS
-     
-    public void xStop(){
-<span class="fc" id="L182">        this.xVel = 0;</span>
-<span class="fc" id="L183">    }</span>
-    public void yStop(){
-<span class="nc" id="L185">        this.yVel = 0;</span>
-<span class="nc" id="L186">    }</span>
-
-    // ! Tester function
-    public void stop(){
-            //System.out.println(&quot;Stop loop entered&quot;);
-            //System.out.println(&quot;x: &quot; + this.x);
-            //System.out.println(&quot;y: &quot;+ this.y);
-            //System.out.println(&quot;direction: &quot; + this.direction);
-            //System.out.println(&quot;xdir: &quot; + this.xDir);
-            //ystem.out.println(&quot;ydir: &quot; + this.yDir);
-<span class="fc" id="L196">            this.xVel = 0;</span>
-<span class="fc" id="L197">            this.yVel = 0;</span>
+<span class="fc" id="L197">        this.frameCounter = x;</span>
 <span class="fc" id="L198">    }</span>
+     
+    /**
+     * Directional stop method (that only stops movement in one direction) - stops x axis movement 
+     */
+    public void xStop(){
+<span class="fc" id="L204">        this.xVel = 0;</span>
+<span class="fc" id="L205">    }</span>
+
+    /**
+     * Directional stop method (that only stops movement in one direction) - stops y axis movement 
+     */
+    public void yStop(){
+<span class="fc" id="L211">        this.yVel = 0;</span>
+<span class="fc" id="L212">    }</span>
+
+    /**
+     * Universal stop method that stops movement in both directions 
+     */
+    public void stop(){
+<span class="fc" id="L218">            this.xVel = 0;</span>
+<span class="fc" id="L219">            this.yVel = 0;</span>
+<span class="fc" id="L220">    }</span>
     
+    /**
+     * First of 4 directional collision methods. Up collision evaluates whether when the wizard is moving up, it collides with something 
+     * The mobile object's side availability hashmap is modified in this method that carries on to determine which directions it can/cannot move in
+     * @param app used to access the App class which contains the ArrayLists of mobile and immobile objects that must be compared to
+     * No major offset is required, as the starting test point is the top left hand corner 
+     * @return an integer that denotes whether a collision has occurred (1 is a collision has occurred, and 0 is no collision)
+     */
     public int upCollision(App app){
-<span class="fc" id="L201">        int toReturn = 0; // 0 = no collision. 1 = collision</span>
+<span class="fc" id="L230">        int toReturn = 0; // 0 = no collision. 1 = collision</span>
         // ! Upper side collision
-<span class="fc bfc" id="L203" title="All 2 branches covered.">        if(collides(this.getX() + 1, this.getY(), app) || // top left corner, hit up</span>
-<span class="pc bpc" id="L204" title="1 of 2 branches missed.">            collides(this.getX()+this.WIDTH - 1, this.getY(), app)){ // top right cornder hit up </span>
-<span class="pc bpc" id="L205" title="1 of 2 branches missed.">            if(this.direction == 0){</span>
-<span class="fc" id="L206">                toReturn = 1;</span>
-<span class="fc" id="L207">                this.sideAV.replace(0, true, false);</span>
-                //System.out.println(&quot;up 0&quot;);
+<span class="fc bfc" id="L232" title="All 2 branches covered.">        if(collides(this.getX() + 1, this.getY(), app) || // top left corner, hit up</span>
+<span class="pc bpc" id="L233" title="1 of 2 branches missed.">            collides(this.getX()+this.WIDTH - 1, this.getY(), app)){ // top right cornder hit up </span>
+<span class="pc bpc" id="L234" title="1 of 2 branches missed.">            if(this.direction == 0){</span>
+<span class="fc" id="L235">                toReturn = 1;</span>
+<span class="fc" id="L236">                this.sideAV.replace(0, true, false);</span>
             }
             else{
                 //this.upAV = true;
-<span class="nc" id="L212">                this.sideAV.replace(0, false, true);</span>
-<span class="nc" id="L213">                toReturn = 0;</span>
+<span class="nc" id="L240">                this.sideAV.replace(0, false, true);</span>
+<span class="nc" id="L241">                toReturn = 0;</span>
             }
             
         }
          
-<span class="pc bpc" id="L218" title="1 of 2 branches missed.">        else if(!collides(this.getX() + 1, this.getY(), app) &amp;&amp; </span>
-<span class="pc bpc" id="L219" title="1 of 2 branches missed.">            !collides(this.getX()+this.WIDTH - 1, this.getY(), app)){ // top left corner, hit up</span>
-<span class="fc" id="L220">            this.sideAV.replace(0, false, true);</span>
-<span class="fc" id="L221">            toReturn = 0;</span>
-            //System.out.println(&quot;Up side free&quot;);
+<span class="pc bpc" id="L246" title="1 of 2 branches missed.">        else if(!collides(this.getX() + 1, this.getY(), app) &amp;&amp; </span>
+<span class="pc bpc" id="L247" title="1 of 2 branches missed.">            !collides(this.getX()+this.WIDTH - 1, this.getY(), app)){ // top left corner, hit up</span>
+<span class="fc" id="L248">            this.sideAV.replace(0, false, true);</span>
+<span class="fc" id="L249">            toReturn = 0;</span>
         }
         
-<span class="fc" id="L225">        return toReturn;</span>
+<span class="fc" id="L252">        return toReturn;</span>
     }
 
+    /**
+     * Second of 4 directional collision methods. Right collision evaluates whether when the wizard is moving right, it collides with something 
+     * The mobile object's side availability hashmap is modified in this method that carries on to determine which directions it can/cannot move in
+     * A major 20 pixel offset is required as the starting test point is the top left hand corner. To change this, 
+     * The sprite's width (20 pixels) is added to offset this colliision. 
+     * @param app used to access the App class which contains the ArrayLists of mobile and immobile objects that must be compared to
+     * @return an integer that denotes whether a collision has occurred (1 is a collision has occurred, and 0 is no collision)
+     */
     public int rightCollision(App app){
-<span class="fc" id="L229">        int toReturn = 0;</span>
+<span class="fc" id="L264">        int toReturn = 0;</span>
          // ! Right side collision 
-<span class="fc bfc" id="L231" title="All 2 branches covered.">        if(collides(this.getX()+this.WIDTH, this.getY() + 1, app) || // Top right corner, hit right </span>
-<span class="pc bpc" id="L232" title="1 of 2 branches missed.">            collides(this.getX() + this.WIDTH, this.getY() + this.HEIGHT - 1, app)){</span>
-<span class="pc bpc" id="L233" title="1 of 2 branches missed.">            if(this.direction == 1){</span>
-<span class="fc" id="L234">                this.sideAV.replace(1, true, false);</span>
-<span class="fc" id="L235">                toReturn = 1;</span>
-                //System.out.println(&quot;right 1&quot;);
+<span class="fc bfc" id="L266" title="All 2 branches covered.">        if(collides(this.getX()+this.WIDTH, this.getY() + 1, app) || // Top right corner, hit right </span>
+<span class="pc bpc" id="L267" title="1 of 2 branches missed.">            collides(this.getX() + this.WIDTH, this.getY() + this.HEIGHT - 1, app)){</span>
+<span class="pc bpc" id="L268" title="1 of 2 branches missed.">            if(this.direction == 1){</span>
+<span class="fc" id="L269">                this.sideAV.replace(1, true, false);</span>
+<span class="fc" id="L270">                toReturn = 1;</span>
             }
             else{
-<span class="nc" id="L239">                this.sideAV.replace(1, false, true);</span>
-<span class="nc" id="L240">                toReturn = 0;</span>
+<span class="nc" id="L273">                this.sideAV.replace(1, false, true);</span>
+<span class="nc" id="L274">                toReturn = 0;</span>
             }
             
         }
  
         
-<span class="pc bpc" id="L246" title="1 of 2 branches missed.">        else if(!collides(this.getX() +this.WIDTH, this.getY() + 1, app) &amp;&amp; // Top right corner, hit right </span>
-<span class="pc bpc" id="L247" title="1 of 2 branches missed.">            !collides(this.getX() + this.WIDTH, this.getY() + this.HEIGHT - 1, app)){</span>
-<span class="fc" id="L248">            this.sideAV.replace(1, false, true);</span>
-<span class="fc" id="L249">            toReturn = 0;</span>
-            //System.out.println(&quot;Right side free&quot;);
+<span class="pc bpc" id="L280" title="1 of 2 branches missed.">        else if(!collides(this.getX() +this.WIDTH, this.getY() + 1, app) &amp;&amp; // Top right corner, hit right </span>
+<span class="pc bpc" id="L281" title="1 of 2 branches missed.">            !collides(this.getX() + this.WIDTH, this.getY() + this.HEIGHT - 1, app)){</span>
+<span class="fc" id="L282">            this.sideAV.replace(1, false, true);</span>
+<span class="fc" id="L283">            toReturn = 0;</span>
         }
         
-<span class="fc" id="L253">        return toReturn;</span>
+<span class="fc" id="L286">        return toReturn;</span>
     }
 
+    /**
+     * Third of 4 directional collision methods. Down collision evaluates whether when the wizard is moving down, it collides with something 
+     * The mobile object's side availability hashmap is modified in this method that carries on to determine which directions it can/cannot move in
+     * A major offset of 20 pixels down is required as the test point is the top left hand corner. To implement this, the 
+     * Sprite's height (20 pixels) is added to offset this coliison
+     * @param app used to access the App class which contains the ArrayLists of mobile and immobile objects that must be compared to
+     * @return an integer that denotes whether a collision has occurred (1 is a collision has occurred, and 0 is no collision)
+     */
     public int leftCollision(App app){
-<span class="fc" id="L257">        int toReturn = 0; // 0 = no collision. 1 = collision</span>
+<span class="fc" id="L298">        int toReturn = 0; // 0 = no collision. 1 = collision</span>
         // ! Left side collision    
-<span class="fc bfc" id="L259" title="All 2 branches covered.">        if(collides(this.getX(), this.getY() + 1, app) || // top left corner</span>
-<span class="pc bpc" id="L260" title="1 of 2 branches missed.">            collides(this.getX(), this.getY() + this.HEIGHT - 1, app) ){ // bottom left corner, hit left </span>
-<span class="pc bpc" id="L261" title="1 of 2 branches missed.">            if (this.direction == 3) {</span>
-<span class="fc" id="L262">                this.sideAV.replace(3, true, false);</span>
-<span class="fc" id="L263">                toReturn = 1;</span>
-                //System.out.println(&quot;left 3&quot;);
+<span class="fc bfc" id="L300" title="All 2 branches covered.">        if(collides(this.getX(), this.getY() + 1, app) || // top left corner</span>
+<span class="pc bpc" id="L301" title="1 of 2 branches missed.">            collides(this.getX(), this.getY() + this.HEIGHT - 1, app) ){ // bottom left corner, hit left </span>
+<span class="pc bpc" id="L302" title="1 of 2 branches missed.">            if (this.direction == 3) {</span>
+<span class="fc" id="L303">                this.sideAV.replace(3, true, false);</span>
+<span class="fc" id="L304">                toReturn = 1;</span>
             }
             else{
-<span class="nc" id="L267">                this.sideAV.replace(3, false, true);</span>
-<span class="nc" id="L268">                toReturn = 0;</span>
+<span class="nc" id="L307">                this.sideAV.replace(3, false, true);</span>
+<span class="nc" id="L308">                toReturn = 0;</span>
             }
             
         }
             
-<span class="pc bpc" id="L273" title="1 of 2 branches missed.">        else if(!collides(this.getX(), this.getY() + 1, app) &amp;&amp;</span>
-<span class="pc bpc" id="L274" title="1 of 2 branches missed.">            !collides(this.getX(), this.getY() + this.HEIGHT - 1, app)){ // top left corner, hit left </span>
-<span class="fc" id="L275">            this.sideAV.replace(3, false, true);</span>
-<span class="fc" id="L276">            toReturn = 0;</span>
-            //System.out.println(&quot;Left side free&quot;);
+<span class="pc bpc" id="L313" title="1 of 2 branches missed.">        else if(!collides(this.getX(), this.getY() + 1, app) &amp;&amp;</span>
+<span class="pc bpc" id="L314" title="1 of 2 branches missed.">            !collides(this.getX(), this.getY() + this.HEIGHT - 1, app)){ // top left corner, hit left </span>
+<span class="fc" id="L315">            this.sideAV.replace(3, false, true);</span>
+<span class="fc" id="L316">            toReturn = 0;</span>
         }
-<span class="fc" id="L279">        return toReturn;</span>
+<span class="fc" id="L318">        return toReturn;</span>
     }
 
+    /**
+     * Last of 4 directional collision methods. Left collision evaluates whether when the wizard is moving left, it collides with something 
+     * The mobile object's side availability hashmap is modified in this method that carries on to determine which directions it can/cannot move in
+     * No major offset is required, as the test point is always top left. As it is on the left, no consistent offset is required. 
+     * @param app used to access the App class which contains the ArrayLists of mobile and immobile objects that must be compared to
+     * @return an integer that denotes whether a collision has occurred (1 is a collision has occurred, and 0 is no collision)
+     */
     public int downCollision(App app){
-<span class="fc" id="L283">        int toReturn = 0; // 0 = no collision. 1 = collision</span>
+<span class="fc" id="L329">        int toReturn = 0; // 0 = no collision. 1 = collision</span>
         // ! Lower side collision 
-<span class="fc bfc" id="L285" title="All 2 branches covered.">        if(collides(this.getX() + 1, this.getY() + this.HEIGHT, app) || // Bottom left corner, hit down</span>
-<span class="pc bpc" id="L286" title="1 of 2 branches missed.">            collides(this.getX() + this.WIDTH - 1, this.getY() + this.HEIGHT, app)){ // Bottom right corner, hit down</span>
-<span class="pc bpc" id="L287" title="1 of 2 branches missed.">            if(this.direction == 2){</span>
-<span class="fc" id="L288">                this.sideAV.replace(2, true, false);</span>
-<span class="fc" id="L289">                toReturn = 1;</span>
-                //System.out.println(&quot;bottom 2&quot;);
+<span class="fc bfc" id="L331" title="All 2 branches covered.">        if(collides(this.getX() + 1, this.getY() + this.HEIGHT, app) || // Bottom left corner, hit down</span>
+<span class="pc bpc" id="L332" title="1 of 2 branches missed.">            collides(this.getX() + this.WIDTH - 1, this.getY() + this.HEIGHT, app)){ // Bottom right corner, hit down</span>
+<span class="pc bpc" id="L333" title="1 of 2 branches missed.">            if(this.direction == 2){</span>
+<span class="fc" id="L334">                this.sideAV.replace(2, true, false);</span>
+<span class="fc" id="L335">                toReturn = 1;</span>
             }
             else{
-<span class="nc" id="L293">                this.sideAV.replace(2, false, true);</span>
-<span class="nc" id="L294">                toReturn = 0;</span>
+<span class="nc" id="L338">                this.sideAV.replace(2, false, true);</span>
+<span class="nc" id="L339">                toReturn = 0;</span>
             }        
         } 
         
 
-<span class="pc bpc" id="L299" title="1 of 2 branches missed.">        else if(!collides(this.getX() + 1, this.getY() + this.HEIGHT, app) &amp;&amp; </span>
-<span class="pc bpc" id="L300" title="1 of 2 branches missed.">            !collides(this.getX() + this.WIDTH - 1, this.getY() + this.HEIGHT, app)){// Bottom left corner, hit down</span>
-<span class="fc" id="L301">            this.sideAV.replace(2, false, true);</span>
-<span class="fc" id="L302">            toReturn = 0;</span>
-            //System.out.println(&quot;Bottom side free&quot;);
+<span class="pc bpc" id="L344" title="1 of 2 branches missed.">        else if(!collides(this.getX() + 1, this.getY() + this.HEIGHT, app) &amp;&amp; </span>
+<span class="pc bpc" id="L345" title="1 of 2 branches missed.">            !collides(this.getX() + this.WIDTH - 1, this.getY() + this.HEIGHT, app)){// Bottom left corner, hit down</span>
+<span class="fc" id="L346">            this.sideAV.replace(2, false, true);</span>
+<span class="fc" id="L347">            toReturn = 0;</span>
         }
-<span class="fc" id="L305">        return toReturn;</span>
+<span class="fc" id="L349">        return toReturn;</span>
     }
 
+    /**
+     * This collision method is consistently called, but the only collisions for the mobile that are assessed are in the direction
+     * it is travelling. 
+     * Each mobile entity can only at most hit one thing that changes its 'state' significantly. Thus, only the collision algorithm in the 
+     * direction the mobile is moving is assessed. 
+     * This functions, as if another mobile hits the current mobile from behind, the current mobile may not detect it, but the 
+     * one that hit the current mobile will have. Thus, computational power and memory is saved for other tasks. 
+     * @param app used to access the ArrayLists of mobile and immobile objects the 'current mobile' must be compared to 
+     * @return an integer that denotes whether a collision has occurrd (1 is collision has occured, 0 is no collision)
+     */
     public int collision(App app) { // mob to block collision 
-        // Wizard collisions 
-        // Fireball collisions
-        //upCollision(app);
-        //rightCollision(app);
-        //downCollision(app);
-        //leftCollision(app);
-<span class="fc bfc" id="L315" title="All 2 branches covered.">        if(this.direction == 0){</span>
-<span class="fc" id="L316">            return upCollision(app);</span>
+<span class="fc bfc" id="L363" title="All 2 branches covered.">        if(this.direction == 0){</span>
+<span class="fc" id="L364">            return upCollision(app);</span>
         }
-<span class="fc bfc" id="L318" title="All 2 branches covered.">        if(this.direction == 1){</span>
-<span class="fc" id="L319">            return rightCollision(app);</span>
+<span class="fc bfc" id="L366" title="All 2 branches covered.">        if(this.direction == 1){</span>
+<span class="fc" id="L367">            return rightCollision(app);</span>
         }
-<span class="fc bfc" id="L321" title="All 2 branches covered.">        if(this.direction == 2){</span>
-<span class="fc" id="L322">            return downCollision(app);</span>
+<span class="fc bfc" id="L369" title="All 2 branches covered.">        if(this.direction == 2){</span>
+<span class="fc" id="L370">            return downCollision(app);</span>
         }
-<span class="pc bpc" id="L324" title="1 of 2 branches missed.">        if(this.direction == 3){</span>
-            
-<span class="fc" id="L326">            return leftCollision(app);</span>
+<span class="pc bpc" id="L372" title="1 of 2 branches missed.">        if(this.direction == 3){</span>
+<span class="fc" id="L373">            return leftCollision(app);</span>
         }
-        
-        //for (int i = 0; i &lt; arr.length; i++) {
-        //    System.out.println(arr[i]);
-        //}
-        //System.out.println();
-<span class="nc" id="L333">        return 0;</span>
-
-       
+<span class="nc" id="L375">        return 0;</span>
     }
 
+    /**
+     * The collides method truely assesses whether two objects are colliding (i.e. if two test points are within the range of the
+     * width/height of the entity it is testing against). 
+     * There are two major classes of collisions: Block (immobile) collisions, and Mobile collisions, assessed using the two for loops
+     * The objects the current entity has collided with are saved in the two mobile attributes called collisionBlock and collisionEntity, 
+     * that are heavily used by both child and parent classes. 
+     * @param xCoord the x coordinate of this current mobile's test point
+     * @param yCoord the y coordinate of this current mobile's test point
+     * @param app used to access the ArrayLists of mobile and immobile objects 
+     * @return a boolean, true or false depending on whether a mobile or immobile has been contacted 
+     */
     public boolean collides(int xCoord, int yCoord, App app) {
-<span class="fc bfc" id="L339" title="All 2 branches covered.">        for (Immobile i : app.getMap()) { // i = block</span>
-            // ! Implement 
-<span class="fc bfc" id="L341" title="All 4 branches covered.">            if(i != null &amp;&amp; i.getViable()){</span>
-<span class="fc bfc" id="L342" title="All 4 branches covered.">                if(((xCoord &gt;= i.getX() &amp;&amp; xCoord &lt;= i.getX() + i.WIDTH)</span>
+<span class="fc bfc" id="L390" title="All 2 branches covered.">        for (Immobile i : app.getMap()) { // i = block</span>
+<span class="pc bpc" id="L391" title="1 of 4 branches missed.">            if(i != null &amp;&amp; i.getViable()){</span>
+<span class="fc bfc" id="L392" title="All 4 branches covered.">                if(((xCoord &gt;= i.getX() &amp;&amp; xCoord &lt;= i.getX() + i.WIDTH)</span>
                 &amp;&amp;
-<span class="fc bfc" id="L344" title="All 4 branches covered.">                (yCoord &gt;= i.getY() &amp;&amp; yCoord &lt;= i.getY() + i.HEIGHT))){</span>
-                    //System.out.println(upAV + &quot; &quot; + rightAV + &quot; &quot; + downAV + &quot; &quot; + leftAV);
-<span class="fc" id="L346">                this.collisionBlock = i; // finds the object the mobile collided with. </span>
-                //System.out.println(this.collisionBlock);
-                    // !!PUT POWERUP DETECTION HERE
-<span class="fc" id="L349">                return true;</span>
+<span class="fc bfc" id="L394" title="All 4 branches covered.">                (yCoord &gt;= i.getY() &amp;&amp; yCoord &lt;= i.getY() + i.HEIGHT))){</span>
+<span class="fc" id="L395">                this.collisionBlock = i; // finds the object the mobile collided with. </span>
+<span class="fc" id="L396">                return true;</span>
                 }
             }
-<span class="fc" id="L352">            this.collisionBlock = null;</span>
-<span class="fc" id="L353">        }</span>
-        // ! POWERUP ERRORING
-<span class="fc bfc" id="L355" title="All 2 branches covered.">            if(app.getPowerUpAvailable() ){</span>
-                //System.out.println(app.getPowerUp());
-<span class="pc bpc" id="L357" title="1 of 2 branches missed.">                if(this.getClass().getName().equals(&quot;gremlins.Wizard&quot;)</span>
+<span class="fc" id="L399">            this.collisionBlock = null;</span>
+<span class="fc" id="L400">        }</span>
+<span class="fc bfc" id="L401" title="All 2 branches covered.">            if(app.getPowerUpAvailable() ){</span>
+<span class="pc bpc" id="L402" title="1 of 2 branches missed.">                if(this.getClass().getName().equals(&quot;gremlins.Wizard&quot;)</span>
                 &amp;&amp;
-<span class="nc bnc" id="L359" title="All 4 branches missed.">                ((xCoord &gt;= app.getPowerUp().getX() &amp;&amp; xCoord &lt;= app.getPowerUp().getX() + app.getPowerUp().WIDTH) // ! error here </span>
+<span class="pc bpc" id="L404" title="3 of 4 branches missed.">                ((xCoord &gt;= app.getPowerUp().getX() &amp;&amp; xCoord &lt;= app.getPowerUp().getX() + app.getPowerUp().WIDTH) // ! error here </span>
                     &amp;&amp;
-<span class="nc bnc" id="L361" title="All 4 branches missed.">                    (yCoord &gt;= app.getPowerUp().getY() &amp;&amp; yCoord &lt;= app.getPowerUp().getY() + app.getPowerUp().HEIGHT))){</span>
-<span class="nc" id="L362">                        this.collisionBlock = app.getPowerUp();</span>
-<span class="nc" id="L363">                        app.setFreezeActive(true);</span>
-<span class="nc" id="L364">                        return true;</span>
+<span class="nc bnc" id="L406" title="All 4 branches missed.">                    (yCoord &gt;= app.getPowerUp().getY() &amp;&amp; yCoord &lt;= app.getPowerUp().getY() + app.getPowerUp().HEIGHT))){</span>
+<span class="nc" id="L407">                        this.collisionBlock = app.getPowerUp();</span>
+<span class="nc" id="L408">                        app.setFreezeActive(true);</span>
+<span class="nc" id="L409">                        return true;</span>
                 }   
-<span class="fc" id="L366">                this.collisionBlock = null;</span>
+<span class="fc" id="L411">                this.collisionBlock = null;</span>
             }
         
 
-<span class="fc bfc" id="L370" title="All 2 branches covered.">        for(Mobile i : app.getMobiles()){</span>
-            //System.out.println(&quot;Current entity: &quot; + this);
-            //System.out.println(&quot;Entity examined: &quot; + i);
-<span class="pc bpc" id="L373" title="1 of 4 branches missed.">            if(this != i &amp;&amp; i != null</span>
-<span class="pc bpc" id="L374" title="1 of 4 branches missed.">            &amp;&amp; !(this.getClass().getName().equals(&quot;gremlins.Wizard&quot;) &amp;&amp; i.getClass().getName().equals(&quot;gremlins.Fireball&quot;)) </span>
-<span class="pc bpc" id="L375" title="1 of 4 branches missed.">            &amp;&amp; !(i.getClass().getName().equals(&quot;gremlins.Wizard&quot;) &amp;&amp; this.getClass().getName().equals(&quot;gremlins.Fireball&quot;)) </span>
-<span class="pc bpc" id="L376" title="1 of 4 branches missed.">            &amp;&amp; !(this.getClass().getName().equals(&quot;gremlins.Wizard&quot;) &amp;&amp; i.getClass().getName().equals(&quot;gremlins.Fireball&quot;)) </span>
-<span class="fc bfc" id="L377" title="All 4 branches covered.">            &amp;&amp; !(i.getClass().getName().equals(&quot;gremlins.Gremlin&quot;) &amp;&amp; this.getClass().getName().equals(&quot;gremlins.SlimeBall&quot;))</span>
-<span class="pc bpc" id="L378" title="3 of 4 branches missed.">            &amp;&amp; !(i.getClass().getName().equals(&quot;gremlins.SlimeBall&quot;) &amp;&amp; this.getClass().getName().equals(&quot;gremlins.Gremlin&quot;))</span>
-<span class="pc bpc" id="L379" title="3 of 4 branches missed.">            &amp;&amp; !(i.getClass().getName().equals(&quot;gremlins.Fireball&quot;) &amp;&amp; this.getClass().getName().equals(&quot;gremlins.Fireball&quot;))</span>
-<span class="pc bpc" id="L380" title="3 of 4 branches missed.">            &amp;&amp; !(i.getClass().getName().equals(&quot;gremlins.SlimeBall&quot;) &amp;&amp; this.getClass().getName().equals(&quot;gremlins.SlimeBall&quot;))</span>
-<span class="fc bfc" id="L381" title="All 4 branches covered.">            &amp;&amp; !(i.getClass().getName().equals(&quot;gremlins.Gremlin&quot;) &amp;&amp; this.getClass().getName().equals(&quot;gremlins.Gremlin&quot;))</span>
+<span class="fc bfc" id="L415" title="All 2 branches covered.">        for(Mobile i : app.getMobiles()){</span>
+<span class="pc bpc" id="L416" title="1 of 4 branches missed.">            if(this != i &amp;&amp; i != null</span>
+<span class="fc bfc" id="L417" title="All 4 branches covered.">            &amp;&amp; !(this.getClass().getName().equals(&quot;gremlins.Wizard&quot;) &amp;&amp; i.getClass().getName().equals(&quot;gremlins.Fireball&quot;)) </span>
+<span class="fc bfc" id="L418" title="All 4 branches covered.">            &amp;&amp; !(i.getClass().getName().equals(&quot;gremlins.Wizard&quot;) &amp;&amp; this.getClass().getName().equals(&quot;gremlins.Fireball&quot;)) </span>
+<span class="pc bpc" id="L419" title="1 of 4 branches missed.">            &amp;&amp; !(this.getClass().getName().equals(&quot;gremlins.Wizard&quot;) &amp;&amp; i.getClass().getName().equals(&quot;gremlins.Fireball&quot;)) </span>
+<span class="pc bpc" id="L420" title="1 of 4 branches missed.">            &amp;&amp; !(i.getClass().getName().equals(&quot;gremlins.Gremlin&quot;) &amp;&amp; this.getClass().getName().equals(&quot;gremlins.SlimeBall&quot;))</span>
+<span class="pc bpc" id="L421" title="3 of 4 branches missed.">            &amp;&amp; !(i.getClass().getName().equals(&quot;gremlins.SlimeBall&quot;) &amp;&amp; this.getClass().getName().equals(&quot;gremlins.Gremlin&quot;))</span>
+<span class="pc bpc" id="L422" title="3 of 4 branches missed.">            &amp;&amp; !(i.getClass().getName().equals(&quot;gremlins.Fireball&quot;) &amp;&amp; this.getClass().getName().equals(&quot;gremlins.Fireball&quot;))</span>
+<span class="pc bpc" id="L423" title="3 of 4 branches missed.">            &amp;&amp; !(i.getClass().getName().equals(&quot;gremlins.SlimeBall&quot;) &amp;&amp; this.getClass().getName().equals(&quot;gremlins.SlimeBall&quot;))</span>
+<span class="fc bfc" id="L424" title="All 4 branches covered.">            &amp;&amp; !(i.getClass().getName().equals(&quot;gremlins.Gremlin&quot;) &amp;&amp; this.getClass().getName().equals(&quot;gremlins.Gremlin&quot;))</span>
             ){
-                //System.out.println(i.getClass().getName());
-                //System.out.println(&quot;mobile entity: &quot; + this);
-                //System.out.println(&quot;current object: &quot; + i);
-<span class="fc bfc" id="L386" title="All 4 branches covered.">                if (((xCoord &gt;= i.getX() &amp;&amp; xCoord &lt;= i.getX() + i.WIDTH)</span>
-                &amp;&amp;
-<span class="pc bpc" id="L388" title="1 of 4 branches missed.">                (yCoord &gt;= i.getY() &amp;&amp; yCoord &lt;= i.getY() + i.HEIGHT))){</span>
-                    
-<span class="nc" id="L390">                    this.collisionEntity = i;</span>
-                    //System.out.println(&quot;Here&quot;);
-                    //System.out.println(&quot;Collision entity: &quot; + this.collisionEntity);
-<span class="nc" id="L393">                    return true;</span>
+
+<span class="fc bfc" id="L427" title="All 4 branches covered.">                if (((xCoord &gt;= i.getX() &amp;&amp; xCoord &lt;= i.getX() + i.WIDTH)</span>
+<span class="pc bpc" id="L428" title="1 of 4 branches missed.">                &amp;&amp; (yCoord &gt;= i.getY() &amp;&amp; yCoord &lt;= i.getY() + i.HEIGHT))){</span>
+<span class="nc" id="L429">                    this.collisionEntity = i;</span>
+<span class="nc" id="L430">                    return true;</span>
                 }
             }
             
         
-<span class="fc" id="L398">        }   </span>
+<span class="fc" id="L435">        }   </span>
         
-<span class="fc" id="L400">        return false;</span>
+<span class="fc" id="L437">        return false;</span>
     }
-
-    public boolean mobCollision(int x, int y, App app){
-<span class="nc" id="L404">        return false;</span>
-    }
-
-
-
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

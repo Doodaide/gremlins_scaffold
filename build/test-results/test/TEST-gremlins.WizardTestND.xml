@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="gremlins.WizardTestND" tests="6" skipped="0" failures="0" errors="0" timestamp="2022-10-17T08:22:45" hostname="Alexanders-MacBook-Pro-2.local" time="6.225">
+<testsuite name="gremlins.WizardTestND" tests="8" skipped="0" failures="0" errors="0" timestamp="2022-10-18T13:05:49" hostname="Alexanders-MacBook-Pro-2.local" time="19.081">
   <properties/>
-  <testcase name="constructor()" classname="gremlins.WizardTestND" time="0.0"/>
+  <testcase name="constructor()" classname="gremlins.WizardTestND" time="0.013"/>
   <testcase name="tpTest()" classname="gremlins.WizardTestND" time="0.001"/>
   <testcase name="directionTest()" classname="gremlins.WizardTestND" time="0.0"/>
-  <testcase name="manaTest()" classname="gremlins.WizardTestND" time="0.001"/>
-  <testcase name="movementImageTest()" classname="gremlins.WizardTestND" time="6.068"/>
-  <testcase name="staticImageTest()" classname="gremlins.WizardTestND" time="0.155"/>
+  <testcase name="manaTest()" classname="gremlins.WizardTestND" time="0.0"/>
+  <testcase name="ImmobileInteractionTest()" classname="gremlins.WizardTestND" time="7.431"/>
+  <testcase name="movementImageTest()" classname="gremlins.WizardTestND" time="7.561"/>
+  <testcase name="fireBallMethodTest()" classname="gremlins.WizardTestND" time="0.0"/>
+  <testcase name="staticImageTest()" classname="gremlins.WizardTestND" time="4.072"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

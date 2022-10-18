@@ -1,0 +1,19 @@
+@Test 
+    public void movementImageTest(){
+        App app = new App();
+        PApplet.runSketch(new String[] { "App" }, app);
+        app.setup();
+
+        assertNotNull(app.getWizard());
+
+        assertEquals(3, app.getWizard().draw(app));
+
+        app.getWizard().right();
+
+        //assertEquals(1, app.getWizard().getDirection());
+        //assertEquals(2, app.getWizard().getXVel());
+        app.loop(); 
+        app.keyPressed();
+        app.delay(5000);
+        //assertEquals(60, app.getWizard().getX());
+    }

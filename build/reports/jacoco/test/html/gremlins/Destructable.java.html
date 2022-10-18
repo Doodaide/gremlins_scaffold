@@ -37,12 +37,11 @@ public class Destructable extends Immobile{
      */
     @Override
     public int update(){
-        //System.out.println(&quot;Entering&quot;);
-<span class="fc" id="L41">        this.texture = decayTextures[this.currentState++];</span>
-<span class="fc bfc" id="L42" title="All 2 branches covered.">        if(this.currentState == 4){</span>
-<span class="fc" id="L43">            this.currentState = 0;</span>
+<span class="fc" id="L40">        this.texture = decayTextures[this.currentState++];</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">        if(this.currentState == 4){</span>
+<span class="fc" id="L42">            this.currentState = 0;</span>
         }
-<span class="fc" id="L45">        return 1;</span>
+<span class="fc" id="L44">        return 1;</span>
     }
 
     /**
@@ -50,8 +49,8 @@ public class Destructable extends Immobile{
      */
     @Override
     public void draw(App app) {
-<span class="fc" id="L53">        app.image(this.texture, this.x, this.y);</span>
-<span class="fc" id="L54">    }</span>
+<span class="fc" id="L52">        app.image(this.texture, this.x, this.y);</span>
+<span class="fc" id="L53">    }</span>
 
     /** 
      * Method that establishes whether a block can still be &quot;hit&quot; by projectiles 
@@ -59,7 +58,7 @@ public class Destructable extends Immobile{
      */
     @Override
     public boolean getViable() {
-<span class="fc" id="L62">        return this.viable;</span>
+<span class="fc" id="L61">        return this.viable;</span>
     }
 
     /** 
@@ -68,16 +67,16 @@ public class Destructable extends Immobile{
      */
     @Override
     public void setViable(boolean b) {
-<span class="fc" id="L71">        this.viable = b;</span>
+<span class="fc" id="L70">        this.viable = b;</span>
         
-<span class="fc" id="L73">    }</span>
+<span class="fc" id="L72">    }</span>
 
     /**
      * Getter method that gets wehther a block can be hit by a wizard projectile
      * @return returns a boolean for whether a block can be hit or not. 
      */
     public int getCurrentState(){
-<span class="fc" id="L80">        return this.currentState;</span>
+<span class="fc" id="L79">        return this.currentState;</span>
     }
 
 }

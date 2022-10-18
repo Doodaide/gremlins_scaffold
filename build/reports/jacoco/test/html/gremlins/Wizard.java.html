@@ -1,305 +1,402 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Wizard.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gremlins_scaffold</a> &gt; <a href="index.source.html" class="el_package">gremlins</a> &gt; <span class="el_source">Wizard.java</span></div><h1>Wizard.java</h1><pre class="source lang-java linenums">package gremlins;
-
 import java.util.ArrayList;
-
 import processing.core.PImage;
-
 /**
- * Wizard
+ * Wizard class: The player controlled character that extends a mobile entity
  */
 public class Wizard extends Mobile{
+
+    /**
+     * The image to display in the current tick
+     */
     private PImage imgCurrent;
+
+    /**
+     * An array of images that belongs to the wizard
+     */
     private PImage[] wizardSprites;
+
+    /**
+     * The delay between each fireBall shot - depends on level specificiations 
+     */
     private int manaCooldown;
+
+    /**
+     * The delay between each Teleport cycle
+     */
     private int tpC;
+
+    /**
+     * Whether the wizard has teleported 
+     */
     private boolean teleported;
+
+    /**
+     * An ArrayList of the current, non-collided fireballs the wizard has shot (and are still shown onscreen)
+     */
     private ArrayList&lt;Fireball&gt; existingFireballs;
-    public Wizard(int x, int y, int speed, 
-            PImage[] wizardSprites) {
 
-<span class="fc" id="L20">        super(x, y, 2, 0, 0);</span>
-<span class="fc" id="L21">        this.wizardSprites = wizardSprites;</span>
-<span class="fc" id="L22">        this.imgCurrent = this.wizardSprites[3];</span>
-<span class="fc" id="L23">        this.xDir = 3;</span>
-<span class="fc" id="L24">        this.yDir = 0;</span>
-<span class="fc" id="L25">        this.manaCooldown = 0;</span>
-<span class="fc" id="L26">        this.tpC = 0;</span>
-<span class="fc" id="L27">        this.teleported = false; </span>
-<span class="fc" id="L28">        this.existingFireballs = new ArrayList&lt;Fireball&gt;();</span>
-<span class="fc" id="L29">    }</span>
+    /**
+     * Constructor for wizard object 
+     * @param x x coordinate 
+     * @param y y coordinate 
+     * @param speed how many pixels it moves per increment 
+     * @param wizardSprites An array of sprites the wizard will use 
+     */
+    public Wizard(int x, int y, int speed, PImage[] wizardSprites) {
+<span class="fc" id="L47">        super(x, y, 2, 0, 0);</span>
+<span class="fc" id="L48">        this.wizardSprites = wizardSprites;</span>
+<span class="fc" id="L49">        this.imgCurrent = this.wizardSprites[3];</span>
+<span class="fc" id="L50">        this.xDir = 3;</span>
+<span class="fc" id="L51">        this.yDir = 0;</span>
+<span class="fc" id="L52">        this.manaCooldown = 0;</span>
+<span class="fc" id="L53">        this.tpC = 0;</span>
+<span class="fc" id="L54">        this.teleported = false; </span>
+<span class="fc" id="L55">        this.existingFireballs = new ArrayList&lt;Fireball&gt;();</span>
+<span class="fc" id="L56">    }</span>
 
+    /**
+     * Getter method for the curent displayed Wizard image 
+     * @return a PImage that corresponds to the direction the wizard is facing 
+     */
     public PImage getCurrentImg(){
-<span class="fc" id="L32">        return this.imgCurrent;</span>
+<span class="fc" id="L63">        return this.imgCurrent;</span>
     }
     
+    /**
+     * Setter method for the mana Cooldown (delay between fireball shots)
+     * @param x an integer to set the mana cooldown to 
+     */
     public void setManaCooldown(int x){
-<span class="fc" id="L36">        this.manaCooldown = x;</span>
-<span class="fc" id="L37">    }</span>
+<span class="fc" id="L71">        this.manaCooldown = x;</span>
+<span class="fc" id="L72">    }</span>
 
+    /**
+     * Getter method to get the amount of time until the wizard can next shoot a fireball 
+     * @return integer that corresponds to the mana cooldown 
+     */
     public int getManaCoolDown(){
-<span class="fc" id="L40">        return this.manaCooldown;</span>
+<span class="fc" id="L79">        return this.manaCooldown;</span>
     }
 
+    /**
+     * Setter method to set the amount of time between the previous valid teleport request, and the next valid teleport 
+     * @param x an integer that corresponds with a new increment. 
+     */
     public void setTpCooldown(int x){
-<span class="fc" id="L44">        this.tpC = x;</span>
-<span class="fc" id="L45">    }</span>
+<span class="fc" id="L87">        this.tpC = x;</span>
+<span class="fc" id="L88">    }</span>
 
+    /**
+     * Getter method for the teleport cooldown - the amount of time between valid teleports 
+     * @return an integer that corresponds to the time between the previous and next valid teleport 
+     */
     public int getTpCooldown(){
-<span class="fc" id="L48">        return this.tpC;</span>
+<span class="fc" id="L95">        return this.tpC;</span>
     }
 
+    /**
+     * Setter method that sets whether the wizard has teleported in a teleport cycle. Used in conjunction with the teleport times
+     * @param b boolean corresponding to whether the wizard has or has not teleported 
+     */
     public void setTeleported(boolean b){
-<span class="fc" id="L52">        this.teleported = b;</span>
-<span class="fc" id="L53">    }</span>
+<span class="fc" id="L103">        this.teleported = b;</span>
+<span class="fc" id="L104">    }</span>
 
+    /**
+     * Getter method that gets whether the wizard has teleported in a teleport cycle. Used in conjunction with the teleport times
+     * @return boolean corresponding to whether the wizard has or has not teleported 
+     */
     public boolean getTeleported(){
-<span class="fc" id="L56">        return this.teleported;</span>
+<span class="fc" id="L111">        return this.teleported;</span>
     }
 
+    /**
+     * Getter method that returns the ArrayList of fireballs the wizard is in posession of (valid fireballs are those that 
+     * have not hit any mobile or immobile entities and thus will still be drawn on screen)
+     * @return ArrayList of fireballs 
+     */
     public ArrayList&lt;Fireball&gt; getExistingFireballs(){
-<span class="fc" id="L60">        return this.existingFireballs;</span>
+<span class="fc" id="L120">        return this.existingFireballs;</span>
     }
 
+    /**
+     * Setter method that sets the ArrayList of fireballs the wizard is in posession of (valid fireballs are those that 
+     * have not hit any mobile or immobile entities and thus will still be drawn on screen)
+     * @param a An ArrayList of Fireball objects 
+     */
     public void setExistingFireballs(ArrayList&lt;Fireball&gt; a){
-<span class="fc" id="L64">        this.existingFireballs = a;</span>
-<span class="fc" id="L65">    }</span>
+<span class="fc" id="L129">        this.existingFireballs = a;</span>
+<span class="fc" id="L130">    }</span>
 
+    /**
+     * Shoot method creates a new fireball, adds it to the exisitng list of fireballs, then
+     * takes the newest one (indicated by the fact that it is the last one in the ArrayList)
+     * and moves it in the direction that the wizard is facing. 
+     */
     public void shoot(){
-<span class="nc" id="L68">        existingFireballs.add(new Fireball(this.getX(), this.getY(), wizardSprites[4]));</span>
-<span class="nc" id="L69">        Fireball f = existingFireballs.get(existingFireballs.size() - 1);</span>
-<span class="nc bnc" id="L70" title="All 2 branches missed.">        if(f != null){</span>
-<span class="nc bnc" id="L71" title="All 2 branches missed.">            if(this.direction == 0){</span>
-                //System.out.println(&quot;up&quot;);
-<span class="nc" id="L73">                f.up();</span>
+<span class="fc" id="L138">        existingFireballs.add(new Fireball(this.getX(), this.getY(), wizardSprites[4]));</span>
+<span class="fc" id="L139">        Fireball f = existingFireballs.get(existingFireballs.size() - 1);</span>
+<span class="pc bpc" id="L140" title="1 of 2 branches missed.">        if(f != null){</span>
+<span class="fc bfc" id="L141" title="All 2 branches covered.">            if(this.direction == 0){</span>
+<span class="fc" id="L142">                f.up();</span>
             }
 
-<span class="nc bnc" id="L76" title="All 2 branches missed.">            else if(this.direction == 1){</span>
-                //System.out.println(&quot;right &quot;);
-<span class="nc" id="L78">                f.right();</span>
+<span class="fc bfc" id="L145" title="All 2 branches covered.">            else if(this.direction == 1){</span>
+<span class="fc" id="L146">                f.right();</span>
             }
 
-<span class="nc bnc" id="L81" title="All 2 branches missed.">            else if(this.direction == 2){</span>
-                //System.out.println(&quot;down&quot;);
-<span class="nc" id="L83">                f.down();</span>
+<span class="fc bfc" id="L149" title="All 2 branches covered.">            else if(this.direction == 2){</span>
+<span class="fc" id="L150">                f.down();</span>
             }
 
-<span class="nc bnc" id="L86" title="All 2 branches missed.">            else if(this.direction == 3){</span>
-                //System.out.println(&quot;left&quot;);
-<span class="nc" id="L88">                f.left();</span>
+<span class="pc bpc" id="L153" title="1 of 2 branches missed.">            else if(this.direction == 3){</span>
+<span class="fc" id="L154">                f.left();</span>
             }
         }
-        //f = null;
+<span class="fc" id="L157">    }</span>
 
-
-<span class="nc" id="L94">    }</span>
-
+    /**
+     * Overriden Up method, that modifies the current wizard image, velocities, and direction of the wizard
+     */
     @Override
     public void up() {
-<span class="fc" id="L98">        this.imgCurrent = this.wizardSprites[0];</span>
-<span class="fc" id="L99">        this.yVel = -speed;</span>
-<span class="fc" id="L100">        this.yDir = 0; </span>
-<span class="fc" id="L101">        this.direction = 0;</span>
-<span class="fc" id="L102">    }</span>
+<span class="fc" id="L164">        this.imgCurrent = this.wizardSprites[0];</span>
+<span class="fc" id="L165">        this.yVel = -speed;</span>
+<span class="fc" id="L166">        this.yDir = 0; </span>
+<span class="fc" id="L167">        this.direction = 0;</span>
+<span class="fc" id="L168">    }</span>
 
+    /**
+     * Overriden right method, that modifies the current wizard image, velocities, and direction of the wizard
+     */
     @Override
     public void right() {
-<span class="fc" id="L106">        this.imgCurrent = this.wizardSprites[1];</span>
-<span class="fc" id="L107">        this.xVel = speed;</span>
-<span class="fc" id="L108">        this.xDir = 1; </span>
-<span class="fc" id="L109">        this.direction = 1;</span>
-<span class="fc" id="L110">    }</span>
+<span class="fc" id="L175">        this.imgCurrent = this.wizardSprites[1];</span>
+<span class="fc" id="L176">        this.xVel = speed;</span>
+<span class="fc" id="L177">        this.xDir = 1; </span>
+<span class="fc" id="L178">        this.direction = 1;</span>
+<span class="fc" id="L179">    }</span>
 
+    /**
+     * Overriden down method, that modifies the current wizard image, velocities, and direction of the wizard
+     */
     @Override
     public void down() {
-<span class="fc" id="L114">        this.imgCurrent = this.wizardSprites[2];</span>
-<span class="fc" id="L115">        this.yVel = speed; </span>
-<span class="fc" id="L116">        this.yDir = 2; </span>
-<span class="fc" id="L117">        this.direction = 2;</span>
-<span class="fc" id="L118">    }</span>
+<span class="fc" id="L186">        this.imgCurrent = this.wizardSprites[2];</span>
+<span class="fc" id="L187">        this.yVel = speed; </span>
+<span class="fc" id="L188">        this.yDir = 2; </span>
+<span class="fc" id="L189">        this.direction = 2;</span>
+<span class="fc" id="L190">    }</span>
 
+    /**
+     * Overriden method, that modifies the current wizard image, velocities, and direction of the wizard
+     */
     @Override
     public void left() {
-<span class="fc" id="L122">        this.imgCurrent = this.wizardSprites[3];</span>
-<span class="fc" id="L123">        this.xVel = -speed;</span>
-<span class="fc" id="L124">        this.xDir = 3; </span>
-<span class="fc" id="L125">        this.direction = 3;</span>
-<span class="fc" id="L126">    }</span>
+<span class="fc" id="L197">        this.imgCurrent = this.wizardSprites[3];</span>
+<span class="fc" id="L198">        this.xVel = -speed;</span>
+<span class="fc" id="L199">        this.xDir = 3; </span>
+<span class="fc" id="L200">        this.direction = 3;</span>
+<span class="fc" id="L201">    }</span>
 
+    /**
+     * Teleport method that resets the wizard's current coordinates to new coordinates generated by the random generator. 
+     * @param app The app class, used to get data such as the current map's configuration
+     */
     public void tp(App app){
-<span class="nc" id="L129">        int[] coords = (new RespawnGenerator(this)).respawnXBlocks(app);</span>
-<span class="nc" id="L130">        this.setX(coords[0]);</span>
-<span class="nc" id="L131">        this.setY(coords[1]);</span>
-<span class="nc" id="L132">    }</span>
+<span class="nc" id="L208">        int[] coords = (new RespawnGenerator(this)).respawnXBlocks(app);</span>
+<span class="nc" id="L209">        this.setX(coords[0]);</span>
+<span class="nc" id="L210">        this.setY(coords[1]);</span>
+<span class="nc" id="L211">    }</span>
 
+    /**
+     * FireballMechanics controls all the interactions between fireballs, and all other objects in the game 
+     * This method is located in the wizard as every fireball within its available fireballs ArrayList must be updated. 
+     * This method checks every existing fireball whether it has collided, or interacted with. 
+     * Split into two large sections (regarding mobile and immobile interactions)
+     * @param app A referene to the App class, where useful methods such as getMap and getMobiles are located
+     */
     public void fireballMechanics(App app){
-<span class="pc bpc" id="L135" title="1 of 2 branches missed.">        for(Fireball f : this.existingFireballs){</span>
-<span class="nc bnc" id="L136" title="All 2 branches missed.">            if(f != null){</span>
-<span class="nc" id="L137">                int collided = f.tick(app);</span>
-<span class="nc" id="L138">                f.draw(app);</span>
-<span class="nc bnc" id="L139" title="All 6 branches missed.">                if((collided == 1 || f.getDecaying()) &amp;&amp; f.getCollisionEntity() == null){ </span>
-<span class="nc" id="L140">                    f.setDecaying(true); // set decay state (of fireball) to true</span>
-<span class="nc bnc" id="L141" title="All 2 branches missed.">                    if(f.collisionBlock.getViable()){</span>
-<span class="nc" id="L142">                        app.getMap().get(app.getMap().indexOf(f.collisionBlock)).setViable(false);</span>
-                        //mapToDraw.get(mapToDraw.indexOf(f.collisionBlock)).setViable(false);
-<span class="nc" id="L144">                        f.stop();</span>
-<span class="nc" id="L145">                        f.hit();</span>
+<span class="fc bfc" id="L221" title="All 2 branches covered.">        for(Fireball f : this.existingFireballs){</span>
+<span class="pc bpc" id="L222" title="1 of 2 branches missed.">            if(f != null){</span>
+<span class="fc" id="L223">                int collided = f.tick(app);</span>
+<span class="fc" id="L224">                f.draw(app);</span>
+                // An immobile was hit
+<span class="pc bpc" id="L226" title="1 of 6 branches missed.">                if((collided == 1 || f.getDecaying()) &amp;&amp; f.getCollisionEntity() == null){ </span>
+
+<span class="fc" id="L228">                    f.setDecaying(true); // set decay state (of fireball) to true</span>
+<span class="fc bfc" id="L229" title="All 2 branches covered.">                    if(f.collisionBlock.getViable()){</span>
+
+<span class="fc" id="L231">                        app.getMap().get(app.getMap().indexOf(f.collisionBlock)).setViable(false);</span>
+<span class="fc" id="L232">                        f.stop();</span>
+<span class="fc" id="L233">                        f.hit();</span>
                     }
-<span class="nc bnc" id="L147" title="All 2 branches missed.">                    if(f.getFrameCounter() == 16){ // always check if it's the end of the sequence </span>
-<span class="nc bnc" id="L148" title="All 2 branches missed.">                        if(app.getMap().indexOf(f.collisionBlock) != -1){ // the block actually exists</span>
-<span class="nc bnc" id="L149" title="All 2 branches missed.">                            if(f.fireballHit(app)){</span>
-<span class="nc" id="L150">                                f.collisionBlock.setViable(false);</span>
-<span class="nc" id="L151">                                app.getMap().set(app.getMap().indexOf(f.collisionBlock), null);</span>
-<span class="nc" id="L152">                                f.collisionBlock = null; // block will be deleted</span>
+                    
+<span class="fc bfc" id="L236" title="All 2 branches covered.">                    if(f.getFrameCounter() == 16){ // always check if it's the end of the sequence </span>
+
+<span class="pc bpc" id="L238" title="1 of 2 branches missed.">                        if(app.getMap().indexOf(f.collisionBlock) != -1){ // the block actually exists</span>
+
+<span class="fc bfc" id="L240" title="All 2 branches covered.">                            if(f.fireballHit(app)){</span>
+
+<span class="fc" id="L242">                                f.collisionBlock.setViable(false);</span>
+<span class="fc" id="L243">                                app.getMap().set(app.getMap().indexOf(f.collisionBlock), null);</span>
+<span class="fc" id="L244">                                f.collisionBlock = null; // block will be deleted</span>
                             }
                         }
-                        //existingFireballs.set(existingFireballs.indexOf(f), null);
-<span class="nc" id="L156">                        this.getExistingFireballs().set(this.getExistingFireballs().indexOf(f),null);</span>
-<span class="nc" id="L157">                        f = null;</span>
-
-                        }
-<span class="nc bnc" id="L160" title="All 2 branches missed.">                    else if(f.getFrameCounter() % 4 == 0){ // been either 0, 4, 8, 12, 16 frames since firball hit </span>
-<span class="nc bnc" id="L161" title="All 2 branches missed.">                        if(f.collisionBlock.update() == 0){ // indestructable block was hit</span>
-                        }
-<span class="nc" id="L163">                        f.incFrameCounter();</span>
+<span class="fc" id="L247">                        this.getExistingFireballs().set(this.getExistingFireballs().indexOf(f),null);</span>
+<span class="fc" id="L248">                        f = null;</span>
                     }
-<span class="nc bnc" id="L165" title="All 2 branches missed.">                    if(f != null){</span>
-<span class="nc" id="L166">                        f.incFrameCounter(); // if the fireball has not hit an indestructable entity </span>
+                    
+<span class="fc bfc" id="L251" title="All 4 branches covered.">                    else if(f.getFrameCounter() % 4 == 0 &amp;&amp; f.getFrameCounter() != 0){ // been either 0, 4, 8, 12, 16 frames since firball hit </span>
+<span class="fc" id="L252">                        f.collisionBlock.update();</span>
+                        //f.incFrameCounter();
+<span class="fc" id="L254">                        f.setFrameCounter(f.getFrameCounter() + 1);</span>
+                    }
+                    
+<span class="fc bfc" id="L257" title="All 2 branches covered.">                    if(f != null){</span>
+                        //f.incFrameCounter(); // if the fireball has not hit an indestructable entity 
+<span class="fc" id="L259">                        f.setFrameCounter(f.getFrameCounter() + 1);</span>
                     }
                     
                 }
                 
-                // not a block that was hit
-<span class="nc bnc" id="L172" title="All 2 branches missed.">                else if(f.getCollisionEntity() != null){</span>
-<span class="nc bnc" id="L173" title="All 2 branches missed.">                    if(f.getCollisionEntity().getClass().getName().equals(&quot;gremlins.Gremlin&quot;)){</span>
-                        //System.out.println(&quot;Gremlin HAS BEEN HIT&quot;);
-<span class="nc bnc" id="L175" title="All 2 branches missed.">                        if(app.getGArray().indexOf(f.collisionEntity) != -1){</span>
-<span class="nc bnc" id="L176" title="All 2 branches missed.">                            if(f.fireballHitGremlin(app)){</span>
-<span class="nc" id="L177">                                f.stop();</span>
-<span class="nc" id="L178">                                f.hit();</span>
-                                //System.out.println(&quot;Fireball hit gremlin passed&quot;);
-<span class="nc" id="L180">                                app.getGArray().get(app.getGArray().indexOf(f.collisionEntity)).gremlinRespawn(app);</span>
-                                //gArray.set(gArray.indexOf(f.collisionEntity), null); // !RESPAWN MECHANICS GO HERE. 
-                                //System.out.println(gArray.get(gArray.indexOf(f.collisionEntity)));
-                                //existingFireballs.set(existingFireballs.indexOf(f), null);
-<span class="nc" id="L184">                                this.getExistingFireballs().set(this.getExistingFireballs().indexOf(f), null);</span>
-<span class="nc" id="L185">                                f = null;</span>
+                // A mobile entity was hit
+<span class="pc bpc" id="L265" title="1 of 2 branches missed.">                else if(f.getCollisionEntity() != null){</span>
+<span class="nc bnc" id="L266" title="All 2 branches missed.">                    if(f.getCollisionEntity().getClass().getName().equals(&quot;gremlins.Gremlin&quot;)){</span>
+
+<span class="nc bnc" id="L268" title="All 2 branches missed.">                        if(app.getGArray().indexOf(f.collisionEntity) != -1){</span>
+
+<span class="nc bnc" id="L270" title="All 2 branches missed.">                            if(f.fireballHitGremlin(app)){</span>
+
+<span class="nc" id="L272">                                f.stop();</span>
+<span class="nc" id="L273">                                f.hit();</span>
+<span class="nc" id="L274">                                app.getGArray().get(app.getGArray().indexOf(f.collisionEntity)).gremlinRespawn(app);</span>
+<span class="nc" id="L275">                                this.getExistingFireballs().set(this.getExistingFireballs().indexOf(f), null);</span>
+<span class="nc" id="L276">                                f = null;</span>
                             }
-                        }
-                        
+                        } 
                     }
                 }
             }
-<span class="nc" id="L192">        }</span>
-<span class="fc" id="L193">    }</span>
+<span class="fc" id="L282">        }</span>
+<span class="fc" id="L283">    }</span>
 
-    // Wizard custom draw method, and how to update the sprite on the map. 
+    /**
+     * Draw method for the wizard. Draws the image of the wizard (if it is not null), and draws the teleport mechanics
+     * as all the variables associated with it are in this class 
+     * @return An integer corresponding to the direction the wizard is facing. 
+     */
     public int draw(App app){
-<span class="pc bpc" id="L197" title="1 of 2 branches missed.">        if(this.imgCurrent != null){</span>
-<span class="fc" id="L198">            app.image(this.imgCurrent, this.x, this.y);</span>
-<span class="fc" id="L199">            app.textSize(15);</span>
-<span class="fc" id="L200">            app.text(&quot;T to teleport&quot;, 480, 710);</span>
-<span class="fc" id="L201">            app.image(app.tPIcon, 575, 700);</span>
-<span class="fc" id="L202">            app.rect(600,705, 100, 6);</span>
-<span class="fc" id="L203">            app.fill(0,255,255);</span>
-<span class="fc" id="L204">            app.rect(600, 705, (float) (100 - (this.getTpCooldown()*20/App.FPS)), 6);</span>
-<span class="fc" id="L205">            app.fill(255,255,255);</span>
-<span class="pc bpc" id="L206" title="3 of 4 branches missed.">            if(this.getTeleported() &amp;&amp; this.getTpCooldown() &gt; 0){</span>
-<span class="nc" id="L207">                this.setTpCooldown(this.getTpCooldown() - 1);</span>
+<span class="pc bpc" id="L291" title="1 of 2 branches missed.">        if(this.imgCurrent != null){</span>
+<span class="fc" id="L292">            app.image(this.imgCurrent, this.x, this.y);</span>
+<span class="fc" id="L293">            app.textSize(15);</span>
+<span class="fc" id="L294">            app.text(&quot;T to teleport&quot;, 480, 710);</span>
+<span class="fc" id="L295">            app.image(app.tPIcon, 575, 700);</span>
+<span class="fc" id="L296">            app.rect(600,705, 100, 6);</span>
+<span class="fc" id="L297">            app.fill(0,255,255);</span>
+<span class="fc" id="L298">            app.rect(600, 705, (float) (100 - (this.getTpCooldown()*20/App.FPS)), 6);</span>
+<span class="fc" id="L299">            app.fill(255,255,255);</span>
+<span class="pc bpc" id="L300" title="3 of 4 branches missed.">            if(this.getTeleported() &amp;&amp; this.getTpCooldown() &gt; 0){</span>
+<span class="nc" id="L301">                this.setTpCooldown(this.getTpCooldown() - 1);</span>
             }
         }
-<span class="fc" id="L210">        return direction;</span>
+<span class="fc" id="L304">        return direction;</span>
     }
 
+    /**
+     * Tick method for the wizard hosts all the logic to deal with fireball firing, entity collision and interactions, 
+     * valid and invalid motion/movements, and wizard death. 
+     * @param app the App class that hosts many useful parameters and methods such as getGArray()
+     * @return returns an integer that corresponds to whether the wizard is alive (0), dead (10), or running into the level's exit(20)
+     */
     public int tick(App app) {
-<span class="pc bpc" id="L214" title="1 of 2 branches missed.">        if(this.alive){</span>
+<span class="pc bpc" id="L314" title="1 of 2 branches missed.">        if(this.alive){</span>
             // Mana cooldown bar 
-<span class="fc bfc" id="L216" title="All 2 branches covered.">            if(this.getManaCoolDown() &lt;= app.getWizardCooldown()){</span>
-<span class="fc" id="L217">                app.image(this.wizardSprites[4], 575, 665);</span>
-<span class="fc" id="L218">                this.setManaCooldown(this.getManaCoolDown() + 1);</span>
-<span class="fc" id="L219">                app.rect(600,673, 100, 5);</span>
-<span class="fc" id="L220">                app.fill(0,0,0);</span>
-<span class="fc" id="L221">                app.rect(600, 673, (float) (this.getManaCoolDown() * 100/app.getWizardCooldown()), 5);</span>
-<span class="fc" id="L222">                app.fill(255,255,255);</span>
+<span class="fc bfc" id="L316" title="All 2 branches covered.">            if(this.getManaCoolDown() &lt;= app.getWizardCooldown()){</span>
+<span class="fc" id="L317">                app.image(this.wizardSprites[4], 575, 665);</span>
+<span class="fc" id="L318">                this.setManaCooldown(this.getManaCoolDown() + 1);</span>
+<span class="fc" id="L319">                app.rect(600,673, 100, 5);</span>
+<span class="fc" id="L320">                app.fill(0,0,0);</span>
+<span class="fc" id="L321">                app.rect(600, 673, (float) (this.getManaCoolDown() * 100/app.getWizardCooldown()), 5);</span>
+<span class="fc" id="L322">                app.fill(255,255,255);</span>
             }
 
             // Runs collision algorithm 
-<span class="fc" id="L226">            this.collision(app);</span>
+<span class="fc" id="L326">            this.collision(app);</span>
             
 
             // hits gremlin entity itself (not slimeball)
-<span class="pc bpc" id="L230" title="1 of 2 branches missed.">            if(this.collisionEntity != null){</span>
-<span class="nc bnc" id="L231" title="All 2 branches missed.">                if(this.collisionEntity.getClass().getName().equals(&quot;gremlins.Gremlin&quot;)){</span>
-                    //System.out.println(&quot;Ouchie&quot;);
-<span class="nc" id="L233">                    this.alive = false;</span>
+<span class="pc bpc" id="L330" title="1 of 2 branches missed.">            if(this.collisionEntity != null){</span>
+<span class="nc bnc" id="L331" title="All 2 branches missed.">                if(this.collisionEntity.getClass().getName().equals(&quot;gremlins.Gremlin&quot;)){</span>
+<span class="nc" id="L332">                    this.alive = false;</span>
                 }
             }
 
             // Hits a block
-<span class="fc bfc" id="L238" title="All 2 branches covered.">            if(this.collisionBlock != null){</span>
-<span class="pc bpc" id="L239" title="1 of 2 branches missed.">                if(this.collisionBlock.getClass().getName().equals(&quot;gremlins.ExitPortal&quot;)){</span>
-<span class="nc" id="L240">                    return 20;</span>
+<span class="fc bfc" id="L337" title="All 2 branches covered.">            if(this.collisionBlock != null){</span>
+<span class="pc bpc" id="L338" title="1 of 2 branches missed.">                if(this.collisionBlock.getClass().getName().equals(&quot;gremlins.ExitPortal&quot;)){</span>
+<span class="nc" id="L339">                    return 20;</span>
                 }
                 
-<span class="pc bpc" id="L243" title="1 of 2 branches missed.">                else if(this.collisionBlock.getClass().getName().equals(&quot;gremlins.FreezePotion&quot;)){</span>
-                    //System.out.println(&quot;potion touch in wizard&quot;);
-<span class="nc" id="L245">                    app.getPowerUp().setConsumed(true);</span>
+<span class="pc bpc" id="L342" title="1 of 2 branches missed.">                else if(this.collisionBlock.getClass().getName().equals(&quot;gremlins.FreezePotion&quot;)){</span>
+<span class="nc" id="L343">                    app.getPowerUp().setConsumed(true);</span>
                 }
             }
     
             // Stops diagonal motion 
-<span class="pc bpc" id="L250" title="8 of 12 branches missed.">            if(((this.direction == 0 || this.direction == 2) &amp;&amp; this.xVel != 0 ) ||</span>
+<span class="pc bpc" id="L348" title="1 of 12 branches missed.">            if(((this.direction == 0 || this.direction == 2) &amp;&amp; this.xVel != 0 ) ||</span>
                 ((this.direction == 1 || this.direction == 3) &amp;&amp; this.yVel != 0)
             ){
-<span class="nc" id="L253">                this.stop();</span>
+<span class="fc" id="L351">                this.stop();</span>
             }
     
             // Valid motion commands
             else{
-<span class="pc bpc" id="L258" title="5 of 6 branches missed.">                if( (!this.sideAV.get(3) &amp;&amp; (this.xVel &lt; 0) &amp;&amp; this.direction == 3) ||</span>
-<span class="pc bpc" id="L259" title="1 of 6 branches missed.">                    (!this.sideAV.get(1) &amp;&amp; (this.xVel &gt; 0) &amp;&amp; this.direction == 1)){</span>
-<span class="fc" id="L260">                    this.xStop();</span>
-<span class="fc" id="L261">                    this.xVel = 0;</span>
+<span class="pc bpc" id="L356" title="1 of 6 branches missed.">                if( (!this.sideAV.get(3) &amp;&amp; (this.xVel &lt; 0) &amp;&amp; this.direction == 3) ||</span>
+<span class="pc bpc" id="L357" title="1 of 6 branches missed.">                    (!this.sideAV.get(1) &amp;&amp; (this.xVel &gt; 0) &amp;&amp; this.direction == 1)){</span>
+<span class="fc" id="L358">                    this.xStop();</span>
+<span class="fc" id="L359">                    this.xVel = 0;</span>
                 }
                 
         
-<span class="pc bpc" id="L265" title="5 of 6 branches missed.">                if( (!this.sideAV.get(0) &amp;&amp;(this.yVel &lt; 0) &amp;&amp; this.direction == 0) ||</span>
-<span class="pc bpc" id="L266" title="5 of 6 branches missed.">                    (!this.sideAV.get(2) &amp;&amp; (this.yVel &gt; 0) &amp;&amp; this.direction == 2)){</span>
-<span class="nc" id="L267">                    this.yStop();</span>
-<span class="nc" id="L268">                    this.yVel = 0;</span>
+<span class="pc bpc" id="L363" title="1 of 6 branches missed.">                if( (!this.sideAV.get(0) &amp;&amp;(this.yVel &lt; 0) &amp;&amp; this.direction == 0) ||</span>
+<span class="pc bpc" id="L364" title="1 of 6 branches missed.">                    (!this.sideAV.get(2) &amp;&amp; (this.yVel &gt; 0) &amp;&amp; this.direction == 2)){</span>
+<span class="fc" id="L365">                    this.yStop();</span>
+<span class="fc" id="L366">                    this.yVel = 0;</span>
                 }
                 
                 // Prevents diagonal movement 
-<span class="pc bpc" id="L272" title="1 of 4 branches missed.">                if(this.getXVel() == 0 || this.getYVel() == 0){</span>
+<span class="pc bpc" id="L370" title="1 of 4 branches missed.">                if(this.getXVel() == 0 || this.getYVel() == 0){</span>
                     // Check direction corresponds to velocity. 
-                    // if direction != velocity direction 
-<span class="pc bpc" id="L275" title="1 of 2 branches missed.">                    if(app.getK() != null){</span>
-<span class="nc bnc" id="L276" title="All 2 branches missed.">                        if(!app.getK().getDrawing()){</span>
-<span class="nc" id="L277">                            this.x += this.xVel;</span>
-<span class="nc" id="L278">                            this.y += this.yVel;</span>
+<span class="pc bpc" id="L372" title="1 of 2 branches missed.">                    if(app.getK() != null){</span>
+<span class="nc bnc" id="L373" title="All 2 branches missed.">                        if(!app.getK().getDrawing()){</span>
+<span class="nc" id="L374">                            this.x += this.xVel;</span>
+<span class="nc" id="L375">                            this.y += this.yVel;</span>
                         }
                     }
                     else{
-<span class="fc" id="L282">                        this.x += this.xVel;</span>
-<span class="fc" id="L283">                        this.y += this.yVel;</span>
+<span class="fc" id="L379">                        this.x += this.xVel;</span>
+<span class="fc" id="L380">                        this.y += this.yVel;</span>
                     }
                 }
                 
                 // full block movement 
-<span class="pc bpc" id="L288" title="1 of 4 branches missed.">                if (this.getX() % 20 != 0 &amp;&amp; this.getXVel() == 0){</span>
-<span class="nc bnc" id="L289" title="All 4 branches missed.">                    if(this.xDir == 3 &amp;&amp; this.sideAV.get(3)){</span>
-<span class="nc" id="L290">                        this.setX(this.getX() - 1);</span>
+<span class="pc bpc" id="L385" title="1 of 4 branches missed.">                if (this.getX() % 20 != 0 &amp;&amp; this.getXVel() == 0){</span>
+<span class="nc bnc" id="L386" title="All 4 branches missed.">                    if(this.xDir == 3 &amp;&amp; this.sideAV.get(3)){</span>
+<span class="nc" id="L387">                        this.setX(this.getX() - 1);</span>
                     }
-<span class="nc bnc" id="L292" title="All 4 branches missed.">                    else if (this.xDir == 1 &amp;&amp; this.sideAV.get(1)){</span>
-<span class="nc" id="L293">                        this.setX(this.getX() + 1);</span>
+<span class="nc bnc" id="L389" title="All 4 branches missed.">                    else if (this.xDir == 1 &amp;&amp; this.sideAV.get(1)){</span>
+<span class="nc" id="L390">                        this.setX(this.getX() + 1);</span>
                     }
                    
                 }
-<span class="pc bpc" id="L297" title="3 of 4 branches missed.">                if (this.getY() % 20 != 0 &amp;&amp; this.getYVel() == 0){</span>
-<span class="nc bnc" id="L298" title="All 4 branches missed.">                    if(this.yDir == 0 &amp;&amp; this.sideAV.get(0)){</span>
-<span class="nc" id="L299">                        this.setY(this.getY() - 1);</span>
+<span class="pc bpc" id="L394" title="1 of 4 branches missed.">                if (this.getY() % 20 != 0 &amp;&amp; this.getYVel() == 0){</span>
+<span class="nc bnc" id="L395" title="All 4 branches missed.">                    if(this.yDir == 0 &amp;&amp; this.sideAV.get(0)){</span>
+<span class="nc" id="L396">                        this.setY(this.getY() - 1);</span>
                     }
-<span class="nc bnc" id="L301" title="All 4 branches missed.">                    else if(this.yDir == 2 &amp;&amp; this.sideAV.get(2)){</span>
-<span class="nc" id="L302">                        this.setY(this.getY() + 1);</span>
+<span class="nc bnc" id="L398" title="All 4 branches missed.">                    else if(this.yDir == 2 &amp;&amp; this.sideAV.get(2)){</span>
+<span class="nc" id="L399">                        this.setY(this.getY() + 1);</span>
                     }
                     
                 }
@@ -309,9 +406,9 @@ public class Wizard extends Mobile{
         }
         
         else{ // not alive any more
-<span class="nc" id="L312">            return 10;</span>
+<span class="nc" id="L409">            return 10;</span>
         }
-<span class="fc" id="L314">        return 0;</span>
+<span class="fc" id="L411">        return 0;</span>
         
     }
         

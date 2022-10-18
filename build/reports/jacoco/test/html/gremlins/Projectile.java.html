@@ -1,46 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Projectile.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gremlins_scaffold</a> &gt; <a href="index.source.html" class="el_package">gremlins</a> &gt; <span class="el_source">Projectile.java</span></div><h1>Projectile.java</h1><pre class="source lang-java linenums">package gremlins;
-
-import java.util.ArrayList;
-
 import processing.core.PImage;
-
 /**
- * Projectile
+ * Projectile class: An abstract class that extends from mobile entities 
+ * The fireball and slimeball classes are extended from this class
  */
 
 public abstract class Projectile extends Mobile{
+
+    /**
+     * The PImage that corresponds to what is displayed onscreen during the draw method. 
+     */
     protected PImage sprite;
+
+    /**
+     * Constructor for Projectile object 
+     * @param x x coordinate of projectile 
+     * @param y y coordinate of projectile 
+     * @param sprite The PImage that is drawn onscreen 
+     */
     public Projectile(int x, int y, PImage sprite) {
-<span class="fc" id="L14">        super(x, y, 4, 0, 0);</span>
-<span class="fc" id="L15">        this.sprite = sprite;</span>
+<span class="fc" id="L22">        super(x, y, 4, 0, 0);</span>
+<span class="fc" id="L23">        this.sprite = sprite;</span>
        
-<span class="fc" id="L17">    }</span>
-
-    public Mobile getCollisionEntity(){
-<span class="nc" id="L20">        return this.collisionEntity;</span>
-    }
-
-    public void hit(){
-<span class="fc" id="L24">        this.alive = false;</span>
 <span class="fc" id="L25">    }</span>
-    
-    // Block collision (handeled in Mob) 
 
-    // Mob collision (not handeled in mob)
-    public boolean mobCollision(int x, int y, ArrayList&lt;Mobile&gt; a){
-<span class="nc bnc" id="L31" title="All 2 branches missed.">        for(Mobile i : a){</span>
-<span class="nc bnc" id="L32" title="All 4 branches missed.">            if (((x &gt;= i.getX() &amp;&amp; x &lt;= i.getX() + i.WIDTH)</span>
-                &amp;&amp;
-<span class="nc bnc" id="L34" title="All 4 branches missed.">                (y &gt;= i.getY() &amp;&amp; y &lt;= i.getY() + i.HEIGHT))){</span>
-<span class="nc" id="L35">                    this.collisionEntity = i;</span>
-                    //System.out.println(&quot;Here&quot;);
-<span class="nc" id="L37">                    return true;</span>
-                }
-        
-<span class="nc" id="L40">        }</span>
-<span class="nc" id="L41">        return false;</span>
-    
+    /**
+     * A getter method that returns the collision entity of the specific projectile object 
+     * @return A mobile that the projectile has 'collided with'
+     */
+    public Mobile getCollisionEntity(){
+<span class="fc" id="L32">        return this.collisionEntity;</span>
     }
+
+    /**
+     * Hit method essentially &quot;kills&quot; the projectile. This signals the draw method to stop drawing the projectile.
+     */
+    public void hit(){
+<span class="fc" id="L39">        this.alive = false;</span>
+<span class="fc" id="L40">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

@@ -3,61 +3,85 @@
 import java.util.ArrayList;
 
 /**
- * DrawMap
+ * DrawMap class: A helper class that reads the character ArrayList produced by the 
+ * ReadMap class. This method puts all of the correct objects in the right locations, and has the attribute of the wizard's starting location
  */
 public class DrawMap {
+    /**
+     * the column incrrementer 
+     */
+<span class="fc" id="L13">    private int xCounter = 0; </span>
 
-    private ArrayList&lt;Immobile&gt; mapToDraw;
-    private ArrayList&lt;Gremlin&gt; gArray; 
-<span class="fc" id="L12">    private int xCounter = 0; </span>
-<span class="fc" id="L13">    private int yCounter = 0; </span>
-<span class="fc" id="L14">    private int incrementer = 20; </span>
+    /**
+     * The row incrementer 
+     */
+<span class="fc" id="L18">    private int yCounter = 0; </span>
+
+    /**
+     * The incrementer index jumps by 20 pixels each time as each block is 20 large 
+     */
+<span class="fc" id="L23">    private int incrementer = 20; </span>
+
+    /**
+     * The starting coordinates of the wizard object 
+     */
     private int wizStartX, wizStartY;
-<span class="fc" id="L16">    public DrawMap(){</span>
-<span class="fc" id="L17">        this.gArray = new ArrayList&lt;Gremlin&gt;();</span>
-<span class="fc" id="L18">        this.wizStartX = 0;</span>
-<span class="fc" id="L19">        this.wizStartY = 0;</span>
 
-<span class="fc" id="L21">    }</span>
+    /**
+     * Constructor 
+     */
+<span class="fc" id="L33">    public DrawMap(){</span>
+<span class="fc" id="L34">        this.wizStartX = 0;</span>
+<span class="fc" id="L35">        this.wizStartY = 0;</span>
+<span class="fc" id="L36">    }</span>
 
+    /**
+     * The generateMap function allocates all the correct objects to their rightful places as denoted by the character array 
+     * fed in as a parameter. 
+     * @param a the Character array produced by the ReadMap class that denotes where all the objects should be placed on the map 
+     * @param app the App class that contains the ArrayLists that contain all the objects. 
+     */
     public void generateMap(ArrayList&lt;Character[]&gt; a, App app){
-        
-<span class="fc bfc" id="L25" title="All 2 branches covered.">        for (Character[] j : a){</span>
-<span class="fc bfc" id="L26" title="All 2 branches covered.">            for(Character k :j){</span>
-<span class="fc bfc" id="L27" title="All 2 branches covered.">                if(k == 'X'){ // stone block</span>
-<span class="fc" id="L28">                    app.getMap().add(new Indestructable(xCounter, yCounter, app.stonewall));</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">        for (Character[] j : a){</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">            for(Character k :j){</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">                if(k == 'X'){ // stone block</span>
+<span class="fc" id="L48">                    app.getMap().add(new Indestructable(xCounter, yCounter, app.stonewall));</span>
                 }
 
-<span class="fc bfc" id="L31" title="All 2 branches covered.">                else if (k =='B'){ // Brick</span>
-<span class="fc" id="L32">                    app.getMap().add(new Destructable(xCounter, yCounter, app.brickwall, app.brickwallDestruction)); </span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">                else if (k =='B'){ // Brick</span>
+<span class="fc" id="L52">                    app.getMap().add(new Destructable(xCounter, yCounter, app.brickwall, app.brickwallDestruction)); </span>
                 }
 
-<span class="fc bfc" id="L35" title="All 2 branches covered.">                else if (k == 'W'){ // wizard spawnpoint</span>
-<span class="fc" id="L36">                    wizStartX = xCounter;</span>
-<span class="fc" id="L37">                    wizStartY = yCounter;</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">                else if (k == 'W'){ // wizard spawnpoint</span>
+<span class="fc" id="L56">                    wizStartX = xCounter;</span>
+<span class="fc" id="L57">                    wizStartY = yCounter;</span>
                 }
 
-<span class="fc bfc" id="L40" title="All 2 branches covered.">                else if (k == 'G'){ // ! Gremlin spawnpoint ... CHANGE LATER </span>
-<span class="fc" id="L41">                    app.getGArray().add(new Gremlin(xCounter, yCounter, app.gremlin, app.slime, app.frozenG, app.frozenS));</span>
+<span class="fc bfc" id="L60" title="All 2 branches covered.">                else if (k == 'G'){ // ! Gremlin spawnpoint ... CHANGE LATER </span>
+<span class="fc" id="L61">                    app.getGArray().add(new Gremlin(xCounter, yCounter, app.gremlin, app.slime, app.frozenG, app.frozenS));</span>
                 }
 
-<span class="fc bfc" id="L44" title="All 2 branches covered.">                else if (k == 'E'){ // ! Exit ... CHANGE LATER</span>
-<span class="fc" id="L45">                    app.getMap().add(new ExitPortal(xCounter, yCounter, app.portal));</span>
+<span class="fc bfc" id="L64" title="All 2 branches covered.">                else if (k == 'E'){ // ! Exit ... CHANGE LATER</span>
+<span class="fc" id="L65">                    app.getMap().add(new ExitPortal(xCounter, yCounter, app.portal));</span>
                 }
 
-<span class="fc bfc" id="L48" title="All 2 branches covered.">                else if (k == 'P'){</span>
-<span class="fc" id="L49">                    app.setPowerUpCoords(xCounter, yCounter);</span>
+<span class="fc bfc" id="L68" title="All 2 branches covered.">                else if (k == 'P'){</span>
+<span class="fc" id="L69">                    app.setPowerUpCoords(xCounter, yCounter);</span>
                 }
-<span class="fc" id="L51">                xCounter += incrementer; </span>
+<span class="fc" id="L71">                xCounter += incrementer; </span>
             }
-<span class="fc" id="L53">            yCounter += incrementer;</span>
-<span class="fc" id="L54">            xCounter = 0;</span>
-<span class="fc" id="L55">        }</span>
-<span class="fc" id="L56">    }</span>
+<span class="fc" id="L73">            yCounter += incrementer;</span>
+<span class="fc" id="L74">            xCounter = 0;</span>
+<span class="fc" id="L75">        }</span>
+<span class="fc" id="L76">    }</span>
 
+    /**
+     * A getter method that gets the wizard's starting coordinates in the form of an integer array 
+     * @return an integer array in the form [x coordinate, y coordinate]
+     */
     public int[] getWizardStart(){
-<span class="fc" id="L59">        int[] coords = {this.wizStartX, wizStartY};</span>
-<span class="fc" id="L60">        return coords;</span>
+<span class="fc" id="L83">        int[] coords = {this.wizStartX, wizStartY};</span>
+<span class="fc" id="L84">        return coords;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

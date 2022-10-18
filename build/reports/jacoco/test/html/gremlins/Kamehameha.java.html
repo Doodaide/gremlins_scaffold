@@ -1,210 +1,274 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Kamehameha.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gremlins_scaffold</a> &gt; <a href="index.source.html" class="el_package">gremlins</a> &gt; <span class="el_source">Kamehameha.java</span></div><h1>Kamehameha.java</h1><pre class="source lang-java linenums">package gremlins;
-
 import java.util.ArrayList;
-
 import processing.core.PImage;
 
 /**
- * Kamehameha
+ * Kamehameha class: A special projectile class that clears out all destructable blocks in a row
  */
 public class Kamehameha extends Projectile{
     
+    /**
+     * Whether the beam is still displayed on screen 
+     */
     private boolean drawing; 
-    private ArrayList&lt;Immobile&gt; toDelete; 
-    private int lifeSpan;
-    private int beamLength; 
-    public Kamehameha(int x, int y, PImage sprite) {
-<span class="fc" id="L17">        super(x, y, sprite);</span>
-<span class="fc" id="L18">        this.drawing = false; </span>
-<span class="fc" id="L19">        this.toDelete = new ArrayList&lt;Immobile&gt;();</span>
-<span class="fc" id="L20">        this.lifeSpan = 0;</span>
-<span class="fc" id="L21">        this.beamLength = 0;</span>
-<span class="fc" id="L22">    }</span>
 
+    /**
+     * An ArrayList of the blocks that should be deleted once the beam dissapates 
+     */
+    private ArrayList&lt;Immobile&gt; toDelete; 
+
+    /**
+     * The amount of time the beam should be displayed on screen 
+     */
+    private int lifeSpan;
+
+    /**
+     * The length of the beam 
+     */
+    private int beamLength; 
+
+    /**
+     * Constructor for Kamehameha object 
+     * @param x x coordinate of beam start 
+     * @param y y coordinate of beam start 
+     * @param sprite Sprite of the beam (there are two available, pointing horizontally or pointing vertically)
+     */
+    public Kamehameha(int x, int y, PImage sprite) {
+<span class="fc" id="L37">        super(x, y, sprite);</span>
+<span class="fc" id="L38">        this.drawing = false; </span>
+<span class="fc" id="L39">        this.toDelete = new ArrayList&lt;Immobile&gt;();</span>
+<span class="fc" id="L40">        this.lifeSpan = 0;</span>
+<span class="fc" id="L41">        this.beamLength = 0;</span>
+<span class="fc" id="L42">    }</span>
+
+    /**
+     * getDrawing method returns whether the beam is still being drawn
+     * @return boolean denoting whether the beam is still being drawn or not
+     */
     public boolean getDrawing(){
-<span class="fc" id="L25">        return this.drawing; </span>
+<span class="fc" id="L49">        return this.drawing; </span>
     }
 
+    /**
+     * setDrawing method sets whether the beam is being drawn 
+     * @param b sets the drawing attribute to be either true or false, depending on if the beam is still being drawn 
+     */
     public void setDrawing(boolean b){
-<span class="fc" id="L29">        this.drawing = b;</span>
-<span class="fc" id="L30">    }</span>
+<span class="fc" id="L57">        this.drawing = b;</span>
+<span class="fc" id="L58">    }</span>
 
+    /**
+     * Overriden up method, sets the direction to 0
+     */
     @Override
     public void up() {
-<span class="fc" id="L34">        this.direction = 0;</span>
-<span class="fc" id="L35">    }</span>
+<span class="fc" id="L65">        this.direction = 0;</span>
+<span class="fc" id="L66">    }</span>
 
+    /**
+     * Overriden right method, sets the direction to 1
+     */
     @Override
     public void right() {
-<span class="fc" id="L39">        this.direction = 1;</span>
+<span class="fc" id="L73">        this.direction = 1;</span>
         
-<span class="fc" id="L41">    }</span>
+<span class="fc" id="L75">    }</span>
 
+    /**
+     * Overriden down method, sets the directino to 2
+     */
     @Override
     public void down() {
-<span class="fc" id="L45">        this.direction = 2;</span>
+<span class="fc" id="L82">        this.direction = 2;</span>
         
-<span class="fc" id="L47">    }</span>
+<span class="fc" id="L84">    }</span>
 
+    /**
+     * Overriden left method, sets direction to 3
+     */
     @Override
     public void left() {
-<span class="fc" id="L51">        this.direction = 3;</span>
-<span class="fc" id="L52">    }</span>
+<span class="fc" id="L91">        this.direction = 3;</span>
+<span class="fc" id="L92">    }</span>
 
+    /**
+     * Setter method for the lifespan of the beam 
+     * @param x an integer that corresponds to the lifespan of the beam 
+     */
     public void setLifespan(int x){
-<span class="fc" id="L55">        this.lifeSpan = x; </span>
-<span class="fc" id="L56">    }</span>
+<span class="fc" id="L99">        this.lifeSpan = x; </span>
+<span class="fc" id="L100">    }</span>
 
+    /**
+     * Getter method for the lifespan of the beam 
+     * @return returns an integer that corresponds to the lifespan of the beam 
+     */
     public int getLifeSpan(){
-<span class="fc" id="L59">        return this.lifeSpan;</span>
+<span class="fc" id="L107">        return this.lifeSpan;</span>
     }
 
+    /** 
+     * Overriden draw method. There's 4 slighlty different if/else if statements in there that essentially draws the beam 
+     * in differing directions with slighlty different offsets based upon which way the wizard is facing. 
+     * As the upper left coordinate is used as a starting point for the beam, and moving left vs moving right corresponds to - and + 
+     * respectively, 4 different &quot;branches&quot; are required to process the beam
+     * @param app the App class, which contains the important images, and methods used 
+     * @return an integer 0 that suggests the draw method has no later interactions 
+    */
     @Override
     public int draw(App app) {
-<span class="nc bnc" id="L64" title="All 2 branches missed.">        if(this.direction == 0){ // up or down </span>
-<span class="nc bnc" id="L65" title="All 2 branches missed.">            for(int i = 0; i &lt; this.beamLength; i += 1){</span>
-<span class="nc" id="L66">                app.image(sprite, app.getWizard().getX(), app.getWizard().getY() - 20*i - 20);</span>
+<span class="nc bnc" id="L120" title="All 2 branches missed.">        if(this.direction == 0){ // up or down </span>
+<span class="nc bnc" id="L121" title="All 2 branches missed.">            for(int i = 0; i &lt; this.beamLength; i += 1){</span>
+<span class="nc" id="L122">                app.image(sprite, app.getWizard().getX(), app.getWizard().getY() - 20*i - 20);</span>
             }
         }
 
-<span class="nc bnc" id="L70" title="All 2 branches missed.">        else if(this.direction == 1){</span>
-<span class="nc bnc" id="L71" title="All 2 branches missed.">            for(int i = 0; i &lt; this.beamLength; i += 1){</span>
-<span class="nc" id="L72">                app.image(sprite, app.getWizard().getX() + 20*i + 20, app.getWizard().getY());</span>
+<span class="nc bnc" id="L126" title="All 2 branches missed.">        else if(this.direction == 1){</span>
+<span class="nc bnc" id="L127" title="All 2 branches missed.">            for(int i = 0; i &lt; this.beamLength; i += 1){</span>
+<span class="nc" id="L128">                app.image(sprite, app.getWizard().getX() + 20*i + 20, app.getWizard().getY());</span>
             }
         }
 
-<span class="nc bnc" id="L76" title="All 2 branches missed.">        else if (this.direction == 2){</span>
-<span class="nc bnc" id="L77" title="All 2 branches missed.">            for(int i = 0; i &lt; this.beamLength; i += 1){</span>
-<span class="nc" id="L78">                app.image(sprite, app.getWizard().getX(), app.getWizard().getY() + 20*i + 20);</span>
+<span class="nc bnc" id="L132" title="All 2 branches missed.">        else if (this.direction == 2){</span>
+<span class="nc bnc" id="L133" title="All 2 branches missed.">            for(int i = 0; i &lt; this.beamLength; i += 1){</span>
+<span class="nc" id="L134">                app.image(sprite, app.getWizard().getX(), app.getWizard().getY() + 20*i + 20);</span>
             }
         }
 
-<span class="nc bnc" id="L82" title="All 2 branches missed.">        else if (this.direction == 3){ // left or right </span>
-<span class="nc bnc" id="L83" title="All 2 branches missed.">            for(int i = 0; i &lt; this.beamLength; i += 1){</span>
-<span class="nc" id="L84">                System.out.println(this.beamLength);</span>
-<span class="nc" id="L85">                app.image(sprite, app.getWizard().getX() - 20*i - 20, app.getWizard().getY());</span>
+<span class="nc bnc" id="L138" title="All 2 branches missed.">        else if (this.direction == 3){ // left or right </span>
+<span class="nc bnc" id="L139" title="All 2 branches missed.">            for(int i = 0; i &lt; this.beamLength; i += 1){</span>
+<span class="nc" id="L140">                app.image(sprite, app.getWizard().getX() - 20*i - 20, app.getWizard().getY());</span>
             }
         }
-<span class="nc" id="L88">        return 0;</span>
+<span class="nc" id="L143">        return 0;</span>
     }
 
+    /**
+     * The Tick method searches the current row or column the wizard is in (depending on which way the kamehameha beam was fired)
+     * and gathers all possible blocks in that row or column. They are stored in the ToDelete arrayList. 
+     * @param app is the App class, that contains the methods such as getWizard and getMap. 
+     * @return returns an integer 0, which means this method has no extraneous interactions with other classes. 
+     */
     @Override
     public int tick(App app) {
         int wX, wY, wDir; 
-<span class="nc" id="L94">        wX = app.getWizard().getX(); </span>
-<span class="nc" id="L95">        wY = app.getWizard().getY(); </span>
-<span class="nc" id="L96">        wDir = app.getWizard().getDirection();</span>
+<span class="nc" id="L155">        wX = app.getWizard().getX(); </span>
+<span class="nc" id="L156">        wY = app.getWizard().getY(); </span>
+<span class="nc" id="L157">        wDir = app.getWizard().getDirection();</span>
 
         
-<span class="nc bnc" id="L99" title="All 8 branches missed.">        if(wDir == 0 &amp;&amp; wX%20==0 &amp;&amp; wY%20==0 &amp;&amp; app.getWizard().getXVel() == 0){</span>
-<span class="nc" id="L100">            this.up();</span>
-<span class="nc" id="L101">            this.beamLength = (wY - app.upperBound)/20 +1 ;</span>
-<span class="nc bnc" id="L102" title="All 2 branches missed.">            for (int i = wY; i &gt; app.upperBound; i -= 20){</span>
-<span class="nc bnc" id="L103" title="All 2 branches missed.">                for(Immobile I : app.getMap()){</span>
-<span class="nc bnc" id="L104" title="All 2 branches missed.">                    if(I != null){</span>
-<span class="nc bnc" id="L105" title="All 6 branches missed.">                        if(I.getX() == wX &amp;&amp; I.getY() &lt; wY &amp;&amp; !this.toDelete.contains(I)){</span>
-                            //System.out.println(&quot;Found I &quot; + I);
-<span class="nc" id="L107">                            toDelete.add(I);</span>
-<span class="nc" id="L108">                            app.rect(I.getX(), I.getY(), 20, 20);</span>
-<span class="nc" id="L109">                            app.fill(255,255,255);</span>
-<span class="nc" id="L110">                            break;</span>
+<span class="nc bnc" id="L160" title="All 8 branches missed.">        if(wDir == 0 &amp;&amp; wX%20==0 &amp;&amp; wY%20==0 &amp;&amp; app.getWizard().getXVel() == 0){</span>
+<span class="nc" id="L161">            this.up();</span>
+<span class="nc" id="L162">            this.beamLength = (wY - App.upperBound)/20 + 1;</span>
+<span class="nc bnc" id="L163" title="All 2 branches missed.">            for (int i = wY; i &gt; App.upperBound; i -= 20){</span>
+<span class="nc bnc" id="L164" title="All 2 branches missed.">                for(Immobile I : app.getMap()){</span>
+<span class="nc bnc" id="L165" title="All 2 branches missed.">                    if(I != null){</span>
+<span class="nc bnc" id="L166" title="All 6 branches missed.">                        if(I.getX() == wX &amp;&amp; I.getY() &lt; wY &amp;&amp; !this.toDelete.contains(I)){</span>
+<span class="nc" id="L167">                            toDelete.add(I);</span>
+<span class="nc" id="L168">                            app.rect(I.getX(), I.getY(), 20, 20);</span>
+<span class="nc" id="L169">                            app.fill(255,255,255);</span>
+<span class="nc" id="L170">                            break;</span>
                         }
                     }
-<span class="nc" id="L113">                }</span>
-            }
-        }
-        
-
-<span class="nc bnc" id="L118" title="All 8 branches missed.">        else if(wDir == 1 &amp;&amp; wX%20==0 &amp;&amp; wY%20==0 &amp;&amp; app.getWizard().getYVel() == 0){</span>
-<span class="nc" id="L119">            this.right();</span>
-<span class="nc" id="L120">            this.beamLength = (app.rightBound - wX)/20 - 1;</span>
-<span class="nc bnc" id="L121" title="All 2 branches missed.">            for (int i = wX; i &lt; app.rightBound; i += 20){</span>
-<span class="nc bnc" id="L122" title="All 2 branches missed.">                for(Immobile I : app.getMap()){</span>
-<span class="nc bnc" id="L123" title="All 2 branches missed.">                    if(I != null){</span>
-                        //System.out.println(I.getX() + &quot;, &quot;+ I.getY());
-<span class="nc bnc" id="L125" title="All 6 branches missed.">                        if(I.getY() == wY &amp;&amp; I.getX() &gt; wX &amp;&amp; !this.toDelete.contains(I)){</span>
-                            //System.out.println(&quot;Found I &quot; + I);
-<span class="nc" id="L127">                            toDelete.add(I);</span>
-<span class="nc" id="L128">                            app.rect(I.getX(), I.getY(), 20, 20);</span>
-<span class="nc" id="L129">                            app.fill(255,255,255);</span>
-<span class="nc" id="L130">                            break;</span>
-                        }
-                    }
-<span class="nc" id="L133">                }</span>
-            }
-        }
-
-<span class="nc bnc" id="L137" title="All 8 branches missed.">        else if(wDir == 2 &amp;&amp; wX%20==0 &amp;&amp; wY%20==0 &amp;&amp; app.getWizard().getXVel() == 0){</span>
-<span class="nc" id="L138">            this.down();</span>
-<span class="nc" id="L139">            this.beamLength = (app.lowerBound - wY)/20 - 1;</span>
-<span class="nc bnc" id="L140" title="All 2 branches missed.">            for (int i = wY; i &lt; app.lowerBound; i += 20){</span>
-<span class="nc bnc" id="L141" title="All 2 branches missed.">                for(Immobile I : app.getMap()){</span>
-<span class="nc bnc" id="L142" title="All 2 branches missed.">                    if(I != null){</span>
-                        //System.out.println(I.getX() + &quot;, &quot;+ I.getY());
-<span class="nc bnc" id="L144" title="All 6 branches missed.">                        if(I.getX() == wX &amp;&amp; I.getY() &gt; wY &amp;&amp; !this.toDelete.contains(I)){</span>
-                            //System.out.println(&quot;Found I &quot; + I);
-<span class="nc" id="L146">                            toDelete.add(I);</span>
-<span class="nc" id="L147">                            app.rect(I.getX(), I.getY(), 20, 20);</span>
-<span class="nc" id="L148">                            app.fill(255,255,255);</span>
-<span class="nc" id="L149">                            break;</span>
-                        }
-                    }
-<span class="nc" id="L152">                }</span>
-            }
-        }
-
-<span class="nc bnc" id="L156" title="All 8 branches missed.">        else if (wDir == 3 &amp;&amp; wX%20==0 &amp;&amp; wY%20==0 &amp;&amp; app.getWizard().getYVel() == 0){</span>
-<span class="nc" id="L157">            this.left();</span>
-<span class="nc" id="L158">            this.beamLength = (wX - app.leftBound)/20 + 1;</span>
-<span class="nc bnc" id="L159" title="All 2 branches missed.">            for (int i = wX; i &gt; app.leftBound; i -= 20){</span>
-<span class="nc bnc" id="L160" title="All 2 branches missed.">                for(Immobile I : app.getMap()){</span>
-<span class="nc bnc" id="L161" title="All 2 branches missed.">                    if(I != null){</span>
-                        //System.out.println(I.getX() + &quot;, &quot;+ I.getY());
-<span class="nc bnc" id="L163" title="All 6 branches missed.">                        if(I.getY() == wY &amp;&amp; I.getX() &lt; wX &amp;&amp; !this.toDelete.contains(I)){</span>
-                            //System.out.println(&quot;Found I &quot; + I);
-<span class="nc" id="L165">                            toDelete.add(I);</span>
-<span class="nc" id="L166">                            app.rect(I.getX(), I.getY(), 20, 20);</span>
-<span class="nc" id="L167">                            app.fill(255,255,255);</span>
-<span class="nc" id="L168">                            break;</span>
-                        }
-                    }
-<span class="nc" id="L171">                }</span>
+<span class="nc" id="L173">                }</span>
             }
         }
         
 
-<span class="nc bnc" id="L176" title="All 2 branches missed.">        if(this.alive){</span>
-<span class="nc bnc" id="L177" title="All 2 branches missed.">            for(Immobile i : this.toDelete){</span>
-<span class="nc bnc" id="L178" title="All 2 branches missed.">                if(i.getClass().getName().equals(&quot;gremlins.Destructable&quot;)){</span>
-<span class="nc" id="L179">                    app.getMap().set(app.getMap().indexOf(i), null);</span>
+<span class="nc bnc" id="L178" title="All 8 branches missed.">        else if(wDir == 1 &amp;&amp; wX%20==0 &amp;&amp; wY%20==0 &amp;&amp; app.getWizard().getYVel() == 0){</span>
+<span class="nc" id="L179">            this.right();</span>
+<span class="nc" id="L180">            this.beamLength = (App.rightBound - wX)/20 - 1;</span>
+<span class="nc bnc" id="L181" title="All 2 branches missed.">            for (int i = wX; i &lt; App.rightBound; i += 20){</span>
+<span class="nc bnc" id="L182" title="All 2 branches missed.">                for(Immobile I : app.getMap()){</span>
+<span class="nc bnc" id="L183" title="All 2 branches missed.">                    if(I != null){</span>
+<span class="nc bnc" id="L184" title="All 6 branches missed.">                        if(I.getY() == wY &amp;&amp; I.getX() &gt; wX &amp;&amp; !this.toDelete.contains(I)){</span>
+<span class="nc" id="L185">                            toDelete.add(I);</span>
+<span class="nc" id="L186">                            app.rect(I.getX(), I.getY(), 20, 20);</span>
+<span class="nc" id="L187">                            app.fill(255,255,255);</span>
+<span class="nc" id="L188">                            break;</span>
+                        }
+                    }
+<span class="nc" id="L191">                }</span>
+            }
+        }
+
+<span class="nc bnc" id="L195" title="All 8 branches missed.">        else if(wDir == 2 &amp;&amp; wX%20==0 &amp;&amp; wY%20==0 &amp;&amp; app.getWizard().getXVel() == 0){</span>
+<span class="nc" id="L196">            this.down();</span>
+<span class="nc" id="L197">            this.beamLength = (App.lowerBound - wY)/20 - 1;</span>
+<span class="nc bnc" id="L198" title="All 2 branches missed.">            for (int i = wY; i &lt; App.lowerBound; i += 20){</span>
+<span class="nc bnc" id="L199" title="All 2 branches missed.">                for(Immobile I : app.getMap()){</span>
+<span class="nc bnc" id="L200" title="All 2 branches missed.">                    if(I != null){</span>
+<span class="nc bnc" id="L201" title="All 6 branches missed.">                        if(I.getX() == wX &amp;&amp; I.getY() &gt; wY &amp;&amp; !this.toDelete.contains(I)){</span>
+<span class="nc" id="L202">                            toDelete.add(I);</span>
+<span class="nc" id="L203">                            app.rect(I.getX(), I.getY(), 20, 20);</span>
+<span class="nc" id="L204">                            app.fill(255,255,255);</span>
+<span class="nc" id="L205">                            break;</span>
+                        }
+                    }
+<span class="nc" id="L208">                }</span>
+            }
+        }
+
+<span class="nc bnc" id="L212" title="All 8 branches missed.">        else if (wDir == 3 &amp;&amp; wX%20==0 &amp;&amp; wY%20==0 &amp;&amp; app.getWizard().getYVel() == 0){</span>
+<span class="nc" id="L213">            this.left();</span>
+<span class="nc" id="L214">            this.beamLength = (wX - App.leftBound)/20 + 1;</span>
+<span class="nc bnc" id="L215" title="All 2 branches missed.">            for (int i = wX; i &gt;= App.leftBound; i -= 20){</span>
+<span class="nc bnc" id="L216" title="All 2 branches missed.">                for(Immobile I : app.getMap()){</span>
+<span class="nc bnc" id="L217" title="All 2 branches missed.">                    if(I != null){</span>
+<span class="nc bnc" id="L218" title="All 6 branches missed.">                        if(I.getY() == wY &amp;&amp; I.getX() &lt; wX &amp;&amp; !this.toDelete.contains(I)){</span>
+<span class="nc" id="L219">                            toDelete.add(I);</span>
+<span class="nc" id="L220">                            app.rect(I.getX(), I.getY(), 20, 20);</span>
+<span class="nc" id="L221">                            app.fill(255,255,255);</span>
+<span class="nc" id="L222">                            break;</span>
+                        }
+                    }
+<span class="nc" id="L225">                }</span>
+            }
+        }
+        
+
+<span class="nc bnc" id="L230" title="All 2 branches missed.">        if(this.alive){</span>
+<span class="nc bnc" id="L231" title="All 2 branches missed.">            for(Immobile i : this.toDelete){</span>
+<span class="nc bnc" id="L232" title="All 2 branches missed.">                if(i.getClass().getName().equals(&quot;gremlins.Destructable&quot;)){</span>
+<span class="nc" id="L233">                    app.getMap().set(app.getMap().indexOf(i), null);</span>
                 }
-<span class="nc" id="L181">            }</span>
+<span class="nc" id="L235">            }</span>
         }
-<span class="nc" id="L183">        return 0;</span>
+<span class="nc" id="L237">        return 0;</span>
     }
 
+    /**
+     * This method is used to essentially first call the &quot;draw&quot; method of Kamehameha, by setting the drawing state to be true and 
+     * slowly incrementing the time it has been alive. 
+     * @param app the App class that is used to tick and draw the Kamehameha object 
+     */
     public void update(App app){
-<span class="nc bnc" id="L187" title="All 2 branches missed.">        if(!this.getDrawing()){</span>
-<span class="nc" id="L188">            this.tick(app);</span>
-<span class="nc" id="L189">            this.setLifespan(this.getLifeSpan() + 1);</span>
-<span class="nc" id="L190">            this.setDrawing(true);</span>
+<span class="nc bnc" id="L246" title="All 2 branches missed.">        if(!this.getDrawing()){</span>
+<span class="nc" id="L247">            this.tick(app);</span>
+<span class="nc" id="L248">            this.setLifespan(this.getLifeSpan() + 1);</span>
+<span class="nc" id="L249">            this.setDrawing(true);</span>
         }
         
-<span class="nc bnc" id="L193" title="All 2 branches missed.">        if(this.getDrawing()){</span>
-<span class="nc" id="L194">            this.setLifespan(this.getLifeSpan() + 1);</span>
-<span class="nc" id="L195">            this.draw(app);</span>
+<span class="nc bnc" id="L252" title="All 2 branches missed.">        if(this.getDrawing()){</span>
+<span class="nc" id="L253">            this.setLifespan(this.getLifeSpan() + 1);</span>
+<span class="nc" id="L254">            this.draw(app);</span>
             
         }
-<span class="nc" id="L198">    }</span>
+<span class="nc" id="L257">    }</span>
 
+    /**
+     * This static method is used regardless of whether a kamehameha object exists, as it points to no object
+     * This is used to dosplay the instructions and the charges of Kamehameha beams left for the user to see. 
+     * @param app The App class, that extends PApplet and allows methods such as .image and .text. 
+     */
     public static void stuffUI(App app){
-<span class="pc bpc" id="L201" title="1 of 2 branches missed.">        if(app.getKCharge() &gt;= 0){</span>
-<span class="fc" id="L202">            app.text(&quot;R to clear all destructable blocks in front of you&quot;, 20, 710);</span>
-<span class="fc bfc" id="L203" title="All 2 branches covered.">            for(int i = 0; i &lt; app.getKCharge(); i++){</span>
-<span class="fc" id="L204">                app.image(app.hBeam, 375 + i*25, 695);</span>
+<span class="pc bpc" id="L265" title="1 of 2 branches missed.">        if(app.getKCharge() &gt;= 0){</span>
+<span class="fc" id="L266">            app.text(&quot;R to clear all destructable blocks in front of you&quot;, 20, 710);</span>
+<span class="fc bfc" id="L267" title="All 2 branches covered.">            for(int i = 0; i &lt; app.getKCharge(); i++){</span>
+<span class="fc" id="L268">                app.image(app.hBeam, 375 + i*25, 695);</span>
             }
         }
-<span class="fc" id="L207">    }</span>
+<span class="fc" id="L271">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

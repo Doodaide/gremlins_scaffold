@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":6,"i3":10,"i4":6,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":6,"i14":10,"i15":6,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":6,"i22":6,"i23":10,"i24":10,"i25":10};
+var methods = {"i0":10,"i1":10,"i2":6,"i3":10,"i4":6,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":6,"i13":10,"i14":6,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":6,"i21":6,"i22":10,"i23":10,"i24":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -117,7 +117,7 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public abstract class <span class="typeNameLabel">Mobile</span>
 extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></pre>
-<div class="block">TOFINISH</div>
+<div class="block">Mobile class: An abstract entity that has the ability to actively change their location</div>
 </li>
 </ul>
 </div>
@@ -169,7 +169,7 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 <tr class="rowColor">
 <td class="colFirst"><code>protected java.util.HashMap&lt;java.lang.Integer,java.lang.Boolean&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#sideAV">sideAV</a></span></code>
-<div class="block">Sides of the mobile which are available to move</div>
+<div class="block">A hashmap that denotes which sides of the mobile are available to move</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -251,23 +251,34 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#collides-int-int-gremlins.App-">collides</a></span>(int&nbsp;xCoord,
         int&nbsp;yCoord,
-        <a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>&nbsp;</td>
+        <a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>
+<div class="block">The collides method truely assesses whether two objects are colliding (i.e.</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#collision-gremlins.App-">collision</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#collision-gremlins.App-">collision</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>
+<div class="block">This collision method is consistently called, but the only collisions for the mobile that are assessed are in the direction
+ it is travelling.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>abstract void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#down--">down</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#down--">down</a></span>()</code>
+<div class="block">Abstract down method</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#downCollision-gremlins.App-">downCollision</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#downCollision-gremlins.App-">downCollision</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>
+<div class="block">Last of 4 directional collision methods.</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>abstract int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#draw-gremlins.App-">draw</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#draw-gremlins.App-">draw</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>
+<div class="block">Abstract draw method</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
@@ -283,7 +294,9 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#getFrameCounter--">getFrameCounter</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#getFrameCounter--">getFrameCounter</a></span>()</code>
+<div class="block">Getter method for the number of frames elapsed</div>
+</td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>boolean[]</code></td>
@@ -310,64 +323,82 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 </td>
 </tr>
 <tr id="i12" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#incFrameCounter--">incFrameCounter</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code>abstract void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#left--">left</a></span>()</code>
+<div class="block">Abstract left method</div>
+</td>
 </tr>
 <tr id="i13" class="rowColor">
-<td class="colFirst"><code>abstract void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#left--">left</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#leftCollision-gremlins.App-">leftCollision</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>
+<div class="block">Third of 4 directional collision methods.</div>
+</td>
 </tr>
 <tr id="i14" class="altColor">
-<td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#leftCollision-gremlins.App-">leftCollision</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>&nbsp;</td>
+<td class="colFirst"><code>abstract void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#right--">right</a></span>()</code>
+<div class="block">Abstract right method</div>
+</td>
 </tr>
 <tr id="i15" class="rowColor">
-<td class="colFirst"><code>abstract void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#right--">right</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#rightCollision-gremlins.App-">rightCollision</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>
+<div class="block">Second of 4 directional collision methods.</div>
+</td>
 </tr>
 <tr id="i16" class="altColor">
-<td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#rightCollision-gremlins.App-">rightCollision</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>&nbsp;</td>
-</tr>
-<tr id="i17" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#setAlive-boolean-">setAlive</a></span>(boolean&nbsp;b)</code>
 <div class="block">setter method for whether the mobile should be displayed on screen or considered for collisions</div>
 </td>
 </tr>
-<tr id="i18" class="altColor">
+<tr id="i17" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#setDirection-int-">setDirection</a></span>(int&nbsp;dir)</code>
 <div class="block">setter method for the direction the mobile is facing</div>
 </td>
 </tr>
+<tr id="i18" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#setFrameCounter-int-">setFrameCounter</a></span>(int&nbsp;x)</code>
+<div class="block">Setter method for the framecounter (number of frames elapsed)</div>
+</td>
+</tr>
 <tr id="i19" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#setFrameCounter-int-">setFrameCounter</a></span>(int&nbsp;x)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#stop--">stop</a></span>()</code>
+<div class="block">Universal stop method that stops movement in both directions</div>
+</td>
 </tr>
 <tr id="i20" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#stop--">stop</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code>abstract int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#tick-gremlins.App-">tick</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>
+<div class="block">Abastract tick method</div>
+</td>
 </tr>
 <tr id="i21" class="rowColor">
-<td class="colFirst"><code>abstract int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#tick-gremlins.App-">tick</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>&nbsp;</td>
+<td class="colFirst"><code>abstract void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#up--">up</a></span>()</code>
+<div class="block">Abstract up method</div>
+</td>
 </tr>
 <tr id="i22" class="altColor">
-<td class="colFirst"><code>abstract void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#up--">up</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#upCollision-gremlins.App-">upCollision</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>
+<div class="block">First of 4 directional collision methods.</div>
+</td>
 </tr>
 <tr id="i23" class="rowColor">
-<td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#upCollision-gremlins.App-">upCollision</a></span>(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</code>&nbsp;</td>
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#xStop--">xStop</a></span>()</code>
+<div class="block">Directional stop method (that only stops movement in one direction) - stops x axis movement</div>
+</td>
 </tr>
 <tr id="i24" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#xStop--">xStop</a></span>()</code>&nbsp;</td>
-</tr>
-<tr id="i25" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#yStop--">yStop</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../gremlins/Mobile.html#yStop--">yStop</a></span>()</code>
+<div class="block">Directional stop method (that only stops movement in one direction) - stops y axis movement</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -485,7 +516,7 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 <li class="blockList">
 <h4>sideAV</h4>
 <pre>protected&nbsp;java.util.HashMap&lt;java.lang.Integer,java.lang.Boolean&gt; sideAV</pre>
-<div class="block">Sides of the mobile which are available to move</div>
+<div class="block">A hashmap that denotes which sides of the mobile are available to move</div>
 </li>
 </ul>
 <a name="collisionEntity">
@@ -665,6 +696,7 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 <li class="blockList">
 <h4>up</h4>
 <pre>public abstract&nbsp;void&nbsp;up()</pre>
+<div class="block">Abstract up method</div>
 </li>
 </ul>
 <a name="right--">
@@ -674,6 +706,7 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 <li class="blockList">
 <h4>right</h4>
 <pre>public abstract&nbsp;void&nbsp;right()</pre>
+<div class="block">Abstract right method</div>
 </li>
 </ul>
 <a name="down--">
@@ -683,6 +716,7 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 <li class="blockList">
 <h4>down</h4>
 <pre>public abstract&nbsp;void&nbsp;down()</pre>
+<div class="block">Abstract down method</div>
 </li>
 </ul>
 <a name="left--">
@@ -692,6 +726,7 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 <li class="blockList">
 <h4>left</h4>
 <pre>public abstract&nbsp;void&nbsp;left()</pre>
+<div class="block">Abstract left method</div>
 </li>
 </ul>
 <a name="draw-gremlins.App-">
@@ -701,6 +736,14 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 <li class="blockList">
 <h4>draw</h4>
 <pre>public abstract&nbsp;int&nbsp;draw(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</pre>
+<div class="block">Abstract draw method</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>app</code> - takes in the App class object to use the methods it has extended from PApplet such as app.image()</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>an integer that determines how that object may interact with other objects. A 0 is typically returned, but in the case of
+ a mobile like the wizard, the draw method returns the direction it was last drawn in.</dd>
+</dl>
 </li>
 </ul>
 <a name="tick-gremlins.App-">
@@ -710,6 +753,14 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 <li class="blockList">
 <h4>tick</h4>
 <pre>public abstract&nbsp;int&nbsp;tick(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</pre>
+<div class="block">Abastract tick method</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>app</code> - takes in the App class object to use the methods such as the getters for the map, mobile, and immobile objects. 
+ This allows interactions to take place</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>an integer is returned depending on how/what kinds of interactions are expected after a certain set of logic is ececuted.</dd>
+</dl>
 </li>
 </ul>
 <a name="getFrameCounter--">
@@ -719,15 +770,11 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 <li class="blockList">
 <h4>getFrameCounter</h4>
 <pre>public&nbsp;int&nbsp;getFrameCounter()</pre>
-</li>
-</ul>
-<a name="incFrameCounter--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>incFrameCounter</h4>
-<pre>public&nbsp;void&nbsp;incFrameCounter()</pre>
+<div class="block">Getter method for the number of frames elapsed</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>an integer that corresponds to the number of frames elapsed</dd>
+</dl>
 </li>
 </ul>
 <a name="setFrameCounter-int-">
@@ -737,6 +784,11 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 <li class="blockList">
 <h4>setFrameCounter</h4>
 <pre>public&nbsp;void&nbsp;setFrameCounter(int&nbsp;x)</pre>
+<div class="block">Setter method for the framecounter (number of frames elapsed)</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>x</code> - an integer that corresponds to a frame number</dd>
+</dl>
 </li>
 </ul>
 <a name="xStop--">
@@ -746,6 +798,7 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 <li class="blockList">
 <h4>xStop</h4>
 <pre>public&nbsp;void&nbsp;xStop()</pre>
+<div class="block">Directional stop method (that only stops movement in one direction) - stops x axis movement</div>
 </li>
 </ul>
 <a name="yStop--">
@@ -755,6 +808,7 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 <li class="blockList">
 <h4>yStop</h4>
 <pre>public&nbsp;void&nbsp;yStop()</pre>
+<div class="block">Directional stop method (that only stops movement in one direction) - stops y axis movement</div>
 </li>
 </ul>
 <a name="stop--">
@@ -764,6 +818,7 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 <li class="blockList">
 <h4>stop</h4>
 <pre>public&nbsp;void&nbsp;stop()</pre>
+<div class="block">Universal stop method that stops movement in both directions</div>
 </li>
 </ul>
 <a name="upCollision-gremlins.App-">
@@ -773,6 +828,15 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 <li class="blockList">
 <h4>upCollision</h4>
 <pre>public&nbsp;int&nbsp;upCollision(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</pre>
+<div class="block">First of 4 directional collision methods. Up collision evaluates whether when the wizard is moving up, it collides with something 
+ The mobile object's side availability hashmap is modified in this method that carries on to determine which directions it can/cannot move in</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>app</code> - used to access the App class which contains the ArrayLists of mobile and immobile objects that must be compared to
+ No major offset is required, as the starting test point is the top left hand corner</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>an integer that denotes whether a collision has occurred (1 is a collision has occurred, and 0 is no collision)</dd>
+</dl>
 </li>
 </ul>
 <a name="rightCollision-gremlins.App-">
@@ -782,6 +846,16 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 <li class="blockList">
 <h4>rightCollision</h4>
 <pre>public&nbsp;int&nbsp;rightCollision(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</pre>
+<div class="block">Second of 4 directional collision methods. Right collision evaluates whether when the wizard is moving right, it collides with something 
+ The mobile object's side availability hashmap is modified in this method that carries on to determine which directions it can/cannot move in
+ A major 20 pixel offset is required as the starting test point is the top left hand corner. To change this, 
+ The sprite's width (20 pixels) is added to offset this colliision.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>app</code> - used to access the App class which contains the ArrayLists of mobile and immobile objects that must be compared to</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>an integer that denotes whether a collision has occurred (1 is a collision has occurred, and 0 is no collision)</dd>
+</dl>
 </li>
 </ul>
 <a name="leftCollision-gremlins.App-">
@@ -791,6 +865,16 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 <li class="blockList">
 <h4>leftCollision</h4>
 <pre>public&nbsp;int&nbsp;leftCollision(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</pre>
+<div class="block">Third of 4 directional collision methods. Down collision evaluates whether when the wizard is moving down, it collides with something 
+ The mobile object's side availability hashmap is modified in this method that carries on to determine which directions it can/cannot move in
+ A major offset of 20 pixels down is required as the test point is the top left hand corner. To implement this, the 
+ Sprite's height (20 pixels) is added to offset this coliison</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>app</code> - used to access the App class which contains the ArrayLists of mobile and immobile objects that must be compared to</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>an integer that denotes whether a collision has occurred (1 is a collision has occurred, and 0 is no collision)</dd>
+</dl>
 </li>
 </ul>
 <a name="downCollision-gremlins.App-">
@@ -800,6 +884,15 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 <li class="blockList">
 <h4>downCollision</h4>
 <pre>public&nbsp;int&nbsp;downCollision(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</pre>
+<div class="block">Last of 4 directional collision methods. Left collision evaluates whether when the wizard is moving left, it collides with something 
+ The mobile object's side availability hashmap is modified in this method that carries on to determine which directions it can/cannot move in
+ No major offset is required, as the test point is always top left. As it is on the left, no consistent offset is required.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>app</code> - used to access the App class which contains the ArrayLists of mobile and immobile objects that must be compared to</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>an integer that denotes whether a collision has occurred (1 is a collision has occurred, and 0 is no collision)</dd>
+</dl>
 </li>
 </ul>
 <a name="collision-gremlins.App-">
@@ -809,6 +902,18 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 <li class="blockList">
 <h4>collision</h4>
 <pre>public&nbsp;int&nbsp;collision(<a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</pre>
+<div class="block">This collision method is consistently called, but the only collisions for the mobile that are assessed are in the direction
+ it is travelling. 
+ Each mobile entity can only at most hit one thing that changes its 'state' significantly. Thus, only the collision algorithm in the 
+ direction the mobile is moving is assessed. 
+ This functions, as if another mobile hits the current mobile from behind, the current mobile may not detect it, but the 
+ one that hit the current mobile will have. Thus, computational power and memory is saved for other tasks.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>app</code> - used to access the ArrayLists of mobile and immobile objects the 'current mobile' must be compared to</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>an integer that denotes whether a collision has occurrd (1 is collision has occured, 0 is no collision)</dd>
+</dl>
 </li>
 </ul>
 <a name="collides-int-int-gremlins.App-">
@@ -820,6 +925,19 @@ extends <a href="../gremlins/Entity.html" title="class in gremlins">Entity</a></
 <pre>public&nbsp;boolean&nbsp;collides(int&nbsp;xCoord,
                         int&nbsp;yCoord,
                         <a href="../gremlins/App.html" title="class in gremlins">App</a>&nbsp;app)</pre>
+<div class="block">The collides method truely assesses whether two objects are colliding (i.e. if two test points are within the range of the
+ width/height of the entity it is testing against). 
+ There are two major classes of collisions: Block (immobile) collisions, and Mobile collisions, assessed using the two for loops
+ The objects the current entity has collided with are saved in the two mobile attributes called collisionBlock and collisionEntity, 
+ that are heavily used by both child and parent classes.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>xCoord</code> - the x coordinate of this current mobile's test point</dd>
+<dd><code>yCoord</code> - the y coordinate of this current mobile's test point</dd>
+<dd><code>app</code> - used to access the ArrayLists of mobile and immobile objects</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a boolean, true or false depending on whether a mobile or immobile has been contacted</dd>
+</dl>
 </li>
 </ul>
 </li>
