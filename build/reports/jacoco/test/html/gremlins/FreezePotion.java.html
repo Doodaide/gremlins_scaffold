@@ -74,7 +74,7 @@ public class FreezePotion extends Immobile{
      */
     @Override
     public void draw(App app) {
-<span class="pc bpc" id="L77" title="1 of 2 branches missed.">        if(!this.consumed){</span>
+<span class="fc bfc" id="L77" title="All 2 branches covered.">        if(!this.consumed){</span>
 <span class="fc" id="L78">            app.image(this.sprite, this.x, this.y);</span>
         }
 <span class="fc" id="L80">    }</span>
@@ -114,14 +114,14 @@ public class FreezePotion extends Immobile{
      * @param app
      */
     public void update(App app){
-<span class="pc bpc" id="L117" title="5 of 6 branches missed.">        if(!app.getPowerUpAvailable() &amp;&amp; this.getConsumed() &amp;&amp; app.getFreezeActive()){ // consumed and not on screen </span>
-<span class="nc bnc" id="L118" title="All 2 branches missed.">            if(this.getCooldown() == 5*App.FPS){</span>
-<span class="nc" id="L119">                this.setCooldown(0);</span>
-<span class="nc" id="L120">                app.setFreezeActive(false);</span>
+<span class="pc bpc" id="L117" title="1 of 6 branches missed.">        if(!app.getPowerUpAvailable() &amp;&amp; this.getConsumed() &amp;&amp; app.getFreezeActive()){ // consumed and not on screen </span>
+<span class="fc bfc" id="L118" title="All 2 branches covered.">            if(this.getCooldown() == 5*App.FPS){</span>
+<span class="fc" id="L119">                this.setCooldown(0);</span>
+<span class="fc" id="L120">                app.setFreezeActive(false);</span>
             }
 
-<span class="nc bnc" id="L123" title="All 2 branches missed.">            else if (this.getCooldown() &lt; 5*App.FPS){</span>
-<span class="nc" id="L124">                this.setCooldown(this.getCooldown() + 1);</span>
+<span class="pc bpc" id="L123" title="1 of 2 branches missed.">            else if (this.getCooldown() &lt; 5*App.FPS){</span>
+<span class="fc" id="L124">                this.setCooldown(this.getCooldown() + 1);</span>
             }
         }
 <span class="fc" id="L127">    }</span>

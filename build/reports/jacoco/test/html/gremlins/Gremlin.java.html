@@ -235,7 +235,7 @@ public class Gremlin extends Mobile{
         
 <span class="fc" id="L236">        int prevLoc = 5;</span>
 <span class="fc bfc" id="L237" title="All 2 branches covered.">        if(this.direction == 0){prevLoc = 2;}</span>
-<span class="pc bpc" id="L238" title="1 of 2 branches missed.">        else if(this.direction == 1){prevLoc = 3;}</span>
+<span class="fc bfc" id="L238" title="All 2 branches covered.">        else if(this.direction == 1){prevLoc = 3;}</span>
 <span class="fc bfc" id="L239" title="All 2 branches covered.">        else if(this.direction == 2){prevLoc = 0;}</span>
 <span class="pc bpc" id="L240" title="1 of 2 branches missed.">        else if(this.direction == 3){prevLoc = 1;}</span>
 
@@ -258,7 +258,7 @@ public class Gremlin extends Mobile{
                 }
             }
 
-<span class="pc bpc" id="L261" title="2 of 8 branches missed.">            else if((!feasibleDirections[0] &amp;&amp; !feasibleDirections[1] &amp;&amp; !feasibleDirections[2] &amp;&amp; !feasibleDirections[3] )){</span>
+<span class="pc bpc" id="L261" title="1 of 8 branches missed.">            else if((!feasibleDirections[0] &amp;&amp; !feasibleDirections[1] &amp;&amp; !feasibleDirections[2] &amp;&amp; !feasibleDirections[3] )){</span>
 <span class="fc" id="L262">                n = prevLoc;</span>
 <span class="fc" id="L263">                canMove = true;</span>
             }
@@ -322,7 +322,7 @@ public class Gremlin extends Mobile{
 <span class="fc" id="L322">                this.left();</span>
             }
             
-<span class="pc bpc" id="L325" title="1 of 12 branches missed.">            if(((this.direction == 0 || this.direction == 2) &amp;&amp; this.xVel != 0 ) ||</span>
+<span class="fc bfc" id="L325" title="All 12 branches covered.">            if(((this.direction == 0 || this.direction == 2) &amp;&amp; this.xVel != 0 ) ||</span>
                 ((this.direction == 1 || this.direction == 3) &amp;&amp; this.yVel != 0)
             ){
 <span class="fc" id="L328">                this.stop();</span>

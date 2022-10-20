@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="gremlins.BigTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-10-19T10:00:58" hostname="Alexanders-MacBook-Pro-2.local" time="19.237">
+<testsuite name="gremlins.BigTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-10-20T08:21:57" hostname="Alexanders-MacBook-Pro-2.local" time="33.003">
   <properties/>
-  <testcase name="test01()" classname="gremlins.BigTest" time="4.586"/>
-  <testcase name="test02()" classname="gremlins.BigTest" time="7.582"/>
-  <testcase name="test03()" classname="gremlins.BigTest" time="7.069"/>
+  <testcase name="wizardStaticTest()" classname="gremlins.BigTest" time="4.404"/>
+  <testcase name="wizardDynamicTest()" classname="gremlins.BigTest" time="9.066"/>
+  <testcase name="wizardImmobileInteractionTest()" classname="gremlins.BigTest" time="19.533"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

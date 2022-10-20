@@ -57,11 +57,11 @@ public class DrawMap {
                     wizStartY = yCounter;
                 }
 
-                else if (k == 'G'){ // ! Gremlin spawnpoint ... CHANGE LATER 
+                else if (k == 'G'){ // Gremlin spawn
                     app.getGArray().add(new Gremlin(xCounter, yCounter, app.gremlin, app.slime, app.frozenG, app.frozenS));
                 }
 
-                else if (k == 'E'){ // ! Exit ... CHANGE LATER
+                else if (k == 'E'){ // Exit
                     app.getMap().add(new ExitPortal(xCounter, yCounter, app.portal));
                 }
 

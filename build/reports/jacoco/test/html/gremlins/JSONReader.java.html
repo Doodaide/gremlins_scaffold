@@ -62,15 +62,15 @@ public class JSONReader extends PApplet{
      * @param level level is the integer corresponding to the level to read
      * @throws Exception Runtime exception expected if the index or any part of the JSON file is unreadable
      */
-    public void readSpecs(int level) throws Exception{
+    public void readSpecs(int level) throws AssertionError{
         try {  
 <span class="fc" id="L67">            levelSpecs = json.getJSONArray(&quot;levels&quot;);</span>
 <span class="fc" id="L68">            JSONObject lvl = levelSpecs.getJSONObject(level);</span>
 <span class="fc" id="L69">            this.layout = lvl.getString(&quot;layout&quot;);</span>
 <span class="fc" id="L70">            this.specs.put(&quot;enemy_cooldown&quot;, lvl.getDouble(&quot;enemy_cooldown&quot;));</span>
 <span class="fc" id="L71">            this.specs.put(&quot;wizard_cooldown&quot;, lvl.getDouble(&quot;wizard_cooldown&quot;));</span>
-<span class="nc" id="L72">        } catch (Exception e) {</span>
-<span class="nc" id="L73">            throw new Exception(&quot;Invalid input&quot;);</span>
+<span class="fc" id="L72">        } catch (Exception e) {</span>
+<span class="fc" id="L73">            throw new AssertionError(&quot;Invalid input&quot;);</span>
 <span class="fc" id="L74">        }</span>
         
 

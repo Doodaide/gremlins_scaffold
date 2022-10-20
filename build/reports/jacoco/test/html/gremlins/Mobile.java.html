@@ -388,7 +388,7 @@ public abstract class Mobile extends Entity{
      */
     public boolean collides(int xCoord, int yCoord, App app) {
 <span class="fc bfc" id="L390" title="All 2 branches covered.">        for (Immobile i : app.getMap()) { // i = block</span>
-<span class="pc bpc" id="L391" title="1 of 4 branches missed.">            if(i != null &amp;&amp; i.getViable()){</span>
+<span class="fc bfc" id="L391" title="All 4 branches covered.">            if(i != null &amp;&amp; i.getViable()){</span>
 <span class="fc bfc" id="L392" title="All 4 branches covered.">                if(((xCoord &gt;= i.getX() &amp;&amp; xCoord &lt;= i.getX() + i.WIDTH)</span>
                 &amp;&amp;
 <span class="fc bfc" id="L394" title="All 4 branches covered.">                (yCoord &gt;= i.getY() &amp;&amp; yCoord &lt;= i.getY() + i.HEIGHT))){</span>
@@ -399,14 +399,14 @@ public abstract class Mobile extends Entity{
 <span class="fc" id="L399">            this.collisionBlock = null;</span>
 <span class="fc" id="L400">        }</span>
 <span class="fc bfc" id="L401" title="All 2 branches covered.">            if(app.getPowerUpAvailable() ){</span>
-<span class="pc bpc" id="L402" title="1 of 2 branches missed.">                if(this.getClass().getName().equals(&quot;gremlins.Wizard&quot;)</span>
+<span class="fc bfc" id="L402" title="All 2 branches covered.">                if(this.getClass().getName().equals(&quot;gremlins.Wizard&quot;)</span>
                 &amp;&amp;
-<span class="pc bpc" id="L404" title="3 of 4 branches missed.">                ((xCoord &gt;= app.getPowerUp().getX() &amp;&amp; xCoord &lt;= app.getPowerUp().getX() + app.getPowerUp().WIDTH) // ! error here </span>
+<span class="fc bfc" id="L404" title="All 4 branches covered.">                ((xCoord &gt;= app.getPowerUp().getX() &amp;&amp; xCoord &lt;= app.getPowerUp().getX() + app.getPowerUp().WIDTH) // ! error here </span>
                     &amp;&amp;
-<span class="nc bnc" id="L406" title="All 4 branches missed.">                    (yCoord &gt;= app.getPowerUp().getY() &amp;&amp; yCoord &lt;= app.getPowerUp().getY() + app.getPowerUp().HEIGHT))){</span>
-<span class="nc" id="L407">                        this.collisionBlock = app.getPowerUp();</span>
-<span class="nc" id="L408">                        app.setFreezeActive(true);</span>
-<span class="nc" id="L409">                        return true;</span>
+<span class="pc bpc" id="L406" title="2 of 4 branches missed.">                    (yCoord &gt;= app.getPowerUp().getY() &amp;&amp; yCoord &lt;= app.getPowerUp().getY() + app.getPowerUp().HEIGHT))){</span>
+<span class="fc" id="L407">                        this.collisionBlock = app.getPowerUp();</span>
+<span class="fc" id="L408">                        app.setFreezeActive(true);</span>
+<span class="fc" id="L409">                        return true;</span>
                 }   
 <span class="fc" id="L411">                this.collisionBlock = null;</span>
             }
@@ -419,7 +419,7 @@ public abstract class Mobile extends Entity{
 <span class="pc bpc" id="L419" title="1 of 4 branches missed.">            &amp;&amp; !(this.getClass().getName().equals(&quot;gremlins.Wizard&quot;) &amp;&amp; i.getClass().getName().equals(&quot;gremlins.Fireball&quot;)) </span>
 <span class="pc bpc" id="L420" title="1 of 4 branches missed.">            &amp;&amp; !(i.getClass().getName().equals(&quot;gremlins.Gremlin&quot;) &amp;&amp; this.getClass().getName().equals(&quot;gremlins.SlimeBall&quot;))</span>
 <span class="pc bpc" id="L421" title="3 of 4 branches missed.">            &amp;&amp; !(i.getClass().getName().equals(&quot;gremlins.SlimeBall&quot;) &amp;&amp; this.getClass().getName().equals(&quot;gremlins.Gremlin&quot;))</span>
-<span class="pc bpc" id="L422" title="3 of 4 branches missed.">            &amp;&amp; !(i.getClass().getName().equals(&quot;gremlins.Fireball&quot;) &amp;&amp; this.getClass().getName().equals(&quot;gremlins.Fireball&quot;))</span>
+<span class="fc bfc" id="L422" title="All 4 branches covered.">            &amp;&amp; !(i.getClass().getName().equals(&quot;gremlins.Fireball&quot;) &amp;&amp; this.getClass().getName().equals(&quot;gremlins.Fireball&quot;))</span>
 <span class="pc bpc" id="L423" title="3 of 4 branches missed.">            &amp;&amp; !(i.getClass().getName().equals(&quot;gremlins.SlimeBall&quot;) &amp;&amp; this.getClass().getName().equals(&quot;gremlins.SlimeBall&quot;))</span>
 <span class="fc bfc" id="L424" title="All 4 branches covered.">            &amp;&amp; !(i.getClass().getName().equals(&quot;gremlins.Gremlin&quot;) &amp;&amp; this.getClass().getName().equals(&quot;gremlins.Gremlin&quot;))</span>
             ){

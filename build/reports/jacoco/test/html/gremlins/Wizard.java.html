@@ -136,7 +136,7 @@ public class Wizard extends Mobile{
      */
     public void shoot(){
 <span class="fc" id="L138">        existingFireballs.add(new Fireball(this.getX(), this.getY(), wizardSprites[4]));</span>
-<span class="fc" id="L139">        Fireball f = existingFireballs.get(existingFireballs.size() - 1);</span>
+<span class="fc" id="L139">        Fireball f = this.existingFireballs.get(this.existingFireballs.size() - 1);</span>
 <span class="pc bpc" id="L140" title="1 of 2 branches missed.">        if(f != null){</span>
 <span class="fc bfc" id="L141" title="All 2 branches covered.">            if(this.direction == 0){</span>
 <span class="fc" id="L142">                f.up();</span>
@@ -205,10 +205,10 @@ public class Wizard extends Mobile{
      * @param app The app class, used to get data such as the current map's configuration
      */
     public void tp(App app){
-<span class="nc" id="L208">        int[] coords = (new RespawnGenerator(this)).respawnXBlocks(app);</span>
-<span class="nc" id="L209">        this.setX(coords[0]);</span>
-<span class="nc" id="L210">        this.setY(coords[1]);</span>
-<span class="nc" id="L211">    }</span>
+<span class="fc" id="L208">        int[] coords = (new RespawnGenerator(this)).respawnXBlocks(app);</span>
+<span class="fc" id="L209">        this.setX(coords[0]);</span>
+<span class="fc" id="L210">        this.setY(coords[1]);</span>
+<span class="fc" id="L211">    }</span>
 
     /**
      * FireballMechanics controls all the interactions between fireballs, and all other objects in the game 
@@ -248,12 +248,12 @@ public class Wizard extends Mobile{
 <span class="fc" id="L248">                        f = null;</span>
                     }
                     
-<span class="fc bfc" id="L251" title="All 4 branches covered.">                    else if(f.getFrameCounter() % 4 == 0 &amp;&amp; f.getFrameCounter() != 0){ // been either 0, 4, 8, 12, 16 frames since firball hit </span>
+<span class="fc bfc" id="L251" title="All 4 branches covered.">                    else if(f.getFrameCounter() % 4 == 0 &amp;&amp; f.getFrameCounter() != 0){ // been either 4, 8, 12, 16 frames since firball hit </span>
 <span class="fc" id="L252">                        f.collisionBlock.update();</span>
                         //f.incFrameCounter();
-<span class="fc" id="L254">                        f.setFrameCounter(f.getFrameCounter() + 1);</span>
-                    }
-                    
+                        //f.setFrameCounter(f.getFrameCounter() + 1);
+                    } 
+
 <span class="fc bfc" id="L257" title="All 2 branches covered.">                    if(f != null){</span>
                         //f.incFrameCounter(); // if the fireball has not hit an indestructable entity 
 <span class="fc" id="L259">                        f.setFrameCounter(f.getFrameCounter() + 1);</span>
@@ -335,12 +335,12 @@ public class Wizard extends Mobile{
 
             // Hits a block
 <span class="fc bfc" id="L337" title="All 2 branches covered.">            if(this.collisionBlock != null){</span>
-<span class="pc bpc" id="L338" title="1 of 2 branches missed.">                if(this.collisionBlock.getClass().getName().equals(&quot;gremlins.ExitPortal&quot;)){</span>
-<span class="nc" id="L339">                    return 20;</span>
+<span class="fc bfc" id="L338" title="All 2 branches covered.">                if(this.collisionBlock.getClass().getName().equals(&quot;gremlins.ExitPortal&quot;)){</span>
+<span class="fc" id="L339">                    return 20;</span>
                 }
                 
-<span class="pc bpc" id="L342" title="1 of 2 branches missed.">                else if(this.collisionBlock.getClass().getName().equals(&quot;gremlins.FreezePotion&quot;)){</span>
-<span class="nc" id="L343">                    app.getPowerUp().setConsumed(true);</span>
+<span class="fc bfc" id="L342" title="All 2 branches covered.">                else if(this.collisionBlock.getClass().getName().equals(&quot;gremlins.FreezePotion&quot;)){</span>
+<span class="fc" id="L343">                    app.getPowerUp().setConsumed(true);</span>
                 }
             }
     
@@ -382,12 +382,12 @@ public class Wizard extends Mobile{
                 }
                 
                 // full block movement 
-<span class="pc bpc" id="L385" title="1 of 4 branches missed.">                if (this.getX() % 20 != 0 &amp;&amp; this.getXVel() == 0){</span>
-<span class="nc bnc" id="L386" title="All 4 branches missed.">                    if(this.xDir == 3 &amp;&amp; this.sideAV.get(3)){</span>
+<span class="fc bfc" id="L385" title="All 4 branches covered.">                if (this.getX() % 20 != 0 &amp;&amp; this.getXVel() == 0){</span>
+<span class="pc bpc" id="L386" title="3 of 4 branches missed.">                    if(this.xDir == 3 &amp;&amp; this.sideAV.get(3)){</span>
 <span class="nc" id="L387">                        this.setX(this.getX() - 1);</span>
                     }
-<span class="nc bnc" id="L389" title="All 4 branches missed.">                    else if (this.xDir == 1 &amp;&amp; this.sideAV.get(1)){</span>
-<span class="nc" id="L390">                        this.setX(this.getX() + 1);</span>
+<span class="pc bpc" id="L389" title="2 of 4 branches missed.">                    else if (this.xDir == 1 &amp;&amp; this.sideAV.get(1)){</span>
+<span class="fc" id="L390">                        this.setX(this.getX() + 1);</span>
                     }
                    
                 }
