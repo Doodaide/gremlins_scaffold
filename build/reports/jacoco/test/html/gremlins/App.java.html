@@ -458,15 +458,15 @@ public class App extends PApplet {
 
     private int wizardGraphics(){
 <span class="fc" id="L460">        int retVal = w.tick(this);</span>
-<span class="pc bpc" id="L461" title="1 of 2 branches missed.">        if(retVal == 10){ // 10 is death </span>
-<span class="nc" id="L462">            this.deaths += 1;</span>
-<span class="nc" id="L463">            this.setup();</span>
-<span class="nc" id="L464">            this.lives -= deaths;</span>
-<span class="nc" id="L465">            this.powerUpSpawned = false;</span>
-<span class="nc" id="L466">            this.innateCooldown = 0;</span>
-<span class="nc" id="L467">            p = null;</span>
-<span class="nc" id="L468">            powerUpSpawned = false;</span>
-<span class="nc" id="L469">            return 0;</span>
+<span class="fc bfc" id="L461" title="All 2 branches covered.">        if(retVal == 10){ // 10 is death </span>
+<span class="fc" id="L462">            this.deaths += 1;</span>
+<span class="fc" id="L463">            this.setup();</span>
+<span class="fc" id="L464">            this.lives -= deaths;</span>
+<span class="fc" id="L465">            this.powerUpSpawned = false;</span>
+<span class="fc" id="L466">            this.innateCooldown = 0;</span>
+<span class="fc" id="L467">            p = null;</span>
+<span class="fc" id="L468">            powerUpSpawned = false;</span>
+<span class="fc" id="L469">            return 0;</span>
         }
         
 <span class="fc bfc" id="L472" title="All 2 branches covered.">        for(int i = 0; i &lt; this.lives; i++){</span>
@@ -493,7 +493,7 @@ public class App extends PApplet {
 <span class="fc" id="L493">        }</span>
 <span class="fc" id="L494">    }</span>
     
-    private void arrayListUpdates(){
+    public void arrayListUpdates(){
 <span class="fc" id="L497">        UpdateArrayList&lt;Fireball&gt; updater1 = new UpdateArrayList&lt;Fireball&gt;();</span>
 <span class="fc" id="L498">        w.setExistingFireballs(updater1.update(w.getExistingFireballs())); </span>
 <span class="fc" id="L499">        updater1 = null;</span>
@@ -522,15 +522,15 @@ public class App extends PApplet {
 <span class="fc" id="L522">    }</span>
 
     private void waitScreen(){
-<span class="nc bnc" id="L525" title="All 6 branches missed.">        if(restart &amp;&amp; keyPressed &amp;&amp; universalCounter &gt; 3*FPS){</span>
+<span class="pc bpc" id="L525" title="4 of 6 branches missed.">        if(restart &amp;&amp; keyPressed &amp;&amp; universalCounter &gt; 3*FPS){</span>
 <span class="nc" id="L526">            won = false;</span>
 <span class="nc" id="L527">            this.passedLvl1 = false;</span>
 <span class="nc" id="L528">            this.deaths = 0;</span>
 <span class="nc" id="L529">            this.setup();</span>
 <span class="nc" id="L530">            this.restart = false;</span>
         }
-<span class="nc" id="L532">        universalCounter += 1;</span>
-<span class="nc" id="L533">    }</span>
+<span class="fc" id="L532">        universalCounter += 1;</span>
+<span class="fc" id="L533">    }</span>
     
     private void powerUpSpawn(int seconds){
 <span class="fc bfc" id="L536" title="All 2 branches covered.">        if(seconds &gt; 3){</span>
@@ -582,14 +582,14 @@ public class App extends PApplet {
 <span class="fc" id="L582">    } </span>
 
     public void checkGameState(int retVal){
-<span class="pc bpc" id="L585" title="1 of 2 branches missed.">        if(this.lives &lt;= 0){</span>
-<span class="nc" id="L586">            this.restart = true;</span>
-<span class="nc" id="L587">            won = true;</span>
-<span class="nc" id="L588">            p = null;</span>
-<span class="nc" id="L589">            powerUpSpawned = false;</span>
-<span class="nc" id="L590">            kHit = false; </span>
-<span class="nc" id="L591">            kCharge = 3;</span>
-<span class="nc" id="L592">            this.image(this.JTK, 0,0);</span>
+<span class="fc bfc" id="L585" title="All 2 branches covered.">        if(this.lives &lt;= 0){</span>
+<span class="fc" id="L586">            this.restart = true;</span>
+<span class="fc" id="L587">            won = true;</span>
+<span class="fc" id="L588">            p = null;</span>
+<span class="fc" id="L589">            powerUpSpawned = false;</span>
+<span class="fc" id="L590">            kHit = false; </span>
+<span class="fc" id="L591">            kCharge = 3;</span>
+<span class="fc" id="L592">            this.image(this.JTK, 0,0);</span>
         }
  
 <span class="pc bpc" id="L595" title="1 of 4 branches missed.">        else if(retVal == 20 &amp;&amp; passedLvl1){ // Win condition (pass lvl 2)</span>
@@ -640,36 +640,37 @@ public class App extends PApplet {
      * Draw all elements in the game by current frame. 
 	 */
     public void draw() {
-<span class="pc bpc" id="L643" title="1 of 2 branches missed.">        if(!won){</span>
-<span class="fc" id="L644">            this.basicGraphics();</span>
-<span class="fc" id="L645">            this.powerUpSpawn(seconds);</span>
-<span class="fc" id="L646">            int retVal = this.wizardGraphics();</span>
-<span class="fc" id="L647">            w.fireballMechanics(this);</span>
-<span class="fc" id="L648">            this.kamehameha();</span>
-<span class="fc" id="L649">            this.mapGraphics();</span>
-<span class="fc" id="L650">            this.gremlinGraphics();</span>
-<span class="fc" id="L651">            this.powerUpUpdates();</span>
-<span class="fc" id="L652">            this.arrayListUpdates();</span>
-<span class="fc bfc" id="L653" title="All 2 branches covered.">            if(universalCounter == 60){</span>
-<span class="fc" id="L654">                seconds += 1;</span>
-<span class="fc" id="L655">                universalCounter = 0;</span>
+<span class="fc bfc" id="L643" title="All 2 branches covered.">        if(!won){</span>
+            //System.out.println(&quot;x: &quot;  + w.getX() + &quot; y: &quot; + w.getY());
+<span class="fc" id="L645">            this.basicGraphics();</span>
+<span class="fc" id="L646">            this.powerUpSpawn(seconds);</span>
+<span class="fc" id="L647">            int retVal = this.wizardGraphics();</span>
+<span class="fc" id="L648">            w.fireballMechanics(this);</span>
+<span class="fc" id="L649">            this.kamehameha();</span>
+<span class="fc" id="L650">            this.mapGraphics();</span>
+<span class="fc" id="L651">            this.gremlinGraphics();</span>
+<span class="fc" id="L652">            this.powerUpUpdates();</span>
+<span class="fc" id="L653">            this.arrayListUpdates();</span>
+<span class="fc bfc" id="L654" title="All 2 branches covered.">            if(universalCounter == 60){</span>
+<span class="fc" id="L655">                seconds += 1;</span>
+<span class="fc" id="L656">                universalCounter = 0;</span>
                 
-<span class="pc bpc" id="L657" title="1 of 2 branches missed.">                if(seconds == 60){</span>
-<span class="nc" id="L658">                    seconds = 0;</span>
+<span class="pc bpc" id="L658" title="1 of 2 branches missed.">                if(seconds == 60){</span>
+<span class="nc" id="L659">                    seconds = 0;</span>
                 }
             }
-<span class="fc" id="L661">            universalCounter += 1;</span>
-<span class="fc" id="L662">            this.checkGameState(retVal);</span>
-<span class="fc" id="L663">            return;</span>
+<span class="fc" id="L662">            universalCounter += 1;</span>
+<span class="fc" id="L663">            this.checkGameState(retVal);</span>
+<span class="fc" id="L664">            return;</span>
         }
-<span class="nc" id="L665">        this.waitScreen();</span>
-<span class="nc" id="L666">        p = null;</span>
-<span class="nc" id="L667">        powerUpSpawned = false;</span>
+<span class="fc" id="L666">        this.waitScreen();</span>
+<span class="fc" id="L667">        p = null;</span>
+<span class="fc" id="L668">        powerUpSpawned = false;</span>
         
-<span class="nc" id="L669">    }</span>
+<span class="fc" id="L670">    }</span>
 
     public static void main(String[] args) {
-<span class="nc" id="L672">        PApplet.main(&quot;gremlins.App&quot;);</span>
-<span class="nc" id="L673">    }</span>
+<span class="nc" id="L673">        PApplet.main(&quot;gremlins.App&quot;);</span>
+<span class="nc" id="L674">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

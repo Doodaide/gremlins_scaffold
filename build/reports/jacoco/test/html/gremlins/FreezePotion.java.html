@@ -133,19 +133,19 @@ public class FreezePotion extends Immobile{
      * @return an integer array that contains the x and y coordinates of the potion's new spawn location 
      */
     public static int[] spawn(App app){
-<span class="nc" id="L136">        RespawnGenerator respawn = new RespawnGenerator(app.getWizard());</span>
-<span class="nc" id="L137">        int[] coords = {0,0};</span>
-<span class="nc" id="L138">        boolean canBreak = false;</span>
-<span class="nc bnc" id="L139" title="All 2 branches missed.">        while(!canBreak){</span>
-<span class="nc" id="L140">            coords = respawn.respawnXBlocks(app);</span>
-<span class="nc bnc" id="L141" title="All 2 branches missed.">            for(Gremlin g : app.getGArray()){</span>
-<span class="nc bnc" id="L142" title="All 4 branches missed.">                if(coords[0] == g.getX() &amp;&amp; coords[1] == g.getY()){</span>
+<span class="fc" id="L136">        RespawnGenerator respawn = new RespawnGenerator(app.getWizard());</span>
+<span class="fc" id="L137">        int[] coords = {0,0};</span>
+<span class="fc" id="L138">        boolean canBreak = false;</span>
+<span class="fc bfc" id="L139" title="All 2 branches covered.">        while(!canBreak){</span>
+<span class="fc" id="L140">            coords = respawn.respawnXBlocks(app);</span>
+<span class="fc bfc" id="L141" title="All 2 branches covered.">            for(Gremlin g : app.getGArray()){</span>
+<span class="pc bpc" id="L142" title="3 of 4 branches missed.">                if(coords[0] == g.getX() &amp;&amp; coords[1] == g.getY()){</span>
 <span class="nc" id="L143">                    break;</span>
                 }
-<span class="nc" id="L145">                canBreak = true;</span>
-<span class="nc" id="L146">            }</span>
+<span class="fc" id="L145">                canBreak = true;</span>
+<span class="fc" id="L146">            }</span>
         }
-<span class="nc" id="L148">        return coords;</span>
+<span class="fc" id="L148">        return coords;</span>
     }
 
 }

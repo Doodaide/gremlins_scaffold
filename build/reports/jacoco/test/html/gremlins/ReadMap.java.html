@@ -12,7 +12,7 @@ public class ReadMap {
     /**
      * An ArrayList of Character arrays that essentially mirrors the .txt level layout file. 
      */
-    public ArrayList&lt;Character[]&gt; mapContents;
+    private ArrayList&lt;Character[]&gt; mapContents;
     
     /**
      * Constructor for ReadMap object
@@ -39,27 +39,21 @@ public class ReadMap {
      * @throws Exception
      */
     public void parseLayout(String layout) throws Exception{
-        try {
-<span class="fc bfc" id="L43" title="All 2 branches covered.">            if(layout.equals(&quot;&quot;)){</span>
-<span class="fc" id="L44">                throw new AssertionError();</span>
-            }
-<span class="fc" id="L46">            File f = new File(layout); // File f = new File(&quot;level0.txt&quot;); //</span>
-<span class="fc" id="L47">            Scanner sc = new Scanner(f);</span>
-            
-<span class="fc bfc" id="L49" title="All 2 branches covered.">            while(sc.hasNextLine()){</span>
-<span class="fc" id="L50">                Character [] temp = new String(</span>
-<span class="fc" id="L51">                    sc.nextLine().trim().toCharArray()).chars()</span>
-<span class="fc" id="L52">                    .mapToObj(c -&gt; (char) c).toArray(Character[]::new);</span>
-<span class="fc" id="L53">                this.mapContents.add(temp);</span>
-<span class="fc" id="L54">            }</span>
-    
-<span class="fc" id="L56">            sc.close();</span>
-<span class="fc" id="L57">            f = null;</span>
-<span class="nc" id="L58">        } catch (FileNotFoundException e) {</span>
-<span class="nc" id="L59">            System.err.println(&quot;Map file could not be located&quot;);</span>
-<span class="nc" id="L60">        } catch (IndexOutOfBoundsException e){</span>
-<span class="nc" id="L61">            System.err.println(&quot;Map is too large&quot;);</span>
-<span class="pc" id="L62">        }</span>
-<span class="fc" id="L63">    }</span>
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        if(layout.equals(&quot;&quot;)){</span>
+<span class="fc" id="L43">            throw new AssertionError();</span>
+        }
+<span class="fc" id="L45">        File f = new File(layout); // File f = new File(&quot;level0.txt&quot;); //</span>
+<span class="fc" id="L46">        Scanner sc = new Scanner(f);</span>
+        
+<span class="fc bfc" id="L48" title="All 2 branches covered.">        while(sc.hasNextLine()){</span>
+<span class="fc" id="L49">            Character [] temp = new String(</span>
+<span class="fc" id="L50">                sc.nextLine().trim().toCharArray()).chars()</span>
+<span class="fc" id="L51">                .mapToObj(c -&gt; (char) c).toArray(Character[]::new);</span>
+<span class="fc" id="L52">            this.mapContents.add(temp);</span>
+<span class="fc" id="L53">        }</span>
+
+<span class="fc" id="L55">        sc.close();</span>
+<span class="fc" id="L56">        f = null;</span>
+<span class="fc" id="L57">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

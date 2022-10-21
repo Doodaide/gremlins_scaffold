@@ -298,7 +298,7 @@ public abstract class Mobile extends Entity{
 <span class="fc" id="L298">        int toReturn = 0; // 0 = no collision. 1 = collision</span>
         // ! Left side collision    
 <span class="fc bfc" id="L300" title="All 2 branches covered.">        if(collides(this.getX(), this.getY() + 1, app) || // top left corner</span>
-<span class="pc bpc" id="L301" title="1 of 2 branches missed.">            collides(this.getX(), this.getY() + this.HEIGHT - 1, app) ){ // bottom left corner, hit left </span>
+<span class="fc bfc" id="L301" title="All 2 branches covered.">            collides(this.getX(), this.getY() + this.HEIGHT - 1, app) ){ // bottom left corner, hit left </span>
 <span class="pc bpc" id="L302" title="1 of 2 branches missed.">            if (this.direction == 3) {</span>
 <span class="fc" id="L303">                this.sideAV.replace(3, true, false);</span>
 <span class="fc" id="L304">                toReturn = 1;</span>
@@ -401,7 +401,7 @@ public abstract class Mobile extends Entity{
 <span class="fc bfc" id="L401" title="All 2 branches covered.">            if(app.getPowerUpAvailable() ){</span>
 <span class="fc bfc" id="L402" title="All 2 branches covered.">                if(this.getClass().getName().equals(&quot;gremlins.Wizard&quot;)</span>
                 &amp;&amp;
-<span class="fc bfc" id="L404" title="All 4 branches covered.">                ((xCoord &gt;= app.getPowerUp().getX() &amp;&amp; xCoord &lt;= app.getPowerUp().getX() + app.getPowerUp().WIDTH) // ! error here </span>
+<span class="pc bpc" id="L404" title="1 of 4 branches missed.">                ((xCoord &gt;= app.getPowerUp().getX() &amp;&amp; xCoord &lt;= app.getPowerUp().getX() + app.getPowerUp().WIDTH) // ! error here </span>
                     &amp;&amp;
 <span class="pc bpc" id="L406" title="2 of 4 branches missed.">                    (yCoord &gt;= app.getPowerUp().getY() &amp;&amp; yCoord &lt;= app.getPowerUp().getY() + app.getPowerUp().HEIGHT))){</span>
 <span class="fc" id="L407">                        this.collisionBlock = app.getPowerUp();</span>
@@ -417,7 +417,7 @@ public abstract class Mobile extends Entity{
 <span class="fc bfc" id="L417" title="All 4 branches covered.">            &amp;&amp; !(this.getClass().getName().equals(&quot;gremlins.Wizard&quot;) &amp;&amp; i.getClass().getName().equals(&quot;gremlins.Fireball&quot;)) </span>
 <span class="fc bfc" id="L418" title="All 4 branches covered.">            &amp;&amp; !(i.getClass().getName().equals(&quot;gremlins.Wizard&quot;) &amp;&amp; this.getClass().getName().equals(&quot;gremlins.Fireball&quot;)) </span>
 <span class="pc bpc" id="L419" title="1 of 4 branches missed.">            &amp;&amp; !(this.getClass().getName().equals(&quot;gremlins.Wizard&quot;) &amp;&amp; i.getClass().getName().equals(&quot;gremlins.Fireball&quot;)) </span>
-<span class="pc bpc" id="L420" title="1 of 4 branches missed.">            &amp;&amp; !(i.getClass().getName().equals(&quot;gremlins.Gremlin&quot;) &amp;&amp; this.getClass().getName().equals(&quot;gremlins.SlimeBall&quot;))</span>
+<span class="fc bfc" id="L420" title="All 4 branches covered.">            &amp;&amp; !(i.getClass().getName().equals(&quot;gremlins.Gremlin&quot;) &amp;&amp; this.getClass().getName().equals(&quot;gremlins.SlimeBall&quot;))</span>
 <span class="pc bpc" id="L421" title="3 of 4 branches missed.">            &amp;&amp; !(i.getClass().getName().equals(&quot;gremlins.SlimeBall&quot;) &amp;&amp; this.getClass().getName().equals(&quot;gremlins.Gremlin&quot;))</span>
 <span class="fc bfc" id="L422" title="All 4 branches covered.">            &amp;&amp; !(i.getClass().getName().equals(&quot;gremlins.Fireball&quot;) &amp;&amp; this.getClass().getName().equals(&quot;gremlins.Fireball&quot;))</span>
 <span class="pc bpc" id="L423" title="3 of 4 branches missed.">            &amp;&amp; !(i.getClass().getName().equals(&quot;gremlins.SlimeBall&quot;) &amp;&amp; this.getClass().getName().equals(&quot;gremlins.SlimeBall&quot;))</span>
@@ -425,9 +425,9 @@ public abstract class Mobile extends Entity{
             ){
 
 <span class="fc bfc" id="L427" title="All 4 branches covered.">                if (((xCoord &gt;= i.getX() &amp;&amp; xCoord &lt;= i.getX() + i.WIDTH)</span>
-<span class="pc bpc" id="L428" title="1 of 4 branches missed.">                &amp;&amp; (yCoord &gt;= i.getY() &amp;&amp; yCoord &lt;= i.getY() + i.HEIGHT))){</span>
-<span class="nc" id="L429">                    this.collisionEntity = i;</span>
-<span class="nc" id="L430">                    return true;</span>
+<span class="fc bfc" id="L428" title="All 4 branches covered.">                &amp;&amp; (yCoord &gt;= i.getY() &amp;&amp; yCoord &lt;= i.getY() + i.HEIGHT))){</span>
+<span class="fc" id="L429">                    this.collisionEntity = i;</span>
+<span class="fc" id="L430">                    return true;</span>
                 }
             }
             

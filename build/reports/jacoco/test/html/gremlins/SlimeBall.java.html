@@ -73,15 +73,15 @@ public class SlimeBall extends Projectile{
      */
     @Override
     public int draw(App app) {
-<span class="nc bnc" id="L76" title="All 2 branches missed.">        if(this.alive){</span>
-<span class="nc bnc" id="L77" title="All 2 branches missed.">            if(!app.getFreezeActive()){</span>
-<span class="nc" id="L78">                app.image(this.sprite, this.x, this.y);</span>
+<span class="pc bpc" id="L76" title="1 of 2 branches missed.">        if(this.alive){</span>
+<span class="pc bpc" id="L77" title="1 of 2 branches missed.">            if(!app.getFreezeActive()){</span>
+<span class="fc" id="L78">                app.image(this.sprite, this.x, this.y);</span>
             }
 <span class="nc bnc" id="L80" title="All 2 branches missed.">            else if(app.getFreezeActive()){</span>
 <span class="nc" id="L81">                app.image(this.frozenS, this.x, this.y);</span>
             }
         }
-<span class="nc" id="L84">        return 0;</span>
+<span class="fc" id="L84">        return 0;</span>
     }
 
     /**
@@ -93,22 +93,22 @@ public class SlimeBall extends Projectile{
      */
     @Override
     public int tick(App app) {
-<span class="nc bnc" id="L96" title="All 2 branches missed.">        if(this.alive){</span>
-<span class="nc bnc" id="L97" title="All 2 branches missed.">            if(!app.getFreezeActive()){</span>
-<span class="nc bnc" id="L98" title="All 2 branches missed.">                if(this.collision(app) == 1){ // block collision </span>
-<span class="nc bnc" id="L99" title="All 4 branches missed.">                    if( (!this.sideAV.get(0) &amp;&amp; this.direction == 0) </span>
-<span class="nc bnc" id="L100" title="All 4 branches missed.">                     || (!this.sideAV.get(2) &amp;&amp; this.direction == 2) </span>
-<span class="nc bnc" id="L101" title="All 4 branches missed.">                     || (!this.sideAV.get(1) &amp;&amp; this.direction == 1) </span>
-<span class="nc bnc" id="L102" title="All 4 branches missed.">                     || (!this.sideAV.get(3) &amp;&amp; this.direction == 3) ){</span>
-<span class="nc" id="L103">                        return 1;</span>
+<span class="pc bpc" id="L96" title="1 of 2 branches missed.">        if(this.alive){</span>
+<span class="pc bpc" id="L97" title="1 of 2 branches missed.">            if(!app.getFreezeActive()){</span>
+<span class="fc bfc" id="L98" title="All 2 branches covered.">                if(this.collision(app) == 1){ // block collision </span>
+<span class="pc bpc" id="L99" title="1 of 4 branches missed.">                    if( (!this.sideAV.get(0) &amp;&amp; this.direction == 0) </span>
+<span class="pc bpc" id="L100" title="1 of 4 branches missed.">                     || (!this.sideAV.get(2) &amp;&amp; this.direction == 2) </span>
+<span class="pc bpc" id="L101" title="1 of 4 branches missed.">                     || (!this.sideAV.get(1) &amp;&amp; this.direction == 1) </span>
+<span class="pc bpc" id="L102" title="2 of 4 branches missed.">                     || (!this.sideAV.get(3) &amp;&amp; this.direction == 3) ){</span>
+<span class="fc" id="L103">                        return 1;</span>
                      }
                 }
-<span class="nc" id="L106">                this.x += this.xVel; </span>
-<span class="nc" id="L107">                this.y += this.yVel;</span>
+<span class="fc" id="L106">                this.x += this.xVel; </span>
+<span class="fc" id="L107">                this.y += this.yVel;</span>
             }
             
         }
-<span class="nc" id="L111">        return 0;</span>
+<span class="fc" id="L111">        return 0;</span>
     }
     
 }

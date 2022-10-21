@@ -101,10 +101,10 @@ public class Fireball extends Projectile{
      * @return boolean corresponding to whether a valid gremlin has been hit by the current fireball. 
      */
     public boolean fireballHitGremlin(App app){
-<span class="nc bnc" id="L104" title="All 2 branches missed.">        for(Gremlin g : app.getGArray()){</span>
-<span class="nc bnc" id="L105" title="All 2 branches missed.">            if(g != null){</span>
-<span class="nc bnc" id="L106" title="All 2 branches missed.">                if(g == this.collisionEntity){</span>
-<span class="nc" id="L107">                    return true; </span>
+<span class="pc bpc" id="L104" title="1 of 2 branches missed.">        for(Gremlin g : app.getGArray()){</span>
+<span class="pc bpc" id="L105" title="1 of 2 branches missed.">            if(g != null){</span>
+<span class="pc bpc" id="L106" title="1 of 2 branches missed.">                if(g == this.collisionEntity){</span>
+<span class="fc" id="L107">                    return true; </span>
                 }
             }
 <span class="nc" id="L110">        }</span>

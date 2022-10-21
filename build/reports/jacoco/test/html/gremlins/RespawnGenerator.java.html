@@ -59,10 +59,10 @@ public class RespawnGenerator {
 <span class="pc bpc" id="L59" title="1 of 4 branches missed.">        while(!canRespawnX || !canRespawnY){</span>
 <span class="pc bpc" id="L60" title="1 of 2 branches missed.">            if(!canRespawnX){</span>
 <span class="fc" id="L61">                xTest = randomGenerator.nextInt(34) * 20;</span>
-<span class="pc bpc" id="L62" title="1 of 2 branches missed.">                if(xTest == 0){</span>
-<span class="nc" id="L63">                    continue;</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">                if(xTest == 0){</span>
+<span class="fc" id="L63">                    continue;</span>
                 }
-<span class="pc bpc" id="L65" title="11 of 12 branches missed.">                else if((xTest &gt;= x + this.e.WIDTH+ 200 || xTest &lt;= x - 200) || </span>
+<span class="pc bpc" id="L65" title="4 of 12 branches missed.">                else if((xTest &gt;= x + this.e.WIDTH+ 200 || xTest &lt;= x - 200) || </span>
                 ((xTest &lt; x + this.e.WIDTH + 200 &amp;&amp; xTest &gt; x - 200) &amp;&amp; ((yTest &gt; y + 200 + this.e.HEIGHT) || (yTest &lt; y - 200)))){ // too far left or right. Essentially both coords are valid. 
 <span class="fc" id="L67">                    boolean canPass = true;</span>
 <span class="fc bfc" id="L68" title="All 2 branches covered.">                    for(Immobile i : app.getMap()){</span>
@@ -72,19 +72,19 @@ public class RespawnGenerator {
                             }
                         }
 <span class="fc" id="L74">                    }</span>
-<span class="pc bpc" id="L75" title="1 of 2 branches missed.">                    if(canPass){</span>
-<span class="nc" id="L76">                        canRespawnX = true;</span>
-<span class="nc" id="L77">                        canRespawnY = true;</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">                    if(canPass){</span>
+<span class="fc" id="L76">                        canRespawnX = true;</span>
+<span class="fc" id="L77">                        canRespawnY = true;</span>
                     }
                 }
             }
 
-<span class="pc bpc" id="L82" title="1 of 2 branches missed.">            if(!canRespawnY){</span>
+<span class="fc bfc" id="L82" title="All 2 branches covered.">            if(!canRespawnY){</span>
 <span class="fc" id="L83">                yTest = randomGenerator.nextInt(31) * 20; </span>
 <span class="pc bpc" id="L84" title="1 of 2 branches missed.">                if(yTest == 0){</span>
 <span class="nc" id="L85">                    continue;</span>
                 }
-<span class="pc bpc" id="L87" title="7 of 12 branches missed.">                else if((yTest &gt;= y + this.e.HEIGHT + 200 || yTest &lt;= y - 200) || </span>
+<span class="pc bpc" id="L87" title="4 of 12 branches missed.">                else if((yTest &gt;= y + this.e.HEIGHT + 200 || yTest &lt;= y - 200) || </span>
                 (yTest &lt; x + this.e.HEIGHT + 200 &amp;&amp; yTest &gt; y - 200) &amp;&amp; (xTest &gt; x + this.e.WIDTH + 200 || xTest &lt; x - 200)){
 <span class="fc" id="L89">                    boolean canPass = true;</span>
 <span class="fc bfc" id="L90" title="All 2 branches covered.">                    for(Immobile i : app.getMap()){</span>

@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="gremlins.BigTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-10-20T08:21:57" hostname="Alexanders-MacBook-Pro-2.local" time="33.003">
+<testsuite name="gremlins.BigTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2022-10-21T04:26:50" hostname="Alexanders-MacBook-Pro-2.local" time="47.005">
   <properties/>
-  <testcase name="wizardStaticTest()" classname="gremlins.BigTest" time="4.404"/>
-  <testcase name="wizardDynamicTest()" classname="gremlins.BigTest" time="9.066"/>
-  <testcase name="wizardImmobileInteractionTest()" classname="gremlins.BigTest" time="19.533"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="fireBallGremlinInteractionTest()" classname="gremlins.BigTest" time="4.199"/>
+  <testcase name="wizardStaticTest()" classname="gremlins.BigTest" time="4.079"/>
+  <testcase name="wizardGremlinInteractionTest()" classname="gremlins.BigTest" time="4.238"/>
+  <testcase name="wizardDynamicTest()" classname="gremlins.BigTest" time="9.08"/>
+  <testcase name="wizardImmobileInteractionTest()" classname="gremlins.BigTest" time="18.07"/>
+  <testcase name="gremlinAITest()" classname="gremlins.BigTest" time="7.338"/>
+  <system-out><![CDATA[Fireball size Before: 0
+Fireball size After1
+1
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

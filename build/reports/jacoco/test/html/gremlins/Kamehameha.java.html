@@ -117,15 +117,15 @@ public class Kamehameha extends Projectile{
     */
     @Override
     public int draw(App app) {
-<span class="nc bnc" id="L120" title="All 2 branches missed.">        if(this.direction == 0){ // up or down </span>
+<span class="pc bpc" id="L120" title="1 of 2 branches missed.">        if(this.direction == 0){ // up or down </span>
 <span class="nc bnc" id="L121" title="All 2 branches missed.">            for(int i = 0; i &lt; this.beamLength; i += 1){</span>
 <span class="nc" id="L122">                app.image(sprite, app.getWizard().getX(), app.getWizard().getY() - 20*i - 20);</span>
             }
         }
 
-<span class="nc bnc" id="L126" title="All 2 branches missed.">        else if(this.direction == 1){</span>
-<span class="nc bnc" id="L127" title="All 2 branches missed.">            for(int i = 0; i &lt; this.beamLength; i += 1){</span>
-<span class="nc" id="L128">                app.image(sprite, app.getWizard().getX() + 20*i + 20, app.getWizard().getY());</span>
+<span class="pc bpc" id="L126" title="1 of 2 branches missed.">        else if(this.direction == 1){</span>
+<span class="fc bfc" id="L127" title="All 2 branches covered.">            for(int i = 0; i &lt; this.beamLength; i += 1){</span>
+<span class="fc" id="L128">                app.image(sprite, app.getWizard().getX() + 20*i + 20, app.getWizard().getY());</span>
             }
         }
 
@@ -140,7 +140,7 @@ public class Kamehameha extends Projectile{
 <span class="nc" id="L140">                app.image(sprite, app.getWizard().getX() - 20*i - 20, app.getWizard().getY());</span>
             }
         }
-<span class="nc" id="L143">        return 0;</span>
+<span class="fc" id="L143">        return 0;</span>
     }
 
     /**
@@ -152,12 +152,12 @@ public class Kamehameha extends Projectile{
     @Override
     public int tick(App app) {
         int wX, wY, wDir; 
-<span class="nc" id="L155">        wX = app.getWizard().getX(); </span>
-<span class="nc" id="L156">        wY = app.getWizard().getY(); </span>
-<span class="nc" id="L157">        wDir = app.getWizard().getDirection();</span>
+<span class="fc" id="L155">        wX = app.getWizard().getX(); </span>
+<span class="fc" id="L156">        wY = app.getWizard().getY(); </span>
+<span class="fc" id="L157">        wDir = app.getWizard().getDirection();</span>
 
         
-<span class="nc bnc" id="L160" title="All 8 branches missed.">        if(wDir == 0 &amp;&amp; wX%20==0 &amp;&amp; wY%20==0 &amp;&amp; app.getWizard().getXVel() == 0){</span>
+<span class="pc bpc" id="L160" title="7 of 8 branches missed.">        if(wDir == 0 &amp;&amp; wX%20==0 &amp;&amp; wY%20==0 &amp;&amp; app.getWizard().getXVel() == 0){</span>
 <span class="nc" id="L161">            this.up();</span>
 <span class="nc" id="L162">            this.beamLength = (wY - App.upperBound)/20 + 1;</span>
 <span class="nc bnc" id="L163" title="All 2 branches missed.">            for (int i = wY; i &gt; App.upperBound; i -= 20){</span>
@@ -175,20 +175,20 @@ public class Kamehameha extends Projectile{
         }
         
 
-<span class="nc bnc" id="L178" title="All 8 branches missed.">        else if(wDir == 1 &amp;&amp; wX%20==0 &amp;&amp; wY%20==0 &amp;&amp; app.getWizard().getYVel() == 0){</span>
-<span class="nc" id="L179">            this.right();</span>
-<span class="nc" id="L180">            this.beamLength = (App.rightBound - wX)/20 - 1;</span>
-<span class="nc bnc" id="L181" title="All 2 branches missed.">            for (int i = wX; i &lt; App.rightBound; i += 20){</span>
-<span class="nc bnc" id="L182" title="All 2 branches missed.">                for(Immobile I : app.getMap()){</span>
-<span class="nc bnc" id="L183" title="All 2 branches missed.">                    if(I != null){</span>
-<span class="nc bnc" id="L184" title="All 6 branches missed.">                        if(I.getY() == wY &amp;&amp; I.getX() &gt; wX &amp;&amp; !this.toDelete.contains(I)){</span>
-<span class="nc" id="L185">                            toDelete.add(I);</span>
-<span class="nc" id="L186">                            app.rect(I.getX(), I.getY(), 20, 20);</span>
-<span class="nc" id="L187">                            app.fill(255,255,255);</span>
-<span class="nc" id="L188">                            break;</span>
+<span class="pc bpc" id="L178" title="4 of 8 branches missed.">        else if(wDir == 1 &amp;&amp; wX%20==0 &amp;&amp; wY%20==0 &amp;&amp; app.getWizard().getYVel() == 0){</span>
+<span class="fc" id="L179">            this.right();</span>
+<span class="fc" id="L180">            this.beamLength = (App.rightBound - wX)/20 - 1;</span>
+<span class="fc bfc" id="L181" title="All 2 branches covered.">            for (int i = wX; i &lt; App.rightBound; i += 20){</span>
+<span class="fc bfc" id="L182" title="All 2 branches covered.">                for(Immobile I : app.getMap()){</span>
+<span class="pc bpc" id="L183" title="1 of 2 branches missed.">                    if(I != null){</span>
+<span class="fc bfc" id="L184" title="All 6 branches covered.">                        if(I.getY() == wY &amp;&amp; I.getX() &gt; wX &amp;&amp; !this.toDelete.contains(I)){</span>
+<span class="fc" id="L185">                            toDelete.add(I);</span>
+<span class="fc" id="L186">                            app.rect(I.getX(), I.getY(), 20, 20);</span>
+<span class="fc" id="L187">                            app.fill(255,255,255);</span>
+<span class="fc" id="L188">                            break;</span>
                         }
                     }
-<span class="nc" id="L191">                }</span>
+<span class="fc" id="L191">                }</span>
             }
         }
 
@@ -227,14 +227,14 @@ public class Kamehameha extends Projectile{
         }
         
 
-<span class="nc bnc" id="L230" title="All 2 branches missed.">        if(this.alive){</span>
-<span class="nc bnc" id="L231" title="All 2 branches missed.">            for(Immobile i : this.toDelete){</span>
-<span class="nc bnc" id="L232" title="All 2 branches missed.">                if(i.getClass().getName().equals(&quot;gremlins.Destructable&quot;)){</span>
-<span class="nc" id="L233">                    app.getMap().set(app.getMap().indexOf(i), null);</span>
+<span class="pc bpc" id="L230" title="1 of 2 branches missed.">        if(this.alive){</span>
+<span class="fc bfc" id="L231" title="All 2 branches covered.">            for(Immobile i : this.toDelete){</span>
+<span class="fc bfc" id="L232" title="All 2 branches covered.">                if(i.getClass().getName().equals(&quot;gremlins.Destructable&quot;)){</span>
+<span class="fc" id="L233">                    app.getMap().set(app.getMap().indexOf(i), null);</span>
                 }
-<span class="nc" id="L235">            }</span>
+<span class="fc" id="L235">            }</span>
         }
-<span class="nc" id="L237">        return 0;</span>
+<span class="fc" id="L237">        return 0;</span>
     }
 
     /**
@@ -243,18 +243,18 @@ public class Kamehameha extends Projectile{
      * @param app the App class that is used to tick and draw the Kamehameha object 
      */
     public void update(App app){
-<span class="nc bnc" id="L246" title="All 2 branches missed.">        if(!this.getDrawing()){</span>
-<span class="nc" id="L247">            this.tick(app);</span>
-<span class="nc" id="L248">            this.setLifespan(this.getLifeSpan() + 1);</span>
-<span class="nc" id="L249">            this.setDrawing(true);</span>
+<span class="pc bpc" id="L246" title="1 of 2 branches missed.">        if(!this.getDrawing()){</span>
+<span class="fc" id="L247">            this.tick(app);</span>
+<span class="fc" id="L248">            this.setLifespan(this.getLifeSpan() + 1);</span>
+<span class="fc" id="L249">            this.setDrawing(true);</span>
         }
         
-<span class="nc bnc" id="L252" title="All 2 branches missed.">        if(this.getDrawing()){</span>
-<span class="nc" id="L253">            this.setLifespan(this.getLifeSpan() + 1);</span>
-<span class="nc" id="L254">            this.draw(app);</span>
+<span class="pc bpc" id="L252" title="1 of 2 branches missed.">        if(this.getDrawing()){</span>
+<span class="fc" id="L253">            this.setLifespan(this.getLifeSpan() + 1);</span>
+<span class="fc" id="L254">            this.draw(app);</span>
             
         }
-<span class="nc" id="L257">    }</span>
+<span class="fc" id="L257">    }</span>
 
     /**
      * This static method is used regardless of whether a kamehameha object exists, as it points to no object
