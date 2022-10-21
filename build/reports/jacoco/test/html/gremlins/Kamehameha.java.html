@@ -159,8 +159,8 @@ public class Kamehameha extends Projectile{
         
 <span class="pc bpc" id="L160" title="7 of 8 branches missed.">        if(wDir == 0 &amp;&amp; wX%20==0 &amp;&amp; wY%20==0 &amp;&amp; app.getWizard().getXVel() == 0){</span>
 <span class="nc" id="L161">            this.up();</span>
-<span class="nc" id="L162">            this.beamLength = (wY - App.upperBound)/20 + 1;</span>
-<span class="nc bnc" id="L163" title="All 2 branches missed.">            for (int i = wY; i &gt; App.upperBound; i -= 20){</span>
+<span class="nc" id="L162">            this.beamLength = (wY - App.UPPERBOUND)/20 + 1;</span>
+<span class="nc bnc" id="L163" title="All 2 branches missed.">            for (int i = wY; i &gt; App.UPPERBOUND; i -= 20){</span>
 <span class="nc bnc" id="L164" title="All 2 branches missed.">                for(Immobile I : app.getMap()){</span>
 <span class="nc bnc" id="L165" title="All 2 branches missed.">                    if(I != null){</span>
 <span class="nc bnc" id="L166" title="All 6 branches missed.">                        if(I.getX() == wX &amp;&amp; I.getY() &lt; wY &amp;&amp; !this.toDelete.contains(I)){</span>
@@ -177,8 +177,8 @@ public class Kamehameha extends Projectile{
 
 <span class="pc bpc" id="L178" title="4 of 8 branches missed.">        else if(wDir == 1 &amp;&amp; wX%20==0 &amp;&amp; wY%20==0 &amp;&amp; app.getWizard().getYVel() == 0){</span>
 <span class="fc" id="L179">            this.right();</span>
-<span class="fc" id="L180">            this.beamLength = (App.rightBound - wX)/20 - 1;</span>
-<span class="fc bfc" id="L181" title="All 2 branches covered.">            for (int i = wX; i &lt; App.rightBound; i += 20){</span>
+<span class="fc" id="L180">            this.beamLength = (App.RIGHTBOUND - wX)/20 - 1;</span>
+<span class="fc bfc" id="L181" title="All 2 branches covered.">            for (int i = wX; i &lt; App.RIGHTBOUND; i += 20){</span>
 <span class="fc bfc" id="L182" title="All 2 branches covered.">                for(Immobile I : app.getMap()){</span>
 <span class="pc bpc" id="L183" title="1 of 2 branches missed.">                    if(I != null){</span>
 <span class="fc bfc" id="L184" title="All 6 branches covered.">                        if(I.getY() == wY &amp;&amp; I.getX() &gt; wX &amp;&amp; !this.toDelete.contains(I)){</span>
@@ -194,8 +194,8 @@ public class Kamehameha extends Projectile{
 
 <span class="nc bnc" id="L195" title="All 8 branches missed.">        else if(wDir == 2 &amp;&amp; wX%20==0 &amp;&amp; wY%20==0 &amp;&amp; app.getWizard().getXVel() == 0){</span>
 <span class="nc" id="L196">            this.down();</span>
-<span class="nc" id="L197">            this.beamLength = (App.lowerBound - wY)/20 - 1;</span>
-<span class="nc bnc" id="L198" title="All 2 branches missed.">            for (int i = wY; i &lt; App.lowerBound; i += 20){</span>
+<span class="nc" id="L197">            this.beamLength = (App.LOWERBOUND - wY)/20 - 1;</span>
+<span class="nc bnc" id="L198" title="All 2 branches missed.">            for (int i = wY; i &lt; App.LOWERBOUND; i += 20){</span>
 <span class="nc bnc" id="L199" title="All 2 branches missed.">                for(Immobile I : app.getMap()){</span>
 <span class="nc bnc" id="L200" title="All 2 branches missed.">                    if(I != null){</span>
 <span class="nc bnc" id="L201" title="All 6 branches missed.">                        if(I.getX() == wX &amp;&amp; I.getY() &gt; wY &amp;&amp; !this.toDelete.contains(I)){</span>
@@ -211,8 +211,8 @@ public class Kamehameha extends Projectile{
 
 <span class="nc bnc" id="L212" title="All 8 branches missed.">        else if (wDir == 3 &amp;&amp; wX%20==0 &amp;&amp; wY%20==0 &amp;&amp; app.getWizard().getYVel() == 0){</span>
 <span class="nc" id="L213">            this.left();</span>
-<span class="nc" id="L214">            this.beamLength = (wX - App.leftBound)/20 + 1;</span>
-<span class="nc bnc" id="L215" title="All 2 branches missed.">            for (int i = wX; i &gt;= App.leftBound; i -= 20){</span>
+<span class="nc" id="L214">            this.beamLength = (wX - App.LEFTBOUND)/20 + 1;</span>
+<span class="nc bnc" id="L215" title="All 2 branches missed.">            for (int i = wX; i &gt;= App.LEFTBOUND; i -= 20){</span>
 <span class="nc bnc" id="L216" title="All 2 branches missed.">                for(Immobile I : app.getMap()){</span>
 <span class="nc bnc" id="L217" title="All 2 branches missed.">                    if(I != null){</span>
 <span class="nc bnc" id="L218" title="All 6 branches missed.">                        if(I.getY() == wY &amp;&amp; I.getX() &lt; wX &amp;&amp; !this.toDelete.contains(I)){</span>

@@ -128,19 +128,19 @@ public class Gremlin extends Mobile{
 <span class="fc" id="L128">                s.draw(app);</span>
 
                 // Hits entity 
-<span class="pc bpc" id="L131" title="1 of 4 branches missed.">                if((collision == 1) &amp;&amp; s.collisionEntity != null){</span>
-<span class="nc bnc" id="L132" title="All 4 branches missed.">                    if(s.collisionEntity.getClass().getName().equals(&quot;gremlins.Fireball&quot;) &amp;&amp; s.collisionEntity.collisionBlock == null){</span>
+<span class="fc bfc" id="L131" title="All 4 branches covered.">                if((collision == 1) &amp;&amp; s.collisionEntity != null){</span>
+<span class="pc bpc" id="L132" title="3 of 4 branches missed.">                    if(s.collisionEntity.getClass().getName().equals(&quot;gremlins.Fireball&quot;) &amp;&amp; s.collisionEntity.collisionBlock == null){</span>
 <span class="nc" id="L133">                        s.stop();</span>
 <span class="nc" id="L134">                        s.collisionEntity.stop();</span>
-<span class="nc" id="L135">                        app.getWizard().getExistingFireballs().set(app.getWizard().getExistingFireballs().indexOf(s.collisionEntity), null);</span>
+<span class="nc" id="L135">                        app.getWizard().getExistingFireballs().set(app.getWizard().getExistingFireballs().indexOf(s.collisionEntity), null); // !POSSIBLE PROBLEM</span>
                     }
-<span class="nc bnc" id="L137" title="All 2 branches missed.">                    else if(s.collisionEntity.getClass().getName().equals(&quot;gremlins.Wizard&quot;)){</span>
-<span class="nc" id="L138">                        s.stop();</span>
-<span class="nc" id="L139">                        s.collisionEntity.alive = false;</span>
+<span class="pc bpc" id="L137" title="1 of 2 branches missed.">                    else if(s.collisionEntity.getClass().getName().equals(&quot;gremlins.Wizard&quot;)){</span>
+<span class="fc" id="L138">                        s.stop();</span>
+<span class="fc" id="L139">                        s.collisionEntity.alive = false;</span>
                         
                     }
-<span class="nc" id="L142">                    s.alive = false;</span>
-<span class="nc" id="L143">                    this.availableSlimeBalls.set(this.availableSlimeBalls.indexOf(s), null);</span>
+<span class="fc" id="L142">                    s.alive = false;</span>
+<span class="fc" id="L143">                    this.availableSlimeBalls.set(this.availableSlimeBalls.indexOf(s), null);</span>
                 }
                 // Hits block 
 <span class="pc bpc" id="L146" title="2 of 6 branches missed.">                else if(collision == 1 &amp;&amp; s.collisionBlock != null &amp;&amp; s.collisionBlock.getViable()){</span>
@@ -336,9 +336,9 @@ public class Gremlin extends Mobile{
                 
         
 <span class="pc bpc" id="L338" title="3 of 6 branches missed.">                if( (!this.sideAV.get(0) &amp;&amp;(this.yVel &lt; 0) &amp;&amp; this.direction == 0) ||</span>
-<span class="pc bpc" id="L339" title="1 of 6 branches missed.">                    (!this.sideAV.get(2) &amp;&amp; (this.yVel &gt; 0) &amp;&amp; this.direction == 2)){</span>
-<span class="fc" id="L340">                    this.yStop();</span>
-<span class="fc" id="L341">                    this.yVel = 0;</span>
+<span class="pc bpc" id="L339" title="3 of 6 branches missed.">                    (!this.sideAV.get(2) &amp;&amp; (this.yVel &gt; 0) &amp;&amp; this.direction == 2)){</span>
+<span class="nc" id="L340">                    this.yStop();</span>
+<span class="nc" id="L341">                    this.yVel = 0;</span>
                 }
                 
                 // Prevents diagonal movement 

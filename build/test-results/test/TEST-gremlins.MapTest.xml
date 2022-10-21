@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="gremlins.MapTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-10-21T04:27:38" hostname="Alexanders-MacBook-Pro-2.local" time="0.003">
+<testsuite name="gremlins.MapTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-10-21T11:32:55" hostname="Alexanders-MacBook-Pro-2.local" time="0.002">
   <properties/>
-  <testcase name="constructor()" classname="gremlins.MapTest" time="0.001"/>
+  <testcase name="constructor()" classname="gremlins.MapTest" time="0.0"/>
   <testcase name="errorTest()" classname="gremlins.MapTest" time="0.0"/>
   <testcase name="readFileTest()" classname="gremlins.MapTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>

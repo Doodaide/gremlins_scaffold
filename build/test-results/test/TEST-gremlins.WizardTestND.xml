@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="gremlins.WizardTestND" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-10-21T04:27:39" hostname="Alexanders-MacBook-Pro-2.local" time="0.002">
+<testsuite name="gremlins.WizardTestND" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-10-21T11:32:57" hostname="Alexanders-MacBook-Pro-2.local" time="0.002">
   <properties/>
-  <testcase name="constructor()" classname="gremlins.WizardTestND" time="0.0"/>
-  <testcase name="tpTest()" classname="gremlins.WizardTestND" time="0.001"/>
+  <testcase name="constructor()" classname="gremlins.WizardTestND" time="0.001"/>
+  <testcase name="tpTest()" classname="gremlins.WizardTestND" time="0.0"/>
   <testcase name="directionTest()" classname="gremlins.WizardTestND" time="0.0"/>
   <testcase name="manaTest()" classname="gremlins.WizardTestND" time="0.0"/>
   <testcase name="fireBallMethodTest()" classname="gremlins.WizardTestND" time="0.0"/>
