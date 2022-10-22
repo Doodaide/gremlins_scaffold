@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="gremlins.FreezePotionTestND" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-10-22T04:20:14" hostname="Alexanders-MacBook-Pro-2.local" time="1.032">
+<testsuite name="gremlins.FreezePotionTestND" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-10-22T05:55:17" hostname="Alexanders-MacBook-Pro-2.local" time="1.051">
   <properties/>
   <testcase name="constructor()" classname="gremlins.FreezePotionTestND" time="0.001"/>
   <testcase name="methodTest()" classname="gremlins.FreezePotionTestND" time="0.0"/>
-  <testcase name="respawnMethodTest()" classname="gremlins.FreezePotionTestND" time="1.031"/>
+  <testcase name="respawnMethodTest()" classname="gremlins.FreezePotionTestND" time="1.05"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

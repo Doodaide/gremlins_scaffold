@@ -60,7 +60,7 @@ public class JSONReader extends PApplet{
     /**
      * Read specs method reads the contents of the json file
      * @param level level is the integer corresponding to the level to read
-     * @throws Exception Runtime exception expected if the index or any part of the JSON file is unreadable
+     * @throws AssertionError for when there is invalid input
      */
     public void readSpecs(int level) throws AssertionError{
         try {  

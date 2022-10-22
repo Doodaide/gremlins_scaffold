@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="gremlins.BigTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2022-10-22T04:18:47" hostname="Alexanders-MacBook-Pro-2.local" time="68.33">
+<testsuite name="gremlins.BigTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2022-10-22T05:54:10" hostname="Alexanders-MacBook-Pro-2.local" time="66.565">
   <properties/>
-  <testcase name="fireBallGremlinInteractionTest()" classname="gremlins.BigTest" time="3.76"/>
-  <testcase name="wizardStaticTest()" classname="gremlins.BigTest" time="4.57"/>
-  <testcase name="slimeHitFireballTest()" classname="gremlins.BigTest" time="1.35"/>
-  <testcase name="wizardGremlinInteractionTest()" classname="gremlins.BigTest" time="5.241"/>
-  <testcase name="wizardDynamicTest()" classname="gremlins.BigTest" time="9.063"/>
-  <testcase name="slimeHitWizardTest()" classname="gremlins.BigTest" time="2.368"/>
-  <testcase name="directionalKamehamehaTest()" classname="gremlins.BigTest" time="16.587"/>
-  <testcase name="wizardImmobileInteractionTest()" classname="gremlins.BigTest" time="18.07"/>
-  <testcase name="gremlinAITest()" classname="gremlins.BigTest" time="7.318"/>
+  <testcase name="fireBallGremlinInteractionTest()" classname="gremlins.BigTest" time="2.525"/>
+  <testcase name="wizardStaticTest()" classname="gremlins.BigTest" time="4.554"/>
+  <testcase name="slimeHitFireballTest()" classname="gremlins.BigTest" time="1.365"/>
+  <testcase name="wizardGremlinInteractionTest()" classname="gremlins.BigTest" time="3.222"/>
+  <testcase name="wizardDynamicTest()" classname="gremlins.BigTest" time="9.079"/>
+  <testcase name="slimeHitWizardTest()" classname="gremlins.BigTest" time="2.388"/>
+  <testcase name="directionalKamehamehaTest()" classname="gremlins.BigTest" time="17.584"/>
+  <testcase name="wizardImmobileInteractionTest()" classname="gremlins.BigTest" time="18.504"/>
+  <testcase name="gremlinAITest()" classname="gremlins.BigTest" time="7.343"/>
   <system-out><![CDATA[Start of loop
 360 200
  Wizard inside loop: false

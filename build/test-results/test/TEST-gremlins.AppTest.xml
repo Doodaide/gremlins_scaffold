@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="gremlins.AppTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-10-22T04:19:55" hostname="Alexanders-MacBook-Pro-2.local" time="18.626">
+<testsuite name="gremlins.AppTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-10-22T05:53:47" hostname="Alexanders-MacBook-Pro-2.local" time="22.991">
   <properties/>
-  <testcase name="getterTest()" classname="gremlins.AppTest" time="4.042"/>
-  <testcase name="levelProgressionTest()" classname="gremlins.AppTest" time="9.047"/>
-  <testcase name="instructionsTest()" classname="gremlins.AppTest" time="5.537"/>
+  <testcase name="getterTest()" classname="gremlins.AppTest" time="4.34"/>
+  <testcase name="levelProgressionTest()" classname="gremlins.AppTest" time="8.559"/>
+  <testcase name="instructionsTest()" classname="gremlins.AppTest" time="5.548"/>
+  <testcase name="firstPowerUpSpawnTest()" classname="gremlins.AppTest" time="4.542"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

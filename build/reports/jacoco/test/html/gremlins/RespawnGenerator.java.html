@@ -62,7 +62,7 @@ public class RespawnGenerator {
 <span class="pc bpc" id="L62" title="1 of 2 branches missed.">                if(xTest == 0){</span>
 <span class="nc" id="L63">                    continue;</span>
                 }
-<span class="pc bpc" id="L65" title="3 of 12 branches missed.">                else if((xTest &gt;= x + this.e.WIDTH+ 200 || xTest &lt;= x - 200) || </span>
+<span class="pc bpc" id="L65" title="4 of 12 branches missed.">                else if((xTest &gt;= x + this.e.WIDTH+ 200 || xTest &lt;= x - 200) || </span>
                 ((xTest &lt; x + this.e.WIDTH + 200 &amp;&amp; xTest &gt; x - 200) &amp;&amp; ((yTest &gt; y + 200 + this.e.HEIGHT) || (yTest &lt; y - 200)))){ // too far left or right. Essentially both coords are valid. 
 <span class="fc" id="L67">                    boolean canPass = true;</span>
 <span class="fc bfc" id="L68" title="All 2 branches covered.">                    for(Immobile i : app.getMap()){</span>
@@ -89,12 +89,12 @@ public class RespawnGenerator {
 <span class="fc" id="L89">                    boolean canPass = true;</span>
 <span class="fc bfc" id="L90" title="All 2 branches covered.">                    for(Immobile i : app.getMap()){</span>
 <span class="pc bpc" id="L91" title="1 of 2 branches missed.">                        if(i != null){</span>
-<span class="fc bfc" id="L92" title="All 4 branches covered.">                            if(i.getX() == xTest &amp;&amp; i.getY() == yTest){</span>
-<span class="fc" id="L93">                                canPass = false;</span>
+<span class="pc bpc" id="L92" title="1 of 4 branches missed.">                            if(i.getX() == xTest &amp;&amp; i.getY() == yTest){</span>
+<span class="nc" id="L93">                                canPass = false;</span>
                             }
                         }
 <span class="fc" id="L96">                    }</span>
-<span class="fc bfc" id="L97" title="All 2 branches covered.">                    if(canPass){</span>
+<span class="pc bpc" id="L97" title="1 of 2 branches missed.">                    if(canPass){</span>
 <span class="fc" id="L98">                        canRespawnX = true;</span>
 <span class="fc" id="L99">                        canRespawnY = true;</span>
                     }

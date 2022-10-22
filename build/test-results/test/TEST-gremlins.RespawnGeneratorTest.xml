@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="gremlins.RespawnGeneratorTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-10-22T04:20:15" hostname="Alexanders-MacBook-Pro-2.local" time="1.039">
+<testsuite name="gremlins.RespawnGeneratorTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-10-22T05:55:18" hostname="Alexanders-MacBook-Pro-2.local" time="1.04">
   <properties/>
   <testcase name="constructor()" classname="gremlins.RespawnGeneratorTest" time="0.0"/>
-  <testcase name="method()" classname="gremlins.RespawnGeneratorTest" time="1.039"/>
+  <testcase name="method()" classname="gremlins.RespawnGeneratorTest" time="1.04"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

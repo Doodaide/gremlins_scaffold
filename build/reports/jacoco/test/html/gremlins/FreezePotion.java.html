@@ -111,7 +111,7 @@ public class FreezePotion extends Immobile{
     /**
      * Update method increments the freeze potion and updates the cooldown depending on whether the potion has been consumed (and its effect
      * is still active) or not. 
-     * @param app
+     * @param app the PApplet that allows reference to the getter methods 
      */
     public void update(App app){
 <span class="pc bpc" id="L117" title="1 of 6 branches missed.">        if(!app.getPowerUpAvailable() &amp;&amp; this.getConsumed() &amp;&amp; app.getFreezeActive()){ // consumed and not on screen </span>
