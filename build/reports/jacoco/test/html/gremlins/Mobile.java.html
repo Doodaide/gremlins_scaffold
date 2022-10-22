@@ -90,8 +90,8 @@ public abstract class Mobile extends Entity{
      * @param b boolean whether the mobile is alive or not 
      */
     public void setAlive(boolean b){
-<span class="nc" id="L93">        this.alive = b;</span>
-<span class="nc" id="L94">    }</span>
+<span class="fc" id="L93">        this.alive = b;</span>
+<span class="fc" id="L94">    }</span>
 
     /**
      * getter method for getting each mobile entity's base speed 
@@ -231,14 +231,14 @@ public abstract class Mobile extends Entity{
         // ! Upper side collision
 <span class="fc bfc" id="L232" title="All 2 branches covered.">        if(collides(this.getX() + 1, this.getY(), app) || // top left corner, hit up</span>
 <span class="pc bpc" id="L233" title="1 of 2 branches missed.">            collides(this.getX()+this.WIDTH - 1, this.getY(), app)){ // top right cornder hit up </span>
-<span class="pc bpc" id="L234" title="1 of 2 branches missed.">            if(this.direction == 0){</span>
+<span class="fc bfc" id="L234" title="All 2 branches covered.">            if(this.direction == 0){</span>
 <span class="fc" id="L235">                toReturn = 1;</span>
 <span class="fc" id="L236">                this.sideAV.replace(0, true, false);</span>
             }
             else{
                 //this.upAV = true;
-<span class="nc" id="L240">                this.sideAV.replace(0, false, true);</span>
-<span class="nc" id="L241">                toReturn = 0;</span>
+<span class="fc" id="L240">                this.sideAV.replace(0, false, true);</span>
+<span class="fc" id="L241">                toReturn = 0;</span>
             }
             
         }
@@ -330,13 +330,13 @@ public abstract class Mobile extends Entity{
         // ! Lower side collision 
 <span class="fc bfc" id="L331" title="All 2 branches covered.">        if(collides(this.getX() + 1, this.getY() + this.HEIGHT, app) || // Bottom left corner, hit down</span>
 <span class="pc bpc" id="L332" title="1 of 2 branches missed.">            collides(this.getX() + this.WIDTH - 1, this.getY() + this.HEIGHT, app)){ // Bottom right corner, hit down</span>
-<span class="pc bpc" id="L333" title="1 of 2 branches missed.">            if(this.direction == 2){</span>
+<span class="fc bfc" id="L333" title="All 2 branches covered.">            if(this.direction == 2){</span>
 <span class="fc" id="L334">                this.sideAV.replace(2, true, false);</span>
 <span class="fc" id="L335">                toReturn = 1;</span>
             }
             else{
-<span class="nc" id="L338">                this.sideAV.replace(2, false, true);</span>
-<span class="nc" id="L339">                toReturn = 0;</span>
+<span class="fc" id="L338">                this.sideAV.replace(2, false, true);</span>
+<span class="fc" id="L339">                toReturn = 0;</span>
             }        
         } 
         
@@ -398,10 +398,10 @@ public abstract class Mobile extends Entity{
             }
 <span class="fc" id="L399">            this.collisionBlock = null;</span>
 <span class="fc" id="L400">        }</span>
-<span class="fc bfc" id="L401" title="All 2 branches covered.">            if(app.getPowerUpAvailable() ){</span>
+<span class="fc bfc" id="L401" title="All 2 branches covered.">            if(app.getPowerUpAvailable()){</span>
 <span class="fc bfc" id="L402" title="All 2 branches covered.">                if(this.getClass().getName().equals(&quot;gremlins.Wizard&quot;)</span>
                 &amp;&amp;
-<span class="pc bpc" id="L404" title="1 of 4 branches missed.">                ((xCoord &gt;= app.getPowerUp().getX() &amp;&amp; xCoord &lt;= app.getPowerUp().getX() + app.getPowerUp().WIDTH) // ! error here </span>
+<span class="fc bfc" id="L404" title="All 4 branches covered.">                ((xCoord &gt;= app.getPowerUp().getX() &amp;&amp; xCoord &lt;= app.getPowerUp().getX() + app.getPowerUp().WIDTH) // ! error here </span>
                     &amp;&amp;
 <span class="pc bpc" id="L406" title="2 of 4 branches missed.">                    (yCoord &gt;= app.getPowerUp().getY() &amp;&amp; yCoord &lt;= app.getPowerUp().getY() + app.getPowerUp().HEIGHT))){</span>
 <span class="fc" id="L407">                        this.collisionBlock = app.getPowerUp();</span>

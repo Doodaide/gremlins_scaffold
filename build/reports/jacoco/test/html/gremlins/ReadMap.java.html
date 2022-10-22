@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ReadMap.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gremlins_scaffold</a> &gt; <a href="index.source.html" class="el_package">gremlins</a> &gt; <span class="el_source">ReadMap.java</span></div><h1>ReadMap.java</h1><pre class="source lang-java linenums">package gremlins;
 import java.util.*;
 
-import jogamp.opengl.glu.error.Error;
-
 import java.io.*;
 /**
  * ReadMap class: A helper class that reads the map specified in the config file
@@ -18,16 +16,16 @@ public class ReadMap {
      * Constructor for ReadMap object
      * Each object only contains the ArrayList of characters 
      */
-<span class="fc" id="L21">    public ReadMap(){</span>
-<span class="fc" id="L22">        this.mapContents = new ArrayList&lt;Character[]&gt;(); // temporary list</span>
-<span class="fc" id="L23">    }</span>
+<span class="fc" id="L19">    public ReadMap(){</span>
+<span class="fc" id="L20">        this.mapContents = new ArrayList&lt;Character[]&gt;(); // temporary list</span>
+<span class="fc" id="L21">    }</span>
 
     /**
      * Getter method for the singular ArrayList attribute 
      * @return an ArrayList of MapContents that is an arrayList of Character arrays 
      */
     public ArrayList&lt;Character[]&gt; getMapContents(){
-<span class="fc" id="L30">        return this.mapContents;</span>
+<span class="fc" id="L28">        return this.mapContents;</span>
     }
 
     /**
@@ -39,21 +37,21 @@ public class ReadMap {
      * @throws Exception
      */
     public void parseLayout(String layout) throws Exception{
-<span class="fc bfc" id="L42" title="All 2 branches covered.">        if(layout.equals(&quot;&quot;)){</span>
-<span class="fc" id="L43">            throw new AssertionError();</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        if(layout.equals(&quot;&quot;)){</span>
+<span class="fc" id="L41">            throw new AssertionError();</span>
         }
-<span class="fc" id="L45">        File f = new File(layout); // File f = new File(&quot;level0.txt&quot;); //</span>
-<span class="fc" id="L46">        Scanner sc = new Scanner(f);</span>
+<span class="fc" id="L43">        File f = new File(layout); // File f = new File(&quot;level0.txt&quot;); //</span>
+<span class="fc" id="L44">        Scanner sc = new Scanner(f);</span>
         
-<span class="fc bfc" id="L48" title="All 2 branches covered.">        while(sc.hasNextLine()){</span>
-<span class="fc" id="L49">            Character [] temp = new String(</span>
-<span class="fc" id="L50">                sc.nextLine().trim().toCharArray()).chars()</span>
-<span class="fc" id="L51">                .mapToObj(c -&gt; (char) c).toArray(Character[]::new);</span>
-<span class="fc" id="L52">            this.mapContents.add(temp);</span>
-<span class="fc" id="L53">        }</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">        while(sc.hasNextLine()){</span>
+<span class="fc" id="L47">            Character [] temp = new String(</span>
+<span class="fc" id="L48">                sc.nextLine().trim().toCharArray()).chars()</span>
+<span class="fc" id="L49">                .mapToObj(c -&gt; (char) c).toArray(Character[]::new);</span>
+<span class="fc" id="L50">            this.mapContents.add(temp);</span>
+<span class="fc" id="L51">        }</span>
 
-<span class="fc" id="L55">        sc.close();</span>
-<span class="fc" id="L56">        f = null;</span>
-<span class="fc" id="L57">    }</span>
+<span class="fc" id="L53">        sc.close();</span>
+<span class="fc" id="L54">        f = null;</span>
+<span class="fc" id="L55">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

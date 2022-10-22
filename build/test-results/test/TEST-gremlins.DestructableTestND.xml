@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="gremlins.DestructableTestND" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-10-21T11:32:54" hostname="Alexanders-MacBook-Pro-2.local" time="0.002">
+<testsuite name="gremlins.DestructableTestND" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-10-22T04:20:14" hostname="Alexanders-MacBook-Pro-2.local" time="0.003">
   <properties/>
-  <testcase name="constructor()" classname="gremlins.DestructableTestND" time="0.002"/>
+  <testcase name="constructor()" classname="gremlins.DestructableTestND" time="0.003"/>
   <testcase name="methodTest()" classname="gremlins.DestructableTestND" time="0.0"/>
-  <system-out><![CDATA[Printing from inside
-]]></system-out>
+  <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

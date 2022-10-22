@@ -296,8 +296,8 @@ public class Wizard extends Mobile{
 <span class="fc" id="L296">            app.fill(0,255,255);</span>
 <span class="fc" id="L297">            app.rect(600, 705, (float) (100 - (this.getTpCooldown()*20/App.FPS)), 6);</span>
 <span class="fc" id="L298">            app.fill(255,255,255);</span>
-<span class="pc bpc" id="L299" title="3 of 4 branches missed.">            if(this.getTeleported() &amp;&amp; this.getTpCooldown() &gt; 0){</span>
-<span class="nc" id="L300">                this.setTpCooldown(this.getTpCooldown() - 1);</span>
+<span class="pc bpc" id="L299" title="1 of 4 branches missed.">            if(this.getTeleported() &amp;&amp; this.getTpCooldown() &gt; 0){</span>
+<span class="fc" id="L300">                this.setTpCooldown(this.getTpCooldown() - 1);</span>
             }
         }
 <span class="fc" id="L303">        return direction;</span>
@@ -385,7 +385,7 @@ public class Wizard extends Mobile{
 <span class="pc bpc" id="L385" title="1 of 4 branches missed.">                    if(this.xDir == 3 &amp;&amp; this.sideAV.get(3)){</span>
 <span class="nc" id="L386">                        this.setX(this.getX() - 1);</span>
                     }
-<span class="pc bpc" id="L388" title="1 of 4 branches missed.">                    else if (this.xDir == 1 &amp;&amp; this.sideAV.get(1)){</span>
+<span class="fc bfc" id="L388" title="All 4 branches covered.">                    else if (this.xDir == 1 &amp;&amp; this.sideAV.get(1)){</span>
 <span class="fc" id="L389">                        this.setX(this.getX() + 1);</span>
                     }
                    

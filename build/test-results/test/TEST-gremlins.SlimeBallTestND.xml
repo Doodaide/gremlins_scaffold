@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="gremlins.SlimeBallTestND" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-10-21T11:32:57" hostname="Alexanders-MacBook-Pro-2.local" time="0.001">
+<testsuite name="gremlins.SlimeBallTestND" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-10-22T04:20:16" hostname="Alexanders-MacBook-Pro-2.local" time="0.002">
   <properties/>
-  <testcase name="constructor()" classname="gremlins.SlimeBallTestND" time="0.0"/>
+  <testcase name="constructor()" classname="gremlins.SlimeBallTestND" time="0.001"/>
   <testcase name="methodTest()" classname="gremlins.SlimeBallTestND" time="0.001"/>
   <testcase name="hitTest()" classname="gremlins.SlimeBallTestND" time="0.0"/>
   <system-out><![CDATA[]]></system-out>

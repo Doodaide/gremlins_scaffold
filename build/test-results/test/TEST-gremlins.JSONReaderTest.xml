@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="gremlins.JSONReaderTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-10-21T11:32:55" hostname="Alexanders-MacBook-Pro-2.local" time="0.002">
+<testsuite name="gremlins.JSONReaderTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-10-22T04:20:15" hostname="Alexanders-MacBook-Pro-2.local" time="0.001">
   <properties/>
-  <testcase name="constructor()" classname="gremlins.JSONReaderTest" time="0.001"/>
+  <testcase name="constructor()" classname="gremlins.JSONReaderTest" time="0.0"/>
   <testcase name="errorTest()" classname="gremlins.JSONReaderTest" time="0.001"/>
   <testcase name="readSpecsTest()" classname="gremlins.JSONReaderTest" time="0.0"/>
-  <system-out><![CDATA[Printing from inside
-Printing from inside
-]]></system-out>
+  <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
